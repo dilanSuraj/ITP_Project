@@ -1,0 +1,63 @@
+.nav{
+    background-color: #003399;
+}
+
+.logo{
+    height: 100px;
+    margin-left:10%;
+    margin-top: -18%;
+    margin-bottom: -22%;
+
+}
+
+.sidbar-items li a{
+    padding-top: 10px;
+    color: white;
+}
+
+.sidbar-items li a:hover{
+    padding-top: 10px;
+    color:#b2ebf2 ;
+}
+
+.navbar-icons li{
+
+    padding-left: 20px;
+}
+
+navbarDropdown a{
+
+    color: black;
+}
+
+.admin-name{
+
+    color: white;
+}
+.admin-name:hover{
+    color: #b2ebf2;
+    text-decoration: none;
+}
+
+.navbarIcon{
+    color: white;
+}
+
+.navbarIcon:hover{
+    color: #b2ebf2;
+    text-decoration: none;
+}
+
+.bigcards{
+    color: white;
+}
+.card-body-icon {
+    position: absolute;
+    z-index: 0;
+    top: -25px;
+    right: -25px;
+    font-size: 5rem;
+    -webkit-transform: rotate(15deg);
+    -ms-transform: rotate(15deg);
+    transform: rotate(15deg);
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="inv_dis_mgmtsys">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="inv_dis_mgmtsys"/>
+        <property name="java-output-path" value="/inv_dis_mgmtsys/build/classes"/>
+    </wb-module>
+</project-modules>

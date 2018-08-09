@@ -1,0 +1,28 @@
+.logo{
+    height: 120px;
+    margin-left:0%;
+    margin-top: -18%;
+    margin-bottom: -22%;
+
+}
+.navbar {
+    background-color: rgba(0, 0, 0, 0);
+    }
+
+.top-nav-collapse {
+    background-color: #003399; }
+
+/* Adding color to the Navbar on mobile */
+@media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: #003399; } }
+
+.social-icon{
+    width: 50px;
+
+}
+
+.social-icon:hover {
+    opacity: 0.7;
+}
+
