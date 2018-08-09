@@ -28,7 +28,7 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO{
 
 	@Override
 	public List<Payment> getIncomePayments() {
-		
+		System.out.println("Here");
 		return null;
 	}
 
