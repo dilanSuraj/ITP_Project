@@ -302,111 +302,62 @@
 			<!-- start icons -->
 
 			<!-- cards starts-->
-			<div class="col-md-12">
-				<div class="card mb-3">
-					<div class="card-header" style="color: #003399">
-						<h5>
-							<span class="fa fa-image"></span> Sub Functions
-						</h5>
-					</div>
-					<div class="card-body">
+ <!-- data table start -->
 
-						<div class="card-deck">
 
-							<div class="card">
-								<a href="Finance_Manager/Supplier_Finance"> <img
-									class="card-img-top"
-									src="Styles/Images/FinanceMgmt/supplier.jpg"
-									alt="Card image cap">
-									<div class="card-body">
-										<h5 class="card-title">Supplier Financial Details</h5>
+     <div class="col-md-12">
+         <div class="card mb-3" >
+             <div class="card-header" style="color: #003399" >
+                 <h5><span class="fa fa-image"></span> Cards </h5></div>
+             <div class="card-body">
 
-									</div>
-								</a>
-							</div>
-							<div class="card">
-								<a href="Finance_Manager/Retailer_Finance"> <img
-									class="card-img-top"
-									src="Styles/Images/FinanceMgmt/retialer_finance.png"
-									height="180px" alt="Card image cap">
-									<div class="card-body">
-										<h5 class="card-title">Retailer Financial Details</h5>
+                 <script>
+                     $(document).ready(function() {
+                         $('#example').DataTable();
+                     } );
+                 </script>
 
-									</div>
-								</a>
-							</div>
-							<div class="card">
-								<a href="Finance_Manager/Payment_Manage"> <img
-									class="card-img-top"
-									src="Styles/Images/FinanceMgmt/payments.jpg" height="180px"
-									alt="Card image cap">
-									<div class="card-body">
-										<h5 class="card-title">Payment Details</h5>
+                 <table id="example" class="table table-striped table-bordered" style="width:100%">
+                     <thead>
+                     <tr>
+                         <th>Supplier Name</th>
+                           <th>Supplier Order Details</th>
+                         <th>Total Amount</th>
+                         <th>Date</th>
+                         <th>Payment State</th>
+                       
+                         
+                     </tr>
+                     </thead>
+                     <tbody>
+                     <tr>
+                         <td>Tiger Nixon</td>
+                         <td>System Architect</td>
+                         <td>Edinburgh</td>
+                         <td>61</td>
+                         <td>2011/04/25</td>
+                        
+                     </tr>
+                     </tbody>
+                     <tfoot>
+                     <tr>
+                         <th>Supplier Name</th>
+                         <th>Supplier Order Details</th>
+                         <th>Total Amount</th>
+                         <th>Date</th>
+                         <th>Payment State</th>
+                        
+                        
+                     </tr>
+                     </tfoot>
+                 </table>
+             </div>
+            
+         </div>
+     </div>
 
-									</div>
-								</a>
-							</div>
-						</div>
-						
-						
-						<div class="card-deck">
-
-							<div class="card">
-								<a href="Finance_Manager/Salary_Finace"> <img
-									class="card-img-top"
-									src="Styles/Images/FinanceMgmt/salary.jpg"
-									alt="Card image cap">
-									<div class="card-body">
-										<h5 class="card-title">Salary Financial Details</h5>
-
-									</div>
-								</a>
-							</div>
-							<div class="card">
-								<a href="Finance_Manager/Sale_Price"> <img
-									class="card-img-top"
-									src="Styles/Images/FinanceMgmt/sale_price.jpg"
-									height="205px" alt="Card image cap">
-									<div class="card-body">
-										<h5 class="card-title">Item Sale Price Details</h5>
-
-									</div>
-								</a>
-							</div>
-							<div class="card">
-								<a href="Finance_Manager/Profit"> <img
-									class="card-img-top"
-									src="Styles/Images/FinanceMgmt/profit.jpg" height="205px"
-									alt="Card image cap">
-									<div class="card-body">
-										<h5 class="card-title">Profit Details</h5>
-
-									</div>
-								</a>
-							</div>
-						</div>
-						
-						
-						<div class="card-deck">
-
-						
-							
-							<div class="card">
-								<a href="Finance_Manager/Retailer_Blacklist"> <img
-									class="card-img-top"
-									src="Styles/Images/FinanceMgmt/blacklist.jpg"  height="205px" 
-									alt="Card image cap">
-									<div class="card-body">
-										<h5 class="card-title">Blacklisted retailers Details</h5>
-
-									</div>
-								</a>
-							</div>
-					   </div>
-					</div>
-					
-				</div>
-			</div>
+     <!-- data table end -->
+</div>
 
 			<!-- start icons -->
 		</div>
