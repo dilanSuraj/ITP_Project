@@ -20,7 +20,7 @@
 	<mvc:annotation-driven />
 
 	<!-- Specifying the Resource location to load JS, CSS, Images etc -->
-	<mvc:resources mapping="/Styles/**"
+	<mvc:resources mapping="{Base}/Styles/**"
 		location="/WEB-INF/Styles/" />
 	<!-- View Resolver -->
 	<bean
