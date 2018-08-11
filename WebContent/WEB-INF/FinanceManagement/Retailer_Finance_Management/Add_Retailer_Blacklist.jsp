@@ -52,7 +52,7 @@
 
 	<!-- start of the the navigation header-->
 
-	<!-- start of the the navigation header-->
+<!-- start of the the navigation header-->
 
     <%@ include file="/WEB-INF/PageSegments/_navigationheader.jsp" %>
 	<!-- end of the navigation header-->
@@ -84,72 +84,70 @@
 			<!-- cards starts-->
 			<!-- data table start -->
 
-			<div class="col-md-12">
+			<!-- forms starts -->
 
+			<div class="col-md-12">
 				<div class="card mb-3">
 					<div class="card-header" style="color: #003399">
 						<h5>
-							<span class="fa fa-image"></span> Transport Finance details
+							<span class="fa fa-pencil"></span> Add Blacklisted Retailer
 						</h5>
-
 					</div>
-					<a href="AddTransport_Finance">
-						<div class="pull-right"
-							style="padding-left: 77%; padding-top: 30px">
-
-							<button class="btn btn-success" data-toggle="modal"
-								data-target="#create-user">+ Add Transport Finance Details
-						</div>
-					</a>
 					<div class="card-body">
 
-						<script>
-							$(document).ready(function() {
-								$('#example').DataTable();
-							});
-						</script>
+						<form method="post" action="#">
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="input_supp_name">Retailer Name</label> <input
+										type="text" class="form-control" id="input_supp_name"
+										placeholder="Enter Supplier Name Here">
+								</div>
+								<div class="form-group col-md-6">
+									<label for="input_supp_order">Retailer Order Details</label> <input
+										type="text" class="form-control" id="input_supp_order"
+										placeholder="Enter Retailer Order ID number here">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="input_amt">Amount</label> <input type="text"
+									class="form-control" id="input_amt"
+									placeholder="Enter the amount here">
+							</div>
+							<div class="form-row">
 
-						<table id="example" class="table table-striped table-bordered"
-							style="width: 100%">
+								<div class="form-group col-md-6">
+									<div class="container">
+										<label for="input_date">Order Date</label>
+										<div class="hero-unit">
+											<input type="button" value="click to pick a date"
+												name="date_payment" id="pickyDate" class="btn btn-light" />
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-row">
 
-							<thead>
-								<tr>
-									<th>Category</th>
-									<th>Amount</th>
-									<th>Date</th>
-									<th>Edit</th>
-									<th>Delete</th>
-									
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Tiger Nixon</td>
-									<td>System Architect</td>
-									<td>61</td>
-									<th><a href="UpdateTransport_Finance">
-									<button type="button" class="btn btn-warning">Edit</button>
-											</a></th>
-									<th><a href="DeleteTransport_Finance">
-									<button type="button" class="btn btn-danger">Delete</button>
-											</a></th>
-								</tr>
-							</tbody>
-							<tfoot>
-								<tr>
-									<th>Category</th>
-									<th>Amount</th>
-									<th>Date</th>
-									<th>Edit</th>
-									<th>Delete</th>
+								<div class="form-group col-md-6">
+									<div class="container">
+										<label for="input_date">Deadline Date</label>
+										<div class="hero-unit">
+											<input type="button" value="click to pick a date"
+												name="deadline_date_payment" id="pickyDate" class="btn btn-secondary"/>
+										</div>
+									</div>
+								</div>
+							</div>
+							
 
-								</tr>
-							</tfoot>
-						</table>
+							<button type="submit" class="btn btn-info"  name="add_payment">Add Blacklisted Retailer</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>  
+						</form>
 					</div>
-
 				</div>
 			</div>
+
+			<!-- forms ends-->
 
 			<!-- data table end -->
 		</div>
@@ -165,6 +163,14 @@
 	<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 
 	<script type="text/javascript" src="Styles/js/mdb.min.js"></script>
+	<script src="Styles/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#pickyDate').datepicker({
+				format : "dd/mm/yyyy"
+			});
+		});
+	</script>
 
 
 

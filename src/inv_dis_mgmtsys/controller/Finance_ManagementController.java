@@ -18,63 +18,119 @@ public class Finance_ManagementController {
 	    return new ModelAndView("/Dashboards/FinanceManager");
 	}
 	
-	@RequestMapping("Finance_Manager/Supplier_Finance")
+	@RequestMapping("/Supplier_Finance")
 	public ModelAndView SupplierFinanaceView() {
 		
 		System.out.println("Supplier Finanace");
 	    return new ModelAndView("/FinanceManagement/Supplier_Finance_Management/Supplier_Finance");
 	}
 	
-	@RequestMapping("Finance_Manager/Sale_Price")
+	@RequestMapping("/Edit_Supplier_Finance")
+	public ModelAndView SupplierFinanaceEdit() {
+		
+		System.out.println("Supplier Finanace");
+	    return new ModelAndView("/FinanceManagement/Supplier_Finance_Management/Edit_Supplier_Finance");
+	}
+	
+	@RequestMapping("/Delete_Supplier_Finance")
+	public ModelAndView SupplierFinanaceDelete() {
+		
+		System.out.println("Supplier Finanace");
+	    return new ModelAndView("/FinanceManagement/Supplier_Finance_Management/Supplier_Finance");
+	}
+	
+	@RequestMapping("/Add_Supplier_Finance")
+	public ModelAndView SupplierFinanaceInsert() {
+		
+		System.out.println("Supplier Finanace");
+	    return new ModelAndView("/FinanceManagement/Supplier_Finance_Management/Add_Supplier_Finance");
+	}
+	
+	@RequestMapping("/Sale_Price")
 	public ModelAndView SalePriceView() {
 		
 		System.out.println("Sale Price");
 	    return new ModelAndView("/FinanceManagement/Sale_Price_Management/Sale_Price");
 	}
 	
-	@RequestMapping("Finance_Manager/Salary_Finace")
+	@RequestMapping("/Salary_Finace")
 	public ModelAndView SalaryFinanceView() {
 		
 		System.out.println("Salary Finance");
 	    return new ModelAndView("/FinanceManagement/Salary_Finance_Management/Salary_Finance");
 	}
 	
-	@RequestMapping("Finance_Manager/Retailer_Blacklist")
+	@RequestMapping("/Retailer_Blacklist")
 	public ModelAndView RetailerBlacklistView() {
 		
 		System.out.println("Retailer Blacklist");
 	    return new ModelAndView("/FinanceManagement/Retailer_Finance_Management/Retailer_Blacklist");
 	}
 	
-	@RequestMapping("Finance_Manager/Retailer_Finance")
+	@RequestMapping("/Add_Retailer_Blacklist")
+	public ModelAndView RetailerBlacklistInsert() {
+		
+		System.out.println("Retailer Blacklist");
+	    return new ModelAndView("/FinanceManagement/Retailer_Finance_Management/Add_Retailer_Blacklist");
+	}
+	
+	@RequestMapping("/Delete_Retailer_Blacklist")
+	public ModelAndView RetailerBlacklistDelete() {
+		
+		System.out.println("Retailer Blacklist");
+	    return new ModelAndView("/FinanceManagement/Retailer_Finance_Management/Retailer_Blacklist");
+	}
+	
+	@RequestMapping("/Retailer_Finance")
 	public ModelAndView RetailerFinanceView() {
 		
 		System.out.println("Retailer Finance");
 	    return new ModelAndView("/FinanceManagement/Retailer_Finance_Management/Retailer_Finance");
 	}
 	
-	@RequestMapping("Finance_Manager/Profit")
+	@RequestMapping("/Edit_Retailer_Finance")
+	public ModelAndView RetailerFinanceEdit() {
+		
+		System.out.println("Retailer Finance");
+	    return new ModelAndView("/FinanceManagement/Retailer_Finance_Management/Edit_Retailer_Finance");
+	}
+	
+	@RequestMapping("/Delete_Retailer_Finance")
+	public ModelAndView RetailerFinanceDelete() {
+		
+		System.out.println("Retailer Finance");
+	    return new ModelAndView("/FinanceManagement/Retailer_Finance_Management/Retailer_Finance");
+	}
+	
+	@RequestMapping("/Add_Retailer_Finance")
+	public ModelAndView RetailerFinanceInsert() {
+		
+		System.out.println("Retailer Finance");
+	    return new ModelAndView("/FinanceManagement/Retailer_Finance_Management/Add_Retailer_Finance");
+	}
+	
+	@RequestMapping("/Profit")
 	public ModelAndView ProfitView() {
 		
 		System.out.println("Profit");
 	    return new ModelAndView("/FinanceManagement/Profit_Management/Profit");
 	}
 	
-	@RequestMapping("Finance_Manager/Payment_Manage")
+	@RequestMapping("/Payment_Manage")
 	public ModelAndView Payment_ManageView() {
 		
 		System.out.println("Payment_Manage");
 	    return new ModelAndView("/FinanceManagement/Payment_Management/Payment_Manage");
 	}
 	
-	@RequestMapping("Finance_Manager/Payment_Manage/Expenses")
+	@RequestMapping("/Expenses")
 	public ModelAndView ExpensesView() {
 		
 		System.out.println("Expenses");
 	    return new ModelAndView("/FinanceManagement/Payment_Management/Expenses");
 	}
 	
-	@RequestMapping("Finance_Manager/Payment_Manage/Income")
+	@RequestMapping("/Income")
 	public ModelAndView IncomeView() {
 		
 		System.out.println("Income");
@@ -83,28 +139,28 @@ public class Finance_ManagementController {
 	
 	//Transport Financial details
 	
-	@RequestMapping("Finance_Manager/Payment_Manage/Transport_Finance")
+	@RequestMapping("/Transport_Finance")
 	public ModelAndView TransportFinanceView() {
 		
 		System.out.println("Transport Finance");
 	    return new ModelAndView("/FinanceManagement/Payment_Management/Transport_Finance");
 	}
 	
-	@RequestMapping("Finance_Manager/Payment_Manage/AddTransport_Finance")
+	@RequestMapping("/AddTransport_Finance")
 	public ModelAndView AddTransportFinanceView() {
 		
 		System.out.println("Add Transport Finance");
 	    return new ModelAndView("/FinanceManagement/Payment_Management/Add_Transport_Finance");
 	}
 	
-	@RequestMapping("Finance_Manager/Payment_Manage/UpdateTransport_Finance")
+	@RequestMapping("/UpdateTransport_Finance")
 	public ModelAndView UpdateTransportFinanceView() {
 		
 		System.out.println("Update Transport Finance");
 	    return new ModelAndView("/FinanceManagement/Payment_Management/Update_Transport_Finance");
 	}
 	
-	@RequestMapping("Finance_Manager/Payment_Manage/DeleteTransport_Finance")
+	@RequestMapping("/DeleteTransport_Finance")
 	public ModelAndView DeleteTransportFinanceView() {
 		
 		System.out.println("Delete Transport Finance");
@@ -113,21 +169,21 @@ public class Finance_ManagementController {
 	
 	//Income details
 	
-	@RequestMapping("Finance_Manager/Payment_Manage/AddIncome")
+	@RequestMapping("/AddIncome")
 	public ModelAndView AddIncomeView() {
 		
 		System.out.println("Add Income");
 	    return new ModelAndView("/FinanceManagement/Payment_Management/AddIncome");
 	}
 	
-	@RequestMapping("Finance_Manager/Payment_Manage/UpdateIncome")
+	@RequestMapping("/UpdateIncome")
 	public ModelAndView UpdateIncomeView() {
 		
 		System.out.println("Update Income");
 	    return new ModelAndView("/FinanceManagement/Payment_Management/UpdateIncome");
 	}
 	
-	@RequestMapping("Finance_Manager/Payment_Manage/DeleteIncome")
+	@RequestMapping("/DeleteIncome")
 	public ModelAndView DeleteIncomeView() {
 		
 		System.out.println("Delete Income");
@@ -136,21 +192,21 @@ public class Finance_ManagementController {
 	
 	//Expenses
 	
-	@RequestMapping("Finance_Manager/Payment_Manage/AddExpenses")
+	@RequestMapping("/AddExpenses")
 	public ModelAndView AddExpensesView() {
 		
 		System.out.println("Add Expenses");
 	    return new ModelAndView("/FinanceManagement/Payment_Management/AddExpenses");
 	}
 	
-	@RequestMapping("Finance_Manager/Payment_Manage/UpdateExpenses")
+	@RequestMapping("/UpdateExpenses")
 	public ModelAndView UpdateExpensesView() {
 		
 		System.out.println("Update Expenses");
 	    return new ModelAndView("/FinanceManagement/Payment_Management/UpdateExpenses");
 	}
 	
-	@RequestMapping("Finance_Manager/Payment_Manage/DeleteExpenses")
+	@RequestMapping("/DeleteExpenses")
 	public ModelAndView DeleteExpensesView() {
 		
 		System.out.println("Delete Expenses");

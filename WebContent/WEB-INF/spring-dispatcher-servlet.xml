@@ -17,11 +17,13 @@
 	<context:property-placeholder
 		location="classpath:application.properties" />
 
-	<mvc:annotation-driven />
+	
 
 	<!-- Specifying the Resource location to load JS, CSS, Images etc -->
-	<mvc:resources mapping="{Base}/Styles/**"
+	<mvc:resources mapping="/Styles/**"
 		location="/WEB-INF/Styles/" />
+		
+		<mvc:annotation-driven />
 	<!-- View Resolver -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
