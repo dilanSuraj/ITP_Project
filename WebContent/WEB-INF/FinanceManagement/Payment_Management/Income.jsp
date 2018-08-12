@@ -82,7 +82,7 @@
 						</h5>
 
 					</div>
-					<a href="AddExpenses">
+					<a href="AddIncome">
 						<div class="pull-right"
 							style="padding-left: 77%; padding-top: 30px">
 
@@ -113,9 +113,9 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>Tiger Nixon</td>
-									<td>System Architect</td>
-									<td>61</td>
+									<td>WP BDG 8674 Vehicle Sold</td>
+									<td>1M</td>
+									<td>2018/08/10</td>
 									<th><a href="UpdateIncome">
 									<button type="button" class="btn btn-warning">Edit</button>
 											</a></th>

@@ -61,7 +61,7 @@
 	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp" %>
 
 
-    <%@ include file="/WEB-INF/PageSegments/_cards.jsp" %>
+    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp" %>
 
 
 
@@ -84,19 +84,19 @@
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="input_supp_name">Retailer Name</label> <input
-										type="text" readonly class="form-control-plaintext" id="input_supp_name"
+										type="text" readonly class="form-control-plaintext" id="Sakindu Udagedara"
 										placeholder="Enter Supplier Name Here">
 								</div>
 								<div class="form-group col-md-6">
 									<label for="input_supp_order">Retailer Order Details</label> <input
 										type="text" readonly class="form-control-plaintext" id="input_supp_order"
-										placeholder="Enter Supplier Order ID number here">
+										placeholder="5 5 inch Tyres">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="input_amt">Amount</label> <input type="text"
-									class="form-control" id="input_amt"
-									placeholder="Enter the amount here">
+									readonly class="form-control-plaintext" id="input_amt"
+									placeholder="15000">
 							</div>
 							<div class="form-row">
 
@@ -115,10 +115,10 @@
 
 								<div class="form-group col-md-6">
 									<div class="container">
-										<label for="input_date">Deadline Date</label>
+										<label for="input_date2">Deadline Date</label>
 										<div class="hero-unit">
 											<input type="button" value="click to show datepicker"
-												name="deadline_date_payment" id="pickyDate" />
+												name="date_payment" id="pickyDate2" />
 										</div>
 									</div>
 								</div>
@@ -127,7 +127,7 @@
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="input_pay_state">Payment State</label> <input
-										type="text" class="form-control" id="input_pay_state" name="pay_state">
+										type="text" class="form-control" id="input_pay_state" name="pay_state" placeholder="Advanced payment of 10000">
 								</div>
 
 							</div>

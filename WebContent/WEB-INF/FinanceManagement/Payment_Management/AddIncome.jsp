@@ -90,7 +90,7 @@
 								<div class="form-group col-md-6">
 									<label for="input_supp_name">Category Name</label> <input
 										type="text" class="form-control" id="input_supp_name"
-										placeholder="Enter Supplier Name Here">
+										placeholder="Enter Category">
 								</div>
 								</div>
 							<div class="form-group">
