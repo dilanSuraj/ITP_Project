@@ -71,12 +71,6 @@
     <%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp" %>
 
 			<!-- topic bar starts-->
-
-			<ol class="breadcrumb" style="margin-top: 10px; margin-bottom: 10px">
-				<li class="breadcrumb-item"><a href="#" style="color: #003399">Dashboard</a>
-				</li>
-				<li class="breadcrumb-item active">Navbar</li>
-			</ol>
 			<div class="col-md-12">
 
 				<div class="card mb-3">

@@ -61,18 +61,11 @@
 	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp" %>
 
 	<!--side bar end-->
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp" %>
-			<!--top 4 cards end-->
 
-			<!-- topic bar starts-->
+    <%@ include file="/WEB-INF/PageSegments/_cards.jsp" %>
 
-			<ol class="breadcrumb" style="margin-top: 10px; margin-bottom: 10px">
-				<li class="breadcrumb-item"><a href="#" style="color: #003399">Dashboard</a>
-				</li>
-				<li class="breadcrumb-item active">Navbar</li>
-			</ol>
+			
 
-			<!-- topic bar end-->
 
 
 			<!-- start icons -->
@@ -94,7 +87,7 @@
 						style="padding-left: 77%; padding-top: 30px">
                        
 						<button class="btn btn-success" data-toggle="modal"
-							data-target="#create-user">+ Add Payment button
+							data-target="#create-user" style="margin-right:20px">+ Add Payment button
 					</div>
 					</a>
 					<div class="card-body">
