@@ -65,26 +65,7 @@
 	<!--side bar end-->
     <%@ include file="/WEB-INF/PageSegments/_cards.jsp" %>
 
-			<!--top 4 cards end-->
-			<!--top 4 cards end-->
-
-			<!-- topic bar starts-->
-
-			<ol class="breadcrumb" style="margin-top: 10px; margin-bottom: 10px">
-				<li class="breadcrumb-item"><a href="#" style="color: #003399">Dashboard</a>
-				</li>
-				<li class="breadcrumb-item active">Navbar</li>
-			</ol>
-
-			<!-- topic bar end-->
-
-
-			<!-- start icons -->
-
-			<!-- cards starts-->
-			<!-- data table start -->
-
-			<!-- forms starts -->
+		
 
 			<div class="col-md-12">
 				<div class="card mb-3">

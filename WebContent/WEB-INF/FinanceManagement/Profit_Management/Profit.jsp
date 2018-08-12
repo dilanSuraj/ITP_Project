@@ -71,9 +71,7 @@
 			<!-- topic bar starts-->
 
 			<ol class="breadcrumb" style="margin-top: 10px; margin-bottom: 10px">
-				<li class="breadcrumb-item"><a href="#" style="color: #003399">Dashboard</a>
 				</li>
-				<li class="breadcrumb-item active">Navbar</li>
 			</ol>
 
 			<!-- topic bar end-->
@@ -118,14 +116,11 @@
      
      <!-- progress bars starts-->
 
-     <div class="col-md-6">
          <div class="card mb-3" >
              <div class="card-header" style="color: #003399" >
                  <h5><span class="fa fa-spinner"></span> Profit Analysis</h5></div>
              <div class="card-body">
-
                  <!-- Blue -->
-
                  <h6>Progress Bar 1</h6>
                  <div class="progress">
                      <div class="progress-bar" style="width:10%"></div>
@@ -135,19 +130,16 @@
                  <h6>Progress Bar 2</h6>
                  <div class="progress">
                      <div class="progress-bar bg-success" style="width:20%"></div>
-                 </div>
                  <br>
                  <!-- Turquoise -->
                  <h6>Progress Bar 3</h6>
                  <div class="progress">
                      <div class="progress-bar bg-info" style="width:30%"></div>
-                 </div>
                  <br>
                  <!-- Orange -->
                  <h6>Progress Bar 4</h6>
                  <div class="progress">
                      <div class="progress-bar bg-warning" style="width:40%"></div>
-                 </div>
                  <br>
 
                  <!-- Red -->
@@ -161,27 +153,23 @@
                  <h6>Progress Bar 6</h6>
                  <div class="progress border">
                      <div class="progress-bar bg-white" style="width:60%"></div>
-                 </div>
 
 
                  <!-- Grey -->
                  <h6>Progress Bar 6</h6>
                  <div class="progress">
                      <div class="progress-bar bg-secondary" style="width:70%"></div>
-                 </div>
                  <br>
 
                  <!-- Light Grey -->
                  <h6>Progress Bar 7</h6>
                  <div class="progress border">
                      <div class="progress-bar bg-light" style="width:80%"></div>
-                 </div>
                  <br>
                  <!-- Dark Grey -->
                  <h6>Progress Bar 8</h6>
                  <div class="progress">
                      <div class="progress-bar bg-dark" style="width:90%"></div>
-                 </div>
 
 
              </div>
