@@ -52,18 +52,17 @@
 
 	<!-- start of the the navigation header-->
 
-	<!-- start of the the navigation header-->
-
-    <%@ include file="/WEB-INF/PageSegments/_navigationheader.jsp" %>
+    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp" %>
 	<!-- end of the navigation header-->
 
 	<!-- side bar starts -->
 
 	<!-- only visibale in 10'0 inch or above screens-->
-	<%@ include file="/WEB-INF/PageSegments/_sidebar.jsp" %>
+	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp" %>
 
-	<!--side bar end-->
+
     <%@ include file="/WEB-INF/PageSegments/_cards.jsp" %>
+
 
 
 

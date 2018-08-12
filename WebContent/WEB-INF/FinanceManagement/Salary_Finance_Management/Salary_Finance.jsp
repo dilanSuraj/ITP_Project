@@ -19,12 +19,19 @@
 <!-- Your custom styles -->
 <link rel="stylesheet" href="Styles/css/dashboardStyleSheet.css">
 
-   
+
 <link href="Styles/css/customText.css" rel="stylesheet">
 <!-- font awesome icon pack-->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <!--java scrip file for google charts-->
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
@@ -44,6 +51,7 @@
 	src="Styles/js/dataTables.bootstrap4.min.js"></script>
 <link rel="stylesheet" href="Styles/css/dataTables.bootstrap4.min.css">
 
+
 <title>Sumith Tyres pvt Ltd</title>
 </head>
 
@@ -51,93 +59,135 @@
 
 
 	<!-- start of the the navigation header-->
-<!-- start of the the navigation header-->
 
-    <%@ include file="/WEB-INF/PageSegments/_navigationheader.jsp" %>
+    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp" %>
 	<!-- end of the navigation header-->
 
 	<!-- side bar starts -->
 
 	<!-- only visibale in 10'0 inch or above screens-->
-	<%@ include file="/WEB-INF/PageSegments/_sidebar.jsp" %>
+	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp" %>
 
 	<!--side bar end-->
-    <%@ include file="/WEB-INF/PageSegments/_cards.jsp" %>
+    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp" %>
+	<!-- topic bar starts-->
 
-			<!--top 4 cards end-->
-			<!--top 4 cards end-->
+	<ol class="breadcrumb" style="margin-top: 10px; margin-bottom: 10px">
+		<li class="breadcrumb-item"><a href="#" style="color: #003399">Dashboard</a>
+		</li>
+		<li class="breadcrumb-item active">Navbar</li>
+	</ol>
 
-		
-
-			<!-- topic bar end-->
 
 
-			<!-- start icons -->
+	<!-- start icons -->
 
-			<!-- cards starts-->
-			<!-- data table start -->
+	<!-- cards starts-->
+	<!-- data table start -->
 
-			<div class="col-md-12">
+	<div class="col-md-12">
 
-				<div class="card mb-3">
-					<div class="card-header" style="color: #003399">
-						<h5>
-							<span class="fa fa-image"></span> Total Employee Month Salary
-						</h5>
-						
-					</div>
+		<div class="card mb-3">
+			<div class="card-header" style="color: #003399">
+				<h5>
+					<span class="fa fa-image"></span> Total Employee Month Salary
+				</h5>
+
+			</div>
+
+			<div class="card-body">
+
+				<script>
+					$(document).ready(function() {
+						$('#example').DataTable();
+					});
+				</script>
+
+				<table id="example" class="table table-striped table-bordered"
+					style="width: 100%">
+
+					<thead>
+						<tr>
+							<th>Year</th>
+							<th>Month</th>
+							<th>Total Salary</th>
+							<th>Payment State</th>
+							<th>Edit</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Tiger Nixon</td>
+							<td>System Architect</td>
+
+							<td>61</td>
+							<td>2011/04/25</td>
+							<th><button type="button" class="btn btn-warning"
+									data-toggle="modal" data-target="#price_popup">Edit</button></th>
+
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Year</th>
+							<th>Month</th>
+							<th>Total Salary</th>
+							<th>Payment State</th>
+							<th>Edit</th>
+
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+
+		</div>
+	</div>
+	<!-- Button to Open the pop up -->
+
+
+	<!-- The Modal -->
+	<div class="modal fade" id="price_popup">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Update Payment Status</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
 					
-					<div class="card-body">
-
-						<script>
-							$(document).ready(function() {
-								$('#example').DataTable();
-							});
-						</script>
-
-						<table id="example" class="table table-striped table-bordered"
-							style="width: 100%">
-
-							<thead>
-								<tr>
-									<th>Year</th>
-									<th>Month</th>
-									<th>Total Salary</th>
-									<th>Payment State</th>
-									<th>Edit</th>
+					
+							<label>Update Payment Status</label>
+							<div class="col-sm-10">
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="gridRadios"
+										id="gridRadios1" value="option1" checked> <label
+										class="form-check-label" for="gridRadios1"> UnPaid	</label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="gridRadios"
+										id="gridRadios2" value="option2"> <label
+										class="form-check-label" for="gridRadios2"> Paid </label>
+								</div>
 								
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Tiger Nixon</td>
-									<td>System Architect</td>
-									
-									<td>61</td>
-									<td>2011/04/25</td>
-									<th><a href="Edit_Supplier_Finance">
-									<button type="button" class="btn btn-warning">Edit</button>
-									</a></th>
-									
-								</tr>
-							</tbody>
-							<tfoot>
-								<tr>
-									<th>Year</th>
-									<th>Month</th>
-									<th>Total Salary</th>
-									<th>Payment State</th>
-									<th>Edit</th>
+							</div>
+						</div>
+					
 
-								</tr>
-							</tfoot>
-						</table>
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal">Update</button>
 					</div>
 
 				</div>
 			</div>
+		</div>
 
-		
+
 	</div>
 	</div>
 	<!-- Bootstrap tooltips -->
@@ -148,9 +198,9 @@
 	<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 
 	<script type="text/javascript" src="Styles/js/mdb.min.js"></script>
-	
-	   
-  
+
+
+
 </body>
 </html>
 
