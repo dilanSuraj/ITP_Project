@@ -63,14 +63,6 @@
 
 			<!--top 4 cards end-->
 
-			<!-- topic bar starts-->
-
-			<ol class="breadcrumb" style="margin-top: 10px; margin-bottom: 10px">
-				<li class="breadcrumb-item"><a href="#" style="color: #003399">Dashboard</a>
-				</li>
-				<li class="breadcrumb-item active">Navbar</li>
-			</ol>
-
 			<!-- topic bar end-->
 
 
