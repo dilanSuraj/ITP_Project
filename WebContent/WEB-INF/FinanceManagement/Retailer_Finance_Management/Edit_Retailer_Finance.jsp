@@ -61,7 +61,7 @@
 	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp" %>
 
 
-    <%@ include file="/WEB-INF/PageSegments/_cards.jsp" %>
+    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp" %>
 
 
 

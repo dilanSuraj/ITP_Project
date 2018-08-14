@@ -11,34 +11,56 @@ public class Order_ManagmentController {
 	public ModelAndView shoppingItem() {
 		
 		//System.out.println("shopping item");
-	    return new ModelAndView("/OrderManagment/ShoppingItem");
+	    return new ModelAndView("/OrderManagment/RetailerOrder/ShoppingItem");
 	}
 	
 	@RequestMapping("/RetailerOrderHistory")
 	public ModelAndView RetailerOrderHistory() {
 		
 		//System.out.println("shopping item");
-	    return new ModelAndView("/OrderManagment/RetailerOrderHistory");
+	    return new ModelAndView("/OrderManagment/RetailerOrder/RetailerOrderHistory");
 	}
 	
 	@RequestMapping("/RetailerCart")
 	public ModelAndView RetailerCart() {
 		
 		//System.out.println("shopping item");
-	    return new ModelAndView("/OrderManagment/RetailerCart");
+	    return new ModelAndView("/OrderManagment/RetailerOrder/RetailerCart");
 	}
 	
 	@RequestMapping("/RetailerOrder")
 	public ModelAndView RetailerOrder() {
 		
 		//System.out.println("shopping item");
-	    return new ModelAndView("/OrderManagment/RetailerOrder");
+	    return new ModelAndView("/OrderManagment/RetailerOrder/RetailerOrder");
 	}
 	
 	@RequestMapping("/tyers")
 	public ModelAndView tyerspage() {
 		
 		//System.out.println("shopping item");
-	    return new ModelAndView("/OrderManagment/Items");
+	    return new ModelAndView("/OrderManagment/RetailerOrder/Items");
+	}
+	
+	@RequestMapping("/StoreManagerSuppliers")
+	public ModelAndView StoreManagerSuppliers() {
+		
+		//System.out.println("shopping item");
+	    return new ModelAndView("/OrderManagment/SupplierOrder/SuppliersStoreManager");
+	}
+	
+	@RequestMapping("/SupplierOrderitem")
+	public ModelAndView SupplierOrderitem() {
+		
+		//System.out.println("shopping item");
+	    return new ModelAndView("/OrderManagment/SupplierOrder/SupplierOrderitem");
+	}
+	
+	
+	@RequestMapping("/UpdateSupplierOrder")
+	public ModelAndView UpdateSupplierOrder() {
+		
+		//System.out.println("shopping item");
+	    return new ModelAndView("/OrderManagment/SupplierOrder/UpdateSupplierOrder");
 	}
 }
