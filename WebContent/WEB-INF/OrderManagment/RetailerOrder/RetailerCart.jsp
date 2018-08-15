@@ -33,7 +33,7 @@
 
 </head>
 <body>
-	<%@include file="/WEB-INF/OrderManagment/RetailerDashbordnavBar.jsp"%>
+	<%@include file="/WEB-INF/OrderManagment/RetailerOrder/RetailerDashbordnavBar.jsp"%>
 
 
 <div class="row justify-content-end " >
