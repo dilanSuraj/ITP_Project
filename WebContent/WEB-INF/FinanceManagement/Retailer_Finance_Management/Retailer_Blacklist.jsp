@@ -114,10 +114,10 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>Tiger Nixon</td>
-									<td>System Architect</td>
-									<td>61</td>
-									<td>2011/04/25</td>
+									<td>Navod</td>
+									<td>1 5" Tyre</td>
+									<td>5000</td>
+									<td>2018/08/10</td>
 									<th><a href="Delete_Retailer_Blacklist">
 									<button type="button" class="btn btn-danger">Delete</button>
 											</a></th>

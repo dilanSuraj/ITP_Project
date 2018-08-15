@@ -115,11 +115,11 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>Tiger Nixon</td>
-									<td>System Architect</td>
-									<td>Edinburgh</td>
-									<td>61</td>
-									<td>2011/04/25</td>
+									<td>Kalana Elapatha</td>
+									<td>102</td>
+									<td>25000</td>
+									<td>2018/08/10</td>
+									<td>Not Paid</td>
 									<th><a href="Edit_Supplier_Finance">
 									<button type="button" class="btn btn-warning">Edit</button>
 									</a></th>

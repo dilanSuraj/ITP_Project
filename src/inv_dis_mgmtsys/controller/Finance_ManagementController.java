@@ -1,12 +1,26 @@
 package inv_dis_mgmtsys.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import inv_dis_mgmtsys.dao.FinanaceManagement_IDAOImpl;
+import inv_dis_mgmtsys.model.Payment;
+import inv_dis_mgmtsys.services.FinanaceManagement_IServices;
+import inv_dis_mgmtsys.services.FinanaceManagement_IServicesImpl;
+
 @Controller
+@Transactional
 public class Finance_ManagementController {
 
+	@Autowired
+	private FinanaceManagement_IServicesImpl finanaceManagement_IServices;
+	
 	public Finance_ManagementController() {
 		System.out.println("Inside Finanace Management Controller");
 	}
@@ -169,11 +183,19 @@ public class Finance_ManagementController {
 	
 	//Income details
 	
-	@RequestMapping("/AddIncome")
-	public ModelAndView AddIncomeView() {
+	@RequestMapping(value="/AddIncome",method=RequestMethod.GET)
+	public ModelAndView AddIncomeView(@ModelAttribute("payment")Payment payment) {
 		
-		System.out.println("Add Income");
+		System.out.println("Add Income get");
 	    return new ModelAndView("/FinanceManagement/Payment_Management/AddIncome");
+	}
+	
+	@RequestMapping(value="/AddIncome_post",method=RequestMethod.POST)
+	public ModelAndView AddIncomeform(@ModelAttribute("payment")Payment payment) {
+		
+		System.out.println("Add Income post");
+		finanaceManagement_IServices.addPayments(payment);
+	    return new ModelAndView("/FinanceManagement/Payment_Management/Income");
 	}
 	
 	@RequestMapping("/UpdateIncome")

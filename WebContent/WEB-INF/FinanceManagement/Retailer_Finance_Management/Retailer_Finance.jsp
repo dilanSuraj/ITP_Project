@@ -104,7 +104,7 @@
 									<th>Retailer Name</th>
 									<th>Retailer Order Details</th>
 									<th>Total Amount</th>
-									<th>Date</th>
+									<th>Ordered Date</th>
 									<th>Deadline Date</th>
 									<th>Payment State</th>
 									<th>Edit</th>
@@ -114,12 +114,12 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>Tiger Nixon</td>
-									<td>System Architect</td>
-									<td>Edinburgh</td>
-									<td>61</td>
-									<td>2011/04/25</td>
-									<td>2011/04/25</td>
+									<td>Sakindu Udagedara</td>
+									<td>5 10" "Tyres </td>
+									<td>15000</td>
+									<td>2018/08/01</td>
+									<td>2018/08/25</td>
+									<td>Advanced payment of 10000</td>
 									<th><a href="Edit_Retailer_Finance">
 									           <button type="button" class="btn btn-warning">Edit</button>
 									           </a></th>
@@ -134,7 +134,7 @@
 									<th>Retailer Name</th>
 									<th>Retailer Order Details</th>
 									<th>Total Amount</th>
-									<th>Date</th>
+									<th>Ordered Date</th>
 									<th>Deadline Date</th>
 									<th>Payment State</th>
 									<th>Edit</th>

@@ -86,18 +86,18 @@
 								<div class="form-group col-md-6">
 									<label for="input_supp_name">Supplier Name</label> <input
 										type="text" readonly class="form-control-plaintext" id="input_supp_name"
-										placeholder="Enter Supplier Name Here">
+										placeholder="Kalana Elapatha">
 								</div>
 								<div class="form-group col-md-6">
 									<label for="input_supp_order">Supplier Order Details</label> <input
 										type="text" readonly class="form-control-plaintext"  id="input_supp_order"
-										placeholder="Enter Supplier Order ID number here">
+										placeholder="500 10inch Tyres ">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="input_amt">Amount</label> <input type="text"
 									class="form-control" id="input_amt"
-									placeholder="Enter the amount here">
+									placeholder="100000">
 							</div>
 							<div class="form-row">
 

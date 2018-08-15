@@ -81,7 +81,7 @@
 								<div class="form-group col-md-6">
 									<label for="input_supp_name">Retailer Name</label> <input
 										type="text" class="form-control" id="input_supp_name"
-										placeholder="Enter Supplier Name Here">
+										placeholder="Enter retailer Name Here">
 								</div>
 								<div class="form-group col-md-6">
 									<label for="input_supp_order">Retailer Order Details</label> <input
@@ -93,18 +93,6 @@
 								<label for="input_amt">Amount</label> <input type="text"
 									class="form-control" id="input_amt"
 									placeholder="Enter the amount here">
-							</div>
-							<div class="form-row">
-
-								<div class="form-group col-md-6">
-									<div class="container">
-										<label for="input_date">Order Date</label>
-										<div class="hero-unit">
-											<input type="button" value="click to pick a date"
-												name="date_payment" id="pickyDate" class="btn btn-light" />
-										</div>
-									</div>
-								</div>
 							</div>
 							
 							<div class="form-row">

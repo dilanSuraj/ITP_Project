@@ -3,6 +3,7 @@
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
@@ -13,10 +14,17 @@
 	<context:component-scan
 		base-package="inv_dis_mgmtsys.controller" />
 
+    <context:component-scan base-package="inv_dis_mgmtsys.services"/>
+    
+    <context:component-scan
+		base-package="inv_dis_mgmtsys.dao" />
+		  
 	<!-- Getting Database properties -->
 	<context:property-placeholder
 		location="classpath:application.properties" />
 
+
+	
 	
 
 	<!-- Specifying the Resource location to load JS, CSS, Images etc -->
@@ -60,6 +68,8 @@
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+
+
 
 	<tx:annotation-driven
 		transaction-manager="transactionManager" />

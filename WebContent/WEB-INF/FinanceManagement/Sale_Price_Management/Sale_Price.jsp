@@ -103,11 +103,11 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>Tiger Nixon</td>
-									<td>System Architect</td>
-									<td>Edinburgh</td>
-									<td>61</td>
-									<td>2011/04/25</td>
+									<td>Tyre 5"</td>
+									<td>DSI</td>
+									<td>4500</td>
+									<td>4600</td>
+									<td>2%</td>
 									<th><button type="button" class="btn btn-warning" data-toggle="modal"
 				                                   data-target="#price_popup">Edit</button></th>
 

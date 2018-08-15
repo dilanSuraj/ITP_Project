@@ -92,14 +92,14 @@
 								<div class="form-group col-md-6">
 									<label for="input_supp_name">Category</label> <input
 										type="text" readonly class="form-control-plaintext" id="input_supp_name"
-										placeholder="Enter Supplier Name Here">
+										placeholder="WP BDG 8674 Vehicle Sold">
 								</div>
 								
 							</div>
 							<div class="form-group">
 								<label for="input_amt">Amount</label> <input type="text"
 									class="form-control" id="input_amt"
-									placeholder="Enter the amount here">
+									placeholder="1M">
 							</div>
 							<div class="form-row">
 

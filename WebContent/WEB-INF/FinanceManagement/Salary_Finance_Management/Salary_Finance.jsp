@@ -118,11 +118,11 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>Tiger Nixon</td>
-							<td>System Architect</td>
+							<td>2018</td>
+							<td>July</td>
 
-							<td>61</td>
-							<td>2011/04/25</td>
+							<td>25k</td>
+							<td>Paid</td>
 							<th><button type="button" class="btn btn-warning"
 									data-toggle="modal" data-target="#price_popup">Edit</button></th>
 
