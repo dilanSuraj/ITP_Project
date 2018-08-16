@@ -113,9 +113,9 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>Tiger Nixon</td>
-									<td>System Architect</td>
-									<td>61</td>
+									<td>Fuel</td>
+									<td>5000</td>
+									<td>2018/08/11</td>
 									<th><a href="UpdateTransport_Finance">
 									<button type="button" class="btn btn-warning">Edit</button>
 											</a></th>

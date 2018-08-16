@@ -17,6 +17,7 @@
 
 <!-- Your custom styles -->
 <link rel="stylesheet" href="Styles/css/dashboardStyleSheet.css">
+<link rel="stylesheet" href="Styles/css/customStyle.css">
 
 <!-- font awesome icon pack-->
 <link rel="stylesheet"
@@ -26,7 +27,7 @@
 </head>
 <body>
 
-<%@include file="/WEB-INF/OrderManagment/RetailerDashbordnavBar.jsp" %>
+<%@include file="/WEB-INF/OrderManagment/RetailerOrder/RetailerDashbordnavBar.jsp" %>
 
 <div class="row justify-content-end " >
     <div class="col-md-10" style="padding-top: 90px;padding-left: 40px;padding-right: 40px">
