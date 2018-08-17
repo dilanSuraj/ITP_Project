@@ -16,7 +16,6 @@ public class Order_ManagmentController {
 		
 		System.out.println("inside shopping cart");
 		ModelAndView item=new ModelAndView("/OrderManagment/RetailerOrder/ShoppingItem");
-		System.out.println("view created");
 		item.addObject("Item",orderMan.getItem(1));
 		return item;
 		
