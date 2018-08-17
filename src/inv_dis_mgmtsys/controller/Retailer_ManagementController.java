@@ -22,4 +22,19 @@ public class Retailer_ManagementController {
 	
 		return new ModelAndView("/Dashboards/Retailer");
 	}
+	@RequestMapping("/Add_Retailer_ADMIN")
+	public ModelAndView Add_Retailer_ADMIN() {
+	
+		return new ModelAndView("/RetailerManagement/Add_Retailer_ADMIN");
+	}
+	@RequestMapping("/Update_Retailer_ADMIN")
+	public ModelAndView Update_Retailer_ADMIN() {
+	
+		return new ModelAndView("/RetailerManagement/Update_Retailer_ADMIN");
+	}
+	@RequestMapping("/Delete_Retailer_ADMIN")
+	public ModelAndView Delete_Retailer_ADMIN() {
+	
+		return new ModelAndView("/RetailerManagement/Delete_Retailer_ADMIN");
+	}
 }
