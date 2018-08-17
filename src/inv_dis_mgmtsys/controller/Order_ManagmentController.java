@@ -4,14 +4,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import inv_dis_mgmtsys.services.OrderManagement_IServicesImpl;
+
 @Controller
 public class Order_ManagmentController {
+
+	OrderManagement_IServicesImpl orderMan=new OrderManagement_IServicesImpl();
 
 	@RequestMapping("/ShoppingItem")
 	public ModelAndView shoppingItem() {
 		
-		//System.out.println("shopping item");
-	    return new ModelAndView("/OrderManagment/ShoppingItem");
+		System.out.println("inside shopping cart");
+		ModelAndView item=new ModelAndView("/OrderManagment/RetailerOrder/ShoppingItem");
+		System.out.println("view created");
+		item.addObject("Item",orderMan.getItem(1));
+		return item;
+		
 	}
 	
 	@RequestMapping("/RetailerOrderHistory")
