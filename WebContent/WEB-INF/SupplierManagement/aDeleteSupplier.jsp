@@ -138,13 +138,13 @@
 
 
         <!-- Bootstrap tooltips -->
-        <script type="text/javascript" src="js/popper.min.js"></script>
+        <script type="text/javascript" src="Styles/js/popper.min.js"></script>
         <!-- Bootstrap core JavaScript -->
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="Styles/js/bootstrap.min.js"></script>
         <!-- MDB core JavaScript -->
         <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 
-        <script type="text/javascript" src="js/mdb.min.js"></script>
+        <script type="text/javascript" src="Styles/js/mdb.min.js"></script>
     </div>
 </div>
 </body>
