@@ -5,20 +5,15 @@ import java.util.List;
 import inv_dis_mgmtsys.model.Payment;
 
 public interface FinanaceManagement_IDAO {
-	
+
 	public void addPaymentDetails(Payment payment);
 
-	public List<Payment> getTransportPayments();
-	
-	public List<Payment> getIncomePayments();
-	
-	public List<Payment> getExpensesPayments();
+	public List<Payment> getPayments(String paymentCategory);
 
-	public void deletePaymentDetails(Payment payment);
+	public void deletePaymentDetails(int paymentID);
 
-	public Payment updatePaymentDetails(Payment payment);
+	public void updatePaymentDetails(Payment payment);
 
 	public Payment getPaymentDetails(int paymentId);
-	
 
 }

@@ -1,16 +1,25 @@
 package inv_dis_mgmtsys.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Table;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import inv_dis_mgmtsys.dao.FinanaceManagement_IDAOImpl;
 import inv_dis_mgmtsys.model.Payment;
+import inv_dis_mgmtsys.model.Supplier_Finance;
 import inv_dis_mgmtsys.services.FinanaceManagement_IServices;
 import inv_dis_mgmtsys.services.FinanaceManagement_IServicesImpl;
 
@@ -54,10 +63,15 @@ public class Finance_ManagementController {
 	}
 	
 	@RequestMapping("/Add_Supplier_Finance")
-	public ModelAndView SupplierFinanaceInsert() {
+	public ModelAndView SupplierFinanaceInsert_GET(@ModelAttribute("supplier_finance") Supplier_Finance supplier_finance ) {
 		
-		System.out.println("Supplier Finanace");
-	    return new ModelAndView("/FinanceManagement/Supplier_Finance_Management/Add_Supplier_Finance");
+		  return new ModelAndView("/FinanceManagement/Supplier_Finance_Management/Add_Supplier_Finance");
+	}
+	
+	@RequestMapping(value="/Add_Supplier_Finance_POST",method=RequestMethod.POST)
+	public ModelAndView SupplierFinanaceInsert_POST(@ModelAttribute("supplier_finance") Supplier_Finance supplier_finance) {
+		
+	    return new ModelAndView("/FinanceManagement/Supplier_Finance_Management/Supplier_Finance");
 	}
 	
 	@RequestMapping("/Sale_Price")
@@ -147,8 +161,14 @@ public class Finance_ManagementController {
 	@RequestMapping("/Income")
 	public ModelAndView IncomeView() {
 		
+		ModelAndView model = new ModelAndView();
+		List<Payment> paymentList = finanaceManagement_IServices.getPayments("income");
+		
+		model.addObject("paymentlist", paymentList);
+		model.setViewName("/FinanceManagement/Payment_Management/Income");
 		System.out.println("Income");
-	    return new ModelAndView("/FinanceManagement/Payment_Management/Income");
+		
+	    return model;
 	}
 	
 	//Transport Financial details
@@ -184,32 +204,46 @@ public class Finance_ManagementController {
 	//Income details
 	
 	@RequestMapping(value="/AddIncome",method=RequestMethod.GET)
-	public ModelAndView AddIncomeView(@ModelAttribute("payment")Payment payment) {
+	public ModelAndView AddIncomeGET(@ModelAttribute("payment")Payment payment) {
 		
 		System.out.println("Add Income get");
+		System.out.println("Date : "+ payment.getOther_income_expense_date());
+		
 	    return new ModelAndView("/FinanceManagement/Payment_Management/AddIncome");
 	}
 	
 	@RequestMapping(value="/AddIncome_post",method=RequestMethod.POST)
-	public ModelAndView AddIncomeform(@ModelAttribute("payment")Payment payment) {
+	public ModelAndView AddIncomePOST(@ModelAttribute("payment")Payment payment) {
 		
 		System.out.println("Add Income post");
 		finanaceManagement_IServices.addPayments(payment);
-	    return new ModelAndView("/FinanceManagement/Payment_Management/Income");
+		payment.setOther_income_expense_type("income");
+	    return new ModelAndView("redirect:/Income");
 	}
 	
-	@RequestMapping("/UpdateIncome")
-	public ModelAndView UpdateIncomeView() {
+	@RequestMapping(value="/UpdateIncome_Get")
+	public ModelAndView UpdateIncomeGET(@RequestParam("id") int id) {
 		
-		System.out.println("Update Income");
-	    return new ModelAndView("/FinanceManagement/Payment_Management/UpdateIncome");
+		ModelAndView model = new ModelAndView();
+		Payment payment = finanaceManagement_IServices.getPaymentDetails(id);
+		model.addObject("income", payment);
+		model.setViewName("/FinanceManagement/Payment_Management/UpdateIncome");
+	    return model;
 	}
 	
-	@RequestMapping("/DeleteIncome")
-	public ModelAndView DeleteIncomeView() {
+	@RequestMapping(value="/UpdateIncome_Post",method=RequestMethod.POST)
+	public ModelAndView UpdateIncomePOST(@ModelAttribute("income")Payment payment) {
+		
+		finanaceManagement_IServices.editPayments(payment);
+	    return new ModelAndView("redirect:/Income");
+	}
+	
+	@RequestMapping(value="/DeleteIncome")
+	public ModelAndView DeleteIncomeView(@RequestParam("id") int id) {
 		
 		System.out.println("Delete Income");
-	    return new ModelAndView("/FinanceManagement/Payment_Management/Income");
+		finanaceManagement_IServices.deletePayments(id);
+	    return new ModelAndView("redirect:/Income");
 	}
 	
 	//Expenses

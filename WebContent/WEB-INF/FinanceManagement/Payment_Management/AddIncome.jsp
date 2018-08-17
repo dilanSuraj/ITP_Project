@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +8,19 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!--  jQuery -->
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
+<!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+<link rel="stylesheet"
+	href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
 
 <!-- Bootstrap CSS -->
 <meta charset="utf-8">
@@ -51,7 +63,7 @@
 <body>
 
 
-		<nav class="navbar fixed-top navbar-expand-lg navbar-dark"
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark"
 		style="background-color: #003399; color: white">
 		<a class="navbar-brand " href="#" style="padding-right: 3%"> <img
 			class="logo" src="Styles/Images/logo.png" alt="Home"></a>
@@ -183,12 +195,12 @@
 
 			<!-- top 4 cards starts -->
 			<div class="row">
-			<div class="col-xl-3 col-sm-6 mb-3">
+				<div class="col-xl-3 col-sm-6 mb-3">
 					<div class="card text-white  o-hidden h-100"
 						style="background-color: #003399">
 						<div class="card-body">
 							<div class="card-body-icon">
-								<i  class="fa fa-arrow-up"></i>
+								<i class="fa fa-arrow-up"></i>
 							</div>
 							<div class="mr-5">14k Total Income!</div>
 						</div>
@@ -207,14 +219,14 @@
 							</div>
 							<div class="mr-5">10k Total Expenses!</div>
 						</div>
-						<a class="card-footer text-white clearfix small z-1" href="Expenses">
-							<span class="float-left">View Details</span> <span
-							class="float-right"> <i class="fa fa-angle-right"></i>
+						<a class="card-footer text-white clearfix small z-1"
+							href="Expenses"> <span class="float-left">View Details</span>
+							<span class="float-right"> <i class="fa fa-angle-right"></i>
 						</span>
 						</a>
 					</div>
 				</div>
-				
+
 				<div class="col-xl-3 col-sm-6 mb-3">
 					<div class="card text-white bg-success o-hidden h-100">
 						<div class="card-body">
@@ -238,9 +250,10 @@
 							</div>
 							<div class="mr-5">10 Blacklisted Retailers!</div>
 						</div>
-						<a class="card-footer text-white clearfix small z-1" href="Retailer_Blacklist">
-							<span class="float-left">View Details</span> <span
-							class="float-right"> <i class="fa fa-angle-right"></i>
+						<a class="card-footer text-white clearfix small z-1"
+							href="Retailer_Blacklist"> <span class="float-left">View
+								Details</span> <span class="float-right"> <i
+								class="fa fa-angle-right"></i>
 						</span>
 						</a>
 					</div>
@@ -256,38 +269,51 @@
 					</div>
 					<div class="card-body">
 
-						<form:form method="post" action="AddIncome_post" modelAttribute="payment">
+						<form:form method="post" action="AddIncome_post"
+							modelAttribute="payment">
 							<div class="form-row">
 								<div class="form-group col-md-6">
-									<label for="input_supp_name">Category Name</label> <form:input
-										type="text" class="form-control" path="type"
+									<label for="input_supp_name">Category Name</label>
+									<form:input type="text" class="form-control"
+										path="other_income_expense_category"
 										placeholder="Enter Category"></form:input>
 								</div>
-								</div>
+							</div>
 							<div class="form-group">
-								<label for="input_amt">Amount</label> <form:input type="text"
-									class="form-control" path="amount"
+								<label for="input_amt">Total Amount</label>
+								<form:input type="text" class="form-control"
+									path="other_income_expense_amount"
 									placeholder="Enter the amount here"></form:input>
 							</div>
-							<div class="form-row">
-                            
-								<label for="input_amt">Description</label> <form:input type="text"
-									class="form-control" path="description"
+
+							<div class="form-group">
+								<label for="input_amt">Recieved Amount</label>
+								<form:input type="text" class="form-control"
+									path="other_income_expense_recieved"
 									placeholder="Enter the amount here"></form:input>
-							
-								<div >
-									<div class="container">
-										<label for="input_date">Date</label>
-										<div class="hero-unit">
-											<form:input type="button" value="click to show datepicker"
-												name="date_payment" path="payment_date" />
-										</div>
+							</div>
+
+							<div class="form-row">
+
+								<label for="input_amt">Payment State</label>
+								<form:input type="text" class="form-control"
+									path="other_income_expense_paymentstate"
+									placeholder="Enter the amount here"></form:input>
+
+								<div>
+									<div class="form-group">
+										<!-- Date input -->
+										<label class="control-label" for="date">Date(DD/MM/YYY)</label>
+										<form:input class="form-control" id="date" name="date"
+											path="other_income_expense_date" placeholder="DD/MM/YYY"
+											type="text" />
 									</div>
 								</div>
 							</div>
-							
-							<button type="submit" class="btn btn-success" name="add_payment">Add Income</button>
-                            <button type="reset" class="btn btn-danger">Reset</button>  
+
+							<button type="submit" class="btn btn-success" name="add_payment">Add
+								Income</button>
+							<button type="reset" class="btn btn-danger">Reset</button>
 						</form:form>
 					</div>
 				</div>
@@ -296,26 +322,17 @@
 			<!-- forms ends-->
 
 			<!-- data table end -->
-		
-	<!-- Bootstrap tooltips -->
-	<script type="text/javascript" src="Styles/js/popper.min.js"></script>
-	<!-- Bootstrap core JavaScript -->
-	<script type="text/javascript" src="Styles/js/bootstrap.min.js"></script>
-	<!-- MDB core JavaScript -->
-	<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 
-	<script type="text/javascript" src="Styles/js/mdb.min.js"></script>
-	<script src="Styles/js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#pickyDate').datepicker({
-				format : "dd/mm/yyyy"
-			});
-		});
-	</script>
+			<!-- Bootstrap tooltips -->
+			<script type="text/javascript" src="Styles/js/popper.min.js"></script>
+			<!-- Bootstrap core JavaScript -->
+			<script type="text/javascript" src="Styles/js/bootstrap.min.js"></script>
+			<!-- MDB core JavaScript -->
+			<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 
-
-
+			<script type="text/javascript" src="Styles/js/mdb.min.js"></script>
+			<script src="Styles/js/bootstrap-datepicker.js"></script>
+			
 </body>
 </html>
 
