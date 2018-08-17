@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -81,24 +82,20 @@
 						</h5>
 					</div>
 					<div class="card-body">
-
-						<form method="post" action="#">
+                     <form:form method="post" action="Add_Supplier_Finance_POST" modelAttribute="supplier_finance">
+						
 							<div class="form-row">
+								
 								<div class="form-group col-md-6">
-									<label for="input_supp_name">Supplier Name</label> <input
-										type="text" class="form-control" id="input_supp_name"
-										placeholder="Enter Supplier Name Here">
-								</div>
-								<div class="form-group col-md-6">
-									<label for="input_supp_order">Supplier Order Details</label> <input
-										type="text" class="form-control" id="input_supp_order"
-										placeholder="Enter Supplier Order ID number here">
+									<label for="input_supp_order">Supplier Order Details</label> <form:input
+										type="text" class="form-control" path="supplier_orderID"
+										placeholder="Enter Supplier Order ID number here"/>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="input_amt">Amount</label> <input type="text"
-									class="form-control" id="input_amt"
-									placeholder="Enter the amount here">
+								<label for="input_amt">Amount</label> <form:input type="text"
+									class="form-control" path="amount"
+									placeholder="Enter the amount here"/>
 							</div>
 							<div class="form-row">
 
@@ -106,23 +103,23 @@
 									<div class="container">
 										<label for="input_date">Date</label>
 										<div class="hero-unit">
-											<input type="button" value="click to show datepicker"
-												name="date_payment" id="pickyDate" />
+											<form:input type="button" value="click to show datepicker"
+												name="date_payment" path="payment_date" />
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-6">
-									<label for="input_pay_state">Payment State</label> <input
-										type="text" class="form-control" id="input_pay_state" name="pay_state">
+									<label for="input_pay_state">Payment State</label> <form:input
+										type="text" class="form-control" path="paymentState" name="pay_state"/>
 								</div>
 
 							</div>
 
 							<button type="submit" class="btn btn-success" name="add_payment">Add Payment</button>
                             <button type="reset" class="btn btn-danger">Reset</button>  
-						</form>
+						</form:form>
 					</div>
 				</div>
 			</div>

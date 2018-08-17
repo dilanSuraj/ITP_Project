@@ -1,28 +1,15 @@
-.item{
+.resultitem{
   width:200px;
-  text-align:center;
-  display:block;
-  background-color: transparent;
-  border: 1px solid transparent;
-  margin-right: 10px;
-  margin-bottom: 1px;
-  float:left;
+  height:200px;
+  background:#48e;
+  -webkit-transition: 0.5s;
+          transition: 0.5s;
+          
+          align:left;
 }
 
-#index-gallery{
-  width:465px;
-}
-
-.custom_image{
-	padding-left : 50px
-}
-
-.left{
-    float: left;
-    margin-right: 40px;
-    width: calc(50% - 1.5em);
-    font-size :20px;
-}
-.right{
-   float: left;
+.resultitem:hover{
+  background:#59f;
+  -webkit-transform: scale(2.0);
+          transform: scale(2.0);
 }

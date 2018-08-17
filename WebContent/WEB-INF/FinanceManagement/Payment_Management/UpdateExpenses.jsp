@@ -91,14 +91,14 @@
 								<div class="form-group col-md-6">
 									<label for="input_supp_name">Category</label> <input
 										type="text" readonly class="form-control-plaintext" id="input_supp_name"
-										placeholder="Enter Supplier Name Here">
+										placeholder="2018 July Electricity Bill">
 								</div>
 								
 							</div>
 							<div class="form-group">
 								<label for="input_amt">Amount</label> <input type="text"
 									class="form-control" id="input_amt"
-									placeholder="Enter the amount here">
+									placeholder="10000">
 							</div>
 							<div class="form-row">
 

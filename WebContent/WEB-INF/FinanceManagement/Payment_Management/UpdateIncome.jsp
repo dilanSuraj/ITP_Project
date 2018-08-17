@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -87,35 +88,47 @@
 					</div>
 					<div class="card-body">
 
-						<form method="post" action="#">
+						<form:form method="post" action="UpdateIncome_Post" modelAttribute="income">
 							<div class="form-row">
 								<div class="form-group col-md-6">
-									<label for="input_supp_name">Category</label> <input
-										type="text" readonly class="form-control-plaintext" id="input_supp_name"
-										placeholder="Enter Supplier Name Here">
+									<label for="input_supp_name">Category Name</label> <form:input
+										type="text" class="form-control" path="other_income_expense_category"
+										></form:input>
 								</div>
 								
 							</div>
 							<div class="form-group">
-								<label for="input_amt">Amount</label> <input type="text"
-									class="form-control" id="input_amt"
-									placeholder="Enter the amount here">
+								<label for="input_amt">Total Amount</label> <form:input type="text"
+									class="form-control" path="other_income_expense_amount"
+									></form:input>
 							</div>
+							
+							
+							<div class="form-group">
+								<label for="input_amt">Recieved Amount</label> <form:input type="text"
+									class="form-control" path="other_income_expense_recieved"
+									></form:input>
+							</div>
+							
 							<div class="form-row">
+                            
+								<label for="input_amt">Payment State</label> <form:input type="text"
+									class="form-control" path="other_income_expense_paymentstate"
+									></form:input>
+							
+								<div >
 
-								<div class="form-group col-md-6">
-									<div class="container">
-										<label for="input_date">Date</label>
+								<div class="container">
+										<label for="input_date">Date(DD/MM/YYYY)</label>
 										<div class="hero-unit">
-											<input type="button" value="click to pick a date"
-												name="date_payment" id="pickyDate" />
+										    <form:input  path="other_income_expense_date"/>							    
 										</div>
 									</div>
 								</div>
 							</div>
 							<button type="submit" class="btn btn-scucess" name="update_payment">Update Income</button>
                             <button type="reset"class="btn btn-danger">Reset</button>  
-						</form>
+						</form:form>
 					</div>
 				</div>
 			</div>
@@ -137,14 +150,7 @@
 
 	<script type="text/javascript" src="Styles/js/mdb.min.js"></script>
 	<script src="Styles/js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#pickyDate').datepicker({
-				format : "dd/mm/yyyy"
-			});
-		});
-	</script>
-
+	
 
 
 </body>
