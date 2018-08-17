@@ -18,7 +18,7 @@
 
 <!-- Your custom styles -->
 <link rel="stylesheet" href="Styles/css/dashboardStyleSheet.css">
-<link href="Styles/css/customText.css" rel="stylesheet">
+<link href="Styles/css/customeText.css" rel="stylesheet">
 <!-- font awesome icon pack-->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -61,128 +61,99 @@
 
 	<!--side bar end-->
     <%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp" %>
-			<!-- topic bar starts-->
+    <div class="row">
+   <div class="col-md-6">
+         <div class="card mb-3" >
+             <div class="card-header" style="color: #003399" >
+                 <h5><span class="fa fa fa-area-chart"></span> Sales VS Expenses</h5></div>
+             <div class="card-body">
+                 <div id="chart_div" style="width: 100%; height: 400px;"></div>
 
-			<ol class="breadcrumb" style="margin-top: 10px; margin-bottom: 10px">
-				<li class="breadcrumb-item"><a href="#" style="color: #003399">Dashboard</a>
-				</li>
-			</ol>
+                     <script type="text/javascript">
+                     google.charts.load('current', {'packages':['corechart']});
+                     google.charts.setOnLoadCallback(drawChart);
 
-			<!-- topic bar end-->
+                     function drawChart() {
+                         var data = google.visualization.arrayToDataTable([
+                             ['Year', 'Sales', 'Expenses'],
+                             ['2013',  1000,      400],
+                             ['2014',  1170,      460],
+                             ['2015',  660,       1120],
+                             ['2016',  1030,      540]
+                         ]);
 
+                         var options = {
+                             title: 'Company Performance',
+                             hAxis: {title: 'Year',  titleTextStyle: {color: '#003399'}},
+                             vAxis: {minValue: 0}
+                         };
 
-			<!-- start icons -->
+                         var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+                         chart.draw(data, options);
+                     }
+                 </script>
 
-			<!-- cards starts-->
-			<div class="col-md-12">
-				<div class="card mb-3">
-					<div class="card-header" style="color: #003399">
-						<h5>
-							<span class="fa fa-image"></span> Sub Functions
-						</h5>
-					</div>
-					<div class="card-body">
+             </div>
+            
+         </div>
+     </div>
+     <!--end of the graph  -->	
+     
+     
+     <!-- progress bars starts-->
 
-						<div class="card-deck">
+     <!-- bar charts starts -->
+     <div class="col-md-6">
+         <div class="card mb-3" >
+             <div class="card-header" style="color: #003399" >
+                 <h5><span class="fa  fa-bar-chart"></span> Profit Analysis</h5></div>
+             <div class="card-body">
+                 <script type="text/javascript">
+                     google.charts.load("current", {packages:['corechart']});
+                     google.charts.setOnLoadCallback(drawChart);
+                     function drawChart() {
+                         var data = google.visualization.arrayToDataTable([
+                             ["Year", "Profit Percentage", { role: "style" } ],
+                             ["2014", 8.94, "#b87333"],
+                             ["2015", 10.49, "silver"],
+                             ["2016", 19.30, "gold"],
+                             ["2017", 21.45, "color: #e5e4e2"]
+                         ]);
 
-							<div class="card">
-								<a href="Supplier_Finance"> <img
-									class="card-img-top"
-									src="Styles/Images/FinanceMgmt/supplier.jpg"
-									alt="Card image cap">
-									<div class="card-body">
-										<h5 class="card-title">Supplier Financial Details</h5>
+                         var view = new google.visualization.DataView(data);
+                         view.setColumns([0, 1,
+                             { calc: "stringify",
+                                 sourceColumn: 1,
+                                 type: "string",
+                                 role: "annotation" },
+                             2]);
 
-									</div>
-								</a>
-							</div>
-							<div class="card">
-								<a href="Retailer_Finance"> <img
-									class="card-img-top"
-									src="Styles/Images/FinanceMgmt/retailer.png"
-									height="180px" alt="Card image cap">
-									<div class="card-body">
-										<h5 class="card-title">Retailer Financial Details</h5>
+                         var options = {
+                             title: "Profit of the latest years",
+                             width: 500,
+                             height: 300,
+                             bar: {groupWidth: "95%"},
+                             legend: { position: "none" },
+                         };
+                         var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+                         chart.draw(view, options);
+                     }
+                 </script>
+                 <div id="columnchart_values" style="width: 100%; height:100%;"></div>
+                 <!-- for more type of charts go to this link :https://developers.google.com/chart/interactive/docs/gallery/table-->
+             </div>
+            
+         </div>
+     </div>
+     <!-- bar charts ends -->
 
-									</div>
-								</a>
-							</div>
-							<div class="card">
-								<a href="Payment_Manage"> <img
-									class="card-img-top"
-									src="Styles/Images/FinanceMgmt/payments.jpg" height="180px"
-									alt="Card image cap">
-									<div class="card-body">
-										<h5 class="card-title">Payment Details</h5>
+     </div>
+  
+     
+     <!-- progress bars starts-->
 
-									</div>
-								</a>
-							</div>
-						</div>
-						
-						
-						<div class="card-deck">
-
-							<div class="card">
-								<a href="Salary_Finace"> <img
-									class="card-img-top"
-									src="Styles/Images/FinanceMgmt/salary.jpg"
-									alt="Card image cap">
-									<div class="card-body">
-										<h5 class="card-title">Salary Financial Details</h5>
-
-									</div>
-								</a>
-							</div>
-							<div class="card">
-								<a href="Sale_Price"> <img
-									class="card-img-top"
-									src="Styles/Images/FinanceMgmt/price_tag.jpg"
-									height="205px" alt="Card image cap">
-									<div class="card-body">
-										<h5 class="card-title">Item Sale Price Details</h5>
-
-									</div>
-								</a>
-							</div>
-							<div class="card">
-								<a href="Profit"> <img
-									class="card-img-top"
-									src="Styles/Images/FinanceMgmt/profit.jpg" height="205px"
-									alt="Card image cap">
-									<div class="card-body">
-										<h5 class="card-title">Profit Details</h5>
-
-									</div>
-								</a>
-							</div>
-						</div>
-						
-						
-						
-
-						<div style="width: 310px;margin:0 auto;">
-							
-							<div class="card">
-								<a href="Retailer_Blacklist"> <img
-									class="card-img-top"
-									src="Styles/Images/FinanceMgmt/blacklist.jpg"  height="205px" 
-									alt="Card image cap">
-									<div class="card-body">
-										<h5 class="card-title">Blacklisted retailers Details</h5>
-
-									</div>
-								</a>
-							</div>
-					 
-					</div>
-					
-				</div>
-			</div>
-
-			<!-- start icons -->
-		</div>
-	</div>
+     
+     <!-- progress bars end -->
 	<!-- Bootstrap tooltips -->
 	<script type="text/javascript" src="Styles/js/popper.min.js"></script>
 	<!-- Bootstrap core JavaScript -->

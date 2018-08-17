@@ -113,9 +113,9 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>Tiger Nixon</td>
-									<td>System Architect</td>
-									<td>61</td>
+									<td>2018 July Electricity Bill</td>
+									<td>10000</td>
+									<td>2018/08/01</td>
 									<th><a href="UpdateExpenses">
 									<button type="button" class="btn btn-warning">Edit</button>
 											</a></th>

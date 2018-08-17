@@ -31,7 +31,7 @@
 <body>
 
 
-	<%@include file="/WEB-INF/OrderManagment/RetailerDashbordnavBar.jsp"%>
+	<%@include file="/WEB-INF/OrderManagment/RetailerOrder/RetailerDashbordnavBar.jsp"%>
 
 <div class="row justify-content-end " >
     <div class="col-md-10" style="padding-top: 90px;padding-left: 40px;padding-right: 40px">
@@ -92,7 +92,7 @@
                     <div class="row">
                         <center>
                             <div class="col-sm-12">
-                                <img src="http://via.placeholder.com/350x150">
+                               +*
                             </div>
                             <div class="col-sm-12">
 

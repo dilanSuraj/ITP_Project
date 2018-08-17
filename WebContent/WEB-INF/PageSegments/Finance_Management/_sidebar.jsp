@@ -18,7 +18,9 @@
 
 <!-- Your custom styles -->
 <link rel="stylesheet" href="Styles/css/dashboardStyleSheet.css">
-
+<link
+	href="https://file.myfontastic.com/BFkWJv83N7sbYQwrfx5VGe/icons.css"
+	rel="stylesheet">
 
 <link href="Styles/css/customText.css" rel="stylesheet">
 <!-- font awesome icon pack-->
@@ -26,6 +28,9 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link
+	href="https://file.myfontastic.com/BFkWJv83N7sbYQwrfx5VGe/icons.css"
+	rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
@@ -39,6 +44,9 @@
 <!--google maps library -->
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+<link
+	href="https://file.myfontastic.com/Mv2opBjoWZTWS4XHUM8BMP/icons.css"
+	rel="stylesheet">
 
 <!--data table files -->
 <link rel="stylesheet"
@@ -52,7 +60,7 @@
 <link rel="stylesheet" href="Styles/css/dataTables.bootstrap4.min.css">
 </head>
 <body>
-<div class="col-md-2 position-fixed d-none d-md-block"
+	<div class="col-md-2 position-fixed d-none d-md-block"
 		style="background-color: #003399; height: 100%; padding-top: 60px;">
 		<nav class="navbar  navbar-expand-lg navbar-dark"
 			style="padding-top: 30px; padding-left: 0%">
@@ -67,9 +75,39 @@
 				</a></li>
 
 
-				
-				<li class="nav-item"><a class="nav-link " href="#"><span
-						class="fa fa-clone" style="font-size: 18px"></span> Reports</a></li>
+
+				<li class="nav-item active"><a class="nav-link"
+					href="Retailer_Finance"> <span
+						class="fa fa-chevron-circle-right" style="font-size: 18px"></span>
+						Retailer Order Payments
+				</a></li>
+
+				<li class="nav-item active"><a class="nav-link"
+					href="Supplier_Finance"> <span
+						class="fa fa-chevron-circle-right" style="font-size: 18px"></span>
+						Supply Order Payments
+				</a></li>
+
+				<li class="nav-item active"><a class="nav-link"
+					href="Payment_Manage"> <span class="fa fa-chevron-circle-right"
+						style="font-size: 18px"></span> Other Income and Expense
+				</a></li>
+
+				<li class="nav-item active"><a class="nav-link"
+					href="Salary_Finace"> <span class="fa fa-chevron-circle-right"
+						style="font-size: 18px"></span> Monthly Salary Payments
+				</a></li>
+
+				<li class="nav-item active"><a class="nav-link"
+					href="Sale_Price"> <span class="fa fa-chevron-circle-right"
+						style="font-size: 18px"></span> Set Item Prices
+				</a></li>
+
+				<li class="nav-item active"><a class="nav-link"
+					href="Retailer_Blacklist"> <span
+						class="fa fa-chevron-circle-right" style="font-size: 18px"></span>
+						Blacklisted Retailers
+				</a></li>
 
 				<li class="nav-item"><a class="nav-link" href="#"><span
 						class="fa fa-cog" style="font-size: 18px"></span> My Profile</a></li>
