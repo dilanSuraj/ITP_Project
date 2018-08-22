@@ -13,7 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "supplier_finance")
-public class Supplier_Finance {
+public class Supplier_Finance implements Finance{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -13,7 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "other_income_expense")
-public class Payment {
+public class Payment implements Finance{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +39,17 @@ public class Payment {
 	@Column
 	private String other_income_expense_category;
 	
+	@Column
+	private String other_income_expense_description;
+	
+	public String getOther_income_expense_description() {
+		return other_income_expense_description;
+	}
+
+	public void setOther_income_expense_description(String other_income_expense_description) {
+		this.other_income_expense_description = other_income_expense_description;
+	}
+
 	@Column
 	private String other_income_expense_type;
 	

@@ -75,7 +75,7 @@
 				<div class="card mb-3">
 					<div class="card-header" style="color: #003399">
 						<h5>
-							<span class="fa fa-pencil"></span> Add Retailer Payment
+							<span class="fa fa-pencil"></span> Update Retailer Payment
 						</h5>
 					</div>
 					<div class="card-body">
@@ -132,7 +132,7 @@
 
 							</div>
 
-							<button type="submit" class="btn btn-primary" name="add_payment">Add Payment</button>
+							<button type="submit" class="btn btn-primary" name="add_payment">Update Payment</button>
                             <button type="reset" class="btn btn-primary">Reset</button>  
 						</form>
 					</div>

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -52,98 +55,111 @@
 
 	<!-- start of the the navigation header-->
 
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp"%>
 	<!-- end of the navigation header-->
 
 	<!-- side bar starts -->
 
 	<!-- only visibale in 10'0 inch or above screens-->
-	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp"%>
 
 	<!--side bar end-->
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp" %>
-
-		
-
-			<!-- topic bar end-->
+	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp"%>
 
 
-			<!-- start icons -->
 
-			<!-- cards starts-->
-			<!-- data table start -->
+	<!-- topic bar end-->
 
-			<div class="col-md-12">
 
-				<div class="card mb-3">
-					<div class="card-header" style="color: #003399">
-						<h5>
-							<span class="fa fa-image"></span> Transport Finance details
-						</h5>
+	<!-- start icons -->
 
-					</div>
-					<a href="AddTransport_Finance">
-						<div class="pull-right"
-							style="padding-left: 77%; padding-top: 30px">
+	<!-- cards starts-->
+	<!-- data table start -->
 
-							<button class="btn btn-success" data-toggle="modal"
-								data-target="#create-user" style="margin-right:20px">+ Add Transport Finance Details
-						</div>
-					</a>
-					<div class="card-body">
+	<div class="col-md-12">
 
-						<script>
-							$(document).ready(function() {
-								$('#example').DataTable();
-							});
-						</script>
+		<div class="card mb-3">
+			<div class="card-header" style="color: #003399">
+				<h5>
+					<span class="fa fa-image"></span> Transport Finance details
+				</h5>
 
-						<table id="example" class="table table-striped table-bordered"
-							style="width: 100%">
+			</div>
+			<a href="AddTransport_Finance">
+				<div class="pull-right" style="padding-left: 77%; padding-top: 30px">
 
-							<thead>
-								<tr>
-									<th>Category</th>
-									<th>Amount</th>
-									<th>Date</th>
-									<th>Edit</th>
-									<th>Delete</th>
-									
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Fuel</td>
-									<td>5000</td>
-									<td>2018/08/11</td>
-									<th><a href="UpdateTransport_Finance">
-									<button type="button" class="btn btn-warning">Edit</button>
-											</a></th>
-									<th><a href="DeleteTransport_Finance">
-									<button type="button" class="btn btn-danger">Delete</button>
-											</a></th>
-								</tr>
-							</tbody>
-							<tfoot>
-								<tr>
-									<th>Category</th>
-									<th>Amount</th>
-									<th>Date</th>
-									<th>Edit</th>
-									<th>Delete</th>
-
-								</tr>
-							</tfoot>
-						</table>
-					</div>
-
+					<button class="btn btn-success" data-toggle="modal"
+						data-target="#create-user" style="margin-right: 20px">+
+						Add Transport Finance Details
 				</div>
+			</a>
+			<div class="card-body">
+
+				<script>
+					$(document).ready(function() {
+						$('#example').DataTable();
+					});
+				</script>
+
+				<table id="example" class="table table-striped table-bordered"
+					style="width: 100%">
+
+					<thead>
+						<tr>
+							<th>Category</th>
+							<th>Total Amount</th>
+							<th>Date</th>
+							<th>Description</th>
+							<th>Vehicle Number</th>
+							<th>Payment Status</th>
+							<th>Edit</th>
+							<th>Delete</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="paymentList" items="${paymentlist}"
+							varStatus="status">
+							<tr>
+
+								<td>${paymentList.getTransportpayment_category()}</td>
+								<td>${paymentList.getTransportpayment_amount()}</td>
+								<td>${paymentList.getTransportpayment_date()}</td>
+								<td>${paymentList.getTransportpayment_description()}</td>
+								<td>${paymentList.getTransportpayment_vehicleID()}</td>
+								
+								<td>${paymentList.getTransportpayment_paymentstate()}</td>
+								<td><a href="<c:url value='/UpdateIncome_Get?id=${paymentList.getTransportpayment_ID()}' />" >EDIT</a></td>
+								
+								<td><a href="<c:url value='/DeleteIncome?id=${paymentList.getTransportpayment_ID()}' />" >DELETE</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Category</th>
+							<th>Total Amount</th>
+							<th>Date</th>
+							<th>Description</th>
+							<th>Vehicle Number</th>
+							<th>Payment Status</th>
+							<th>Edit</th>
+							<th>Delete</th>
+
+						</tr>
+					</tfoot>
+				</table>
 			</div>
 
-			<!-- data table end -->
 		</div>
+	</div>
 
-		<!-- start icons -->
+	<!-- data table end -->
+	</div>
+
+	<!-- start icons -->
 	</div>
 	</div>
 	<!-- Bootstrap tooltips -->

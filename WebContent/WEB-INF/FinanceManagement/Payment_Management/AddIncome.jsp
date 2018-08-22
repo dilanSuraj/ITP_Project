@@ -279,6 +279,17 @@
 										placeholder="Enter Category"></form:input>
 								</div>
 							</div>
+							
+							
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="input_supp_name">Description</label>
+									<form:input type="text" class="form-control"
+										path="other_income_expense_description"
+										placeholder="Enter description"></form:input>
+								</div>
+							</div>
+							
 							<div class="form-group">
 								<label for="input_amt">Total Amount</label>
 								<form:input type="text" class="form-control"

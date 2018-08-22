@@ -113,8 +113,8 @@
 							<th>Category</th>
 							<th>Total Amount</th>
 							<th>Recieved Amount</th>
+							<th>Description</th>
 							<th>Date</th>
-							
 							<th>Status</th>
 							<th>Edit</th>
 							<th>Delete</th>
@@ -130,6 +130,7 @@
 								<td>${paymentList.getOther_income_expense_category()}</td>
 								<td>${paymentList.getOther_income_expense_amount()}</td>
 								<td>${paymentList.getOther_income_expense_recieved()}</td>
+								<td>${paymentList.getOther_income_expense_description()}</td>
 								<td>${paymentList.getOther_income_expense_date()}</td>
 								
 								<td>${paymentList.getOther_income_expense_paymentstate()}</td>
@@ -145,7 +146,7 @@
 							<th>Total Amount</th>
 							<th>Recieved Amount</th>
 							<th>Date</th>
-							
+							<th>Description</th>
 							<th>Status</th>
 							<th>Edit</th>
 							<th>Delete</th>

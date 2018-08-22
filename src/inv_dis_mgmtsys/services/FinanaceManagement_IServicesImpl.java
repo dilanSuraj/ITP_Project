@@ -4,51 +4,57 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import inv_dis_mgmtsys.dao.FinanaceManagement_IDAO;
 import inv_dis_mgmtsys.dao.FinanaceManagement_IDAOImpl;
+import inv_dis_mgmtsys.model.Finance;
 import inv_dis_mgmtsys.model.Payment;
+
 
 @Service
 public class FinanaceManagement_IServicesImpl implements FinanaceManagement_IServices{
 
 	@Autowired
 	FinanaceManagement_IDAOImpl finanaceManagerIDAO;
+
+	@Override
+	public void addPaymentDetails(Finance finance) {
+		finanaceManagerIDAO.addFinance(finance);		
+	}
+
 	
 	@Override
-	public void addPayments(Payment payment) {
-		
-		finanaceManagerIDAO.addPaymentDetails(payment);
-		
-	}
-
-	@Override
-	public void editPayments(Payment payment) {
-		finanaceManagerIDAO.updatePaymentDetails(payment);
-		
-	}
-
-	@Override
-	public void deletePayments(int paymentID) {
-		
-		finanaceManagerIDAO.deletePaymentDetails(paymentID);
-		
-	}
-
-	@Override
 	public List<Payment> getPayments(String paymentCategory) {
-		
-		List<Payment> payments = finanaceManagerIDAO.getPayments(paymentCategory);
+		List<Payment> payments = finanaceManagerIDAO.getfinancebyCategory(paymentCategory);
 		return payments;
 	}
 
 	@Override
-	public Payment getPaymentDetails(int paymentID) {
+	public List<Finance> getAllPaymentDetails(String type) {
 		
-		Payment payment = finanaceManagerIDAO.getPaymentDetails(paymentID);
-		return payment;
+		return finanaceManagerIDAO.getAllFinanceDetails(type);
+	
 	}
+
+	@Override
+	public void deletePaymentDetails(String type,int paymentID) {
+		
+	    Finance finance = finanaceManagerIDAO.getSingleFinanceDetail(paymentID, type);		
+		finanaceManagerIDAO.deleteFinance(finance);
+		return;
+	}
+
+	@Override
+	public void updatePaymentDetails(Finance finance, String type) {
+		finanaceManagerIDAO.editFinance(finance, type);
+		return;
+	}
+
+	@Override
+	public Finance getPaymentDetails(int paymentId,String type) {
+		
+		return finanaceManagerIDAO.getSingleFinanceDetail(paymentId, type);
+		
+	}
+	
 	
 
 }

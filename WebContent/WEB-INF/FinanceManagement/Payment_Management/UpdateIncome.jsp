@@ -111,17 +111,27 @@
 							</div>
 							
 							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="input_supp_name">Description</label> <form:input
+										type="text" class="form-control" path="other_income_expense_description"
+										></form:input>
+								</div>
+								
+							</div>
+							
+							<div class="form-row">
                             
 								<label for="input_amt">Payment State</label> <form:input type="text"
 									class="form-control" path="other_income_expense_paymentstate"
 									></form:input>
-							
+							         
 								<div >
 
 								<div class="container">
 										<label for="input_date">Date(DD/MM/YYYY)</label>
 										<div class="hero-unit">
-										    <form:input  path="other_income_expense_date"/>							    
+										    <form:input  path="other_income_expense_date"/>
+										    <form:input  type="hidden" path="other_income_expense_ID"/>								    
 										</div>
 									</div>
 								</div>

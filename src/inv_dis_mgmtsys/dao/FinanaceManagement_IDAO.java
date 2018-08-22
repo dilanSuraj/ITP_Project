@@ -2,18 +2,24 @@ package inv_dis_mgmtsys.dao;
 
 import java.util.List;
 
+import inv_dis_mgmtsys.model.Finance;
 import inv_dis_mgmtsys.model.Payment;
 
-public interface FinanaceManagement_IDAO {
 
-	public void addPaymentDetails(Payment payment);
+public interface FinanaceManagement_IDAO{
 
-	public List<Payment> getPayments(String paymentCategory);
+	
+    void addFinance(Finance finance);
+	
+	public void editFinance(Finance finance,String type);
+	
+	public void deleteFinance(Finance finance);
+	
+	public List<Payment> getfinancebyCategory(String paymentCategory);
+	
+	public List<Finance> getAllFinanceDetails(String type);
+	
+	public Finance getSingleFinanceDetail(int paymentID,String type);
 
-	public void deletePaymentDetails(int paymentID);
-
-	public void updatePaymentDetails(Payment payment);
-
-	public Payment getPaymentDetails(int paymentId);
-
+	
 }

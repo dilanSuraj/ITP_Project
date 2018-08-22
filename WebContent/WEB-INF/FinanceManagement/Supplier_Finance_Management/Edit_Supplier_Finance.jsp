@@ -76,7 +76,7 @@
 				<div class="card mb-3">
 					<div class="card-header" style="color: #003399">
 						<h5>
-							<span class="fa fa-pencil"></span> Add Supplier Payment
+							<span class="fa fa-pencil"></span> Update Supplier Payment
 						</h5>
 					</div>
 					<div class="card-body">
