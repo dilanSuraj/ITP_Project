@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -86,35 +87,63 @@
 					</div>
 					<div class="card-body">
 
-						<form method="post" action="#">
+					<form:form method="post" action="UpdateTransport_Finance_POST"
+							modelAttribute="transportfinance">
 							<div class="form-row">
 								<div class="form-group col-md-6">
-									<label for="input_supp_name">Category</label> <input
-										type="text" readonly class="form-control-plaintext" id="input_supp_name"
-										placeholder="Fuel">
+									<label for="input_supp_name">Category Name</label>
+									<form:input type="text" class="form-control"
+										path="transportpayment_category"
+										></form:input>
 								</div>
-								
 							</div>
 							<div class="form-group">
-								<label for="input_amt">Amount</label> <input type="text"
-									class="form-control" id="input_amt"
-									placeholder="5000">
+								<label for="input_amt">Total Amount</label>
+								<form:input type="text" class="form-control"
+									path="transportpayment_amount"
+									></form:input>
 							</div>
+							
+							<div class="form-group">
+								<label for="input_amt">Vehicle Number</label>
+								<form:input type="text" class="form-control"
+									path="transportpayment_vehicleID"
+									></form:input>
+							</div>
+
+
+														
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="input_supp_name">Description</label>
+									<form:input type="text" class="form-control"
+										path="transportpayment_description"
+										></form:input>
+								</div>
+							</div>
+
 							<div class="form-row">
 
-								<div class="form-group col-md-6">
-									<div class="container">
-										<label for="input_date">Date</label>
-										<div class="hero-unit">
-											<input type="button" value="click to pick a date"
-												name="date_payment" id="pickyDate" />
-										</div>
+								<label for="input_amt">Payment State</label>
+								<form:input type="text" class="form-control"
+									path="transportpayment_state"
+									></form:input>
+
+								<div>
+									<div class="form-group">
+										<!-- Date input -->
+										<label class="control-label" for="date">Date(DD/MM/YYY)</label>
+										<form:input class="form-control" id="date" name="date"
+											path="transportpayment_date" placeholder="DD/MM/YYY"
+											type="text" />
+												<form:input  type="hidden" path="transportpayment_ID"/>	
 									</div>
 								</div>
 							</div>
-							<button type="submit" class="btn btn-scucess" name="update_payment">Update Transport Finance</button>
-                            <button type="reset"class="btn btn-danger">Reset</button>  
-						</form>
+
+							<button type="submit" class="btn btn-success" name="add_payment">Update Transport Finance</button>
+							<button type="reset" class="btn btn-danger">Reset</button>
+						</form:form>
 					</div>
 				</div>
 			</div>

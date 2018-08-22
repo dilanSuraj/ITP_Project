@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import inv_dis_mgmtsys.model.Finance;
 import inv_dis_mgmtsys.model.Payment;
 import inv_dis_mgmtsys.model.Supplier_Finance;
+import inv_dis_mgmtsys.model.TransportFinance;
 import inv_dis_mgmtsys.services.FinanaceManagement_IServicesImpl;
 
 @Controller
@@ -176,7 +178,7 @@ public class Finance_ManagementController {
 	public ModelAndView TransportFinanceView() {
 		
 		ModelAndView model = new ModelAndView();
-		List<Payment> paymentList = finanaceManagement_IServices.getPayments("");
+		List<Finance> paymentList = finanaceManagement_IServices.getAllPaymentDetails("transportFinance");
 		
 		model.addObject("paymentlist", paymentList);
 		model.setViewName("/FinanceManagement/Payment_Management/Transport_Finance");
@@ -185,48 +187,54 @@ public class Finance_ManagementController {
 	}
 	
 	@RequestMapping(value="/AddTransport_Finance",method=RequestMethod.GET)
-	public ModelAndView AddTransportFinanceGET() {
+	public ModelAndView AddTransportFinanceGET(@ModelAttribute("transportfinance")TransportFinance transportFinance) {
 		
-		System.out.println("Add Transport Finance");
 	    return new ModelAndView("/FinanceManagement/Payment_Management/Add_Transport_Finance");
 	}
 	
-	@RequestMapping(value="/AddTransport_Finance",method=RequestMethod.POST)
-	public ModelAndView AddTransportFinancePOST() {
+	@RequestMapping(value="/AddTransport_Finance_POST",method=RequestMethod.POST)
+	public ModelAndView AddTransportFinancePOST(@ModelAttribute("transportfinance")TransportFinance transportFinance) {
 		
 		System.out.println("Add Transport Finance");
-	    return new ModelAndView("/FinanceManagement/Payment_Management/Add_Transport_Finance");
+		finanaceManagement_IServices.addPaymentDetails(transportFinance);		
+	    return new ModelAndView("redirect:/Transport_Finance");
 	}
 	
 	@RequestMapping(value="/UpdateTransport_Finance",method=RequestMethod.GET)
-	public ModelAndView UpdateTransportFinanceGET() {
+	public ModelAndView UpdateTransportFinanceGET(@RequestParam("id") int id) {
 		
 		System.out.println("Update Transport Finance");
-	    return new ModelAndView("/FinanceManagement/Payment_Management/Update_Transport_Finance");
+		ModelAndView model = new ModelAndView();
+		TransportFinance transportFinance = (TransportFinance) finanaceManagement_IServices.getPaymentDetails(id, "transportFinance");
+		model.addObject("transportfinance", transportFinance);
+		model.setViewName("/FinanceManagement/Payment_Management/Update_Transport_Finance");
+	    return model;
 	}
 	
-	@RequestMapping(value="/UpdateTransport_Finance",method=RequestMethod.POST)
-	public ModelAndView UpdateTransportFinancePOST() {
+	@RequestMapping(value="/UpdateTransport_Finance_POST",method=RequestMethod.POST)
+	public ModelAndView UpdateTransportFinancePOST(@ModelAttribute("transportfinance")TransportFinance transportFinance) {
 		
-		System.out.println("Update Transport Finance");
-	    return new ModelAndView("/FinanceManagement/Payment_Management/Update_Transport_Finance");
+		System.out.println("Update Transport Finance");	       
+		finanaceManagement_IServices.updatePaymentDetails(transportFinance, "transportFinance");		
+	    return new ModelAndView("redirect:/Transport_Finance");
+	    
+	    
 	}
 	
 	@RequestMapping("/DeleteTransport_Finance")
-	public ModelAndView DeleteTransportFinanceView() {
+	public ModelAndView DeleteTransportFinanceView(@RequestParam("id") int id) {
 		
 		System.out.println("Delete Transport Finance");
-	    return new ModelAndView("/FinanceManagement/Payment_Management/Transport_Finance");
+		finanaceManagement_IServices.deletePaymentDetails("transportFinance", id);
+		 return new ModelAndView("redirect:/Transport_Finance");
+	    
 	}
 	
 	//Income details
 	
 	@RequestMapping(value="/AddIncome",method=RequestMethod.GET)
 	public ModelAndView AddIncomeGET(@ModelAttribute("payment")Payment payment) {
-		
-		System.out.println("Add Income get");
-		System.out.println("Date : "+ payment.getOther_income_expense_date());
-		
+						
 	    return new ModelAndView("/FinanceManagement/Payment_Management/AddIncome");
 	}
 	

@@ -94,7 +94,7 @@
 									<label for="input_supp_name">Category Name</label>
 									<form:input type="text" class="form-control"
 										path="other_income_expense_category"
-										placeholder="Enter Category"></form:input>
+										></form:input>
 								</div>
 							</div>
 							
@@ -111,7 +111,7 @@
 								<label for="input_amt">Total Amount</label>
 								<form:input type="text" class="form-control"
 									path="other_income_expense_amount"
-									placeholder="Enter the amount here"></form:input>
+									></form:input>
 							</div>
 
 
@@ -119,7 +119,7 @@
 								<label for="input_amt">Paid Amount</label>
 								<form:input type="text" class="form-control"
 									path="other_income_expense_recieved"
-									placeholder="Enter the amount here"></form:input>
+									></form:input>
 							</div>
 
 							<div class="form-row">
@@ -127,7 +127,7 @@
 								<label for="input_amt">Payment State</label>
 								<form:input type="text" class="form-control"
 									path="other_income_expense_paymentstate"
-									placeholder="Enter the amount here"></form:input>
+									></form:input>
 
 								<div>
 									<div class="form-group">

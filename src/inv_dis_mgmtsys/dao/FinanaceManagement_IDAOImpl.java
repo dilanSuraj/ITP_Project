@@ -104,10 +104,30 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 			query.setParameter(6, payment.getOther_income_expense_description());
 			query.setParameter(7, payment.getOther_income_expense_ID());
 
-			System.out.println("Insided, new payments" + payment.getOther_income_expense_ID());
+			
 			int result = query.executeUpdate();
 			System.out.println("Results : " + result);
 			return;
+		}
+		
+		else if(type.equals("transportFinance")) {
+			
+			TransportFinance transportFinance = (TransportFinance) finance;
+			String hql = "update TransportFinance tf set tf.transportpayment_amount = ?,tf.transportpayment_category=?,tf.transportpayment_date=?, tf.transportpayment_description=?,tf.transportpayment_state=?,tf.transportpayment_vehicleID=? where tf.transportpayment_ID=?";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			query.setParameter(0, transportFinance.getTransportpayment_amount());
+			query.setParameter(1, transportFinance.getTransportpayment_category());
+			query.setParameter(2, transportFinance.getTransportpayment_date());
+			query.setParameter(3, transportFinance.getTransportpayment_description());
+			query.setParameter(4, transportFinance.getTransportpayment_state());
+			query.setParameter(5, transportFinance.getTransportpayment_vehicleID());
+			query.setParameter(6, transportFinance.getTransportpayment_ID());
+			
+			
+			int result = query.executeUpdate();
+			System.out.println("Results : " + result);
+			return;
+			
 		}
 
 	}

@@ -130,10 +130,10 @@
 								<td>${paymentList.getTransportpayment_description()}</td>
 								<td>${paymentList.getTransportpayment_vehicleID()}</td>
 								
-								<td>${paymentList.getTransportpayment_paymentstate()}</td>
-								<td><a href="<c:url value='/UpdateIncome_Get?id=${paymentList.getTransportpayment_ID()}' />" >EDIT</a></td>
+								<td>${paymentList.getTransportpayment_state()}</td>
+								<td><a href="<c:url value='/UpdateTransport_Finance?id=${paymentList.getTransportpayment_ID()}' />" >EDIT</a></td>
 								
-								<td><a href="<c:url value='/DeleteIncome?id=${paymentList.getTransportpayment_ID()}' />" >DELETE</a></td>
+								<td><a href="<c:url value='/DeleteTransport_Finance?id=${paymentList.getTransportpayment_ID()}' />" >DELETE</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
