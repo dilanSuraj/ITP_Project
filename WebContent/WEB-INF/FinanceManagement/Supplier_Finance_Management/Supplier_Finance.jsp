@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,7 +22,7 @@
 <!-- Your custom styles -->
 <link rel="stylesheet" href="Styles/css/dashboardStyleSheet.css">
 
-   
+
 <link href="Styles/css/customText.css" rel="stylesheet">
 <!-- font awesome icon pack-->
 <link rel="stylesheet"
@@ -52,102 +55,105 @@
 
 	<!-- start of the the navigation header-->
 
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp"%>
 	<!-- end of the navigation header-->
 
 	<!-- side bar starts -->
 
 	<!-- only visibale in 10'0 inch or above screens-->
-	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp"%>
 
 	<!--side bar end-->
 
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp" %>
-
-			
+	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp"%>
 
 
 
-			<!-- start icons -->
 
-			<!-- cards starts-->
-			<!-- data table start -->
 
-			<div class="col-md-12">
+	<!-- start icons -->
 
-				<div class="card mb-3">
-					<div class="card-header" style="color: #003399">
-						<h5>
-							<span class="fa fa-image"></span> Supplier Payment Details
-						</h5>
-						
-					</div>
-					 <a href="Add_Supplier_Finance">  
-					<div class="pull-right"
-						style="padding-left: 77%; padding-top: 30px">
-                       
-						<button class="btn btn-success" data-toggle="modal"
-							data-target="#create-user" style="margin-right:20px">+ Add Payment button
-					</div>
-					</a>
-					<div class="card-body">
+	<!-- cards starts-->
+	<!-- data table start -->
 
-						<script>
-							$(document).ready(function() {
-								$('#example').DataTable();
-							});
-						</script>
+	<div class="col-md-12">
 
-						<table id="example" class="table table-striped table-bordered"
-							style="width: 100%">
+		<div class="card mb-3">
+			<div class="card-header" style="color: #003399">
+				<h5>
+					<span class="fa fa-image"></span> Supplier Payment Details
+				</h5>
 
-							<thead>
-								<tr>
-									<th>Supplier Name</th>
-									<th>Supplier Order Details</th>
-									<th>Total Amount</th>
-									<th>Date</th>
-									<th>Payment State</th>
-									<th>Edit</th>
-									<th>Delete</th>
+			</div>
+			<a href="Add_Supplier_Finance">
+				<div class="pull-right" style="padding-left: 77%; padding-top: 30px">
 
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Kalana Elapatha</td>
-									<td>102</td>
-									<td>25000</td>
-									<td>2018/08/10</td>
-									<td>Not Paid</td>
-									<th><a href="Edit_Supplier_Finance">
-									<button type="button" class="btn btn-warning">Edit</button>
-									</a></th>
-									<th><a href="Delete_Supplier_Finance">
-									<button type="button" class="btn btn-danger">Delete</button>
-									</a>
-									</th>
-								</tr>
-							</tbody>
-							<tfoot>
-								<tr>
-									<th>Supplier Name</th>
-									<th>Supplier Order Details</th>
-									<th>Total Amount</th>
-									<th>Date</th>
-									<th>Payment State</th>
-									<th>Edit</th>
-									<th>Delete</th>
-
-								</tr>
-							</tfoot>
-						</table>
-					</div>
-
+					<button class="btn btn-success" data-toggle="modal"
+						data-target="#create-user" style="margin-right: 20px">+
+						Add Payment button
 				</div>
+			</a>
+			<div class="card-body">
+
+				<script>
+					$(document).ready(function() {
+						$('#example').DataTable();
+					});
+				</script>
+
+				<table id="example" class="table table-striped table-bordered"
+					style="width: 100%">
+
+					<thead>
+						<tr>
+
+							<th>Supplier Order Details</th>
+							<th>Total Amount</th>
+							<th>Date</th>
+							<th>Payment State</th>
+							<th>Edit</th>
+							<th>Delete</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="paymentList" items="${paymentlist}"
+							varStatus="status">
+							<tr>
+
+								<td>${paymentList.getSupplier_orderID()}</td>
+								<td>${paymentList.getAmount()}</td>
+								<td>${paymentList.getPayment_date()}</td>
+								
+								<td>${paymentList.getPaymentState()}</td>
+								<td><a
+									href="<c:url value='/Edit_Supplier_Finance?id=${paymentList.getSupplier_finance_id()}' />">EDIT</a></td>
+
+								<td><a
+									href="<c:url value='/Delete_Supplier_Finance?id=${paymentList.getSupplier_finance_id()}' />">DELETE</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+					<tfoot>
+						<tr>
+						<th>Supplier Order Details</th>
+							<th>Total Amount</th>
+							<th>Date</th>
+							<th>Payment State</th>
+							<th>Edit</th>
+							<th>Delete</th>
+
+						</tr>
+					</tfoot>
+				</table>
 			</div>
 
-		
+		</div>
+	</div>
+
+
 	</div>
 	</div>
 	<!-- Bootstrap tooltips -->
@@ -158,9 +164,9 @@
 	<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 
 	<script type="text/javascript" src="Styles/js/mdb.min.js"></script>
-	
-	   
-  
+
+
+
 </body>
 </html>
 

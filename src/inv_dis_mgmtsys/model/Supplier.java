@@ -1,10 +1,13 @@
 package inv_dis_mgmtsys.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,9 +20,24 @@ public class Supplier {
 		
 	@Column
 	private String supplier_name;
+	
+	@OneToMany(mappedBy = "supplier")
+	private List<Item> itemList;
 
 	public String getSupplier_name() {
 		return supplier_name;
+	}
+
+	public List<Item> getItemlist() {
+		return itemList;
+	}
+
+	public void setItemlist(List<Item> itemlist) {
+		this.itemList = itemlist;
+	}
+
+	public void setSupplier_ID(int supplier_ID) {
+		this.supplier_ID = supplier_ID;
 	}
 
 	public int getSupplier_ID() {

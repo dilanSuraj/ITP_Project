@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -85,23 +86,18 @@
 					</div>
 					<div class="card-body">
 
-						<form method="post" action="#">
+						<form:form method="post" action="Add_Retailer_Finance_POST"
+							modelAttribute="retailerfinance">
 							<div class="form-row">
 								<div class="form-group col-md-6">
-									<label for="input_supp_name">Retailer Name</label> <input
-										type="text" class="form-control" id="input_supp_name"
-										placeholder="Enter Retailer Name Here">
-								</div>
-								<div class="form-group col-md-6">
-									<label for="input_supp_order">Retailer Order Details</label> <input
-										type="text" class="form-control" id="input_supp_order"
-										placeholder="Enter Supplier Order ID number here">
+									<label for="input_supp_order">Retailer Order Details</label> <form:input type="text" class="form-control"
+										path="retailer_orderID" placeholder="Enter Supplier Order ID number here"/>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="input_amt">Amount</label> <input type="text"
-									class="form-control" id="input_amt"
-									placeholder="Enter the amount here">
+								<label for="input_amt">Amount</label> <form:input type="text" class="form-control"
+										path="amount"
+										placeholder="Enter the amount here"/>
 							</div>
 							<div class="form-row">
 
@@ -109,8 +105,9 @@
 									<div class="container">
 										<label for="input_date">Order Date</label>
 										<div class="hero-unit">
-											<input type="button" value="click to pick a date"
-												name="date_payment" id="pickyDate" class="btn btn-light" />
+											<form:input type="text" class="form-control"
+										path="payment_date"
+										></form:input>
 										</div>
 									</div>
 								</div>
@@ -120,10 +117,11 @@
 
 								<div class="form-group col-md-6">
 									<div class="container">
-										<label for="input_date">Deadline Date</label>
+										<label for="input_date2">Deadline Date</label>
 										<div class="hero-unit">
-											<input type="button" value="click to pick a date"
-												name="deadline_date_payment" id="pickyDate" class="btn btn-secondary"/>
+											<form:input type="text" class="form-control"
+										path="deadline_payment_date"
+										></form:input>
 										</div>
 									</div>
 								</div>
@@ -131,16 +129,17 @@
 							
 							<div class="form-row">
 								<div class="form-group col-md-6">
-									<label for="input_pay_state">Payment State</label> <input
-										type="text" class="form-control" id="input_pay_state" name="pay_state">
+									<label for="input_pay_state">Payment State</label> <form:input type="text" class="form-control"
+										path="paymentState"
+										></form:input>
+											
 								</div>
 
 							</div>
 
-							<button type="button" class="btn btn-success">Add Payment</button>
-                            <button type="button" class="btn btn-danger">Reset</button>
-
-						</form>
+							<button type="submit" class="btn btn-primary" name="add_payment">Add Retailer Payment</button>
+                            <button type="reset" class="btn btn-primary">Reset</button>  
+						</form:form>
 					</div>
 				</div>
 			</div>

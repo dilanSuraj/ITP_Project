@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -59,109 +61,117 @@
 
 	<!-- start of the the navigation header-->
 
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp"%>
 	<!-- end of the navigation header-->
 
 	<!-- side bar starts -->
 
 	<!-- only visibale in 10'0 inch or above screens-->
-	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp"%>
 
 	<!--side bar end-->
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp" %>
+	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp"%>
 
-			<!-- topic bar starts-->
-			<div class="col-md-12">
+	<!-- topic bar starts-->
+	<div class="col-md-12">
 
-				<div class="card mb-3">
-					<div class="card-header" style="color: #003399">
-						<h5>
-							<span class="fa fa-image"></span> Sale Prices
-						</h5>
+		<div class="card mb-3">
+			<div class="card-header" style="color: #003399">
+				<h5>
+					<span class="fa fa-image"></span> Sale Prices
+				</h5>
 
-					</div>
-					<div class="card-body">
+			</div>
+			<div class="card-body">
 
-						<script>
-							$(document).ready(function() {
-								$('#example').DataTable();
-							});
-						</script>
+				<script>
+					$(document).ready(function() {
+						$('#example').DataTable();
+					});
+				</script>
 
-						<table id="example" class="table table-striped table-bordered"
-							style="width: 100%">
+				<table id="example" class="table table-striped table-bordered"
+					style="width: 100%">
 
-							<thead>
-								<tr>
-									<th>Item Name</th>
-									<th>Supplier Name</th>
-									<th>Gross Price</th>
-									<th>Sale Price</th>
-									<th>Profit Percentage</th>
-									<th>Edit</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Tyre 5"</td>
-									<td>DSI</td>
-									<td>4500</td>
-									<td>4600</td>
-									<td>2%</td>
-									<th><button type="button" class="btn btn-warning" data-toggle="modal"
-				                                   data-target="#price_popup">Edit</button></th>
+					<thead>
+						<tr>
+							<th>Item Name</th>
+							<th>Item Type</th>
+							<th>Supplier Name</th>
+							<th>Gross Price(Rs.)</th>
+							<th>Sale Price(Rs.)</th>
+							<th>Profit Percentage(%)</th>
+							<th>Edit</th>
+						</tr>
+					</thead>
+					<tbody>
 
-								</tr>
-							</tbody>
-							<tfoot>
-								<tr>
-									<th>Item Name</th>
-									<th>Supplier Name</th>
-									<th>Gross Price</th>
-									<th>Sale Price</th>
-									<th>Profit Percentage</th>
-									<th>Edit</th>
 
-								</tr>
-							</tfoot>
-						</table>
-					</div>
-
-				</div>
+						<c:forEach var="item" items="${itemlist}" varStatus="status">
+							<tr>
+								<td>${item[0].getItem_name()}</td>
+								<td>${item[0].getItem_type()}</td>
+								<td>${item[1].getSupplier_name()}</td>
+								<td>${item[0].getItem_grossprice()}</td>
+								<td>${item[0].getItem_saleprice()}</td>
+								<td>${item[0].getItem_percentageProfit()}</td>
+								<td><a
+									href="<c:url value='/Edit_Sale_Price_GET?id=${item[0].getItem_itemcode()}' />">EDIT</a></td>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Item Name</th>
+							<th>Item Type</th>
+							<th>Supplier Name</th>
+							<th>Gross Price(Rs.)</th>
+							<th>Sale Price(Rs.)</th>
+							<th>Profit Percentage(%)</th>
+							<th>Edit</th>
+						</tr>
+					</tfoot>
+				</table>
 			</div>
 
-			<!-- Button to Open the pop up -->
-			
+		</div>
+	</div>
 
-			<!-- The Modal -->
-			<div class="modal fade" id="price_popup">
-				<div class="modal-dialog">
-					<div class="modal-content">
+	<!-- Button to Open the pop up -->
 
-						<!-- Modal Header -->
-						<div class="modal-header">
-							<h4 class="modal-title">Update Sale Price</h4>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-						</div>
 
-						<!-- Modal body -->
-						<div class="modal-body">
-						     <div class="form-group">
-								<label for="input_amt">Sale Price</label> <input type="text"
-									class="form-control" id="input_amt"
-									placeholder="Enter the new price">
-							</div>
-						</div>
+	<!-- The Modal -->
+	<div class="modal fade" id="price_popup">
+		<div class="modal-dialog">
+			<div class="modal-content">
 
-						<!-- Modal footer -->
-						<div class="modal-footer">
-							<button type="button" class="btn btn-success" data-dismiss="modal">Update</button>
-						</div>
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Update Sale Price</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
 
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="input_amt">Sale Price</label> <input type="text"
+							class="form-control" id="input_amt"
+							placeholder="Enter the new price">
 					</div>
 				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" data-dismiss="modal">Update</button>
+				</div>
+
 			</div>
 		</div>
+	</div>
+	</div>
 	</div>
 	<!-- Bootstrap tooltips -->
 	<script type="text/javascript" src="Styles/js/popper.min.js"></script>

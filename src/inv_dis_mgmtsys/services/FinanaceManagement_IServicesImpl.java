@@ -1,11 +1,13 @@
 package inv_dis_mgmtsys.services;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import inv_dis_mgmtsys.dao.FinanaceManagement_IDAOImpl;
 import inv_dis_mgmtsys.model.Finance;
+import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.Payment;
 
 
@@ -53,6 +55,33 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		
 		return finanaceManagerIDAO.getSingleFinanceDetail(paymentId, type);
 		
+	}
+
+
+	@Override
+	public Item getSingleItemDetail(int ID) {
+		return finanaceManagerIDAO.getSingleItemDetail(ID);
+	}
+
+
+	@Override
+	public List<Item> getAllItemDetails() {
+		System.out.println("In Services");
+		return finanaceManagerIDAO.getAllItemDetails();
+	}
+
+
+	@Override
+	public void editItemPrice(Item item) {
+		
+		double itemSalePrice = item.getItem_saleprice();
+		double itemGrossPrice = item.getItem_grossprice();
+		double profit = itemSalePrice- itemGrossPrice;
+		double calPriceProfitPercentage = (profit)/itemGrossPrice;
+		DecimalFormat twoDForm = new DecimalFormat("#.##");
+		
+		item.setItem_percentageProfit(Double.valueOf(twoDForm.format(calPriceProfitPercentage))*100);
+		finanaceManagerIDAO.editItemPrice(item);
 	}
 	
 	

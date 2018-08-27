@@ -81,59 +81,33 @@
 					</div>
 					<div class="card-body">
 
-						<form:form method="post" action="Edit_Retailer_Finance_POST"
-							modelAttribute="retailerfinance">
+						<form:form method="post" action="Edit_Sale_Price_POST"
+							modelAttribute="item">
 							<div class="form-row">
 								<div class="form-group col-md-6">
-									<label for="input_supp_order">Retailer Order Details</label> <form:input type="text" class="form-control"
-										path="retailer_orderID"
+									<label for="input_supp_order">Item Name</label> <form:input type="text" class="form-control"
+										path="item_name"
 										></form:input>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="input_amt">Amount</label> <form:input type="text" class="form-control"
-										path="amount"
+								<label for="input_amt">Gross Price</label> <form:input type="text" class="form-control"
+										path="item_grossprice"
 										></form:input>
 							</div>
-							<div class="form-row">
-
-								<div class="form-group col-md-6">
-									<div class="container">
-										<label for="input_date">Order Date</label>
-										<div class="hero-unit">
-											<form:input type="text" class="form-control"
-										path="payment_date"
-										></form:input>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<div class="form-row">
-
-								<div class="form-group col-md-6">
-									<div class="container">
-										<label for="input_date2">Deadline Date</label>
-										<div class="hero-unit">
-											<form:input type="text" class="form-control"
-										path="deadline_payment_date"
-										></form:input>
-										</div>
-									</div>
-								</div>
-							</div>
+						
 							
 							<div class="form-row">
 								<div class="form-group col-md-6">
-									<label for="input_pay_state">Payment State</label> <form:input type="text" class="form-control"
-										path="paymentState"
+									<label for="input_pay_state">Sale Price</label> <form:input type="text" class="form-control"
+										path="item_saleprice"
 										></form:input>
-										<form:input  type="hidden" path="retailer_finance_id"/>	
+										<form:input  type="hidden" path="item_itemcode"/>	
 								</div>
 
 							</div>
 
-							<button type="submit" class="btn btn-primary" name="add_payment">Update Retailer Payment</button>
+							<button type="submit" class="btn btn-primary" name="add_payment">Update Prices</button>
                             <button type="reset" class="btn btn-primary">Reset</button>  
 						</form:form>
 					</div>
