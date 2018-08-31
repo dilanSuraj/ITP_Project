@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -53,104 +53,122 @@
 
 	<!-- start of the the navigation header-->
 
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp"%>
 	<!-- end of the navigation header-->
 
 	<!-- side bar starts -->
 
 	<!-- only visibale in 10'0 inch or above screens-->
-	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp"%>
 
 	<!--side bar end-->
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp" %>
+	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp"%>
 
-			<!-- topic bar starts-->
-
-
-			<!-- topic bar end-->
+	<!-- topic bar starts-->
 
 
-			<!-- start icons -->
+	<!-- topic bar end-->
 
-			<!-- cards starts-->
-			<!-- data table start -->
 
-			<!-- forms starts -->
+	<!-- start icons -->
 
-			<div class="col-md-12">
-				<div class="card mb-3">
-					<div class="card-header" style="color: #003399">
-						<h5>
-							<span class="fa fa-pencil"></span> Add Other Expense Details
-						</h5>
-					</div>
-					<div class="card-body">
+	<!-- cards starts-->
+	<!-- data table start -->
 
-						<form:form method="post" action="AddExpenses_POST"
-							modelAttribute="payment">
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="input_supp_name">Category Name</label>
-									<form:input type="text" class="form-control"
-										path="other_income_expense_category"
-										placeholder="Enter Category"></form:input>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="input_amt">Total Amount</label>
-								<form:input type="text" class="form-control"
-									path="other_income_expense_amount"
-									placeholder="Enter the amount here"></form:input>
-							</div>
+	<!-- forms starts -->
 
-							<div class="form-group">
-								<label for="input_amt">Paid Amount</label>
-								<form:input type="text" class="form-control"
-									path="other_income_expense_recieved"
-									placeholder="Enter the amount here"></form:input>
-							</div>
-							
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="input_supp_name">Description</label>
-									<form:input type="text" class="form-control"
-										path="other_income_expense_description"
-										placeholder="Enter description"></form:input>
-								</div>
-							</div>
-
-							<div class="form-row">
-
-								<label for="input_amt">Payment State</label>
-								<form:input type="text" class="form-control"
-									path="other_income_expense_paymentstate"
-									placeholder="Enter the amount here"></form:input>
-
-								<div>
-									<div class="form-group">
-										<!-- Date input -->
-										<label class="control-label" for="date">Date(DD/MM/YYY)</label>
-										<form:input class="form-control" id="date" name="date"
-											path="other_income_expense_date" placeholder="DD/MM/YYY"
-											type="text" />
-									</div>
-								</div>
-							</div>
-
-							<button type="submit" class="btn btn-success" name="add_payment">Add
-								Expense</button>
-							<button type="reset" class="btn btn-danger">Reset</button>
-						</form:form>
-					</div>
-				</div>
+	<div class="col-md-12">
+		<div class="card mb-3">
+			<div class="card-header" style="color: #003399">
+				<h5>
+					<span class="fa fa-pencil"></span> Add Other Expense Details
+				</h5>
 			</div>
+			<div class="card-body">
 
-			<!-- forms ends-->
+				<form:form method="post" action="AddExpenses_POST"
+					modelAttribute="payment">
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="input_supp_name">Category Name</label>							
+							<form:select id="inputState" class="form-control"
+								path="other_income_expense_category" required="true">
+								<form:option value="Water Bill">Water Bill</form:option>
+								<form:option value="Electricity Bill">Electricity Bill</form:option>
+								<form:option value="Telephone Bill">Telephone Bill</form:option>
+								<form:option value="Income tax">Income tax </form:option>
+								<form:option value="Other">Other </form:option>
+							</form:select>
+						</div>
 
-			<!-- data table end -->
+					</div>
+					<div class="form-group">
+						<label for="input_amt">Total Amount</label>
+						<form:input type="text" class="form-control"
+							path="other_income_expense_amount"
+							placeholder="Enter the amount here" required="required"></form:input>
+					</div>
+
+					<div class="form-group">
+						<label for="input_amt">Paid Amount</label>
+						<form:input type="text" class="form-control"
+							path="other_income_expense_recieved"
+							placeholder="Enter the amount here" required="required"></form:input>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="input_supp_name">Description</label>
+							<form:input type="text" class="form-control"
+								path="other_income_expense_description"
+								placeholder="Enter description" required="required"></form:input>
+						</div>
+					</div>
+
+					<fieldset class="form-group">
+						<div class="row">
+							<div class="form-group col-md-4">
+
+								<label for="inputState">Select Payment Satus</label>
+								<form:select id="inputState" class="form-control"
+									path="other_income_expense_paymentstate" required="required">
+
+									<form:option value="Paid">Paid</form:option>
+									<form:option value="None">Not paid</form:option>
+								</form:select>
+							</div>
+						</div>
+					</fieldset>
+
+					<div class="form-row">
+
+						<div>
+							<div class="form-group">
+								<!-- Date input -->
+								<label class="control-label" for="date">Date(DD/MM/YYY)</label>
+								<form:input class="form-control" id="date" name="date"
+									path="other_income_expense_date" placeholder="DD/MM/YYY"
+									type="text" required="required" />
+							</div>
+						</div>
+					</div>
+
+					<button type="submit" class="btn btn-success" name="add_payment">Add
+						Expense</button>
+					<button type="reset" class="btn btn-danger">Reset</button>
+				</form:form>
+			</div>
 		</div>
+	</div>
 
-		<!-- start icons -->
+	<!-- forms ends-->
+
+	<!-- data table end -->
+	</div>
+
+	<!-- start icons -->
 	</div>
 	</div>
 	<!-- Bootstrap tooltips -->

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -60,16 +62,18 @@
 
 	<!-- start of the the navigation header-->
 
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp"%>
 	<!-- end of the navigation header-->
 
 	<!-- side bar starts -->
 
 	<!-- only visibale in 10'0 inch or above screens-->
-	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp"%>
 
 	<!--side bar end-->
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp" %>
+	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp"%>
 	<!-- topic bar starts-->
 
 	<ol class="breadcrumb" style="margin-top: 10px; margin-bottom: 10px">
@@ -111,22 +115,29 @@
 							<th>Year</th>
 							<th>Month</th>
 							<th>Total Salary</th>
-							<th>Payment State</th>
+							<th>Salary Payment State</th>
+							<th>Salary Payment Date</th>
 							<th>Edit</th>
 
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>2018</td>
-							<td>July</td>
+					<c:forEach var="salarylist" items="${salarylist}"
+							varStatus="status">
+							<tr>
 
-							<td>25k</td>
-							<td>Paid</td>
-							<th><button type="button" class="btn btn-warning"
-									data-toggle="modal" data-target="#price_popup">Edit</button></th>
+								<td>${salarylist.getEmp_month_sal_year()}</td>
+								<td>${salarylist.getEmp_month_sal_month()}</td>
+								<td>${salarylist.getEmp_month_sal_amount()}</td>
+								<td>${salarylist.getEmp_month_sal_status()}</td>
+								<td>${salarylist.getEmp_month_sal_date()}</td>
+								<td><a
+									href="<c:url value='/Edit_Salary_Finace_GET?id=${salarylist.getEmp_month_sal_ID()}' />">EDIT</a></td>
 
-						</tr>
+								
+							</tr>
+						</c:forEach>
+						
 					</tbody>
 					<tfoot>
 						<tr>
@@ -134,6 +145,7 @@
 							<th>Month</th>
 							<th>Total Salary</th>
 							<th>Payment State</th>
+							<th>Salary Payment Date</th>
 							<th>Edit</th>
 
 						</tr>
@@ -146,46 +158,7 @@
 	<!-- Button to Open the pop up -->
 
 
-	<!-- The Modal -->
-	<div class="modal fade" id="price_popup">
-		<div class="modal-dialog">
-			<div class="modal-content">
-
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title">Update Payment Status</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-
-				<!-- Modal body -->
-				<div class="modal-body">
-					
-					
-							<label>Update Payment Status</label>
-							<div class="col-sm-10">
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="gridRadios"
-										id="gridRadios1" value="option1" checked> <label
-										class="form-check-label" for="gridRadios1"> UnPaid	</label>
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="gridRadios"
-										id="gridRadios2" value="option2"> <label
-										class="form-check-label" for="gridRadios2"> Paid </label>
-								</div>
-								
-							</div>
-						</div>
-					
-
-					<!-- Modal footer -->
-					<div class="modal-footer">
-						<button type="button" class="btn btn-success" data-dismiss="modal">Update</button>
-					</div>
-
-				</div>
-			</div>
-		</div>
+	
 
 
 	</div>

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -53,107 +55,131 @@
 
 	<!-- start of the the navigation header-->
 
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp"%>
 	<!-- end of the navigation header-->
 
 	<!-- side bar starts -->
 
 	<!-- only visibale in 10'0 inch or above screens-->
-	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp"%>
 
 	<!--side bar end-->
 
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp" %>
-			<!--top 4 cards end-->
+	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp"%>
+	<!--top 4 cards end-->
 
 
 
-			<!-- topic bar end-->
+	<!-- topic bar end-->
 
 
-			<!-- start icons -->
+	<!-- start icons -->
 
-			<!-- cards starts-->
-			<!-- data table start -->
+	<!-- cards starts-->
+	<!-- data table start -->
 
-			<!-- forms starts -->
+	<!-- forms starts -->
 
-			<div class="col-md-12">
-				<div class="card mb-3">
-					<div class="card-header" style="color: #003399">
-						<h5>
-							<span class="fa fa-pencil"></span> Update Transport Finance
-						</h5>
-					</div>
-					<div class="card-body">
-
-					<form:form method="post" action="UpdateTransport_Finance_POST"
-							modelAttribute="transportfinance">
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="input_supp_name">Category Name</label>
-									<form:input type="text" class="form-control"
-										path="transportpayment_category"
-										></form:input>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="input_amt">Total Amount</label>
-								<form:input type="text" class="form-control"
-									path="transportpayment_amount"
-									></form:input>
-							</div>
-							
-							<div class="form-group">
-								<label for="input_amt">Vehicle Number</label>
-								<form:input type="text" class="form-control"
-									path="transportpayment_vehicleID"
-									></form:input>
-							</div>
-
-
-														
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="input_supp_name">Description</label>
-									<form:input type="text" class="form-control"
-										path="transportpayment_description"
-										></form:input>
-								</div>
-							</div>
-
-							<div class="form-row">
-
-								<label for="input_amt">Payment State</label>
-								<form:input type="text" class="form-control"
-									path="transportpayment_state"
-									></form:input>
-
-								<div>
-									<div class="form-group">
-										<!-- Date input -->
-										<label class="control-label" for="date">Date(DD/MM/YYY)</label>
-										<form:input class="form-control" id="date" name="date"
-											path="transportpayment_date" placeholder="DD/MM/YYY"
-											type="text" />
-												<form:input  type="hidden" path="transportpayment_ID"/>	
-									</div>
-								</div>
-							</div>
-
-							<button type="submit" class="btn btn-success" name="add_payment">Update Transport Finance</button>
-							<button type="reset" class="btn btn-danger">Reset</button>
-						</form:form>
-					</div>
-				</div>
+	<div class="col-md-12">
+		<div class="card mb-3">
+			<div class="card-header" style="color: #003399">
+				<h5>
+					<span class="fa fa-pencil"></span> Update Transport Finance
+				</h5>
 			</div>
+			<div class="card-body">
 
-			<!-- forms ends-->
+				<form:form method="post" action="UpdateTransport_Finance_POST"
+					modelAttribute="transportfinance">
+					<div class="form-row">
+						<fieldset class="form-group">
+							<div class="row">
+								<div class="form-group col-md-4">
 
-			<!-- data table end -->
+									<label for="inputState">Select Category</label>
+									<form:select id="inputState" class="form-control"
+										path="transportpayment_category" required="true">
+										<form:option value="Fuel payment">Fuel payment</form:option>
+										<form:option value="Repair payment">Repair payment</form:option>
+										<form:option value="Other">Other</form:option>
+									</form:select>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+					<div class="form-group">
+						<label for="input_amt">Total Amount</label>
+						<form:input type="text" class="form-control"
+							path="transportpayment_amount"></form:input>
+					</div>
+
+					<div class="form-group">
+						<label for="input_amt">Vehicle Number</label>
+						<form:select id="inputState" class="form-control"
+							path="transportpayment_vehicleID" required="true">
+							<c:forEach var="vehicleList" items="${vehicleList}"
+								varStatus="status">
+								<form:option value="${vehicleList.getVehicle_number()}">${vehicleList.getVehicle_number()}</form:option>
+							</c:forEach>
+						</form:select>
+					</div>
+
+
+
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="input_supp_name">Description</label>
+							<form:input type="text" class="form-control"
+								path="transportpayment_description"></form:input>
+						</div>
+					</div>
+
+					<fieldset class="form-group">
+						<div class="row">
+							<div class="form-group col-md-4">
+
+								<label for="inputState">Select Payment Status</label>
+								<form:select id="inputState" class="form-control"
+									path="transportpayment_state" required="required">
+									<form:option value="Full">Full Payment</form:option>
+									<form:option value="Advanced">Advanced Payment</form:option>
+									<form:option value="None">No Payment</form:option>
+								</form:select>
+							</div>
+						</div>
+					</fieldset>
+
+					<div class="form-row">
+
+						<div>
+							<div class="form-group">
+								<!-- Date input -->
+								<label class="control-label" for="date">Date(DD/MM/YYY)</label>
+								<form:input class="form-control" id="date" name="date"
+									path="transportpayment_date" placeholder="DD/MM/YYY"
+									type="text" />
+								<form:input type="hidden" path="transportpayment_ID" />
+							</div>
+						</div>
+					</div>
+
+					<button type="submit" class="btn btn-success" name="add_payment">Update
+						Transport Finance</button>
+					<button type="reset" class="btn btn-danger">Reset</button>
+				</form:form>
+			</div>
 		</div>
+	</div>
 
-		<!-- start icons -->
+	<!-- forms ends-->
+
+	<!-- data table end -->
+	</div>
+
+	<!-- start icons -->
 	</div>
 	</div>
 	<!-- Bootstrap tooltips -->

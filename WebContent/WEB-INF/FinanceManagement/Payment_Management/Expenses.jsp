@@ -47,6 +47,7 @@
 <link rel="stylesheet" href="Styles/css/dataTables.bootstrap4.min.css">
 
 <title>Sumith Tyres pvt Ltd</title>
+
 </head>
 
 <body>
@@ -101,7 +102,7 @@
 						$('#example').DataTable();
 					});
 				</script>
-
+				
 				<table id="example" class="table table-striped table-bordered"
 					style="width: 100%">
 
@@ -128,11 +129,14 @@
 								<td>${paymentList.getOther_income_expense_recieved()}</td>
 								<td>${paymentList.getOther_income_expense_description()}</td>
 								<td>${paymentList.getOther_income_expense_date()}</td>
-								
+
 								<td>${paymentList.getOther_income_expense_paymentstate()}</td>
-								<td><a href="<c:url value='/UpdateExpenses_Get?id=${paymentList.getOther_income_expense_ID()}' />" >EDIT</a></td>
-								
-								<td><a href="<c:url value='/DeleteExpenses?id=${paymentList.getOther_income_expense_ID()}' />" >DELETE</a></td>
+								<td><a
+									href="<c:url value='/UpdateExpenses_Get?id=${paymentList.getOther_income_expense_ID()}' />">EDIT</a></td>
+
+								<td><a
+									href="<c:url value='/DeleteExpenses?id=${paymentList.getOther_income_expense_ID()}' />"
+									onclick="return confirm('Do you want to proceed?');">DELETE</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

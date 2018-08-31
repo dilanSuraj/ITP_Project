@@ -271,45 +271,58 @@
 
 						<form:form method="post" action="AddIncome_post"
 							modelAttribute="payment">
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="input_supp_name">Category Name</label>
-									<form:input type="text" class="form-control"
-										path="other_income_expense_category"
-										placeholder="Enter Category"></form:input>
+							<div class="form-group col-md-4">
+								<div class="row">
+									<label for="inputState">Select Income Category</label>
+									<form:select id="inputState" class="form-control"
+										path="other_income_expense_category" required="true">										
+										<form:option value="Sold Property">Sold property</form:option>
+										<form:option value="Other">Other Income</form:option>
+									</form:select>
 								</div>
 							</div>
-							
-							
+
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="input_supp_name">Description</label>
 									<form:input type="text" class="form-control"
 										path="other_income_expense_description"
-										placeholder="Enter description"></form:input>
+										placeholder="Enter description" required="true"></form:input>
 								</div>
 							</div>
-							
+
 							<div class="form-group">
 								<label for="input_amt">Total Amount</label>
 								<form:input type="text" class="form-control"
 									path="other_income_expense_amount"
-									placeholder="Enter the amount here"></form:input>
+									placeholder="Enter the amount here" required="true"></form:input>
 							</div>
 
 							<div class="form-group">
-								<label for="input_amt">Recieved Amount</label>
+								<label for="input_amt">Received Amount</label>
 								<form:input type="text" class="form-control"
 									path="other_income_expense_recieved"
-									placeholder="Enter the amount here"></form:input>
+									placeholder="Enter the amount here" required="true"></form:input>
 							</div>
+
+							<fieldset class="form-group">
+								<div class="row">
+									<div class="form-group col-md-4">
+
+										<label for="inputState">Select Income Status</label>
+										<form:select id="inputState" class="form-control"
+											path="other_income_expense_paymentstate" required="true">
+											
+											<form:option value="Full">Full Payment Received</form:option>
+											<form:option value="Advanced">Advanced Payment Received</form:option>
+											<form:option value="None">No Payment Received</form:option>
+										</form:select>
+									</div>
+								</div>
+							</fieldset>
 
 							<div class="form-row">
 
-								<label for="input_amt">Payment State</label>
-								<form:input type="text" class="form-control"
-									path="other_income_expense_paymentstate"
-									placeholder="Enter the amount here"></form:input>
 
 								<div>
 									<div class="form-group">
@@ -317,18 +330,20 @@
 										<label class="control-label" for="date">Date(DD/MM/YYY)</label>
 										<form:input class="form-control" id="date" name="date"
 											path="other_income_expense_date" placeholder="DD/MM/YYY"
-											type="text" />
+											type="text" required="true" />
 									</div>
 								</div>
 							</div>
 
 							<button type="submit" class="btn btn-success" name="add_payment">Add
 								Income</button>
-							<button type="reset" class="btn btn-danger">Reset</button>
+							<button type="reset" class="btn btn-danger" >Reset</button>
+							
 						</form:form>
 					</div>
 				</div>
 			</div>
+
 
 			<!-- forms ends-->
 
@@ -343,7 +358,6 @@
 
 			<script type="text/javascript" src="Styles/js/mdb.min.js"></script>
 			<script src="Styles/js/bootstrap-datepicker.js"></script>
-			
 </body>
 </html>
 

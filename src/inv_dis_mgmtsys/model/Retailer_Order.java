@@ -18,6 +18,42 @@ public class Retailer_Order {
 		
 	@Column
 	private int retailer_ID;
+	
+	@Column
+	private int retailerorder_assigned_manager;
+	
+	@Column
+	private String retailer_orderstatus;
+	
+	@Column
+	private double oder_total;
+	
+	
+	
+
+	public int getRetailerorder_assigned_manager() {
+		return retailerorder_assigned_manager;
+	}
+
+	public void setRetailerorder_assigned_manager(int retailerorder_assigned_manager) {
+		this.retailerorder_assigned_manager = retailerorder_assigned_manager;
+	}
+
+	public String getRetailer_orderstatus() {
+		return retailer_orderstatus;
+	}
+
+	public void setRetailer_orderstatus(String retailer_orderstatus) {
+		this.retailer_orderstatus = retailer_orderstatus;
+	}
+
+	public double getOder_total() {
+		return oder_total;
+	}
+
+	public void setOder_total(double oder_total) {
+		this.oder_total = oder_total;
+	}
 
 	public int getRetailer_OrderID() {
 		return retailer_OrderID;
@@ -34,6 +70,8 @@ public class Retailer_Order {
 	public void setRetailer_ID(int retailer_ID) {
 		this.retailer_ID = retailer_ID;
 	}
+	
+	
 	
 	
 

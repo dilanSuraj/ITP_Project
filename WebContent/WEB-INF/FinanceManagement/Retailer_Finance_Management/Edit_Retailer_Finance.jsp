@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -53,99 +53,106 @@
 
 	<!-- start of the the navigation header-->
 
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp"%>
 	<!-- end of the navigation header-->
 
 	<!-- side bar starts -->
 
 	<!-- only visibale in 10'0 inch or above screens-->
-	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp"%>
 
 
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp" %>
+	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp"%>
 
 
 
 
-			<!-- cards starts-->
-			<!-- data table start -->
+	<!-- cards starts-->
+	<!-- data table start -->
 
-			<!-- forms starts -->
+	<!-- forms starts -->
 
-			<div class="col-md-12">
-				<div class="card mb-3">
-					<div class="card-header" style="color: #003399">
-						<h5>
-							<span class="fa fa-pencil"></span> Update Retailer Payment
-						</h5>
-					</div>
-					<div class="card-body">
-
-						<form:form method="post" action="Edit_Retailer_Finance_POST"
-							modelAttribute="retailerfinance">
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="input_supp_order">Retailer Order Details</label> <form:input type="text" class="form-control"
-										path="retailer_orderID"
-										></form:input>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="input_amt">Amount</label> <form:input type="text" class="form-control"
-										path="amount"
-										></form:input>
-							</div>
-							<div class="form-row">
-
-								<div class="form-group col-md-6">
-									<div class="container">
-										<label for="input_date">Order Date</label>
-										<div class="hero-unit">
-											<form:input type="text" class="form-control"
-										path="payment_date"
-										></form:input>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<div class="form-row">
-
-								<div class="form-group col-md-6">
-									<div class="container">
-										<label for="input_date2">Deadline Date</label>
-										<div class="hero-unit">
-											<form:input type="text" class="form-control"
-										path="deadline_payment_date"
-										></form:input>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="input_pay_state">Payment State</label> <form:input type="text" class="form-control"
-										path="paymentState"
-										></form:input>
-										<form:input  type="hidden" path="retailer_finance_id"/>	
-								</div>
-
-							</div>
-
-							<button type="submit" class="btn btn-primary" name="add_payment">Update Retailer Payment</button>
-                            <button type="reset" class="btn btn-primary">Reset</button>  
-						</form:form>
-					</div>
-				</div>
+	<div class="col-md-12">
+		<div class="card mb-3">
+			<div class="card-header" style="color: #003399">
+				<h5>
+					<span class="fa fa-pencil"></span> Update Retailer Payment
+				</h5>
 			</div>
+			<div class="card-body">
 
-			<!-- forms ends-->
+				<form:form method="post" action="Edit_Retailer_Finance_POST"
+					modelAttribute="retailerfinance">
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="input_supp_order">Retailer Order Details</label>
+							<form:input type="text" class="form-control"
+								path="retailer_orderID"></form:input>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="input_amt">Amount</label>
+						<form:input type="text" class="form-control" path="amount"></form:input>
+					</div>
+					<div class="form-row">
 
-			<!-- data table end -->
+						<div class="form-group col-md-6">
+							<div class="container">
+								<label for="input_date">Order Date</label>
+								<div class="hero-unit">
+									<form:input type="text" class="form-control"
+										path="payment_date"></form:input>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row">
+
+						<div class="form-group col-md-6">
+							<div class="container">
+								<label for="input_date2">Deadline Date</label>
+								<div class="hero-unit">
+									<form:input type="text" class="form-control"
+										path="deadline_payment_date"></form:input>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<fieldset class="form-group">
+						<div class="row">
+							<div class="form-group col-md-4">
+
+								<label for="inputState">Select Payment Type</label>
+								<form:select id="inputState" class="form-control"
+									path="paymentState">
+									<option selected>Choose...</option>
+									<form:option value="Full">Full Payment</form:option>
+									<form:option value="Advanced">Advanced Payment</form:option>
+								</form:select>
+							</div>
+						</div>
+					</fieldset>
+
+					<form:input type="hidden" path="retailer_finance_id" />
+
+					<button type="submit" class="btn btn-primary" name="add_payment">Update
+						Retailer Payment</button>
+					<button type="reset" class="btn btn-primary">Reset</button>
+				</form:form>
+			</div>
 		</div>
+	</div>
 
-		<!-- start icons -->
+	<!-- forms ends-->
+
+	<!-- data table end -->
+	</div>
+
+	<!-- start icons -->
 	</div>
 	</div>
 	<!-- Bootstrap tooltips -->

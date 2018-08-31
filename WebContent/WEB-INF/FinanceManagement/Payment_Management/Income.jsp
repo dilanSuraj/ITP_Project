@@ -136,7 +136,7 @@
 								<td>${paymentList.getOther_income_expense_paymentstate()}</td>
 								<td><a href="<c:url value='/UpdateIncome_Get?id=${paymentList.getOther_income_expense_ID()}' />" >EDIT</a></td>
 								
-								<td><a href="<c:url value='/DeleteIncome?id=${paymentList.getOther_income_expense_ID()}' />" >DELETE</a></td>
+								<td><a href="<c:url value='/DeleteIncome?id=${paymentList.getOther_income_expense_ID()}' />" onclick="return confirm('Do you want to proceed?');">DELETE</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

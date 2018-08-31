@@ -107,8 +107,9 @@
 					<thead>
 						<tr>
 							
-							<th>Retailer Order Details</th>
+							<th>Retailer Order ID</th>
 							<th>Total Amount</th>
+							<th>Paid Amount</th>
 							<th>Ordered Date</th>
 							<th>Deadline Date</th>
 							<th>Payment State</th>
@@ -123,6 +124,7 @@
 							<tr>
 
 								<td>${paymentList.getRetailer_orderID()}</td>
+								<td>${paymentList.getTotalAmount()}</td>
 								<td>${paymentList.getAmount()}</td>
 								<td>${paymentList.getPayment_date()}</td>
 								<td>${paymentList.getDeadline_payment_date()}</td>
@@ -131,15 +133,16 @@
 									href="<c:url value='/Edit_Retailer_Finance?id=${paymentList.getRetailer_finance_id()}' />">EDIT</a></td>
 
 								<td><a
-									href="<c:url value='/Delete_Retailer_Finance?id=${paymentList.getRetailer_finance_id()}' />">DELETE</a></td>
+									href="<c:url value='/Delete_Retailer_Finance?id=${paymentList.getRetailer_finance_id()}' />" onclick="return confirm('Do you want to proceed?!');">DELETE</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 					<tfoot>
 						<tr>
 							
-							<th>Retailer Order Details</th>
+							<th>Retailer Order ID</th>
 							<th>Total Amount</th>
+							<th>Paid Amount</th>
 							<th>Ordered Date</th>
 							<th>Deadline Date</th>
 							<th>Payment State</th>

@@ -132,7 +132,7 @@
 									href="<c:url value='/Edit_Supplier_Finance?id=${paymentList.getSupplier_finance_id()}' />">EDIT</a></td>
 
 								<td><a
-									href="<c:url value='/Delete_Supplier_Finance?id=${paymentList.getSupplier_finance_id()}' />">DELETE</a></td>
+									href="<c:url value='/Delete_Supplier_Finance?id=${paymentList.getSupplier_finance_id()}' />" onclick="return confirm('Do you want to proceed?');">DELETE</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

@@ -12,7 +12,7 @@
 <!-- Bootstrap CSS -->
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <!-- Bootstrap core CSS -->
 <link href="Styles/css/bootstrap.min.css" rel="stylesheet">
 
@@ -73,10 +73,11 @@
                      google.charts.load('current', {'packages':['corechart']});
                      google.charts.setOnLoadCallback(drawChart);
 
+                    
                      function drawChart() {
                          var data = google.visualization.arrayToDataTable([
-                             ['Year', 'Sales', 'Expenses'],
-                             ['2013',  1000,      400],
+                             ['Year', 'income', 'Expenses'],
+                             ['2015',  1000,      400],
                              ['2014',  1170,      460],
                              ['2015',  660,       1120],
                              ['2016',  1030,      540]
@@ -91,6 +92,8 @@
                          var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
                          chart.draw(data, options);
                      }
+
+                   
                  </script>
 
              </div>

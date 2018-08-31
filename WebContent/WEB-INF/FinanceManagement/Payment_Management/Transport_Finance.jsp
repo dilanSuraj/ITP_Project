@@ -133,7 +133,7 @@
 								<td>${paymentList.getTransportpayment_state()}</td>
 								<td><a href="<c:url value='/UpdateTransport_Finance?id=${paymentList.getTransportpayment_ID()}' />" >EDIT</a></td>
 								
-								<td><a href="<c:url value='/DeleteTransport_Finance?id=${paymentList.getTransportpayment_ID()}' />" >DELETE</a></td>
+								<td><a href="<c:url value='/DeleteTransport_Finance?id=${paymentList.getTransportpayment_ID()}' />" onclick="return confirm('Do you want to proceed?');">DELETE</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

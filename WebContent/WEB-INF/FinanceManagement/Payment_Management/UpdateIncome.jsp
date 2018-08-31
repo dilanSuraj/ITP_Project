@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -53,102 +53,126 @@
 
 	<!-- start of the the navigation header-->
 
-<!-- start of the the navigation header-->
+	<!-- start of the the navigation header-->
 
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp"%>
 	<!-- end of the navigation header-->
 
 	<!-- side bar starts -->
 
 	<!-- only visibale in 10'0 inch or above screens-->
-	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp"%>
 
 	<!--side bar end-->
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp" %>
+	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp"%>
 
-			<!-- topic bar starts-->
-
-
-			<!-- topic bar end-->
+	<!-- topic bar starts-->
 
 
-			<!-- start icons -->
+	<!-- topic bar end-->
 
-			<!-- cards starts-->
-			<!-- data table start -->
 
-			<!-- forms starts -->
+	<!-- start icons -->
 
-			<div class="col-md-12">
-				<div class="card mb-3">
-					<div class="card-header" style="color: #003399">
-						<h5>
-							<span class="fa fa-pencil"></span> Update Income
-						</h5>
+	<!-- cards starts-->
+	<!-- data table start -->
+
+	<!-- forms starts -->
+
+	<div class="col-md-12">
+		<div class="card mb-3">
+			<div class="card-header" style="color: #003399">
+				<h5>
+					<span class="fa fa-pencil"></span> Update Income
+				</h5>
+			</div>
+			<div class="card-body">
+
+				<form:form method="post" action="UpdateIncome_Post"
+					modelAttribute="income">
+
+					<div class="form-row">
+
+						<fieldset class="form-group">
+							<div class="row">
+									<label for="inputState">Select Income Category</label>
+									<form:select id="inputState" class="form-control"
+										path="other_income_expense_category" required="true">										
+										<form:option value="Sold Property">Sold property</form:option>
+										<form:option value="Other">Other Income</form:option>
+									</form:select>
+								</div>
+						</fieldset>
+
 					</div>
-					<div class="card-body">
+					<div class="form-group">
+						<label for="input_amt">Total Amount</label>
+						<form:input type="text" class="form-control"
+							path="other_income_expense_amount"></form:input>
+					</div>
 
-						<form:form method="post" action="UpdateIncome_Post" modelAttribute="income">
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="input_supp_name">Category Name</label> <form:input
-										type="text" class="form-control" path="other_income_expense_category"
-										></form:input>
-								</div>
-								
-							</div>
-							<div class="form-group">
-								<label for="input_amt">Total Amount</label> <form:input type="text"
-									class="form-control" path="other_income_expense_amount"
-									></form:input>
-							</div>
-							
-							
-							<div class="form-group">
-								<label for="input_amt">Recieved Amount</label> <form:input type="text"
-									class="form-control" path="other_income_expense_recieved"
-									></form:input>
-							</div>
-							
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="input_supp_name">Description</label> <form:input
-										type="text" class="form-control" path="other_income_expense_description"
-										></form:input>
-								</div>
-								
-							</div>
-							
-							<div class="form-row">
-                            
-								<label for="input_amt">Payment State</label> <form:input type="text"
-									class="form-control" path="other_income_expense_paymentstate"
-									></form:input>
-							         
-								<div >
 
-								<div class="container">
-										<label for="input_date">Date(DD/MM/YYYY)</label>
-										<div class="hero-unit">
-										    <form:input  path="other_income_expense_date"/>
-										    <form:input  type="hidden" path="other_income_expense_ID"/>								    
-										</div>
+					<div class="form-group">
+						<label for="input_amt">Recieved Amount</label>
+						<form:input type="text" class="form-control"
+							path="other_income_expense_recieved"></form:input>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="input_supp_name">Description</label>
+							<form:input type="text" class="form-control"
+								path="other_income_expense_description"></form:input>
+						</div>
+
+					</div>
+
+					<fieldset class="form-group">
+								<div class="row">
+									<div class="form-group col-md-4">
+
+										<label for="inputState">Select Income Status</label>
+										<form:select id="inputState" class="form-control"
+											path="other_income_expense_paymentstate" required="true">
+											
+											<form:option value="Full">Full Payment Received</form:option>
+											<form:option value="Advanced">Advanced Payment Received</form:option>
+											<form:option value="None">No Payment Received</form:option>
+										</form:select>
 									</div>
 								</div>
+							</fieldset>
+					<div class="form-row">
+
+
+
+						<div>
+
+							<div class="container">
+								<label for="input_date">Date(DD/MM/YYYY)</label>
+								<div class="hero-unit">
+									<form:input path="other_income_expense_date" />
+									<form:input type="hidden" path="other_income_expense_ID" />
+								</div>
 							</div>
-							<button type="submit" class="btn btn-scucess" name="update_payment">Update Income</button>
-                            <button type="reset"class="btn btn-danger">Reset</button>  
-						</form:form>
+						</div>
 					</div>
-				</div>
+					<button type="submit" class="btn btn-scucess" name="update_payment">Update
+						Income</button>
+					<button type="reset" class="btn btn-danger">Reset</button>
+				</form:form>
 			</div>
-
-			<!-- forms ends-->
-
-			<!-- data table end -->
 		</div>
+	</div>
 
-		<!-- start icons -->
+	<!-- forms ends-->
+
+	<!-- data table end -->
+	</div>
+
+	<!-- start icons -->
 	</div>
 	</div>
 	<!-- Bootstrap tooltips -->
@@ -160,7 +184,7 @@
 
 	<script type="text/javascript" src="Styles/js/mdb.min.js"></script>
 	<script src="Styles/js/bootstrap-datepicker.js"></script>
-	
+
 
 
 </body>

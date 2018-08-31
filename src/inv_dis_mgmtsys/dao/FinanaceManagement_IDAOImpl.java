@@ -1,10 +1,19 @@
 package inv_dis_mgmtsys.dao;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.ResultSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import org.hibernate.Criteria;
@@ -16,12 +25,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import inv_dis_mgmtsys.model.DataPoint;
+import inv_dis_mgmtsys.model.Emp_Month_Salary;
 import inv_dis_mgmtsys.model.Finance;
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.Payment;
+import inv_dis_mgmtsys.model.Retailer;
+import inv_dis_mgmtsys.model.Retailer_Blacklist;
 import inv_dis_mgmtsys.model.Retailer_Finance;
+import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.Supplier_Finance;
 import inv_dis_mgmtsys.model.TransportFinance;
+import inv_dis_mgmtsys.model.Vehicle;
 import inv_dis_mgmtsys.services.FinanaceManagement_IServicesImpl;
 
 @Repository
@@ -232,164 +246,126 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 
 	}
 
-	@SuppressWarnings("null")
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<DataPoint> getDataPoints(int initial_year) {
-		List<DataPoint> dataPoints = null;
+	public List<Vehicle> getAllVehicleDetails() {
 
-		double income = 0;
-		double income_Payment = 0;
-		double expense_Payment = 0;
-		int year = initial_year;
+		return sessionFactory.getCurrentSession().createQuery("From Vehicle").list();
+	}
 
-		Calendar cal = Calendar.getInstance();
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Retailer_Order> getAllRetailerOrderDetails() {
 
-		DataPoint[] paymentPoint = new DataPoint[5];
+		return sessionFactory.getCurrentSession().createQuery("From Retailer_Order").list();
+	}
 
-		paymentPoint[0] = new DataPoint();
-		paymentPoint[0].setYear(initial_year);
+	@Override
+	public Retailer_Order getSingleRetailerOrderDetails(int retailerOrderID) {
 
-		paymentPoint[1] = new DataPoint();
-		paymentPoint[1].setYear(initial_year - 1);
+		return (Retailer_Order) sessionFactory.getCurrentSession().get(Retailer_Order.class, retailerOrderID);
+	}
 
-		paymentPoint[2] = new DataPoint();
-		paymentPoint[2].setYear(initial_year - 2);
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Emp_Month_Salary> getAllEmpMonthSalary() {
 
-		paymentPoint[3] = new DataPoint();
-		paymentPoint[3].setYear(initial_year - 3);
+		return sessionFactory.getCurrentSession().createQuery("From Emp_Month_Salary").list();
+	}
 
-		paymentPoint[4] = new DataPoint();
-		paymentPoint[4].setYear(initial_year - 4);
+	@Override
+	public Emp_Month_Salary getSingleSalaryDetails(int emp_month_ID) {
+		return (Emp_Month_Salary) sessionFactory.getCurrentSession().get(Emp_Month_Salary.class, emp_month_ID);
+	}
 
-		List<Payment> paymentList = this.getfinancebyCategory("payment");
-				
-		List<Finance> list = this.getAllFinanceDetails("transportFinance");
-		
-		@SuppressWarnings("unchecked")
-		List<TransportFinance> transportList= (List<TransportFinance>)(List<?>) list;
-		
-		@SuppressWarnings("unchecked")
-		List<Supplier_Finance> supplierList= (List<Supplier_Finance>)(List<?>) list;
-		
-		@SuppressWarnings("unchecked")
-		List<Re_Finance> supplierList= (List<Supplier_Finance>)(List<?>) list;
+	@Override
+	public void editMonthSalaryDetails(Emp_Month_Salary emp_Month_Salary) {
 
-		for (Payment payment : paymentList) {
+		String hql = "update Emp_Month_Salary empMonthSal set empMonthSal.emp_month_sal_status=?  where empMonthSal.emp_month_sal_ID=?";
 
-			cal.setTime(payment.getOther_income_expense_date());
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
-			double paymentAmt = payment.getOther_income_expense_amount();
+		query.setParameter(0, emp_Month_Salary.getEmp_month_sal_status());
+		query.setParameter(1, emp_Month_Salary.getEmp_month_sal_ID());
 
-			year = cal.get(Calendar.YEAR);
+		int result = query.executeUpdate();
 
-			if (payment.getOther_income_expense_type().equals("income")) {
+	}
 
-				if (year == initial_year) {
-					income_Payment += paymentAmt;
+	@Override
+	public List<Retailer_Blacklist> getBlacklistedRetailerFinanceList() {
 
-					paymentPoint[0].setIncome(income_Payment);
-				}
+		List<Finance> retailerfinanceList = this.getAllFinanceDetails("retailerFinance");
 
-				if (year == initial_year - 1) {
-					income_Payment += paymentAmt;
-
-					paymentPoint[1].setIncome(income_Payment);
-				}
-
-				if (year == initial_year - 2) {
-					income_Payment += paymentAmt;
-
-					paymentPoint[3].setIncome(income_Payment);
-				}
-				if (year == initial_year - 3) {
-					income_Payment += paymentAmt;
-
-					paymentPoint[3].setIncome(income_Payment);
-				}
-				if (year == initial_year - 4) {
-					income_Payment += paymentAmt;
-
-					paymentPoint[4].setIncome(income_Payment);
-				}
-
-			} else if (payment.getOther_income_expense_type().equals("expense")) {
-
-				if (year == initial_year) {
-					expense_Payment += paymentAmt;
-
-					paymentPoint[0].setExpense(expense_Payment);
-				}
-
-				if (year == initial_year - 1) {
-					expense_Payment += paymentAmt;
-
-					paymentPoint[1].setExpense(expense_Payment);
-				}
-
-				if (year == initial_year - 2) {
-					expense_Payment += paymentAmt;
-
-					paymentPoint[3].setExpense(expense_Payment);
-				}
-				if (year == initial_year - 3) {
-					expense_Payment += paymentAmt;
-
-					paymentPoint[3].setExpense(expense_Payment);
-				}
-				if (year == initial_year - 4) {
-					expense_Payment += paymentAmt;
-
-					paymentPoint[4].setExpense(expense_Payment);
-				}
-
-			}
+		List<Retailer_Blacklist> blacklist = new ArrayList<>();
+		List<Retailer> retailerList = this.getAllRetailers();
+		for(Retailer retailer: retailerList) {
+			this.editBlacklistedRetailerStatus("No", retailer.getRetailer_ID());
 		}
+		for (Finance finance : retailerfinanceList) {
 
-		
-		for (TransportFinance finance : transportList) {
+			Retailer_Finance retailer_Finance = (Retailer_Finance) finance;
+			Date deadLineDate = retailer_Finance.getDeadline_payment_date();
 
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			LocalDate localDate = LocalDate.now();
 			
-			cal.setTime(finance.getTransportpayment_date());
 
-			double paymentAmt = finance.getTransportpayment_amount();
-		    year = cal.get(Calendar.YEAR);
-		    
-		    if (year == initial_year) {
-				expense_Payment += paymentAmt;
-
-				paymentPoint[0].setExpense(expense_Payment);
-			}
-
-			if (year == initial_year - 1) {
-				expense_Payment += paymentAmt;
-
-				paymentPoint[1].setExpense(expense_Payment);
-			}
-
-			if (year == initial_year - 2) {
-				expense_Payment += paymentAmt;
-
-				paymentPoint[3].setExpense(expense_Payment);
-			}
-			if (year == initial_year - 3) {
-				expense_Payment += paymentAmt;
-
-				paymentPoint[3].setExpense(expense_Payment);
-			}
-			if (year == initial_year - 4) {
-				expense_Payment += paymentAmt;
-
-				paymentPoint[4].setExpense(expense_Payment);
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date currentDate;
+			try {
+				currentDate = sdf.parse(dtf.format(localDate));
+				Retailer_Order retailerOrder = this.getSingleRetailerOrderDetails(retailer_Finance.getRetailer_orderID());
+				double amountToPay = retailerOrder.getOder_total() - retailer_Finance.getAmount();
+				System.out.println("************");
+				System.out.println("Amount to pay : "+amountToPay);
+				System.out.println("deadline : "+ deadLineDate);
+				System.out.println(currentDate.compareTo(deadLineDate) < 0);
+				if ((currentDate.compareTo(deadLineDate) > 0) &&(amountToPay > 0)) {
+					System.out.println("Inside");
+					
+					Retailer retailer = this.getRetailer(retailerOrder.getRetailer_ID());
+					
+					Retailer_Blacklist blacklistedRetailer = new Retailer_Blacklist();
+					blacklistedRetailer.setRetailer(retailer);
+					blacklistedRetailer.setRetailer_blacklist_amount(retailer_Finance.getAmount());
+					blacklistedRetailer.setRetailer_blacklist_deadlineDate(deadLineDate);
+					this.editBlacklistedRetailerStatus("Yes",retailerOrder.getRetailer_ID());
+                    blacklist.add(blacklistedRetailer);			
+				}
+				
+			} catch (ParseException e) {
+				
+				e.printStackTrace();
 			}
 
 		}
 
-		dataPoints.add(paymentPoint[0]);
-		dataPoints.add(paymentPoint[1]);
-		dataPoints.add(paymentPoint[2]);
-		dataPoints.add(paymentPoint[3]);
-		dataPoints.add(paymentPoint[4]);
-		return dataPoints;
+		return blacklist;
+	}
+
+	@Override
+	public void editBlacklistedRetailerStatus(String status,int retailerID) {
+	
+		String hql = "update Retailer retailer set retailer.retailer_blacklistStatus=?  where retailer.retailer_ID=?";
+		
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter(0, status);
+		query.setParameter(1, retailerID);
+		query.executeUpdate();
+
+	}
+
+	@Override
+	public Retailer getRetailer(int retailerID) {
+	
+		return (Retailer) sessionFactory.getCurrentSession().get(Retailer.class, retailerID);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Retailer> getAllRetailers() {
+		return sessionFactory.getCurrentSession().createQuery("From Retailer").list();
 	}
 
 }

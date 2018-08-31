@@ -47,5 +47,7 @@ public class DataPoint {
 	public void setY(int y){
 		this.y=y;
 	}
+	
+	
 
 }

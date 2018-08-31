@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -52,97 +55,92 @@
 
 	<!-- start of the the navigation header-->
 
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp"%>
 	<!-- end of the navigation header-->
 
 	<!-- side bar starts -->
 
 	<!-- only visibale in 10'0 inch or above screens-->
-	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp"%>
 
 	<!--side bar end-->
 
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp" %>
+	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp"%>
 
 
 
-			<!-- topic bar end-->
+	<!-- topic bar end-->
 
 
-			<!-- start icons -->
+	<!-- start icons -->
 
-			<!-- cards starts-->
-			<!-- data table start -->
+	<!-- cards starts-->
+	<!-- data table start -->
 
-			<div class="col-md-12">
+	<div class="col-md-12">
 
-				<div class="card mb-3">
-					<div class="card-header" style="color: #003399">
-						<h5>
-							<span class="fa fa-image"></span> Blacklisted retailer details
-						</h5>
+		<div class="card mb-3">
+			<div class="card-header" style="color: #003399">
+				<h5>
+					<span class="fa fa-image"></span> Blacklisted retailer details
+				</h5>
 
-					</div>
-					<a href="Add_Retailer_Blacklist">
-						<div class="pull-right"
-							style="padding-left: 77%; padding-top: 30px">
+			</div>
+			<a href="Add_Retailer_Blacklist">
+				<div class="pull-right" style="padding-left: 77%; padding-top: 30px">
 
-							<button class="btn btn-success" data-toggle="modal"
-								data-target="#create-user" style="margin-right:20px ">+ Add blacklisted retailer
-						</div>
-					</a>
-					<div class="card-body">
-
-						<script>
-							$(document).ready(function() {
-								$('#example').DataTable();
-							});
-						</script>
-
-						<table id="example" class="table table-striped table-bordered"
-							style="width: 100%">
-
-							<thead>
-								<tr>
-									<th>Retailer Name</th>
-									<th>Retailer Order Details</th>
-									<th>Total Amount</th>
-									<th>Deadline Date</th>
-									<th>Delete</th>
-
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Navod</td>
-									<td>1 5" Tyre</td>
-									<td>5000</td>
-									<td>2018/08/10</td>
-									<th><a href="Delete_Retailer_Blacklist">
-									<button type="button" class="btn btn-danger">Delete</button>
-											</a></th>
-								</tr>
-							</tbody>
-							<tfoot>
-								<tr>
-									<th>Retailer Name</th>
-									<th>Retailer Order Details</th>
-									<th>Total Amount</th>
-									<th>Deadline Date</th>
-									<th>Delete</th>
-
-								</tr>
-							</tfoot>
-						</table>
-					</div>
-
+					<button class="btn btn-success" data-toggle="modal"
+						data-target="#create-user" style="margin-right: 20px">+
+						Add blacklisted retailer
 				</div>
+			</a>
+			<div class="card-body">
+
+				<script>
+					$(document).ready(function() {
+						$('#example').DataTable();
+					});
+				</script>
+
+				<table id="example" class="table table-striped table-bordered"
+					style="width: 100%">
+
+					<thead>
+						<tr>
+							<th>Retailer Name</th>
+							<th>Amount to pay</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="blacklist" items="${blacklist}"
+							varStatus="status">
+							<tr>
+
+								<td>${blacklist.getRetailer().getRetailer_name()}</td>
+								<td>${blacklist.getRetailer_blacklist_amount()}</td>
+								
+							</tr>
+						</c:forEach>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Retailer Name</th>
+							<th>Amount to pay</th>
+
+						</tr>
+					</tfoot>
+				</table>
 			</div>
 
-			<!-- data table end -->
 		</div>
+	</div>
 
-		<!-- start icons -->
+	<!-- data table end -->
+	</div>
+
+	<!-- start icons -->
 	</div>
 	</div>
 	<!-- Bootstrap tooltips -->

@@ -1,6 +1,7 @@
 package inv_dis_mgmtsys.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -84,5 +86,41 @@ public class Retailer_Finance implements Finance{
 	@Column
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date deadline_payment_date;
+	
+	@Transient
+	private double TotalAmount;
+	
+	@Transient
+	private Retailer retailer;
+	
+	
+
+	public Retailer getRetailer() {
+		return retailer;
+	}
+
+	public void setRetailer(Retailer retailer) {
+		this.retailer = retailer;
+	}
+
+	public double getTotalAmount() {
+		return TotalAmount;
+	}
+
+	public void setTotalAmount(double totalAmount) {
+		TotalAmount = totalAmount;
+	}
+	
+	@Transient
+	private List<Retailer_Order> retailerOrderList;
+
+	public List<Retailer_Order> getRetailerOrderList() {
+		return retailerOrderList;
+	}
+
+	public void setRetailerOrderList(List<Retailer_Order> retailerOrderList) {
+		this.retailerOrderList = retailerOrderList;
+	}
+	
 
 }

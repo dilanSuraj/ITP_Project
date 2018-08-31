@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -51,85 +51,99 @@
 <body>
 
 
-<!-- start of the the navigation header-->
+	<!-- start of the the navigation header-->
 
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp"%>
 	<!-- end of the navigation header-->
 
 	<!-- side bar starts -->
 
 	<!-- only visibale in 10'0 inch or above screens-->
-	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp"%>
 
 	<!--side bar end-->
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp" %>
-			<!--top 4 cards end-->
+	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp"%>
+	<!--top 4 cards end-->
 
 
 
-			<!-- start icons -->
+	<!-- start icons -->
 
-			<!-- cards starts-->
-			<!-- data table start -->
+	<!-- cards starts-->
+	<!-- data table start -->
 
-			<!-- forms starts -->
+	<!-- forms starts -->
 
-			<div class="col-md-12">
-				<div class="card mb-3">
-					<div class="card-header" style="color: #003399">
-						<h5>
-							<span class="fa fa-pencil"></span> Add Supplier Payment
-						</h5>
-					</div>
-					<div class="card-body">
-                     <form:form method="post" action="Add_Supplier_Finance_POST" modelAttribute="supplier_finance">
-						
-							<div class="form-row">
-								
-								<div class="form-group col-md-6">
-									<label for="input_supp_order">Supplier Order Details</label> <form:input
-										type="text" class="form-control" path="supplier_orderID"
-										placeholder="Enter Supplier Order ID number here"/>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="input_amt">Amount</label> <form:input type="text"
-									class="form-control" path="amount"
-									placeholder="Enter the amount here"/>
-							</div>
-							<div class="form-row">
-
-								<div class="form-group col-md-6">
-									<div class="container">
-										<label for="input_date">Date</label>
-										<div class="hero-unit">
-											<form:input type="button" value="click to show datepicker"
-												name="date_payment" path="payment_date" />
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="input_pay_state">Payment State</label> <form:input
-										type="text" class="form-control" path="paymentState" name="pay_state"/>
-								</div>
-
-							</div>
-
-							<button type="submit" class="btn btn-success" name="add_payment">Add Payment</button>
-                            <button type="reset" class="btn btn-danger">Reset</button>  
-						</form:form>
-					</div>
-				</div>
+	<div class="col-md-12">
+		<div class="card mb-3">
+			<div class="card-header" style="color: #003399">
+				<h5>
+					<span class="fa fa-pencil"></span> Add Supplier Payment
+				</h5>
 			</div>
+			<div class="card-body">
+				<form:form method="post" action="Add_Supplier_Finance_POST"
+					modelAttribute="supplier_finance">
 
-			<!-- forms ends-->
+					<div class="form-row">
 
-			<!-- data table end -->
+						<div class="form-group col-md-6">
+							<label for="input_supp_order">Supplier Order Details</label>
+							<form:input type="text" class="form-control"
+								path="supplier_orderID"
+								placeholder="Enter Supplier Order ID number here" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="input_amt">Amount</label>
+						<form:input type="text" class="form-control" path="amount"
+							placeholder="Enter the amount here" />
+					</div>
+					<div class="form-row">
+
+						<div>
+							<div class="form-group">
+								<!-- Date input -->
+								<label class="control-label" for="date">Date(DD/MM/YYY)</label>
+								<form:input class="form-control" id="date" name="date"
+									path="payment_date" placeholder="DD/MM/YYY" type="text" />
+							</div>
+						</div>
+
+
+
+					</div>
+					<fieldset class="form-group">
+						<div class="row">
+							<div class="form-group col-md-4">
+
+								<label for="inputState">Select Payment Type</label>
+								<form:select id="inputState" class="form-control"
+									path="paymentState">
+									<option selected>Choose...</option>
+									<form:option value="Full">Full Payment</form:option>
+									<form:option value="Advanced">Advanced Payment</form:option>
+								</form:select>
+							</div>
+						</div>
+					</fieldset>
+
+					<button type="submit" class="btn btn-success" name="add_payment">Add
+						Payment</button>
+					<button type="reset" class="btn btn-danger">Reset</button>
+				</form:form>
+			</div>
 		</div>
+	</div>
 
-		<!-- start icons -->
+	<!-- forms ends-->
+
+	<!-- data table end -->
+	</div>
+
+	<!-- start icons -->
 	</div>
 	</div>
 	<!-- Bootstrap tooltips -->
