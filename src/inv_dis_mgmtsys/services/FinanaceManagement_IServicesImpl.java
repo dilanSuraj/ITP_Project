@@ -3,13 +3,19 @@ package inv_dis_mgmtsys.services;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.method.annotation.SessionAttributesHandler;
+
 import inv_dis_mgmtsys.dao.FinanaceManagement_IDAOImpl;
 import inv_dis_mgmtsys.model.DataPoint;
 import inv_dis_mgmtsys.model.Emp_Month_Salary;
@@ -29,6 +35,9 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 
 	@Autowired
 	FinanaceManagement_IDAOImpl finanaceManagerIDAO;
+	
+	@Autowired
+	HttpSession httpsession;
 
 	@Override
 	public void addPaymentDetails(Finance finance) {
@@ -101,15 +110,16 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		finanaceManagerIDAO.editItemPrice(item);
 	}
 
-	@SuppressWarnings("null")
+	
+	
 	@Override
 	public List<DataPoint> getDataPoints(int initial_year) {
-		List<DataPoint> dataPoints = null;
+		List<DataPoint> dataPoints = new ArrayList<>();
 
 		double income_Payment = 0;
 		double expense_Payment = 0;
 		int year = initial_year;
-
+		System.out.println("Payment amount Line 112 :");
 		Calendar cal = Calendar.getInstance();
 
 		DataPoint[] paymentPoint = new DataPoint[5];
@@ -129,7 +139,10 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		paymentPoint[4] = new DataPoint();
 		paymentPoint[4].setYear(initial_year - 4);
 
-		List<Payment> paymentList = finanaceManagerIDAO.getfinancebyCategory("payment");
+		List<Finance> payment_List = finanaceManagerIDAO.getAllFinanceDetails("payment");
+		@SuppressWarnings("unchecked")
+		List<Payment> paymentList = (List<Payment>) (List<?>) payment_List;
+
 
 		List<Finance> list_transport = finanaceManagerIDAO.getAllFinanceDetails("transportFinance");
 		@SuppressWarnings("unchecked")
@@ -143,16 +156,20 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		@SuppressWarnings("unchecked")
 		List<Retailer_Finance> retailerList = (List<Retailer_Finance>) (List<?>) list_retailer;
 
+		System.out.println("Payment amount Line 146 :");
+		
 		for (Payment payment : paymentList) {
 
 			cal.setTime(payment.getOther_income_expense_date());
-
+			System.out.println("Payment amount Line 150 :");
 			double paymentAmt = payment.getOther_income_expense_amount();
+			System.out.println("Payment amount Line 151 :"+paymentAmt);
 
 			year = cal.get(Calendar.YEAR);
 
 			if (payment.getOther_income_expense_type().equals("income")) {
 
+				System.out.println("Inside, income");
 				if (year == initial_year) {
 					income_Payment += paymentAmt;
 
@@ -262,6 +279,7 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 				expense_Payment += paymentAmt;
 
 				paymentPoint[0].setExpense(expense_Payment);
+				
 			}
 
 			if (year == initial_year - 1) {
@@ -384,6 +402,102 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 	public void editBlacklistedRetailerStatus(String status, int retailerID) {
 		
 		finanaceManagerIDAO.editBlacklistedRetailerStatus(status, retailerID);
+	}
+
+	@Override
+	public double totalIncome() {
+		
+		List<Finance> payment_List = finanaceManagerIDAO.getAllFinanceDetails("payment");
+		@SuppressWarnings("unchecked")
+		List<Payment> paymentList = (List<Payment>) (List<?>) payment_List;
+		
+		double income = 0;
+		for(Payment payment: paymentList) {
+			
+			if (payment.getOther_income_expense_type().equals("income")) {
+				income += payment.getOther_income_expense_recieved();
+			}
+		}
+
+		List<Finance> list_retailer = finanaceManagerIDAO.getAllFinanceDetails("retailerFinance");
+		@SuppressWarnings("unchecked")
+		List<Retailer_Finance> retailerList = (List<Retailer_Finance>) (List<?>) list_retailer;
+		
+		for(Retailer_Finance finance: retailerList) {
+			income += finance.getAmount(); 
+		}
+		System.out.println("Total Income : "+ income);
+		
+		
+		return income;
+	}
+
+	@Override
+	public double totalExpense() {
+		
+		double expense = 0;
+		
+		List<Finance> payment_List = finanaceManagerIDAO.getAllFinanceDetails("payment");
+		@SuppressWarnings("unchecked")
+		List<Payment> paymentList = (List<Payment>) (List<?>) payment_List;
+
+		
+		for(Payment payment: paymentList) {
+			
+			if (payment.getOther_income_expense_type().equals("expense")) {
+				expense += payment.getOther_income_expense_recieved();
+			}
+		}
+		List<Finance> list_transport = finanaceManagerIDAO.getAllFinanceDetails("transportFinance");
+		@SuppressWarnings("unchecked")
+		List<TransportFinance> transportList = (List<TransportFinance>) (List<?>) list_transport;
+
+		for(TransportFinance finance: transportList) {
+			expense += finance.getTransportpayment_amount();
+		}
+		List<Finance> list_supplier = finanaceManagerIDAO.getAllFinanceDetails("supplierFinance");
+		@SuppressWarnings("unchecked")
+		List<Supplier_Finance> supplierList = (List<Supplier_Finance>) (List<?>) list_supplier;
+
+		for(Supplier_Finance finance: supplierList) {
+			expense += finance.getAmount();
+		}
+		System.out.println("Total Expense : "+ expense);
+
+		return expense;
+	}
+
+	@Override
+	public double profitPercentage() {
+		
+		double profit = this.totalIncome() -  this.totalExpense();
+		
+		if(profit <= 0)
+			profit = 0;
+		
+		double profit_percentage = (profit/this.totalIncome())*100;
+		
+		System.out.println("Profit Percentage : "+ profit_percentage);
+		return profit_percentage;
+	}
+
+	public void saveSessionObjects(HttpSession httpSession) {
+		
+		Session session = finanaceManagerIDAO.getCurrentSession();
+		
+		if(session == null) {
+			System.out.println("Session is null");
+		}
+		
+		Double income = this.totalIncome();
+		Double expense = this.totalExpense();
+		Double profitPercent = this.profitPercentage();
+		
+		DecimalFormat twoDForm = new DecimalFormat("#.##");
+	   
+	    httpsession.setAttribute("Income", income);
+	    httpsession.setAttribute("Expense", expense);
+	    httpsession.setAttribute("ProfitPercent", twoDForm.format(profitPercent));
 	}
 
 }

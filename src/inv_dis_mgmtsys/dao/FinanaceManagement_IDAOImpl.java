@@ -29,6 +29,7 @@ import inv_dis_mgmtsys.model.Emp_Month_Salary;
 import inv_dis_mgmtsys.model.Finance;
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.Payment;
+
 import inv_dis_mgmtsys.model.Retailer;
 import inv_dis_mgmtsys.model.Retailer_Blacklist;
 import inv_dis_mgmtsys.model.Retailer_Finance;
@@ -62,9 +63,9 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 	public List<Payment> getfinancebyCategory(String paymentCategory) {
 
 		List<Payment> list = null;
-		String hql = "from Payment payment where payment.other_income_expense_type LIKE :Other_income_expense_category";
+		String hql = "from Payment payment where payment.other_income_expense_type LIKE :Other_income_expense_type";
 
-		Query query = sessionFactory.getCurrentSession().createQuery(hql).setParameter("Other_income_expense_category",
+		Query query = sessionFactory.getCurrentSession().createQuery(hql).setParameter("Other_income_expense_type",
 				"%" + paymentCategory + "%");
 
 		list = query.list();
@@ -367,5 +368,12 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 	public List<Retailer> getAllRetailers() {
 		return sessionFactory.getCurrentSession().createQuery("From Retailer").list();
 	}
+
+
+	public Session getCurrentSession() {
+		
+		return sessionFactory.getCurrentSession();
+	}
+
 
 }

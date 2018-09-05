@@ -50,4 +50,10 @@ public interface FinanaceManagement_IServices {
     public List<Retailer_Blacklist> getBlacklistedRetailerFinanceList();
     
     public void editBlacklistedRetailerStatus(String status, int retailerID);
+    
+    public double totalIncome();
+    
+    public double totalExpense();
+    
+    public double profitPercentage();
 }

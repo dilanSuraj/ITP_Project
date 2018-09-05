@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -66,7 +68,7 @@
 							<div class="card-body-icon">
 								<i  class="fa fa-arrow-up"></i>
 							</div>
-							<div class="mr-5">14k Total Income!</div>
+							<div class="mr-5">Rs. ${Income} Total Income!</div>
 						</div>
 						<a class="card-footer text-white clearfix small z-1" href="Income">
 							<span class="float-left">View Details</span> <span
@@ -81,7 +83,7 @@
 							<div class="card-body-icon">
 								<i class="fa fa-arrow-down"></i>
 							</div>
-							<div class="mr-5">10k Total Expenses!</div>
+							<div class="mr-5">Rs. ${Expense} Total Expenses!</div>
 						</div>
 						<a class="card-footer text-white clearfix small z-1" href="Expenses">
 							<span class="float-left">View Details</span> <span
@@ -97,7 +99,7 @@
 							<div class="card-body-icon">
 								<i class="fa fa-line-chart"></i>
 							</div>
-							<div class="mr-5">26% Profit</div>
+							<div class="mr-5"> ${ProfitPercent}% Profit</div>
 						</div>
 						<a class="card-footer text-white clearfix small z-1" href="Profit">
 							<span class="float-left">View Details</span> <span

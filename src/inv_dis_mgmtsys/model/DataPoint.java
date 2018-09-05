@@ -2,7 +2,8 @@ package inv_dis_mgmtsys.model;
 
 public class DataPoint {
 	
-    private int x,y;
+    private int x = 0;
+    private int y=0;
     
     private int year;
     
@@ -12,9 +13,10 @@ public class DataPoint {
 
 	public void setYear(int year) {
 		this.year = year;
+		
 	}
 
-	private double income,expense,profit;
+	private double income = 0,expense = 0,profit = 0;
  
 	public double getIncome() {
 		return income;
@@ -22,10 +24,19 @@ public class DataPoint {
 
 	public void setIncome(double income) {
 		this.income += income;
+		
 	}
 
 	public double getExpense() {
 		return expense;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
 	}
 
 	public void setExpense(double expense) {
@@ -41,11 +52,13 @@ public class DataPoint {
 	}
 
 	public void setX(int x){
-		this.x=x;
+		System.out.println("Inside x");
+		this.x = this.year;
+		
 	}
 	
 	public void setY(int y){
-		this.y=y;
+		this.y=this.year;
 	}
 	
 	

@@ -1,29 +1,31 @@
 package inv_dis_mgmtsys.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
+
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import inv_dis_mgmtsys.model.DataPoint;
+import inv_dis_mgmtsys.dao.FinanaceManagement_IDAOImpl;
 import inv_dis_mgmtsys.model.Emp_Month_Salary;
 import inv_dis_mgmtsys.model.Finance;
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.Payment;
+
 import inv_dis_mgmtsys.model.Retailer;
 import inv_dis_mgmtsys.model.Retailer_Blacklist;
 import inv_dis_mgmtsys.model.Retailer_Finance;
@@ -36,31 +38,41 @@ import inv_dis_mgmtsys.services.OrderManagement_IServicesImpl;
 
 @Controller
 @Transactional
+
 public class Finance_ManagementController {
 
 	@Autowired
 	private FinanaceManagement_IServicesImpl finanaceManagement_IServices;
 
-	@Autowired
-	private OrderManagement_IServicesImpl orderManagement_IServicesImpl;
+	
 
 	public Finance_ManagementController() {
+		
+		
 		System.out.println("Inside Finanace Management Controller");
 	}
 
 	@RequestMapping("/Finance_Manager")
-	public ModelAndView FinanceManagerDashboardView() {
-
-		ModelAndView model = new ModelAndView();
-		model.setViewName("/Dashboards/FinanceManager");
-
-		System.out.println("Finance Manager Dashboard");
-		// List<DataPoint> dataPoints =
-		// finanaceManagement_IServices.getDataPoints(2015);
-		// model.addObject("datapoints", dataPoints);
-		model.addObject("income", 1000);
-
-		return model;
+	public ModelAndView FinanceManagerDashboardView(HttpSession session) {
+		
+		finanaceManagement_IServices.saveSessionObjects(session);
+		ModelAndView modelAndView = new ModelAndView();
+		
+	
+		
+		try {
+			
+			Gson gsonObj = new Gson();
+			modelAndView.setViewName("/Dashboards/FinanceManager");
+			modelAndView.addObject("title", "Render Data From Database");
+            
+			modelAndView.addObject("dataPoints", gsonObj.toJson(finanaceManagement_IServices.getDataPoints(2018)));
+		} catch (Exception e) {
+			
+			
+			
+		}
+		return modelAndView;
 	}
 
 	@RequestMapping("/Supplier_Finance")
@@ -269,10 +281,13 @@ public class Finance_ManagementController {
 	}
 
 	@RequestMapping("/Profit")
-	public ModelAndView ProfitView() {
+	public ModelAndView ProfitView(ModelMap model) {
 
-		System.out.println("Profit");
-		return new ModelAndView("/FinanceManagement/Profit_Management/Profit");
+		
+		ModelAndView modelAndView = new ModelAndView();	
+        modelAndView.setViewName("/FinanceManagement/Profit_Management/Profit");
+     
+		return modelAndView;
 	}
 
 	@RequestMapping("/Payment_Manage")

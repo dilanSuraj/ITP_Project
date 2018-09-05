@@ -58,4 +58,5 @@ public interface FinanaceManagement_IDAO{
     public List<Retailer> getAllRetailers();
 
 
+
 }
