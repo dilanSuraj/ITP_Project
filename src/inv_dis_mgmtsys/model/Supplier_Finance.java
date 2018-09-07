@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -42,6 +43,40 @@ public class Supplier_Finance implements Finance{
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date payment_date;
 	
+	
+	@Transient
+	private double totalAmount;
+	
+	@Transient
+	private Supplier supplier;
+	
+	@Transient
+	private Item item;
+	
+
+	public double getTotalAmount() {
+		return totalAmount;
+	}
+
+	public void setTotalAmount(double totalAmount) {
+		this.totalAmount = totalAmount;
+	}
+
+	public Supplier getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+	}
+
+	public Item getItem() {
+		return item;
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
+	}
 
 	public int getSupplier_orderID() {
 		return supplier_orderID;

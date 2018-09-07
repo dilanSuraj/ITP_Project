@@ -1,6 +1,5 @@
 package inv_dis_mgmtsys.controller;
 
-
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -30,7 +29,10 @@ import inv_dis_mgmtsys.model.Retailer;
 import inv_dis_mgmtsys.model.Retailer_Blacklist;
 import inv_dis_mgmtsys.model.Retailer_Finance;
 import inv_dis_mgmtsys.model.Retailer_Order;
+import inv_dis_mgmtsys.model.Supplier;
+import inv_dis_mgmtsys.model.SupplierOrderItems;
 import inv_dis_mgmtsys.model.Supplier_Finance;
+import inv_dis_mgmtsys.model.Supplier_Order;
 import inv_dis_mgmtsys.model.TransportFinance;
 import inv_dis_mgmtsys.model.Vehicle;
 import inv_dis_mgmtsys.services.FinanaceManagement_IServicesImpl;
@@ -44,33 +46,26 @@ public class Finance_ManagementController {
 	@Autowired
 	private FinanaceManagement_IServicesImpl finanaceManagement_IServices;
 
-	
-
 	public Finance_ManagementController() {
-		
-		
+
 		System.out.println("Inside Finanace Management Controller");
 	}
 
 	@RequestMapping("/Finance_Manager")
 	public ModelAndView FinanceManagerDashboardView(HttpSession session) {
-		
+
 		finanaceManagement_IServices.saveSessionObjects(session);
 		ModelAndView modelAndView = new ModelAndView();
-		
-	
-		
+
 		try {
-			
+
 			Gson gsonObj = new Gson();
 			modelAndView.setViewName("/Dashboards/FinanceManager");
 			modelAndView.addObject("title", "Render Data From Database");
-            
+
 			modelAndView.addObject("dataPoints", gsonObj.toJson(finanaceManagement_IServices.getDataPoints(2018)));
 		} catch (Exception e) {
-			
-			
-			
+
 		}
 		return modelAndView;
 	}
@@ -79,9 +74,31 @@ public class Finance_ManagementController {
 	public ModelAndView SupplierFinanaceView() {
 
 		ModelAndView model = new ModelAndView();
-		List<Finance> paymentList = finanaceManagement_IServices.getAllPaymentDetails("supplierFinance");
+		List<Finance> payment_List = finanaceManagement_IServices.getAllPaymentDetails("supplierFinance");
 
-		model.addObject("paymentlist", paymentList);
+		@SuppressWarnings("unchecked")
+		List<Supplier_Finance> supplierList = (List<Supplier_Finance>) (List<?>) payment_List;
+		
+		int itemCode = 0;
+		
+		for(Supplier_Finance finance : supplierList ) {
+			
+			int supplierOrderID= finance.getSupplier_orderID();
+			Supplier supplier = finanaceManagement_IServices.getSupplierByOrderID(supplierOrderID);
+			finance.setSupplier(supplier);
+			
+			SupplierOrderItems order = finanaceManagement_IServices.getSingleSupplierOrderItem(supplierOrderID);
+			itemCode = order.getSupplier_order_item_itemcode();
+			Item item = finanaceManagement_IServices.getSingleItemDetail(itemCode);
+			finance.setItem(item);
+			
+			double totalAmount = item.getItem_grossprice() * order.getSupplier_order_item_Amount();
+			finance.setTotalAmount(totalAmount);
+			
+			
+		}
+		
+		model.addObject("paymentlist", supplierList);
 		model.setViewName("/FinanceManagement/Supplier_Finance_Management/Supplier_Finance");
 
 		System.out.println("Supplier Finanace");
@@ -210,14 +227,25 @@ public class Finance_ManagementController {
 		model.setViewName("/FinanceManagement/Retailer_Finance_Management/Retailer_Blacklist");
 		return model;
 	}
-	
+
 	@RequestMapping("/Retailer_Finance")
 	public ModelAndView RetailerFinanceView() {
 
 		ModelAndView model = new ModelAndView();
-		List<Finance> paymentList = finanaceManagement_IServices.getAllPaymentDetails("retailerFinance");
+		List<Finance> payment_List = finanaceManagement_IServices.getAllPaymentDetails("retailerFinance");
 
-		model.addObject("paymentlist", paymentList);
+		@SuppressWarnings("unchecked")
+		List<Retailer_Finance> retailerList = (List<Retailer_Finance>) (List<?>) payment_List;
+		
+		for(Retailer_Finance finance: retailerList) {
+			int retailerOrderID= finance.getRetailer_orderID();
+			Retailer retailer = finanaceManagement_IServices.getRetailerByOrderID(retailerOrderID);
+			Retailer_Order order = finanaceManagement_IServices.getSingleRetailerOrder(retailerOrderID);
+			finance.setTotalAmount(order.getOder_total());
+			finance.setRetailer(retailer);
+		}
+		
+		model.addObject("paymentlist", retailerList);
 		model.setViewName("/FinanceManagement/Retailer_Finance_Management/Retailer_Finance");
 
 		System.out.println("Retailer Finance");
@@ -253,7 +281,7 @@ public class Finance_ManagementController {
 		return new ModelAndView("redirect:/Retailer_Finance");
 	}
 
-	@RequestMapping("/Add_Retailer_Finance")
+	@RequestMapping(value="/Add_Retailer_Finance",method=RequestMethod.GET)
 	public ModelAndView AddRetailerFinanceGET(@ModelAttribute("retailerfinance") Retailer_Finance retailer_Finance) {
 
 		ModelAndView model = new ModelAndView();
@@ -265,11 +293,12 @@ public class Finance_ManagementController {
 		return model;
 	}
 
-	@RequestMapping("/Add_Retailer_Finance_POST")
+	@RequestMapping(value= "/Add_Retailer_Finance_POST", method=RequestMethod.POST)
 	public ModelAndView AddRetailerFinancePOST(@ModelAttribute("retailerfinance") Retailer_Finance retailer_Finance) {
 
+		System.out.println("Inside POST");
 		int retailerOrderID = retailer_Finance.getRetailer_orderID();
-		Retailer_Order retailer_Order = finanaceManagement_IServices.getSingleRetailerOrder(retailerOrderID);		
+		Retailer_Order retailer_Order = finanaceManagement_IServices.getSingleRetailerOrder(retailerOrderID);
 		double totalAmt = retailer_Order.getOder_total();
 		int retailer_ID = retailer_Order.getRetailer_ID();
 		Retailer retailer = finanaceManagement_IServices.getRetailer(retailer_ID);
@@ -283,10 +312,9 @@ public class Finance_ManagementController {
 	@RequestMapping("/Profit")
 	public ModelAndView ProfitView(ModelMap model) {
 
-		
-		ModelAndView modelAndView = new ModelAndView();	
-        modelAndView.setViewName("/FinanceManagement/Profit_Management/Profit");
-     
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/FinanceManagement/Profit_Management/Profit");
+
 		return modelAndView;
 	}
 

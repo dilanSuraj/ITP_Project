@@ -122,9 +122,9 @@ public class OrderManagement_IDAOImpl implements OrderManagement_IDAO {
 
 		SupplierOrderItems item = new SupplierOrderItems();
 
-		item.setSupplier_order_ID(supplierOrder.getSupplier_OrderID());
-		item.setSupplier_order_item_Name(ItemName);
-		item.setSupplier_order_item_Amount(amount);
+		//item.setSupplier_order_ID(supplierOrder.getSupplier_OrderID());
+		//item.setSupplier_order_item_Name(ItemName);
+		//item.setSupplier_order_item_Amount(amount);
 
 		sessionFactory.getCurrentSession().saveOrUpdate(item);
 

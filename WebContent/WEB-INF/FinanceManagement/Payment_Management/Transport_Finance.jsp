@@ -126,7 +126,7 @@
 
 								<td>${paymentList.getTransportpayment_category()}</td>
 								<td>${paymentList.getTransportpayment_amount()}</td>
-								<td>${paymentList.getTransportpayment_date()}</td>
+								<td>${paymentList.getOther_income_expense_dateInString()}</td>
 								<td>${paymentList.getTransportpayment_description()}</td>
 								<td>${paymentList.getTransportpayment_vehicleID()}</td>
 								

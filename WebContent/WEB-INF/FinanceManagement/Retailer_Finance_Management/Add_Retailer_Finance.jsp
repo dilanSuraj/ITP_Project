@@ -113,28 +113,26 @@
 					</div>
 					<div class="form-row">
 
-						<div class="form-group col-md-6">
-							<div class="container">
-								<label for="input_date">Order Date(DD/MM/YYY)</label>
-								<div class="hero-unit">
-									<form:input type="text" class="form-control"
-										path="payment_date" placeholder="DD/MM/YYY"></form:input>
-								</div>
+						
+						
+							<div class="form-group">
+								<!-- Date input -->
+								<label class="control-label" for="date">Order Date(DD/MM/YYY)</label>
+								<form:input class="form-control" id="date" name="date"
+									path="payment_date" placeholder="DD/MM/YYY" type="text" />
 							</div>
-						</div>
+						
 					</div>
 
 					<div class="form-row">
-
-						<div class="form-group col-md-6">
-							<div class="container">
-								<label for="input_date2">Deadline Date(DD/MM/YYY)</label>
-								<div class="hero-unit">
-									<form:input type="text" class="form-control"
-										path="deadline_payment_date" placeholder="DD/MM/YYY"></form:input>
-								</div>
+						
+							<div class="form-group">
+								<!-- Date input -->
+								<label class="control-label" for="date">Deadline Date(DD/MM/YYY)</label>
+								<form:input class="form-control" id="date" name="date"
+									path="deadline_payment_date" placeholder="DD/MM/YYY" type="text" />
 							</div>
-						</div>
+						
 					</div>
 
 					<fieldset class="form-group">
@@ -144,7 +142,7 @@
 								<label for="inputState">Select Payment Type</label>
 								<form:select id="inputState" class="form-control"
 									path="paymentState">
-									<option selected>Choose...</option>
+									
 									<form:option value="Full">Full Payment</form:option>
 									<form:option value="Advanced">Advanced Payment</form:option>
 								</form:select>

@@ -13,39 +13,41 @@ public class SupplierOrderItems {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int supplier_order_ItemID;
-	
+	private int supplier_order_Item_ID;
+
 	@Column
-	private int supplier_order_ID;
-	
+	private String supplier_order_item_status;
 	@Column
-	private String supplier_order_item_Name;
+	private int supplier_order_item_itemcode;
 	
 	@Column
 	private int supplier_order_item_Amount;
 
-	public int getSupplier_order_ItemID() {
-		return supplier_order_ItemID;
+	@Column
+	private int supplier_order_Item_supplierID;
+
+	public int getSupplier_order_Item_ID() {
+		return supplier_order_Item_ID;
 	}
 
-	public void setSupplier_order_ItemID(int supplier_order_ItemID) {
-		this.supplier_order_ItemID = supplier_order_ItemID;
+	public void setSupplier_order_Item_ID(int supplier_order_Item_ID) {
+		this.supplier_order_Item_ID = supplier_order_Item_ID;
 	}
 
-	public int getSupplier_order_ID() {
-		return supplier_order_ID;
+	public String getSupplier_order_item_status() {
+		return supplier_order_item_status;
 	}
 
-	public void setSupplier_order_ID(int supplier_order_ID) {
-		this.supplier_order_ID = supplier_order_ID;
+	public void setSupplier_order_item_status(String supplier_order_item_status) {
+		this.supplier_order_item_status = supplier_order_item_status;
 	}
 
-	public String getSupplier_order_item_Name() {
-		return supplier_order_item_Name;
+	public int getSupplier_order_item_itemcode() {
+		return supplier_order_item_itemcode;
 	}
 
-	public void setSupplier_order_item_Name(String supplier_order_item_Name) {
-		this.supplier_order_item_Name = supplier_order_item_Name;
+	public void setSupplier_order_item_itemcode(int supplier_order_item_itemcode) {
+		this.supplier_order_item_itemcode = supplier_order_item_itemcode;
 	}
 
 	public int getSupplier_order_item_Amount() {
@@ -56,5 +58,12 @@ public class SupplierOrderItems {
 		this.supplier_order_item_Amount = supplier_order_item_Amount;
 	}
 
+	public int getSupplier_order_Item_supplierID() {
+		return supplier_order_Item_supplierID;
+	}
 
+	public void setSupplier_order_Item_supplierID(int supplier_order_Item_supplierID) {
+		this.supplier_order_Item_supplierID = supplier_order_Item_supplierID;
+	}
+	
 }

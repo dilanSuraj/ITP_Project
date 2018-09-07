@@ -70,11 +70,7 @@
 							</div>
 							<div class="mr-5">Rs. ${Income} Total Income!</div>
 						</div>
-						<a class="card-footer text-white clearfix small z-1" href="Income">
-							<span class="float-left">View Details</span> <span
-							class="float-right"> <i class="fa fa-angle-right"></i>
-						</span>
-						</a>
+						
 					</div>
 				</div>
 				<div class="col-xl-3 col-sm-6 mb-3">
@@ -85,11 +81,7 @@
 							</div>
 							<div class="mr-5">Rs. ${Expense} Total Expenses!</div>
 						</div>
-						<a class="card-footer text-white clearfix small z-1" href="Expenses">
-							<span class="float-left">View Details</span> <span
-							class="float-right"> <i class="fa fa-angle-right"></i>
-						</span>
-						</a>
+						
 					</div>
 				</div>
 				
@@ -101,11 +93,7 @@
 							</div>
 							<div class="mr-5"> ${ProfitPercent}% Profit</div>
 						</div>
-						<a class="card-footer text-white clearfix small z-1" href="Profit">
-							<span class="float-left">View Details</span> <span
-							class="float-right"> <i class="fa fa-angle-right"></i>
-						</span>
-						</a>
+						
 					</div>
 				</div>
 				<div class="col-xl-3 col-sm-6 mb-3">
@@ -114,13 +102,9 @@
 							<div class="card-body-icon">
 								<i class="fa fa-user-times"></i>
 							</div>
-							<div class="mr-5">10 Blacklisted Retailers!</div>
+							<div class="mr-5">${Blacklist} Blacklisted Retailers!</div>
 						</div>
-						<a class="card-footer text-white clearfix small z-1" href="Retailer_Blacklist">
-							<span class="float-left">View Details</span> <span
-							class="float-right"> <i class="fa fa-angle-right"></i>
-						</span>
-						</a>
+						
 					</div>
 				</div>
 			</div>

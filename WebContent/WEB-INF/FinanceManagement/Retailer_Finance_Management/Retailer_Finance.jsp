@@ -106,7 +106,7 @@
 
 					<thead>
 						<tr>
-							
+							<th>Retailer Name</th>
 							<th>Retailer Order ID</th>
 							<th>Total Amount</th>
 							<th>Paid Amount</th>
@@ -123,11 +123,12 @@
 							varStatus="status">
 							<tr>
 
+                                <td>${paymentList.getRetailer().getRetailer_name()}</td>
 								<td>${paymentList.getRetailer_orderID()}</td>
 								<td>${paymentList.getTotalAmount()}</td>
 								<td>${paymentList.getAmount()}</td>
-								<td>${paymentList.getPayment_date()}</td>
-								<td>${paymentList.getDeadline_payment_date()}</td>
+								<td>${paymentList.getPaymentDateInString()}</td>
+								<td>${paymentList.getDeadline_paymentDateInString()}</td>
 								<td>${paymentList.getPaymentState()}</td>
 								<td><a
 									href="<c:url value='/Edit_Retailer_Finance?id=${paymentList.getRetailer_finance_id()}' />">EDIT</a></td>
@@ -139,7 +140,7 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							
+							<th>Retailer Name</th>
 							<th>Retailer Order ID</th>
 							<th>Total Amount</th>
 							<th>Paid Amount</th>

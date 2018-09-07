@@ -128,7 +128,7 @@
 								<td>${paymentList.getOther_income_expense_amount()}</td>
 								<td>${paymentList.getOther_income_expense_recieved()}</td>
 								<td>${paymentList.getOther_income_expense_description()}</td>
-								<td>${paymentList.getOther_income_expense_date()}</td>
+								<td>${paymentList.getOther_income_expense_dateInString()}</td>
 
 								<td>${paymentList.getOther_income_expense_paymentstate()}</td>
 								<td><a

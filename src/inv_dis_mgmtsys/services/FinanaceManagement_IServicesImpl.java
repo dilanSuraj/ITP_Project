@@ -3,9 +3,11 @@ package inv_dis_mgmtsys.services;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,7 +28,10 @@ import inv_dis_mgmtsys.model.Retailer;
 import inv_dis_mgmtsys.model.Retailer_Blacklist;
 import inv_dis_mgmtsys.model.Retailer_Finance;
 import inv_dis_mgmtsys.model.Retailer_Order;
+import inv_dis_mgmtsys.model.Supplier;
+import inv_dis_mgmtsys.model.SupplierOrderItems;
 import inv_dis_mgmtsys.model.Supplier_Finance;
+import inv_dis_mgmtsys.model.Supplier_Order;
 import inv_dis_mgmtsys.model.TransportFinance;
 import inv_dis_mgmtsys.model.Vehicle;
 
@@ -492,12 +497,74 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		Double income = this.totalIncome();
 		Double expense = this.totalExpense();
 		Double profitPercent = this.profitPercentage();
+		int blacklist = this.blacklistedRetailerList();
 		
 		DecimalFormat twoDForm = new DecimalFormat("#.##");
 	   
-	    httpsession.setAttribute("Income", income);
-	    httpsession.setAttribute("Expense", expense);
+		String income_string = new DecimalFormat("#,###.00").format(income);
+		String expense_string = new DecimalFormat("#,###.00").format(expense);
+
+        
+	    httpsession.setAttribute("Income", income_string);
+	    httpsession.setAttribute("Expense", expense_string);
 	    httpsession.setAttribute("ProfitPercent", twoDForm.format(profitPercent));
+	    httpsession.setAttribute("Blacklist", blacklist);
 	}
 
+	public int blacklistedRetailerList() {
+		
+		int numberOfBlcklisted = 0;
+		List<Retailer_Blacklist> blacklist = finanaceManagerIDAO.getBlacklistedRetailerFinanceList();
+		
+		List<Retailer> retailerList = finanaceManagerIDAO.getAllRetailers();
+		
+		if(retailerList == null) {
+			return 0;
+		}
+		for(Retailer retailer: retailerList) {
+			
+			if(retailer.getRetailer_blacklistStatus().equals("Yes")) {
+				numberOfBlcklisted++;
+			}
+		}
+		System.out.println("Blacklisted : "+numberOfBlcklisted);
+		return numberOfBlcklisted;
+	}
+
+	@Override
+	public Retailer getRetailerByOrderID(int retailerorderID) {
+		Retailer_Order order = finanaceManagerIDAO.getSingleRetailerOrderDetails(retailerorderID);
+		int retailerID = order.getRetailer_ID();
+		Retailer retailer = finanaceManagerIDAO.getRetailer(retailerID);
+		return retailer;
+	}
+	
+	@Override
+	public Supplier getSupplierByOrderID(int supplierorderID) {
+		
+		SupplierOrderItems order = finanaceManagerIDAO.getSingleSupplierOrderDetails(supplierorderID);
+		int supplierID = order.getSupplier_order_Item_supplierID();
+		Supplier supplier = finanaceManagerIDAO.getSupplier(supplierID);
+		return supplier;
+		
+	}
+	
+	@Override
+	public Supplier getSupplier(int supplierID) {
+		
+		return finanaceManagerIDAO.getSupplier(supplierID);
+	}
+	
+	@Override
+	public List<SupplierOrderItems> getAllSupplierOrders() {
+		return finanaceManagerIDAO.getAllSupplierOrderDetails();
+	}
+	
+	@Override
+	public SupplierOrderItems getSingleSupplierOrderItem(int supplierOrderID) {
+		
+		return finanaceManagerIDAO.getSingleSupplierOrderDetails(supplierOrderID);
+	}
+
+	
 }

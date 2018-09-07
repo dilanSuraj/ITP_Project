@@ -10,6 +10,9 @@ import inv_dis_mgmtsys.model.Payment;
 import inv_dis_mgmtsys.model.Retailer;
 import inv_dis_mgmtsys.model.Retailer_Blacklist;
 import inv_dis_mgmtsys.model.Retailer_Order;
+import inv_dis_mgmtsys.model.Supplier;
+import inv_dis_mgmtsys.model.SupplierOrderItems;
+import inv_dis_mgmtsys.model.Supplier_Order;
 import inv_dis_mgmtsys.model.Vehicle;
 
 public interface FinanaceManagement_IServices {
@@ -47,6 +50,8 @@ public interface FinanaceManagement_IServices {
     
     public Retailer getRetailer(int retailerID);
     
+    public Retailer getRetailerByOrderID(int retailerOrderID);
+    
     public List<Retailer_Blacklist> getBlacklistedRetailerFinanceList();
     
     public void editBlacklistedRetailerStatus(String status, int retailerID);
@@ -56,4 +61,12 @@ public interface FinanaceManagement_IServices {
     public double totalExpense();
     
     public double profitPercentage();
+
+	public Supplier getSupplierByOrderID(int supplierorderID);
+
+	public Supplier getSupplier(int supplierID);
+
+	public List<SupplierOrderItems> getAllSupplierOrders();
+
+	public SupplierOrderItems getSingleSupplierOrderItem(int supplierOrderID);
 }

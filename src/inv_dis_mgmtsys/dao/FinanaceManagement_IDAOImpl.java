@@ -34,7 +34,10 @@ import inv_dis_mgmtsys.model.Retailer;
 import inv_dis_mgmtsys.model.Retailer_Blacklist;
 import inv_dis_mgmtsys.model.Retailer_Finance;
 import inv_dis_mgmtsys.model.Retailer_Order;
+import inv_dis_mgmtsys.model.Supplier;
+import inv_dis_mgmtsys.model.SupplierOrderItems;
 import inv_dis_mgmtsys.model.Supplier_Finance;
+import inv_dis_mgmtsys.model.Supplier_Order;
 import inv_dis_mgmtsys.model.TransportFinance;
 import inv_dis_mgmtsys.model.Vehicle;
 import inv_dis_mgmtsys.services.FinanaceManagement_IServicesImpl;
@@ -94,7 +97,7 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 		}
 
 		else if (type.equals("supplierFinance")) {
-			hql = "from Supplier_Finance";
+			hql = "from Supplier_Finance ";
 		}
 
 		else if (type.equals("retailerFinance")) {
@@ -260,11 +263,19 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 
 		return sessionFactory.getCurrentSession().createQuery("From Retailer_Order").list();
 	}
+	
+	
 
 	@Override
 	public Retailer_Order getSingleRetailerOrderDetails(int retailerOrderID) {
 
 		return (Retailer_Order) sessionFactory.getCurrentSession().get(Retailer_Order.class, retailerOrderID);
+	}
+	
+	@Override
+	public SupplierOrderItems getSingleSupplierOrderDetails(int supplierOrderID) {
+
+		return (SupplierOrderItems) sessionFactory.getCurrentSession().get(SupplierOrderItems.class, supplierOrderID);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -300,6 +311,10 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 
 		List<Retailer_Blacklist> blacklist = new ArrayList<>();
 		List<Retailer> retailerList = this.getAllRetailers();
+		if(retailerfinanceList == null) {
+			return null;
+		}
+			
 		for(Retailer retailer: retailerList) {
 			this.editBlacklistedRetailerStatus("No", retailer.getRetailer_ID());
 		}
@@ -375,5 +390,21 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 		return sessionFactory.getCurrentSession();
 	}
 
+	@Override
+	public Supplier getSupplier(int supplierID) {
+		return (Supplier) sessionFactory.getCurrentSession().get(Supplier.class, supplierID);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<SupplierOrderItems> getAllSupplierOrderDetails() {
+        String hql = "From SupplierOrderItems supplierOrder  where supplierOrder.supplier_order_item_status=?";		
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter(0, "complete");
+		return query.list();
+	}
+
+	
+	
 
 }

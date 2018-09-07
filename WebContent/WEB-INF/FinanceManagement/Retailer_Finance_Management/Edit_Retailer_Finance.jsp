@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -88,8 +90,13 @@
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label for="input_supp_order">Retailer Order Details</label>
-							<form:input type="text" class="form-control"
-								path="retailer_orderID"></form:input>
+							<form:select id="inputState" class="form-control"
+							path="retailer_orderID" required="true">
+							<c:forEach var="retailerOrderList" items="${retailerOrderList}"
+								varStatus="status">
+								<form:option value="${retailerOrderList.getRetailer_OrderID()}">${retailerOrderList.getRetailer_OrderID()}</form:option>
+							</c:forEach>
+						</form:select>
 						</div>
 					</div>
 					<div class="form-group">
@@ -129,7 +136,7 @@
 								<label for="inputState">Select Payment Type</label>
 								<form:select id="inputState" class="form-control"
 									path="paymentState">
-									<option selected>Choose...</option>
+									
 									<form:option value="Full">Full Payment</form:option>
 									<form:option value="Advanced">Advanced Payment</form:option>
 								</form:select>

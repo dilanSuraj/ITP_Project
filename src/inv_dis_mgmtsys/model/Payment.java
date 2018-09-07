@@ -1,5 +1,6 @@
 package inv_dis_mgmtsys.model;
 
+import java.text.DateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -106,7 +108,18 @@ public class Payment implements Finance{
 		this.other_income_expense_date = other_income_expense_date;
 	}
 
-	
+	@Transient
+	private String other_income_expense_dateInString;
+		
+	public String getOther_income_expense_dateInString() {
+		return other_income_expense_dateInString = DateFormat.getDateInstance().format(this.other_income_expense_date);
+	}
+
+	public void setOther_income_expense_dateInString(String other_income_expense_dateInString) {
+		this.other_income_expense_dateInString = other_income_expense_dateInString;
+	}
+
+
 	
 	
 	
