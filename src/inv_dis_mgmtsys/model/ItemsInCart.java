@@ -29,7 +29,7 @@ public class ItemsInCart {
 	private double item_grossprice;
 	
 	@Transient
-	private double item_amount;
+	private int item_amount;
 	
 	@Transient
 	private int cart_ID;
@@ -65,11 +65,11 @@ public class ItemsInCart {
 		this.item_grossprice = item_grossprice;
 	}
 	@Transient
-	public double getItem_amount() {
+	public int getItem_amount() {
 		return item_amount;
 	}
 	@Transient
-	public void setItem_amount(double item_amount) {
+	public void setItem_amount(int item_amount) {
 		this.item_amount = item_amount;
 	}
 	

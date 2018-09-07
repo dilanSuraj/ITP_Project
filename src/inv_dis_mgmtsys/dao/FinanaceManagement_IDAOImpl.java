@@ -125,7 +125,7 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 			query.setParameter(3, payment.getOther_income_expense_category());
 			query.setParameter(4, payment.getOther_income_expense_type());
 			query.setParameter(5, payment.getOther_income_expense_date());
-			query.setParameter(6, payment.getOther_income_expense_description());
+			//query.setParameter(6, payment.getOther_income_expense_description());
 			query.setParameter(7, payment.getOther_income_expense_ID());
 
 			int result = query.executeUpdate();
@@ -191,7 +191,7 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 
 	}
 
-	@Override
+@Override
 	public Finance getSingleFinanceDetail(int ID, String type) {
 
 		if (type.equals("payment")) {
@@ -238,7 +238,7 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 
 		query.setParameter(0, item.getItem_saleprice());
 		query.setParameter(1, item.getItem_grossprice());
-		query.setParameter(2, item.getItem_percentageProfit());
+	//	query.setParameter(2, item.getItem_percentageProfit());
 		query.setParameter(3, item.getItem_itemcode());
 
 		int result = query.executeUpdate();
@@ -332,7 +332,7 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 					blacklistedRetailer.setRetailer_blacklist_amount(retailer_Finance.getAmount());
 					blacklistedRetailer.setRetailer_blacklist_deadlineDate(deadLineDate);
 					this.editBlacklistedRetailerStatus("Yes",retailerOrder.getRetailer_ID());
-                    blacklist.add(blacklistedRetailer);			
+                    blacklist.add(blacklistedRetailer);	*/		
 				}
 				
 			} catch (ParseException e) {
@@ -374,6 +374,5 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 		
 		return sessionFactory.getCurrentSession();
 	}
-
 
 }

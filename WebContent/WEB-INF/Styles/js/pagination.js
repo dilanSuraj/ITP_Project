@@ -1,4 +1,4 @@
-// Returns an array of maxLength (or less) page numbers
+// Returns an array of maxLength (or less) page numbers 
 // where a 0 in the returned array denotes a gap in the series.
 // Parameters:
 //   totalPages:     total number of pages
@@ -43,7 +43,7 @@ function getPageList(totalPages, page, maxLength) {
 $(function() {
     // Number of items and limits the number of items per page
     var numberOfItems = $("#jar .content").length;
-    var limitPerPage = 3;
+    var limitPerPage = 6;
     // Total pages rounded upwards
     var totalPages = Math.ceil(numberOfItems / limitPerPage);
     // Number of buttons at the top, not counting prev/next,

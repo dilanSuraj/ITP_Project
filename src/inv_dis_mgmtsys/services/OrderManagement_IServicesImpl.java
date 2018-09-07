@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import inv_dis_mgmtsys.dao.OrderManagement_IDAOImpl;
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.ItemsInCart;
+import inv_dis_mgmtsys.model.OrderItem;
 import inv_dis_mgmtsys.model.Payment;
+import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.Supplier;
 import inv_dis_mgmtsys.model.SupplierOrderItems;
 import inv_dis_mgmtsys.model.cart;
@@ -79,6 +81,54 @@ public class OrderManagement_IServicesImpl implements OrderManagement_IServices 
 		
 		List<SupplierOrderItems> SupplierOrderItems=orderMan.getOrderItemsFromSupplierOrderId(SupplierOrderID);
 		return SupplierOrderItems;
+	}
+
+	@Override
+	public List<Retailer_Order> getRetailerOrders(int retailerID) {
+		List<Retailer_Order> retailerOrders=orderMan.getRetailerOrders(retailerID);
+		return retailerOrders;
+	}
+
+	@Override
+	public void addtoOrder(int amount, int itemID,int RetailerID) {
+		orderMan.addtoOrder(amount,itemID,RetailerID);
+		
+	}
+
+	@Override
+	public List<Item> getAlloywheel() {
+		List<Item> alloywheel = orderMan.getAllowyWheel();
+		return alloywheel;
+	}
+
+	@Override
+	public List<Item> getbatteries() {
+		List<Item> battaries = orderMan.getBatteries();
+		return battaries;
+	}
+
+	@Override
+	public List<OrderItem> getOrderItems(int orderID) {
+		List<OrderItem> items = orderMan.getOrderItems(orderID);
+		return items;
+	}
+
+	@Override
+	public Retailer_Order getSpecificOrderDetails(int orderId) {
+		Retailer_Order retailerOrders=orderMan.getSpecificOrderDetails(orderId);
+		return retailerOrders;
+	}
+
+	@Override
+	public void checkOutRetailerOrder(int orderID) {
+		orderMan.checkOutRetailerOrder(orderID);
+		
+	}
+
+	@Override
+	public void DeleteOrderItem(int orderItemID) {
+		orderMan.DeleteOrderItem(orderItemID);
+		
 	}
 	
 

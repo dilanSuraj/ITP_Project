@@ -16,7 +16,7 @@ public class cart {
 	private int cart_ID;
 	
 	@Column
-	private double cart_amount;
+	private int cart_amount;
 	
 	@Column
 	private int cart_retailer_ID;
@@ -33,11 +33,11 @@ public class cart {
 		this.cart_ID = cart_ID;
 	}
 
-	public double getCart_amount() {
+	public int getCart_amount() {
 		return cart_amount;
 	}
 
-	public void setCart_amount(double cart_amount) {
+	public void setCart_amount(int cart_amount) {
 		this.cart_amount = cart_amount;
 	}
 

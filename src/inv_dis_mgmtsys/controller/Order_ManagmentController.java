@@ -1,8 +1,8 @@
 package inv_dis_mgmtsys.controller;
 
-import java.util.List;
+import java.util.List;  
 
-
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +15,12 @@ import org.springframework.web.servlet.ModelAndView;
 import inv_dis_mgmtsys.dao.OrderManagement_IDAOImpl;
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.ItemsInCart;
+import inv_dis_mgmtsys.model.OrderItem;
 import inv_dis_mgmtsys.model.Payment;
 import inv_dis_mgmtsys.model.Supplier;
 import inv_dis_mgmtsys.model.SupplierOrderItems;
 import inv_dis_mgmtsys.model.cart;
+import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.services.OrderManagement_IServicesImpl;
 
 @Controller
@@ -49,6 +51,29 @@ public class Order_ManagmentController {
 		model.setViewName("/OrderManagment/RetailerOrder/Items");
 		return model;
 	}
+	
+	@RequestMapping("/alloywheel")
+	public ModelAndView AllowywheelList() {
+
+		ModelAndView model = new ModelAndView();
+		List<Item> tyerList = orderMan.getAlloywheel();
+
+		model.addObject("tyerList", tyerList);
+		model.setViewName("/OrderManagment/RetailerOrder/Items");
+		return model;
+	}
+	
+	@RequestMapping("/batteries")
+	public ModelAndView BatteryList() {
+
+		ModelAndView model = new ModelAndView();
+		List<Item> tyerList = orderMan.getbatteries();
+
+		model.addObject("tyerList", tyerList);
+		model.setViewName("/OrderManagment/RetailerOrder/Items");
+		return model;
+	}
+	
 
 	@RequestMapping("/add_to_cart")
 	public ModelAndView AddToCart(@ModelAttribute("cart") cart CartItem) {
@@ -88,19 +113,33 @@ public class Order_ManagmentController {
 
 		return model;
 	}
+	
+	@RequestMapping("/RetailerAddToOrder")
+	public ModelAndView AddtoOrderRetailer(@RequestParam("amount") int amount,@RequestParam("itemCode") int itemcode) {
+		System.out.println("inside add to order");
+		System.out.println("datasss of cin"+amount+itemcode);
+		orderMan.addtoOrder(amount, itemcode,50);
+		
+		ModelAndView model1 = new ModelAndView();
+		List<ItemsInCart> itemList = orderMan.getCartItems(50);
+
+		model1.addObject("itemList", itemList);
+		model1.setViewName("/OrderManagment/RetailerOrder/RetailerCart");
+
+		return model1;
+		
+	}
 
 	@RequestMapping("/RetailerOrderHistory")
 	public ModelAndView RetailerOrderHistory() {
 
-		// System.out.println("shopping item");
-		return new ModelAndView("/OrderManagment/RetailerOrder/RetailerOrderHistory");
-	}
+		ModelAndView model = new ModelAndView();
+		List<Retailer_Order> oderlist = orderMan.getRetailerOrders(50);
 
-	@RequestMapping("/RetailerOrder")
-	public ModelAndView RetailerOrder() {
+		model.addObject("oderlist", oderlist);
+		model.setViewName("/OrderManagment/RetailerOrder/RetailerOrderHistory");
 
-		// System.out.println("shopping item");
-		return new ModelAndView("/OrderManagment/RetailerOrder/RetailerOrder");
+		return model;
 	}
 
 	@RequestMapping("/StoreManagerSuppliers")
@@ -181,5 +220,37 @@ public class Order_ManagmentController {
 
 		return model1;
 	}
+	
+	@RequestMapping("/ViewRorder")
+	public ModelAndView viewRetailerOrder(@RequestParam("orderId") int orderID) {
+		ModelAndView model =new ModelAndView();
+		List<OrderItem> orderitems=orderMan.getOrderItems(orderID);
+		Retailer_Order orderDetails=orderMan.getSpecificOrderDetails(orderID);
+		
+		model.addObject("itemList", orderitems);
+		model.addObject("orderDetails", orderDetails);
+		model.setViewName("/OrderManagment/RetailerOrder/RetailerOrder");
+		return model;
+	}
+	
+	@RequestMapping("/checkOutRetailerOrder")
+	public ModelAndView checkOutRetailer(@RequestParam("orderID") int orderID) {
+		orderMan.checkOutRetailerOrder(orderID);
+		
+		ModelAndView model =new ModelAndView();
+		model.setViewName("/OrderManagment/RetailerOrder/Item");
+		return model;
+		
+	}
+	
+/*	@RequestMapping("/checkOutRetailerOrder")
+	public ModelAndView DeleteOrderItem(@RequestParam("orderItemID") int orderItemID) {
+		
+		orderMan.DeleteOrderItem(orderItemID);
+		return null;
+		//return new ModelAndView("redirect:/ViewRorder");
+
+		
+	}*/
 
 }
