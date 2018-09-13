@@ -1,6 +1,6 @@
 package inv_dis_mgmtsys.services;
 
-import java.util.List;
+import java.util.List; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,6 @@ import inv_dis_mgmtsys.model.OrderItem;
 import inv_dis_mgmtsys.model.Payment;
 import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.Supplier;
-import inv_dis_mgmtsys.model.SupplierOrderItems;
 import inv_dis_mgmtsys.model.cart;
 
 @Service
@@ -54,36 +53,6 @@ public class OrderManagement_IServicesImpl implements OrderManagement_IServices 
 	}
 
 	@Override
-	public List<Supplier> getSuppliers() {
-		List<Supplier> SupplierList=orderMan.getSuppliers();
-		return SupplierList;
-	}
-
-	@Override
-	public void addSupplierOrderItem(int SupplierId, String ItemName, int amount) {
-		orderMan.addSupplierOrderItem(SupplierId, ItemName, amount);
-	}
-
-	@Override
-	public List<SupplierOrderItems> getSupplierOrderItem(int SupplierID) {
-		List<SupplierOrderItems> SupplierOrderItems=orderMan.getSupplierOrderItem(SupplierID);
-		return SupplierOrderItems;
-	}
-
-	@Override
-	public void updateSupplierItem(int itemId, int amount) {
-	
-		orderMan.updateSupplierItem(itemId, amount);
-	}
-
-	@Override
-	public List<SupplierOrderItems> getOrderItemsFromSupplierOrderId(int SupplierOrderID) {
-		
-		List<SupplierOrderItems> SupplierOrderItems=orderMan.getOrderItemsFromSupplierOrderId(SupplierOrderID);
-		return SupplierOrderItems;
-	}
-
-	@Override
 	public List<Retailer_Order> getRetailerOrders(int retailerID) {
 		List<Retailer_Order> retailerOrders=orderMan.getRetailerOrders(retailerID);
 		return retailerOrders;
@@ -120,14 +89,20 @@ public class OrderManagement_IServicesImpl implements OrderManagement_IServices 
 	}
 
 	@Override
-	public void checkOutRetailerOrder(int orderID) {
-		orderMan.checkOutRetailerOrder(orderID);
-		
+	public Retailer_Order checkOutRetailerOrder(int orderID) {
+		Retailer_Order order=orderMan.checkOutRetailerOrder(orderID);
+		return order;
 	}
 
 	@Override
-	public void DeleteOrderItem(int orderItemID) {
-		orderMan.DeleteOrderItem(orderItemID);
+	public void DeleteOrderItem(int orderItemID,int OrderID) {
+		
+		
+		double orderItemcost=orderMan.DeleteOrderItem(orderItemID);
+		Retailer_Order orderToUpdate=orderMan.getSpecificOrderDetails(OrderID);
+		
+		orderToUpdate.setOder_total(orderToUpdate.getOder_total()-orderItemcost);
+		orderMan.updateRetailerOrder(orderToUpdate);
 		
 	}
 	

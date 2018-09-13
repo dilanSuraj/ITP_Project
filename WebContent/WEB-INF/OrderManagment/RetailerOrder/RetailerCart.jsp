@@ -40,14 +40,41 @@
 		file="/WEB-INF/OrderManagment/RetailerOrder/RetailerDashbordnavBar.jsp"%>
 
 
+	<script type="text/javascript">
+		$(window).on('load', function() {
+			$('#myModal').modal('show');
+		});
+	</script>
+	
+
+
+		<!-- Alert to show item added succesfully -->
+
+
+		<div class="modal hide fade" id="myModal">
+			<div class="modal-header">
+				<a class="close" data-dismiss="modal">×</a>
+				<h3>Item Added to the Cart</h3>
+			</div>
+			<div class="modal-body">
+				<p>One fine body</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn">Close</a> <a href="#"
+					class="btn btn-primary">Save changes</a>
+			</div>
+		</div>
+
+
+
 	<div class="row justify-content-end ">
 		<div class="col-md-10"
 			style="padding-top: 90px; padding-left: 40px; padding-right: 40px">
 			<!--center edit start -->
-			
-			<h3 style="padding-bottom:10px">Shopping Cart</h3>
+
+			<h3 style="padding-bottom: 10px">Shopping Cart</h3>
 			<br>
-			
+
 			<div class="container">
 				<table id="cart" class="table table-hover table-condensed">
 					<thead>
@@ -79,11 +106,13 @@
 									<td data-th="Quantity"><input type="number"
 										class="form-control text-center"
 										value="${itemList.getItem_amount()}" name="amount"></td>
-										
+
 									<td class="actions" data-th=""><input type="hidden"
 										value="${itemList.getItem_itemcode()}" name="itemCode" />
-										<button class="btn btn-info btn-sm" type="submit" style="width: 120px; margin-top: 2px;background-color: #003399;">
-											<i class="fa fa-cart-plus" aria-hidden="true"></i> Add to Order
+										<button class="btn btn-info btn-sm" type="submit"
+											style="width: 120px; margin-top: 2px; background-color: #003399;">
+											<i class="fa fa-cart-plus" aria-hidden="true"></i> Add to
+											Order
 										</button>
 								</form>
 								<a class="btn btn-danger btn-sm"
@@ -91,7 +120,7 @@
 									href="<c:url value='/DeleteCartItem?cartID=${itemList.getCart_ID()}' />"><i
 									class="fa fa-trash-o"></i> Remove </a>
 								</td>
-							</tr>	
+							</tr>
 						</c:forEach>
 					</tbody>
 				</table>

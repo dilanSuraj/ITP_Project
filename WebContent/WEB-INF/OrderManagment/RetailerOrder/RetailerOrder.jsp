@@ -97,9 +97,14 @@
 								<c:if
 									test="${orderDetails.getRetailer_orderstatus()=='Incomplete'}">
 									<td class="actions" data-th="">
-										<a class="btn btn-danger btn-sm" href="<c:url value='/DeleteOrderItem?orderItemID=${orderDetails.getOrderItem_ID()}' />">
+									<form action="DeleteOrderItem">
+									<input type="hidden" value="${itemList.getOrdertItem_order_ID()}" name="orderId" />
+									<input type="hidden" value="${itemList.getOrderItem_ID()}" name="orderItemID"/>
+										<button class="btn btn-danger btn-sm" type="submit">
 											<i class="fa fa-trash-o" style="color:white"></i>
-										</a>
+										</button>
+										
+										</form>
 									</td>
 								</c:if>
 							</tr>

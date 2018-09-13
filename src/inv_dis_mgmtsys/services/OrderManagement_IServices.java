@@ -1,6 +1,6 @@
 package inv_dis_mgmtsys.services;
 
-import java.util.List;
+import java.util.List; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,6 @@ import inv_dis_mgmtsys.model.OrderItem;
 import inv_dis_mgmtsys.model.Payment;
 import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.Supplier;
-import inv_dis_mgmtsys.model.SupplierOrderItems;
 import inv_dis_mgmtsys.model.cart;
 
 @Service
@@ -32,16 +31,6 @@ public interface OrderManagement_IServices {
 	
 	public void deleteCartItem(int cartID);
 	
-	public List<Supplier> getSuppliers();
-	
-	public void addSupplierOrderItem(int SupplierId,String ItemName,int amount);
-	
-	public List<SupplierOrderItems> getSupplierOrderItem(int SupplierID);
-	
-	public void updateSupplierItem(int itemId, int amount); 
-	
-	public List<SupplierOrderItems> getOrderItemsFromSupplierOrderId(int SupplierOrderID);
-	
 	public List<Retailer_Order> getRetailerOrders(int retailerID);
 	
 	public void addtoOrder(int amount, int itemID,int RetailerID);
@@ -50,7 +39,7 @@ public interface OrderManagement_IServices {
 	
 	public Retailer_Order getSpecificOrderDetails(int orderId);
 	
-	public void checkOutRetailerOrder(int orderID);
+	public Retailer_Order checkOutRetailerOrder(int orderID);
 	
-	public void DeleteOrderItem(int orderItemID);
+	public void DeleteOrderItem(int orderItemID,int OrderID);
 }

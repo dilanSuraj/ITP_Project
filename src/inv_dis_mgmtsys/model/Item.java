@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "item")
@@ -27,6 +28,11 @@ public class Item {
 	@Column
 	private double item_grossprice;
 	
+	@Column
+	private int item_supplier_ID;
+	
+	@Transient
+	private String Supplier_Name;
 	
 	public int getItem_itemcode() {
 		return item_itemcode;
@@ -57,6 +63,18 @@ public class Item {
 	}
 	public void setItem_grossprice(double item_grossprice) {
 		this.item_grossprice = item_grossprice;
+	}
+	public int getItem_supplier_ID() {
+		return item_supplier_ID;
+	}
+	public void setItem_supplier_ID(int item_supplier_ID) {
+		this.item_supplier_ID = item_supplier_ID;
+	}
+	public String getSupplier_Name() {
+		return Supplier_Name;
+	}
+	public void setSupplier_Name(String supplier_Name) {
+		Supplier_Name = supplier_Name;
 	}
 	
 	

@@ -43,34 +43,16 @@
 
 			<div class="container" style="margin-top: 80px">
 				<div class="row">
-					<div class="col-md-5">
-						<a href="https://placeholder.com"><img
-							src="http://via.placeholder.com/350x350"></a>
+				<div class="col-md-12">
+				<center>
+				<h1>Thank you very much.</h1>
+				<h4>We are processing your Order</h4>
+				</center>
+				<br><br><br>
+				<h5>Order No: ${OrderDetails.getRetailer_OrderID()}</h5>
+				<h5>Total amount of ${OrderDetails.getOder_total()}</h5>
 					</div>
-
-					<div class="col-md-6">
-						<br>
-						<h2>${Item.getItem_name()}</h2>
-						<br>
-						<h4>Rs.${Item.getItem_saleprice()} per
-							unit</h4>
-						<br>
-						<form action="add_to_cart" class="form-group">
-						
-							<label>Amount :</label> 
-							<input type="number"
-								name="cart_amount" class="form-control col-md-4"><br>
-							<input type="hidden" value="<%=user%>" name="cart_retailer_ID" />
-							<input type="hidden" value="${Item.getItem_itemcode()}"
-								name="cart_itemcode" />
-								
-							<button type="submit" class="btn btn-primary btn-sm"
-								style="margin-top: 10px; margin-bottom: 10px;background-color: #003399;"> <i class="fa fa-cart-plus" aria-hidden="true"></i>  Add to
-								cart</button>
-						</form>
-
-					</div>
-
+</div>
 
 				</div>
 			</div>

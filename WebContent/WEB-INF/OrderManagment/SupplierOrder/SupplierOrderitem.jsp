@@ -61,54 +61,44 @@
 
 			<!-- forms starts -->
 
-			<div class="col-md-12">
-				<div class="card mb-3">
-					<div class="card-header" style="color: #003399">
-						<h5>
-							<span class="fa fa-pencil"></span> Order a New Item
-							<Item></Item>
-						</h5>
+			<h3>
+				<span class="fa fa-pencil"></span> Order a New Item
+				<Item></Item>
+			</h3>
+			<br>
+			<form action="addSupplyOrderItem">
+				<div class="col-md-12">
+					<h6>Item : Name of the item</h6>
+					<h6>Supplier : Name of the supplier</h6>
+					<br>
+					
+					<div class="col-md-4">
+						 <div style="col-md-4"><h6>Amount</h6>
+						 </div>
+						 
+						 
+						 <div style="col-md-6">
+						 
+						 <input type="number"
+							class="form-control" id="inputPassword4" placeholder="Amount"
+							name="amount">
+							
+						 </div>
+						 
 					</div>
-					<div class="card-body">
-
-						<form action="addSupplyOrderItem">
-							<div class="form-row">
-								<div class="form-group col-md-5">
-									<label for="Supplier">Supplier</label> <select id="Supplier" name="Supplier"
-										class="form-control">
-										<option selected>Choose Supplier...</option>
-										<c:forEach var="SupplierList" items="${SupplierList}"
-											varStatus="loopCounter">
-											<option value="${SupplierList.getSupplier_ID()}">${SupplierList.getSupplier_name()}</option>
-												</c:forEach>
-									</select>
-								</div>
-
-								<div class="form-group col-md-8">
-									<label for="inputEmail4">Item</label> <input type="text"
-										class="form-control" id="inputEmail4" placeholder="Item" name="itemName">
-								</div>
-								<div class="form-group col-md-4">
-									<label for="inputPassword4">Amount</label> <input type="number"
-										class="form-control" id="inputPassword4" placeholder="Amount" name="amount">
-								</div>
 
 
-								<div class="col-12" style="margin-top: 200px">
-									<button type="submit" class="btn btn-primary"
-										style="width: 90px">Order</button>
-									<button type="submit" class="btn btn-primary"
-										style="width: 90px">Cancel</button>
+					<div class="col-12" style="margin-top: 200px">
+						<button type="submit" class="btn btn-primary" style="width: 90px">Order</button>
+						<button type="submit" class="btn btn-primary" style="width: 90px">Cancel</button>
 
-								</div>
-						</form>
 					</div>
-				</div>
-			</div>
-
-			<!-- forms ends-->
-
+			</form>
 		</div>
+	</div>
+	<!-- forms ends-->
+
+	</div>
 	</div>
 
 	<!-- Bootstrap tooltips -->

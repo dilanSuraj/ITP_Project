@@ -211,7 +211,7 @@
 						class="fa fa-male" style="font-size: 18px"></span> Suplier</a></li>
 
 
-				<li class="nav-item"><a class="nav-link" href="#"><span
+				<li class="nav-item"><a class="nav-link" href="orderNewItem"><span
 						class="fa fa-archive" style="font-size: 18px"></span> Order Item</a></li>
 
 

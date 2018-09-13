@@ -1,6 +1,6 @@
 package inv_dis_mgmtsys.controller;
 
-import java.util.List;  
+import java.util.List ;  
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
@@ -18,7 +18,6 @@ import inv_dis_mgmtsys.model.ItemsInCart;
 import inv_dis_mgmtsys.model.OrderItem;
 import inv_dis_mgmtsys.model.Payment;
 import inv_dis_mgmtsys.model.Supplier;
-import inv_dis_mgmtsys.model.SupplierOrderItems;
 import inv_dis_mgmtsys.model.cart;
 import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.services.OrderManagement_IServicesImpl;
@@ -81,10 +80,11 @@ public class Order_ManagmentController {
 		orderMan.AddToCart(CartItem);
 
 		ModelAndView model = new ModelAndView();
-		List<Item> tyerList = orderMan.getTyers();
+		List<ItemsInCart> itemList = orderMan.getCartItems(50);
+		model.addObject("MessageItem",CartItem);
+		model.addObject("itemList", itemList);
+		model.setViewName("/OrderManagment/RetailerOrder/RetailerCart");
 
-		model.addObject("tyerList", tyerList);
-		model.setViewName("/OrderManagment/RetailerOrder/Items");
 		return model;
 	}
 
@@ -141,85 +141,6 @@ public class Order_ManagmentController {
 
 		return model;
 	}
-
-	@RequestMapping("/StoreManagerSuppliers")
-	public ModelAndView StoreManagerSuppliers() {
-
-		ModelAndView model = new ModelAndView();
-		List<Supplier> SupplierList = orderMan.getSuppliers();
-
-		model.addObject("SupplierList", SupplierList);
-		model.setViewName("/OrderManagment/SupplierOrder/SuppliersStoreManager");
-
-		return model;
-
-	}
-
-	@RequestMapping("/SupplierOrderitem")
-	public ModelAndView SupplierOrderitem() {
-
-		ModelAndView model = new ModelAndView();
-		List<Supplier> SupplierList = orderMan.getSuppliers();
-
-		model.addObject("SupplierList", SupplierList);
-		model.setViewName("/OrderManagment/SupplierOrder/SupplierOrderitem");
-
-		return model;
-	}
-
-	@RequestMapping("/addSupplyOrderItem")
-	public ModelAndView addSupplierOrderItem(@RequestParam("Supplier") int SupplierId,
-			@RequestParam("itemName") String ItemName, @RequestParam("amount") int amount) {
-
-		orderMan.addSupplierOrderItem(SupplierId, ItemName, amount);
-		return new ModelAndView("/OrderManagment/SupplierOrder/SupplierOrderitem");
-
-	}
-
-	@RequestMapping("/UpdateSupplierOrder")
-	public ModelAndView UpdateSupplierOrder() {
-
-		ModelAndView model = new ModelAndView();
-		List<Supplier> SupplierList = orderMan.getSuppliers();
-
-		model.addObject("SupplierList", SupplierList);
-		model.setViewName("/OrderManagment/SupplierOrder/UpdateSupplierOrder");
-
-		return model;
-	}
-
-	@RequestMapping("/SupplierOrderRefresh")
-	public ModelAndView getSupplierOrderItem(@RequestParam("SupplierID") int SupplierID) {
-
-		ModelAndView model1 = new ModelAndView();
-		List<SupplierOrderItems> SupplierOrderItems = orderMan.getSupplierOrderItem(SupplierID);
-		List<Supplier> SupplierList = orderMan.getSuppliers();
-		model1.addObject("SupplierOrderItems", SupplierOrderItems);
-
-		model1.addObject("SupplierList", SupplierList);
-		model1.setViewName("/OrderManagment/SupplierOrder/UpdateSupplierOrder");
-
-		return model1;
-
-	}
-	
-	@RequestMapping("/SOrderitemUpdate")
-	public ModelAndView updateSupplierOrderItem(@RequestParam("supplier_order_ItemID") int itemID,
-			@RequestParam("supplier_order_item_Amount")int amount,
-			@RequestParam("supplier_order_ID")int orderId){
-	
-		orderMan.updateSupplierItem(itemID, amount);
-		
-		ModelAndView model1 = new ModelAndView();
-		List<SupplierOrderItems> SupplierOrderItems = orderMan.getOrderItemsFromSupplierOrderId(orderId);
-		List<Supplier> SupplierList = orderMan.getSuppliers();
-		model1.addObject("SupplierOrderItems", SupplierOrderItems);
-
-		model1.addObject("SupplierList", SupplierList);
-		model1.setViewName("/OrderManagment/SupplierOrder/UpdateSupplierOrder");
-
-		return model1;
-	}
 	
 	@RequestMapping("/ViewRorder")
 	public ModelAndView viewRetailerOrder(@RequestParam("orderId") int orderID) {
@@ -235,22 +156,30 @@ public class Order_ManagmentController {
 	
 	@RequestMapping("/checkOutRetailerOrder")
 	public ModelAndView checkOutRetailer(@RequestParam("orderID") int orderID) {
-		orderMan.checkOutRetailerOrder(orderID);
+		
+		Retailer_Order order=orderMan.checkOutRetailerOrder(orderID);
 		
 		ModelAndView model =new ModelAndView();
-		model.setViewName("/OrderManagment/RetailerOrder/Item");
+		model.addObject("OrderDetails",order);
+		model.setViewName("OrderManagment/RetailerOrder/OrderCheckOut");
 		return model;
 		
 	}
 	
-/*	@RequestMapping("/checkOutRetailerOrder")
-	public ModelAndView DeleteOrderItem(@RequestParam("orderItemID") int orderItemID) {
+	@RequestMapping("/DeleteOrderItem")
+	public ModelAndView DeleteOrderItem(@RequestParam("orderItemID") int orderItemID,@RequestParam("orderId") int orderID) {
 		
-		orderMan.DeleteOrderItem(orderItemID);
-		return null;
-		//return new ModelAndView("redirect:/ViewRorder");
+		orderMan.DeleteOrderItem(orderItemID,orderID);
 
+		ModelAndView model =new ModelAndView();
+		List<OrderItem> orderitems=orderMan.getOrderItems(orderID);
+		Retailer_Order orderDetails=orderMan.getSpecificOrderDetails(orderID);
 		
-	}*/
+		model.addObject("itemList", orderitems);
+		model.addObject("orderDetails", orderDetails);
+		model.setViewName("/OrderManagment/RetailerOrder/RetailerOrder");
+		return model;
+		
+	}
 
 }

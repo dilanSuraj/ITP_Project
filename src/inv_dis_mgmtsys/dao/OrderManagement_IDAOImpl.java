@@ -1,6 +1,6 @@
 package inv_dis_mgmtsys.dao;
 
-import java.text.ParseException;
+import java.text.ParseException; 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -24,8 +24,6 @@ import inv_dis_mgmtsys.model.OrderItem;
 import inv_dis_mgmtsys.model.Payment;
 import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.Supplier;
-import inv_dis_mgmtsys.model.SupplierOrderItems;
-import inv_dis_mgmtsys.model.Supplier_Order;
 import inv_dis_mgmtsys.model.cart;
 
 @Repository
@@ -119,89 +117,6 @@ public class OrderManagement_IDAOImpl implements OrderManagement_IDAO {
 	}
 
 	@Override
-	public List<Supplier> getSuppliers() {
-		@SuppressWarnings("unchecked")
-		List<Supplier> SupplierList = (List<Supplier>) sessionFactory.getCurrentSession().createQuery("from Supplier")
-				.list();
-
-		return SupplierList;
-	}
-
-	public void addSupplierOrder(int SupplierId) {
-
-		Supplier_Order supplierOrder = new Supplier_Order();
-		supplierOrder.setSupplier_ID(SupplierId);
-		sessionFactory.getCurrentSession().saveOrUpdate(supplierOrder);
-
-	}
-
-	@Override
-	public void addSupplierOrderItem(int SupplierId, String ItemName, int amount) {
-
-		Query query = sessionFactory.getCurrentSession()
-				.createQuery("from Supplier_Order o where o.supplier_ID=:SupplierId");
-		query.setParameter("SupplierId", SupplierId);
-		List<Supplier_Order> supplierOrders = (List<Supplier_Order>) query.list();
-
-		Supplier_Order supplierOrder = new Supplier_Order();
-
-		if (supplierOrders.isEmpty()) {
-
-			System.out.println("order table null");
-			addSupplierOrder(SupplierId);
-		}
-
-		supplierOrder = (Supplier_Order) query.list().get(0);
-
-		SupplierOrderItems item = new SupplierOrderItems();
-
-		item.setSupplier_order_ID(supplierOrder.getSupplier_OrderID());
-		item.setSupplier_order_item_Name(ItemName);
-		item.setSupplier_order_item_Amount(amount);
-
-		sessionFactory.getCurrentSession().saveOrUpdate(item);
-
-	}
-
-	@Override
-	public List<SupplierOrderItems> getSupplierOrderItem(int SupplierID) {
-		
-		Query query = sessionFactory.getCurrentSession()
-				.createQuery("from Supplier_Order o where o.supplier_ID=:SupplierId");
-		query.setParameter("SupplierId", SupplierID);
-		Supplier_Order supplyorder = (Supplier_Order) query.list().get(0);
-		
-		Query query2 = sessionFactory.getCurrentSession().createQuery("from SupplierOrderItems s where s.supplier_order_ID=:id");
-		query2.setParameter("id", supplyorder.getSupplier_OrderID());
-		List<SupplierOrderItems> itemList = (List<SupplierOrderItems>)query2.list();
-
-		return itemList;
-		
-	}
-
-	@Override
-	public void updateSupplierItem(int itemId, int amount) {
-		
-		Query query2 = sessionFactory.getCurrentSession().createQuery("from SupplierOrderItems s where s.supplier_order_ItemID=:id");
-		query2.setParameter("id", itemId);
-		SupplierOrderItems item = (SupplierOrderItems)query2.list().get(0);
-		
-		item.setSupplier_order_item_Amount(amount);
-		sessionFactory.getCurrentSession().saveOrUpdate(item);
-		
-		
-	}
-
-	@Override
-	public List<SupplierOrderItems> getOrderItemsFromSupplierOrderId(int SupplierOrderID) {
-		Query query2 = sessionFactory.getCurrentSession().createQuery("from SupplierOrderItems s where s.supplier_order_ID=:id");
-		query2.setParameter("id", SupplierOrderID);
-		List<SupplierOrderItems> itemList = (List<SupplierOrderItems>)query2.list();
-
-		return itemList;
-	}
-
-	@Override
 	public List<Retailer_Order> getRetailerOrders(int retailerID) {
 		
 		Query query2 =sessionFactory.getCurrentSession().createQuery("from Retailer_Order r where r.retailer_ID=:id");
@@ -275,6 +190,7 @@ public class OrderManagement_IDAOImpl implements OrderManagement_IDAO {
 		return items;
 	}
 
+	//get retailer Order Details of a specific order
 	@Override
 	public Retailer_Order getSpecificOrderDetails(int orderId) {
 		
@@ -287,19 +203,31 @@ public class OrderManagement_IDAOImpl implements OrderManagement_IDAO {
 	}
 
 	@Override
-	public void checkOutRetailerOrder(int orderID) {
+	public Retailer_Order checkOutRetailerOrder(int orderID) {
 	
 		Retailer_Order retailerOrders= getSpecificOrderDetails(orderID);
 		retailerOrders.setRetailer_orderstatus("Inprocess");
-		sessionFactory.getCurrentSession().saveOrUpdate(retailerOrders);
 		
+		Date currentDate=new Date();		
+		retailerOrders.setOrder_date(currentDate);
+		sessionFactory.getCurrentSession().saveOrUpdate(retailerOrders);
+		return retailerOrders;
 	}
 
 	@Override
-	public void DeleteOrderItem(int orderItemID) {
+	public double DeleteOrderItem(int orderItemID) {
 
 		OrderItem orderitem = (OrderItem) sessionFactory.getCurrentSession().get(OrderItem.class, orderItemID);
+		double ItemTotal=orderitem.getOderitem_totalcost();
 		sessionFactory.getCurrentSession().delete(orderitem);
+		return ItemTotal;
+	}
+
+
+	@Override
+	public void updateRetailerOrder(Retailer_Order retailerOrder) {
+	
+		sessionFactory.getCurrentSession().saveOrUpdate(retailerOrder);
 		
 	}
 	
