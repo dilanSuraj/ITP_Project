@@ -82,6 +82,17 @@ public class Emp_Month_Salary {
 	private String emp_month_sal_status;
 	
 	@Column
+	private String emp_month_sal_category;
+	
+	public String getEmp_month_sal_category() {
+		return emp_month_sal_category;
+	}
+
+	public void setEmp_month_sal_category(String emp_month_sal_category) {
+		this.emp_month_sal_category = emp_month_sal_category;
+	}
+
+	@Column
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date emp_month_sal_date;
 

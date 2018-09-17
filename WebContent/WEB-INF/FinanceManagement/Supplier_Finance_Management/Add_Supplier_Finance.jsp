@@ -91,13 +91,18 @@
 
 						<div class="form-group col-md-6">
 							<label for="input_supp_order">Supplier Order Details</label>
-							<form:input type="text" class="form-control"
-								path="supplier_orderID"
-								placeholder="Enter Supplier Order ID number here" />
+							
+							<form:select id="inputState" class="form-control"
+								path="supplier_orderID" required="true">
+								<c:forEach var="orderList" items="${orderList}"
+									varStatus="status">
+									<form:option value="${orderList.getSupplier_order_Item_ID()}">${orderList.getSupplier_order_Item_ID()}</form:option>
+								</c:forEach>
+							</form:select>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="input_amt">Amount</label>
+						<label for="input_amt">Paid Amount</label>
 						<form:input type="text" class="form-control" path="amount"
 							placeholder="Enter the amount here" />
 					</div>

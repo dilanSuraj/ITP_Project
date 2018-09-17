@@ -1,6 +1,8 @@
 package inv_dis_mgmtsys.model;
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "item")
@@ -37,6 +40,17 @@ public class Item{
 	
 	@Column
 	private double item_percentageProfit;
+
+	@Transient
+	private List<Item> itemList; 
+
+	public List<Item> getItemList() {
+		return itemList;
+	}
+
+	public void setItemList(List<Item> itemList) {
+		this.itemList = itemList;
+	}
 
 	public int getItem_itemcode() {
 		return item_itemcode;

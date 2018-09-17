@@ -6,8 +6,10 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,8 +29,10 @@ import inv_dis_mgmtsys.model.Payment;
 import inv_dis_mgmtsys.model.Retailer;
 import inv_dis_mgmtsys.model.Retailer_Blacklist;
 import inv_dis_mgmtsys.model.Retailer_Finance;
+import inv_dis_mgmtsys.model.Retailer_Finance_View;
 import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.Supplier;
+import inv_dis_mgmtsys.model.SupplierFinance_View;
 import inv_dis_mgmtsys.model.SupplierOrderItems;
 import inv_dis_mgmtsys.model.Supplier_Finance;
 import inv_dis_mgmtsys.model.Supplier_Order;
@@ -40,7 +44,7 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 
 	@Autowired
 	FinanaceManagement_IDAOImpl finanaceManagerIDAO;
-	
+
 	@Autowired
 	HttpSession httpsession;
 
@@ -55,8 +59,7 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		if (paymentCategory != null) {
 			List<Payment> payments = finanaceManagerIDAO.getfinancebyCategory(paymentCategory);
 			return payments;
-		}
-		else {
+		} else {
 			return null;
 		}
 	}
@@ -115,8 +118,6 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		finanaceManagerIDAO.editItemPrice(item);
 	}
 
-	
-	
 	@Override
 	public List<DataPoint> getDataPoints(int initial_year) {
 		List<DataPoint> dataPoints = new ArrayList<>();
@@ -148,7 +149,6 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		@SuppressWarnings("unchecked")
 		List<Payment> paymentList = (List<Payment>) (List<?>) payment_List;
 
-
 		List<Finance> list_transport = finanaceManagerIDAO.getAllFinanceDetails("transportFinance");
 		@SuppressWarnings("unchecked")
 		List<TransportFinance> transportList = (List<TransportFinance>) (List<?>) list_transport;
@@ -162,13 +162,13 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		List<Retailer_Finance> retailerList = (List<Retailer_Finance>) (List<?>) list_retailer;
 
 		System.out.println("Payment amount Line 146 :");
-		
+
 		for (Payment payment : paymentList) {
 
 			cal.setTime(payment.getOther_income_expense_date());
 			System.out.println("Payment amount Line 150 :");
 			double paymentAmt = payment.getOther_income_expense_amount();
-			System.out.println("Payment amount Line 151 :"+paymentAmt);
+			System.out.println("Payment amount Line 151 :" + paymentAmt);
 
 			year = cal.get(Calendar.YEAR);
 
@@ -284,7 +284,7 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 				expense_Payment += paymentAmt;
 
 				paymentPoint[0].setExpense(expense_Payment);
-				
+
 			}
 
 			if (year == initial_year - 1) {
@@ -358,7 +358,7 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 
 	@Override
 	public List<Vehicle> getAllVehicleDetails() {
-		
+
 		return finanaceManagerIDAO.getAllVehicleDetails();
 	}
 
@@ -366,59 +366,53 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 	public List<Retailer_Order> getAllRetailerOrders() {
 		return finanaceManagerIDAO.getAllRetailerOrderDetails();
 	}
-	
+
 	public Retailer_Order getSingleRetailerOrder(int retailerOrderID) {
 		return finanaceManagerIDAO.getSingleRetailerOrderDetails(retailerOrderID);
 	}
 
 	@Override
-	public List<Emp_Month_Salary> getAllEmpMonthSalary() {
-		return finanaceManagerIDAO.getAllEmpMonthSalary();
-	}
-
-	@Override
 	public Emp_Month_Salary getSingleSalaryDetails(int emp_month_ID) {
-	
+
 		return finanaceManagerIDAO.getSingleSalaryDetails(emp_month_ID);
 	}
 
 	@Override
 	public void editMonthSalaryDetails(Emp_Month_Salary emp_Month_Salary) {
-		
+
 		finanaceManagerIDAO.editMonthSalaryDetails(emp_Month_Salary);
-		
+
 	}
 
 	@Override
 	public Retailer getRetailer(int retailerID) {
-		
+
 		return finanaceManagerIDAO.getRetailer(retailerID);
 	}
 
 	@Override
 	public List<Retailer_Blacklist> getBlacklistedRetailerFinanceList() {
-		List <Retailer_Blacklist> retailer_blacklist =  finanaceManagerIDAO.getBlacklistedRetailerFinanceList();
-		
-		
+		List<Retailer_Blacklist> retailer_blacklist = finanaceManagerIDAO.getBlacklistedRetailerFinanceList();
+
 		return retailer_blacklist;
 	}
 
 	@Override
 	public void editBlacklistedRetailerStatus(String status, int retailerID) {
-		
+
 		finanaceManagerIDAO.editBlacklistedRetailerStatus(status, retailerID);
 	}
 
 	@Override
 	public double totalIncome() {
-		
+
 		List<Finance> payment_List = finanaceManagerIDAO.getAllFinanceDetails("payment");
 		@SuppressWarnings("unchecked")
 		List<Payment> paymentList = (List<Payment>) (List<?>) payment_List;
-		
+
 		double income = 0;
-		for(Payment payment: paymentList) {
-			
+		for (Payment payment : paymentList) {
+
 			if (payment.getOther_income_expense_type().equals("income")) {
 				income += payment.getOther_income_expense_recieved();
 			}
@@ -427,28 +421,147 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		List<Finance> list_retailer = finanaceManagerIDAO.getAllFinanceDetails("retailerFinance");
 		@SuppressWarnings("unchecked")
 		List<Retailer_Finance> retailerList = (List<Retailer_Finance>) (List<?>) list_retailer;
-		
-		for(Retailer_Finance finance: retailerList) {
-			income += finance.getAmount(); 
+
+		for (Retailer_Finance finance : retailerList) {
+			income += finance.getAmount();
 		}
-		System.out.println("Total Income : "+ income);
-		
-		
+		System.out.println("Total Income : " + income);
+
+		return income;
+	}
+
+	public double gettotalIncome_currentMonth() {
+
+		List<Finance> payment_List = finanaceManagerIDAO.getAllFinanceDetails("payment");
+		@SuppressWarnings("unchecked")
+		List<Payment> paymentList = (List<Payment>) (List<?>) payment_List;
+
+		double income = 0;
+
+		Calendar cal = Calendar.getInstance();
+
+		int year = 0;
+		int month = 0;
+
+		Calendar c = Calendar.getInstance();
+
+		int year_current = c.get(Calendar.YEAR);
+		int month_current = c.get(Calendar.MONTH);
+
+		System.out.println("Current year " + year_current + " , current month : " + month_current);
+
+		for (Payment payment : paymentList) {
+
+			cal.setTime(payment.getOther_income_expense_date());
+			year = cal.get(Calendar.YEAR);
+			month = cal.get(Calendar.MONTH);
+			System.out.println("Year got " + year + "Month : " + month);
+
+			if (payment.getOther_income_expense_type().equals("income") && (year == year_current)
+					&& (month == month_current)) {
+				income += payment.getOther_income_expense_recieved();
+			}
+		}
+
+		List<Finance> list_retailer = finanaceManagerIDAO.getAllFinanceDetails("retailerFinance");
+		@SuppressWarnings("unchecked")
+		List<Retailer_Finance> retailerList = (List<Retailer_Finance>) (List<?>) list_retailer;
+
+		for (Retailer_Finance finance : retailerList) {
+
+			cal.setTime(finance.getPayment_date());
+			year = cal.get(Calendar.YEAR);
+			month = cal.get(Calendar.MONTH);
+			System.out.println("Year got " + year + "Month : " + month);
+
+			if ((year == year_current) && (month == month_current)) {
+
+				income += finance.getAmount();
+			}
+		}
+		System.out.println("Total Income : " + income);
+
 		return income;
 	}
 
 	@Override
 	public double totalExpense() {
-		
+
 		double expense = 0;
-		
+
 		List<Finance> payment_List = finanaceManagerIDAO.getAllFinanceDetails("payment");
 		@SuppressWarnings("unchecked")
 		List<Payment> paymentList = (List<Payment>) (List<?>) payment_List;
 
-		
-		for(Payment payment: paymentList) {
-			
+		Calendar cal = Calendar.getInstance();
+
+		int year = 0;
+		int month = 0;
+
+		Calendar c = Calendar.getInstance();
+
+		int year_current = c.get(Calendar.YEAR);
+		int month_current = c.get(Calendar.MONTH);
+
+		System.out.println("Current year " + year_current + " , current month : " + month_current);
+
+		for (Payment payment : paymentList) {
+
+			cal.setTime(payment.getOther_income_expense_date());
+			year = cal.get(Calendar.YEAR);
+			month = cal.get(Calendar.MONTH);
+			System.out.println("Year got " + year + "Month : " + month);
+
+			if (payment.getOther_income_expense_type().equals("expense") && (year == year_current)
+					&& (month == month_current)) {
+				expense += payment.getOther_income_expense_recieved();
+			}
+		}
+		List<Finance> list_transport = finanaceManagerIDAO.getAllFinanceDetails("transportFinance");
+		@SuppressWarnings("unchecked")
+		List<TransportFinance> transportList = (List<TransportFinance>) (List<?>) list_transport;
+
+		for (TransportFinance finance : transportList) {
+
+			cal.setTime(finance.getTransportpayment_date());
+			year = cal.get(Calendar.YEAR);
+			month = cal.get(Calendar.MONTH);
+			System.out.println("Year got " + year + "Month : " + month);
+
+			if ((year == year_current) && (month == month_current)) {
+				expense += finance.getTransportpayment_amount();
+			}
+		}
+		List<Finance> list_supplier = finanaceManagerIDAO.getAllFinanceDetails("supplierFinance");
+		@SuppressWarnings("unchecked")
+		List<Supplier_Finance> supplierList = (List<Supplier_Finance>) (List<?>) list_supplier;
+
+		for (Supplier_Finance finance : supplierList) {
+
+			cal.setTime(finance.getPayment_date());
+			year = cal.get(Calendar.YEAR);
+			month = cal.get(Calendar.MONTH);
+			System.out.println("Year got " + year + "Month : " + month);
+
+			if ((year == year_current) && (month == month_current)) {
+				expense += finance.getAmount();
+			}
+		}
+		System.out.println("Total Expense : " + expense);
+
+		return expense;
+	}
+
+	public double gettotalExpense_currentMonth() {
+
+		double expense = 0;
+
+		List<Finance> payment_List = finanaceManagerIDAO.getAllFinanceDetails("payment");
+		@SuppressWarnings("unchecked")
+		List<Payment> paymentList = (List<Payment>) (List<?>) payment_List;
+
+		for (Payment payment : paymentList) {
+
 			if (payment.getOther_income_expense_type().equals("expense")) {
 				expense += payment.getOther_income_expense_recieved();
 			}
@@ -457,77 +570,80 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		@SuppressWarnings("unchecked")
 		List<TransportFinance> transportList = (List<TransportFinance>) (List<?>) list_transport;
 
-		for(TransportFinance finance: transportList) {
+		for (TransportFinance finance : transportList) {
 			expense += finance.getTransportpayment_amount();
 		}
 		List<Finance> list_supplier = finanaceManagerIDAO.getAllFinanceDetails("supplierFinance");
 		@SuppressWarnings("unchecked")
 		List<Supplier_Finance> supplierList = (List<Supplier_Finance>) (List<?>) list_supplier;
 
-		for(Supplier_Finance finance: supplierList) {
+		for (Supplier_Finance finance : supplierList) {
 			expense += finance.getAmount();
 		}
-		System.out.println("Total Expense : "+ expense);
+		System.out.println("Total Expense : " + expense);
 
 		return expense;
 	}
 
 	@Override
 	public double profitPercentage() {
-		
-		double profit = this.totalIncome() -  this.totalExpense();
-		
-		if(profit <= 0)
+
+		double profit = this.gettotalIncome_currentMonth() - this.gettotalExpense_currentMonth();
+
+		if (profit <= 0)
 			profit = 0;
-		
-		double profit_percentage = (profit/this.totalIncome())*100;
-		
-		System.out.println("Profit Percentage : "+ profit_percentage);
+
+		double profit_percentage = (profit / this.totalIncome()) * 100;
+
+		System.out.println("Profit Percentage : " + profit_percentage);
 		return profit_percentage;
 	}
 
 	public void saveSessionObjects(HttpSession httpSession) {
-		
+
 		Session session = finanaceManagerIDAO.getCurrentSession();
-		
-		if(session == null) {
+
+		if (session == null) {
 			System.out.println("Session is null");
 		}
-		
+
 		Double income = this.totalIncome();
 		Double expense = this.totalExpense();
+
+		Double income_currentmonth = this.gettotalIncome_currentMonth();
+		Double expense_currentmonth = this.gettotalExpense_currentMonth();
+
 		Double profitPercent = this.profitPercentage();
 		int blacklist = this.blacklistedRetailerList();
-		
-		DecimalFormat twoDForm = new DecimalFormat("#.##");
-	   
-		String income_string = new DecimalFormat("#,###.00").format(income);
-		String expense_string = new DecimalFormat("#,###.00").format(expense);
 
-        
-	    httpsession.setAttribute("Income", income_string);
-	    httpsession.setAttribute("Expense", expense_string);
-	    httpsession.setAttribute("ProfitPercent", twoDForm.format(profitPercent));
-	    httpsession.setAttribute("Blacklist", blacklist);
+		DecimalFormat twoDForm = new DecimalFormat("#.##");
+
+		String income_string = new DecimalFormat("#,###.00").format(income_currentmonth);
+		String expense_string = new DecimalFormat("#,###.00").format(expense_currentmonth);
+
+		httpsession.setAttribute("Income", income_string);
+		httpsession.setAttribute("Expense", expense_string);
+		httpsession.setAttribute("ProfitPercent", twoDForm.format(profitPercent));
+		httpsession.setAttribute("Blacklist", blacklist);
 	}
 
 	public int blacklistedRetailerList() {
-		
+
 		int numberOfBlcklisted = 0;
 		List<Retailer_Blacklist> blacklist = finanaceManagerIDAO.getBlacklistedRetailerFinanceList();
-		
+
 		List<Retailer> retailerList = finanaceManagerIDAO.getAllRetailers();
-		
-		if(retailerList == null) {
+
+		if (retailerList == null) {
 			return 0;
 		}
-		for(Retailer retailer: retailerList) {
-			
-			if(retailer.getRetailer_blacklistStatus().equals("Yes")) {
+		for (Retailer retailer : retailerList) {
+
+			if (retailer.getRetailer_blacklistStatus().equals("Yes")) {
 				numberOfBlcklisted++;
 			}
 		}
-		System.out.println("Blacklisted : "+numberOfBlcklisted);
+		System.out.println("Blacklisted : " + numberOfBlcklisted);
 		return numberOfBlcklisted;
 	}
 
@@ -538,33 +654,77 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		Retailer retailer = finanaceManagerIDAO.getRetailer(retailerID);
 		return retailer;
 	}
-	
+
 	@Override
 	public Supplier getSupplierByOrderID(int supplierorderID) {
-		
+
 		SupplierOrderItems order = finanaceManagerIDAO.getSingleSupplierOrderDetails(supplierorderID);
+
 		int supplierID = order.getSupplier_order_Item_supplierID();
 		Supplier supplier = finanaceManagerIDAO.getSupplier(supplierID);
 		return supplier;
-		
+
 	}
-	
+
 	@Override
 	public Supplier getSupplier(int supplierID) {
-		
+
 		return finanaceManagerIDAO.getSupplier(supplierID);
 	}
-	
+
 	@Override
 	public List<SupplierOrderItems> getAllSupplierOrders() {
 		return finanaceManagerIDAO.getAllSupplierOrderDetails();
 	}
-	
+
 	@Override
 	public SupplierOrderItems getSingleSupplierOrderItem(int supplierOrderID) {
-		
+
 		return finanaceManagerIDAO.getSingleSupplierOrderDetails(supplierOrderID);
 	}
 
-	
+	public List<Emp_Month_Salary> getAllEmpMonthSalary() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+    public List<Map<String, Object>> getSupplierFinanceViewDetails(){
+		
+		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+		List<SupplierFinance_View> listOfSupplierFinanceView = finanaceManagerIDAO.getAllSupplierFinanceViewDetails();
+		
+		for(SupplierFinance_View financeView : listOfSupplierFinanceView) {
+			Map<String, Object> map = new HashMap<>();
+			map.put("supplier_companyname", financeView.getSupplier_companyname());
+			map.put("supplier_order_item_Amount", financeView.getSupplier_order_item_Amount());
+			map.put("item_name",financeView.getItem_name());
+			map.put("payment_date", financeView.getPayment_date());
+			map.put("amount", financeView.getAmount());
+			map.put("item_grossprice", financeView.getItem_grossprice());
+			list.add(map);
+						
+		}
+		return  list;
+	}
+    
+        public List<Map<String, Object>> getRetailerFinanceViewDetails(){
+		
+		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+		List<Retailer_Finance_View> listOfRetailerFinanceView = finanaceManagerIDAO.getAllRetailerFinanceViewDetails();
+		
+		for(Retailer_Finance_View financeView : listOfRetailerFinanceView) {
+			Map<String, Object> map = new HashMap<>();
+			map.put("retailer_name", financeView.getRetailer_name());
+			map.put("paymentAmt", financeView.getPaymentAmt());
+			map.put("oder_total",financeView.getOder_total());
+			map.put("payment_date", financeView.getPayment_date());
+			map.put("deadline_payment_date", financeView.getDeadline_payment_date());
+			
+			list.add(map);
+						
+		}
+		return  list;
+	}
+
+
 }

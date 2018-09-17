@@ -1,5 +1,6 @@
 package inv_dis_mgmtsys.model;
 
+import java.text.DateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -53,6 +54,17 @@ public class Supplier_Finance implements Finance{
 	@Transient
 	private Item item;
 	
+	@Transient
+	private String paymentDateInString;
+	
+
+	public String getPaymentDateInString() {
+		return this.paymentDateInString = DateFormat.getDateInstance().format(this.payment_date);
+	}
+
+	public void setPaymentDateInString(String paymentDateInString) {
+		this.paymentDateInString = paymentDateInString;
+	}
 
 	public double getTotalAmount() {
 		return totalAmount;

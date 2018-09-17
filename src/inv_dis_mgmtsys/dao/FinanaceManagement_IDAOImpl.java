@@ -29,17 +29,21 @@ import inv_dis_mgmtsys.model.Emp_Month_Salary;
 import inv_dis_mgmtsys.model.Finance;
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.Payment;
-
+import inv_dis_mgmtsys.model.PermanentEmployee;
 import inv_dis_mgmtsys.model.Retailer;
 import inv_dis_mgmtsys.model.Retailer_Blacklist;
 import inv_dis_mgmtsys.model.Retailer_Finance;
+import inv_dis_mgmtsys.model.Retailer_Finance_View;
 import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.Supplier;
+import inv_dis_mgmtsys.model.SupplierFinance_View;
 import inv_dis_mgmtsys.model.SupplierOrderItems;
 import inv_dis_mgmtsys.model.Supplier_Finance;
 import inv_dis_mgmtsys.model.Supplier_Order;
+import inv_dis_mgmtsys.model.TemporaryEmployee;
 import inv_dis_mgmtsys.model.TransportFinance;
 import inv_dis_mgmtsys.model.Vehicle;
+
 import inv_dis_mgmtsys.services.FinanaceManagement_IServicesImpl;
 
 @Repository
@@ -111,7 +115,11 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 		else {
 			return null;
 		}
-		return sessionFactory.getCurrentSession().createQuery(hql).list();
+		List<Finance> list =  sessionFactory.getCurrentSession().createQuery(hql).list();
+		if(list == null)
+			System.out.println("Service");
+		
+		return list;
 	}
 
 	@Override
@@ -263,15 +271,13 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 
 		return sessionFactory.getCurrentSession().createQuery("From Retailer_Order").list();
 	}
-	
-	
 
 	@Override
 	public Retailer_Order getSingleRetailerOrderDetails(int retailerOrderID) {
 
 		return (Retailer_Order) sessionFactory.getCurrentSession().get(Retailer_Order.class, retailerOrderID);
 	}
-	
+
 	@Override
 	public SupplierOrderItems getSingleSupplierOrderDetails(int supplierOrderID) {
 
@@ -285,6 +291,9 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 		return sessionFactory.getCurrentSession().createQuery("From Emp_Month_Salary").list();
 	}
 
+	
+
+	
 	@Override
 	public Emp_Month_Salary getSingleSalaryDetails(int emp_month_ID) {
 		return (Emp_Month_Salary) sessionFactory.getCurrentSession().get(Emp_Month_Salary.class, emp_month_ID);
@@ -311,11 +320,11 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 
 		List<Retailer_Blacklist> blacklist = new ArrayList<>();
 		List<Retailer> retailerList = this.getAllRetailers();
-		if(retailerfinanceList == null) {
+		if (retailerfinanceList == null) {
 			return null;
 		}
-			
-		for(Retailer retailer: retailerList) {
+
+		for (Retailer retailer : retailerList) {
 			this.editBlacklistedRetailerStatus("No", retailer.getRetailer_ID());
 		}
 		for (Finance finance : retailerfinanceList) {
@@ -325,33 +334,33 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 			LocalDate localDate = LocalDate.now();
-			
 
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Date currentDate;
 			try {
 				currentDate = sdf.parse(dtf.format(localDate));
-				Retailer_Order retailerOrder = this.getSingleRetailerOrderDetails(retailer_Finance.getRetailer_orderID());
+				Retailer_Order retailerOrder = this
+						.getSingleRetailerOrderDetails(retailer_Finance.getRetailer_orderID());
 				double amountToPay = retailerOrder.getOder_total() - retailer_Finance.getAmount();
 				System.out.println("************");
-				System.out.println("Amount to pay : "+amountToPay);
-				System.out.println("deadline : "+ deadLineDate);
+				System.out.println("Amount to pay : " + amountToPay);
+				System.out.println("deadline : " + deadLineDate);
 				System.out.println(currentDate.compareTo(deadLineDate) < 0);
-				if ((currentDate.compareTo(deadLineDate) > 0) &&(amountToPay > 0)) {
+				if ((currentDate.compareTo(deadLineDate) > 0) && (amountToPay > 0)) {
 					System.out.println("Inside");
-					
+
 					Retailer retailer = this.getRetailer(retailerOrder.getRetailer_ID());
-					
+
 					Retailer_Blacklist blacklistedRetailer = new Retailer_Blacklist();
 					blacklistedRetailer.setRetailer(retailer);
 					blacklistedRetailer.setRetailer_blacklist_amount(retailer_Finance.getAmount());
 					blacklistedRetailer.setRetailer_blacklist_deadlineDate(deadLineDate);
-					this.editBlacklistedRetailerStatus("Yes",retailerOrder.getRetailer_ID());
-                    blacklist.add(blacklistedRetailer);			
+					this.editBlacklistedRetailerStatus("Yes", retailerOrder.getRetailer_ID());
+					blacklist.add(blacklistedRetailer);
 				}
-				
+
 			} catch (ParseException e) {
-				
+
 				e.printStackTrace();
 			}
 
@@ -361,10 +370,10 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 	}
 
 	@Override
-	public void editBlacklistedRetailerStatus(String status,int retailerID) {
-	
+	public void editBlacklistedRetailerStatus(String status, int retailerID) {
+
 		String hql = "update Retailer retailer set retailer.retailer_blacklistStatus=?  where retailer.retailer_ID=?";
-		
+
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setParameter(0, status);
 		query.setParameter(1, retailerID);
@@ -374,7 +383,7 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 
 	@Override
 	public Retailer getRetailer(int retailerID) {
-	
+
 		return (Retailer) sessionFactory.getCurrentSession().get(Retailer.class, retailerID);
 	}
 
@@ -384,9 +393,8 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 		return sessionFactory.getCurrentSession().createQuery("From Retailer").list();
 	}
 
-
 	public Session getCurrentSession() {
-		
+
 		return sessionFactory.getCurrentSession();
 	}
 
@@ -398,13 +406,21 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<SupplierOrderItems> getAllSupplierOrderDetails() {
-        String hql = "From SupplierOrderItems supplierOrder  where supplierOrder.supplier_order_item_status=?";		
+		String hql = "From SupplierOrderItems supplierOrder  where supplierOrder.supplier_order_item_status=?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setParameter(0, "complete");
 		return query.list();
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<SupplierFinance_View> getAllSupplierFinanceViewDetails(){
+		
+		return sessionFactory.getCurrentSession().createQuery("From SupplierFinance_View").list();
+	}
 	
-	
-
+	@SuppressWarnings("unchecked")
+	public List<Retailer_Finance_View> getAllRetailerFinanceViewDetails(){
+		
+		return sessionFactory.getCurrentSession().createQuery("From Retailer_Finance_View").list();
+	}
 }

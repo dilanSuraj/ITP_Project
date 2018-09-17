@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CEO_Retailer_Finance_Report" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13acf49e-4913-4d1b-bccc-113817ad15d1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (2)"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[Select * from retailer_finance_view]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="retailer_finance_view"/>
+	</field>
+	<field name="paymentAmt" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="paymentAmt"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="retailer_finance_view"/>
+	</field>
+	<field name="payment_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="payment_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="retailer_finance_view"/>
+	</field>
+	<field name="deadline_payment_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="deadline_payment_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="retailer_finance_view"/>
+	</field>
+	<field name="retailer_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="retailer_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="retailer_finance_view"/>
+	</field>
+	<field name="oder_total" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="oder_total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="retailer_finance_view"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="552" height="95" backcolor="#000000" uuid="6c6ca4e1-17cd-4913-93d6-5e670ea9ae8a"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="540" height="60" uuid="a2a2cac8-5a7d-4487-8c54-dab235ce4e21"/>
+					<textElement textAlignment="Center">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Retailer Finance Report]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="100" width="552" height="32" forecolor="#000000" backcolor="#CC0000" uuid="e3c14156-5b51-4201-918b-97fdc012e5d4"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="406" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="5c3301e7-a737-4c59-8a2f-a6c79fd1adb8"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="100" y="8" width="100" height="18" forecolor="#000000" uuid="882ef107-b462-4ab9-8cd1-1e507a913c08">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cf46f9a3-3d3a-4aa3-80da-bf2d27fd3f93"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[paymentAmt]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="310" y="8" width="123" height="18" forecolor="#000000" uuid="ba019306-ab3a-4d04-bed8-ca26d9ec7ca6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7ca05f34-35a5-4591-9a4a-080f8e2cbb2f"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[payment_date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="433" y="8" width="122" height="18" forecolor="#000000" uuid="5e9c326c-e064-4b6c-9a6a-b2cc5401b026">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="66318b49-09a6-4eb0-998e-2ba1658aca95"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[deadline_payment_date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="8" width="100" height="18" forecolor="#000000" uuid="d876c26a-5d95-4434-bd0e-a3c62edfc243">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="087a0b90-dd93-424b-b8e5-d5b40815650d"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[retailer_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="200" y="8" width="110" height="18" forecolor="#000000" uuid="2f5783c9-e12c-4ef8-a757-ef764bd66ee2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dfaadbd9-095b-473d-94fb-933267ffff8f"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[oder_total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="b50221b5-8254-440b-8c6f-1f0b138c9259"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="100" y="0" width="100" height="18" uuid="9e623363-3a6e-404b-a1c8-5f9f21203578">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cf46f9a3-3d3a-4aa3-80da-bf2d27fd3f93"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{paymentAmt}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="310" y="0" width="123" height="18" uuid="e876d4aa-252c-4c42-be27-3319b6e3839d">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7ca05f34-35a5-4591-9a4a-080f8e2cbb2f"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[DateFormat.getDateInstance().format($F{payment_date})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="433" y="0" width="122" height="18" uuid="c72c5913-5832-4a02-ac86-783549d5cfe7">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="66318b49-09a6-4eb0-998e-2ba1658aca95"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[DateFormat.getDateInstance().format($F{payment_date})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="100" height="18" uuid="807dec94-a272-44fc-b8e6-824d82842712">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="087a0b90-dd93-424b-b8e5-d5b40815650d"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{retailer_name}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="200" y="0" width="110" height="18" uuid="fd7c3ad2-a521-4479-a4a9-ffdc5d5d989d">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dfaadbd9-095b-473d-94fb-933267ffff8f"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{oder_total}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="1133a906-5b71-476e-9f3e-bc97c97058c1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="729c3539-f946-4d0e-a0a7-bda2815ea1b0"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="4834e99c-7f6c-485a-b098-50e5187f2ab4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="9825b46e-76f1-469a-abb8-a1cc27aad685"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="137d38c7-1a83-4fc5-b156-9d5f1b1a0ddc"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

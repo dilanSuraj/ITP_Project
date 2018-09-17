@@ -88,14 +88,7 @@
 				</h5>
 
 			</div>
-			<a href="Add_Retailer_Blacklist">
-				<div class="pull-right" style="padding-left: 77%; padding-top: 30px">
-
-					<button class="btn btn-success" data-toggle="modal"
-						data-target="#create-user" style="margin-right: 20px">+
-						Add blacklisted retailer
-				</div>
-			</a>
+		
 			<div class="card-body">
 
 				<script>

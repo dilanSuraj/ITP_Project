@@ -1,7 +1,13 @@
 package inv_dis_mgmtsys.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
@@ -16,6 +22,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -35,8 +42,9 @@ import inv_dis_mgmtsys.model.Supplier_Finance;
 import inv_dis_mgmtsys.model.Supplier_Order;
 import inv_dis_mgmtsys.model.TransportFinance;
 import inv_dis_mgmtsys.model.Vehicle;
+
 import inv_dis_mgmtsys.services.FinanaceManagement_IServicesImpl;
-import inv_dis_mgmtsys.services.OrderManagement_IServicesImpl;
+
 
 @Controller
 @Transactional
@@ -46,16 +54,22 @@ public class Finance_ManagementController {
 	@Autowired
 	private FinanaceManagement_IServicesImpl finanaceManagement_IServices;
 
+
 	public Finance_ManagementController() {
 
 		System.out.println("Inside Finanace Management Controller");
+		
 	}
 
 	@RequestMapping("/Finance_Manager")
 	public ModelAndView FinanceManagerDashboardView(HttpSession session) {
+		
+		if(finanaceManagement_IServices == null)
+			System.out.println("*******************************Here also");
 
 		finanaceManagement_IServices.saveSessionObjects(session);
 		ModelAndView modelAndView = new ModelAndView();
+		//List<Emp_Month_Salary> list = finanaceManagement_IServices.getAllEmpMonthSalary();
 
 		try {
 
@@ -70,6 +84,8 @@ public class Finance_ManagementController {
 		return modelAndView;
 	}
 
+	
+	 
 	@RequestMapping("/Supplier_Finance")
 	public ModelAndView SupplierFinanaceView() {
 
@@ -88,6 +104,7 @@ public class Finance_ManagementController {
 			finance.setSupplier(supplier);
 			
 			SupplierOrderItems order = finanaceManagement_IServices.getSingleSupplierOrderItem(supplierOrderID);
+			
 			itemCode = order.getSupplier_order_item_itemcode();
 			Item item = finanaceManagement_IServices.getSingleItemDetail(itemCode);
 			finance.setItem(item);
@@ -141,7 +158,11 @@ public class Finance_ManagementController {
 	public ModelAndView SupplierFinanaceInsert_GET(
 			@ModelAttribute("supplier_finance") Supplier_Finance supplier_finance) {
 
-		return new ModelAndView("/FinanceManagement/Supplier_Finance_Management/Add_Supplier_Finance");
+		ModelAndView modelAndView = new ModelAndView();
+		List<SupplierOrderItems> orderList = finanaceManagement_IServices.getAllSupplierOrders();
+		modelAndView.addObject("orderList", orderList);
+		modelAndView.setViewName("/FinanceManagement/Supplier_Finance_Management/Add_Supplier_Finance");
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/Add_Supplier_Finance_POST", method = RequestMethod.POST)
@@ -170,7 +191,10 @@ public class Finance_ManagementController {
 
 		ModelAndView model = new ModelAndView();
 		Item item = (Item) finanaceManagement_IServices.getSingleItemDetail(id);
+		List<Item> itemList = finanaceManagement_IServices.getAllItemDetails();
+		item.setItemList(itemList);
 		model.addObject("item", item);
+		
 		model.setViewName("/FinanceManagement/Sale_Price_Management/Edit_Sale_Price");
 
 		return model;

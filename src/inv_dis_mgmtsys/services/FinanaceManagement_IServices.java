@@ -42,8 +42,7 @@ public interface FinanaceManagement_IServices {
 	
 	public List<Retailer_Order> getAllRetailerOrders();
 	
-	public List<Emp_Month_Salary> getAllEmpMonthSalary();
-	   
+	
     public Emp_Month_Salary getSingleSalaryDetails(int emp_month_ID);
     
     public void editMonthSalaryDetails(Emp_Month_Salary emp_Month_Salary);

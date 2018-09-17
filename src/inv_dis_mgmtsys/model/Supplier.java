@@ -21,6 +21,26 @@ public class Supplier {
 	@Column
 	private String supplier_name;
 	
+	@Column
+	private String supplier_companyname;
+	
+	
+	public String getSupplier_companyname() {
+		return supplier_companyname;
+	}
+
+	public void setSupplier_companyname(String supplier_companyname) {
+		this.supplier_companyname = supplier_companyname;
+	}
+
+	public List<Item> getItemList() {
+		return itemList;
+	}
+
+	public void setItemList(List<Item> itemList) {
+		this.itemList = itemList;
+	}
+
 	@OneToMany(mappedBy = "supplier")
 	private List<Item> itemList;
 

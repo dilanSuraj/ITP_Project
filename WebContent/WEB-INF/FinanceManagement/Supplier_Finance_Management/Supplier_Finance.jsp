@@ -109,8 +109,10 @@
 					<thead>
 						<tr>
 
-							<th>Supplier Order Details</th>
+							<th>Supplier Company Name</th>
+							<th>Supplier Order item</th>
 							<th>Total Amount</th>
+							<th>Paid Amount</th>
 							<th>Date</th>
 							<th>Payment State</th>
 							<th>Edit</th>
@@ -122,10 +124,12 @@
 						<c:forEach var="paymentList" items="${paymentlist}"
 							varStatus="status">
 							<tr>
-
-								<td>${paymentList.getSupplier_orderID()}</td>
+							     
+							    <td>${paymentList.getSupplier().supplier_companyname}</td>
+								<td>${paymentList. getItem().getItem_name()}</td>
+								<td>${paymentList.getTotalAmount()}</td>
 								<td>${paymentList.getAmount()}</td>
-								<td>${paymentList.getPayment_date()}</td>
+								<td>${paymentList.getPaymentDateInString()}</td>
 								
 								<td>${paymentList.getPaymentState()}</td>
 								<td><a
@@ -138,8 +142,11 @@
 					</tbody>
 					<tfoot>
 						<tr>
-						<th>Supplier Order Details</th>
+						
+							<th>Supplier Company Name</th>
+							<th>Supplier Order item</th>
 							<th>Total Amount</th>
+							<th>Paid Amount</th>
 							<th>Date</th>
 							<th>Payment State</th>
 							<th>Edit</th>

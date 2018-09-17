@@ -9,6 +9,7 @@ import inv_dis_mgmtsys.model.Emp_Month_Salary;
 import inv_dis_mgmtsys.model.Finance;
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.Payment;
+import inv_dis_mgmtsys.model.PermanentEmployee;
 import inv_dis_mgmtsys.model.Retailer;
 import inv_dis_mgmtsys.model.Retailer_Blacklist;
 import inv_dis_mgmtsys.model.Retailer_Finance;
@@ -16,7 +17,9 @@ import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.Supplier;
 import inv_dis_mgmtsys.model.SupplierOrderItems;
 import inv_dis_mgmtsys.model.Supplier_Order;
+import inv_dis_mgmtsys.model.TemporaryEmployee;
 import inv_dis_mgmtsys.model.Vehicle;
+
 
 
 public interface FinanaceManagement_IDAO{
@@ -66,6 +69,7 @@ public interface FinanaceManagement_IDAO{
 	
 	public List<SupplierOrderItems> getAllSupplierOrderDetails();
 
-
+	
+	
 
 }

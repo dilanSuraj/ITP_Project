@@ -68,7 +68,7 @@
 							<div class="card-body-icon">
 								<i  class="fa fa-arrow-up"></i>
 							</div>
-							<div class="mr-5">Rs. ${Income} Total Income!</div>
+							<div class="mr-5">Rs. ${Income} Total Income in this Month!</div>
 						</div>
 						
 					</div>
@@ -79,7 +79,7 @@
 							<div class="card-body-icon">
 								<i class="fa fa-arrow-down"></i>
 							</div>
-							<div class="mr-5">Rs. ${Expense} Total Expenses!</div>
+							<div class="mr-5">Rs. ${Expense} Total Expenses in this Month!</div>
 						</div>
 						
 					</div>
@@ -91,7 +91,7 @@
 							<div class="card-body-icon">
 								<i class="fa fa-line-chart"></i>
 							</div>
-							<div class="mr-5"> ${ProfitPercent}% Profit</div>
+							<div class="mr-5"> ${ProfitPercent}% Profit up to now</div>
 						</div>
 						
 					</div>

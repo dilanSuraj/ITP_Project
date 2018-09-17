@@ -90,13 +90,9 @@
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label for="input_supp_order">Retailer Order Details</label>
-							<form:select id="inputState" class="form-control"
-							path="retailer_orderID" required="true">
-							<c:forEach var="retailerOrderList" items="${retailerOrderList}"
-								varStatus="status">
-								<form:option value="${retailerOrderList.getRetailer_OrderID()}">${retailerOrderList.getRetailer_OrderID()}</form:option>
-							</c:forEach>
-						</form:select>
+
+						<form:input type="text" class="form-control"
+										path="retailer_orderID" ></form:input>
 						</div>
 					</div>
 					<div class="form-group">

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -53,73 +53,76 @@
 
 	<!-- start of the the navigation header-->
 
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp"%>
 	<!-- end of the navigation header-->
 
 	<!-- side bar starts -->
 
 	<!-- only visibale in 10'0 inch or above screens-->
-	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp"%>
 
 
-    <%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp" %>
+	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp"%>
 
 
 
 
-			<!-- cards starts-->
-			<!-- data table start -->
+	<!-- cards starts-->
+	<!-- data table start -->
 
-			<!-- forms starts -->
+	<!-- forms starts -->
 
-			<div class="col-md-12">
-				<div class="card mb-3">
-					<div class="card-header" style="color: #003399">
-						<h5>
-							<span class="fa fa-pencil"></span> Update Retailer Payment
-						</h5>
-					</div>
-					<div class="card-body">
-
-						<form:form method="post" action="Edit_Sale_Price_POST"
-							modelAttribute="item">
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="input_supp_order">Item Name</label> <form:input type="text" class="form-control"
-										path="item_name"
-										></form:input>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="input_amt">Gross Price</label> <form:input type="text" class="form-control"
-										path="item_grossprice"
-										></form:input>
-							</div>
-						
-							
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="input_pay_state">Sale Price</label> <form:input type="text" class="form-control"
-										path="item_saleprice"
-										></form:input>
-										<form:input  type="hidden" path="item_itemcode"/>	
-								</div>
-
-							</div>
-
-							<button type="submit" class="btn btn-primary" name="add_payment">Update Prices</button>
-                            <button type="reset" class="btn btn-primary">Reset</button>  
-						</form:form>
-					</div>
-				</div>
+	<div class="col-md-12">
+		<div class="card mb-3">
+			<div class="card-header" style="color: #003399">
+				<h5>
+					<span class="fa fa-pencil"></span> Update Retailer Payment
+				</h5>
 			</div>
+			<div class="card-body">
 
-			<!-- forms ends-->
+				<form:form method="post" action="Edit_Sale_Price_POST"
+					modelAttribute="item">
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="input_supp_order">Item Name</label>
+							<form:input type="text" class="form-control" path="item_name"></form:input>
+						</div>
+					
+					</div>
+					<div class="form-group">
+						<label for="input_amt">Gross Price</label>
+						<form:input type="text" class="form-control"
+							path="item_grossprice"></form:input>
+					</div>
 
-			<!-- data table end -->
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="input_pay_state">Sale Price</label>
+							<form:input type="text" class="form-control"
+								path="item_saleprice"></form:input>
+							<form:input type="hidden" path="item_itemcode" />
+						</div>
+
+					</div>
+
+					<button type="submit" class="btn btn-primary" name="add_payment">Update
+						Prices</button>
+					<button type="reset" class="btn btn-primary">Reset</button>
+				</form:form>
+			</div>
 		</div>
+	</div>
 
-		<!-- start icons -->
+	<!-- forms ends-->
+
+	<!-- data table end -->
+	</div>
+
+	<!-- start icons -->
 	</div>
 	</div>
 	<!-- Bootstrap tooltips -->
