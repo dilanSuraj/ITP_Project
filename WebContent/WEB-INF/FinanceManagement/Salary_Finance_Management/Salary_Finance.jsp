@@ -125,14 +125,14 @@
 					<c:forEach var="salarylist" items="${salarylist}"
 							varStatus="status">
 							<tr>
-
+                                  
 								<td>${salarylist.getEmp_month_sal_year()}</td>
 								<td>${salarylist.getEmp_month_sal_month()}</td>
 								<td>${salarylist.getEmp_month_sal_amount()}</td>
 								<td>${salarylist.getEmp_month_sal_status()}</td>
-								<td>${salarylist.getEmp_month_sal_date()}</td>
+								<td>${salarylist.getEmp_month_sal_dateInString()}</td>
 								<td><a
-									href="<c:url value='/Edit_Salary_Finace_GET?id=${salarylist.getEmp_month_sal_ID()}' />">EDIT</a></td>
+									href="<c:url value='/Edit_Salary_Finace_GET?year=${salarylist.getEmp_month_sal_year()}&month=${salarylist.getEmp_month_sal_month()}' />">EDIT</a></td>
 
 								
 							</tr>

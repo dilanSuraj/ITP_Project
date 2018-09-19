@@ -2,6 +2,7 @@ package inv_dis_mgmtsys.model;
 
 
 
+import java.text.DateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,13 +11,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "emp_month_salary")
 public class Emp_Month_Salary {
-
+				
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int emp_month_sal_ID;
@@ -24,6 +26,19 @@ public class Emp_Month_Salary {
 	@Column
 	private int emp_month_sal_month;
 	
+	@Column
+	private int emp_month_sal_empID;
+	
+	
+	
+	public int getEmp_month_sal_empID() {
+		return emp_month_sal_empID;
+	}
+
+	public void setEmp_month_sal_empID(int emp_month_sal_empID) {
+		this.emp_month_sal_empID = emp_month_sal_empID;
+	}
+
 	public int getEmp_month_sal_ID() {
 		return emp_month_sal_ID;
 	}
@@ -95,5 +110,18 @@ public class Emp_Month_Salary {
 	@Column
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date emp_month_sal_date;
+	
+	@Transient
+	private String emp_month_sal_dateInString;
+		
+	public String getEmp_month_sal_dateInString() {
+		return DateFormat.getDateInstance().format(this.emp_month_sal_date);
+	}
+
+	public void setEmp_month_sal_dateInString(String emp_month_sal_dateInString) {
+		this.emp_month_sal_dateInString = emp_month_sal_dateInString;
+	}
+
+	
 
 }

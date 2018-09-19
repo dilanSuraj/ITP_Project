@@ -1,54 +1,173 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
+<!doctype html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+<!-- Bootstrap CSS -->
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<!-- Bootstrap core CSS -->
+<link href="Styles/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Your custom styles -->
+<link rel="stylesheet" href="Styles/css/dashboardStyleSheet.css">
+
+
+<link href="Styles/css/customText.css" rel="stylesheet">
+<!-- font awesome icon pack-->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--java scrip file for google charts-->
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+
+<!--google maps library -->
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+
+<!--data table files -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<script type="text/javascript" src="Styles/js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="Styles/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"
+	src="Styles/js/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet" href="Styles/css/dataTables.bootstrap4.min.css">
+
+<title>Sumith Tyres pvt Ltd</title>
 </head>
+
 <body>
 
-<!-- The Modal -->
-	<div class="modal fade" id="price_popup">
-		<div class="modal-dialog">
-			<div class="modal-content">
 
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title">Update Payment Status</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
+	<!-- start of the the navigation header-->
 
-				<!-- Modal body -->
-				<div class="modal-body">
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp"%>
+	<!-- end of the navigation header-->
+
+	<!-- side bar starts -->
+
+	<!-- only visibale in 10'0 inch or above screens-->
+	<%@ include
+		file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp"%>
 
 
-					<label>Update Payment Status</label>
+	<%@ include file="/WEB-INF/PageSegments/Finance_Management/_cards.jsp"%>
+
+
+
+
+	<!-- cards starts-->
+	<!-- data table start -->
+
+	<!-- forms starts -->
+
+	<div class="col-md-12">
+		<div class="card mb-3">
+			<div class="card-header" style="color: #003399">
+				<h5>
+					<span class="fa fa-pencil"></span> Update Employee Month Salary
+					Payment Status
+				</h5>
+			</div>
+			<div class="card-body">
+
+				<form:form method="post" action="Edit_Salary_Finace_POST"
+					modelAttribute="empSalary">
 					
-						<div class="col-sm-10">
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="gridRadios"
-									id="gridRadios1" value="option1" checked> <label
-									class="form-check-label" for="gridRadios1"> UnPaid </label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="gridRadios"
-									id="gridRadios2" value="option2"> <label
-									class="form-check-label" for="gridRadios2"> Paid </label>
-							</div>
+					<div class="form-row">
 
+						<div class="form-group col-md-6">
+							<div class="container">
+								<label for="input_date">Year</label>
+								<div class="hero-unit">
+									<form:input type="text" class="form-control"
+										path="emp_month_sal_year" disabled="true"></form:input>
+								</div>
+							</div>
 						</div>
+					</div>
+
+					<div class="form-row">
+
+						<div class="form-group col-md-6">
+							<div class="container">
+								<label for="input_date2">Month</label>
+								<div class="hero-unit">
+									<form:input type="text" class="form-control"
+										path="emp_month_sal_month" disabled="true"></form:input>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<fieldset class="form-group">
+						<div class="row">
+							<div class="form-group col-md-4">
+
+								<label for="inputState">Select Payment Status</label>
+								<form:select id="inputState" class="form-control"
+									path="emp_month_sal_status">
+									
+									<form:option value="Paid">Paid</form:option>
+									<form:option value="UnPaid">UnPaid</form:option>
+								</form:select>
+							</div>
+						</div>
+					</fieldset>
+
 					
-				</div>
-
-
-				<!-- Modal footer -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-success" data-dismiss="modal">Update</button>
-				</div>
-
+                    <form:input type="hidden" path="emp_month_sal_year" />
+                    <form:input type="hidden" path="emp_month_sal_month" />   
+					<button type="submit" class="btn btn-primary" name="add_payment">Update
+						Payment Status</button>
+					<button type="reset" class="btn btn-primary">Reset</button>
+				</form:form>
 			</div>
 		</div>
 	</div>
+
+	<!-- forms ends-->
+
+	<!-- data table end -->
+	</div>
+
+	<!-- start icons -->
+	</div>
+	</div>
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript" src="Styles/js/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="Styles/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+
+	<script type="text/javascript" src="Styles/js/mdb.min.js"></script>
+	<script src="Styles/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#pickyDate').datepicker({
+				format : "dd/mm/yyyy"
+			});
+		});
+	</script>
+
+
+
 </body>
 </html>
+

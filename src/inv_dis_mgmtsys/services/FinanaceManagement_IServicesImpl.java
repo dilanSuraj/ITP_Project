@@ -376,11 +376,28 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 
 		return finanaceManagerIDAO.getSingleSalaryDetails(emp_month_ID);
 	}
+	
+	@Override
+	public Emp_Month_Salary getSingleSalaryDetailsFortheGivenYearMonth(int year, int month) {
+
+		return finanaceManagerIDAO.getSingleSalaryDetailsFortheGivenYearMonth(year, month);
+	}
+	
+	@Override
+	public List<Emp_Month_Salary> getAllSalaryDetailsFortheGivenYearMonth(int year, int month) {
+
+		return finanaceManagerIDAO.getAllSalaryDetailsFortheGivenYearMonth(year, month);
+	}
 
 	@Override
 	public void editMonthSalaryDetails(Emp_Month_Salary emp_Month_Salary) {
 
+		
+		System.out.println(emp_Month_Salary.getEmp_month_sal_year());
+		System.out.println(emp_Month_Salary.getEmp_month_sal_month());
+      
 		finanaceManagerIDAO.editMonthSalaryDetails(emp_Month_Salary);
+       
 
 	}
 
@@ -484,8 +501,8 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		return income;
 	}
 
-	@Override
-	public double totalExpense() {
+	
+	public double gettotalExpense_currentMonth() {
 
 		double expense = 0;
 
@@ -547,12 +564,21 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 				expense += finance.getAmount();
 			}
 		}
+		
+		List<Emp_Month_Salary> empSalaryList = finanaceManagerIDAO.getAllEmpMonthSalary();
+		
+		for(Emp_Month_Salary emp_Month_Salary:empSalaryList) {
+			if(emp_Month_Salary.getEmp_month_sal_status().equals("Paid") &&(emp_Month_Salary.getEmp_month_sal_year() == year_current) &&(emp_Month_Salary.getEmp_month_sal_month() == month_current)) {
+				expense += emp_Month_Salary.getEmp_month_sal_amount();
+			}
+		}
 		System.out.println("Total Expense : " + expense);
 
 		return expense;
 	}
 
-	public double gettotalExpense_currentMonth() {
+	@Override
+	public double totalExpense() {
 
 		double expense = 0;
 
@@ -580,6 +606,14 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		for (Supplier_Finance finance : supplierList) {
 			expense += finance.getAmount();
 		}
+		
+        List<Emp_Month_Salary> empSalaryList = finanaceManagerIDAO.getAllEmpMonthSalary();
+		
+		for(Emp_Month_Salary emp_Month_Salary:empSalaryList) {
+			if(emp_Month_Salary.getEmp_month_sal_status().equals("Paid")) {
+				expense += emp_Month_Salary.getEmp_month_sal_amount();
+			}
+		}
 		System.out.println("Total Expense : " + expense);
 
 		return expense;
@@ -593,7 +627,8 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		if (profit <= 0)
 			profit = 0;
 
-		double profit_percentage = (profit / this.totalIncome()) * 100;
+		System.out.println("Profit  : " + profit);
+		double profit_percentage = (profit / this.gettotalIncome_currentMonth()) * 100;
 
 		System.out.println("Profit Percentage : " + profit_percentage);
 		return profit_percentage;
@@ -684,8 +719,7 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 	}
 
 	public List<Emp_Month_Salary> getAllEmpMonthSalary() {
-		// TODO Auto-generated method stub
-		return null;
+		return finanaceManagerIDAO.getAllEmpMonthSalary();
 	}
 
     public List<Map<String, Object>> getSupplierFinanceViewDetails(){

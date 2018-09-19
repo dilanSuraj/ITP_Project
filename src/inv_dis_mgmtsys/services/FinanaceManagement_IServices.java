@@ -68,4 +68,8 @@ public interface FinanaceManagement_IServices {
 	public List<SupplierOrderItems> getAllSupplierOrders();
 
 	public SupplierOrderItems getSingleSupplierOrderItem(int supplierOrderID);
+
+	public List<Emp_Month_Salary> getAllSalaryDetailsFortheGivenYearMonth(int year,int month);
+
+	public Emp_Month_Salary getSingleSalaryDetailsFortheGivenYearMonth(int year, int month);
 }

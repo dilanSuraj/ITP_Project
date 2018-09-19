@@ -288,7 +288,23 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 	@Override
 	public List<Emp_Month_Salary> getAllEmpMonthSalary() {
 
-		return sessionFactory.getCurrentSession().createQuery("From Emp_Month_Salary").list();
+				
+		String hql = "SELECT empSal.emp_month_sal_year,empSal.emp_month_sal_month,empSal.emp_month_sal_status,empSal.emp_month_sal_date,sum(empSal.emp_month_sal_amount) From Emp_Month_Salary empSal Group by empSal.emp_month_sal_year,empSal.emp_month_sal_month,empSal.emp_month_sal_status,empSal.emp_month_sal_date ";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+	    List<Emp_Month_Salary> list = new ArrayList<>();  
+		for(Iterator it=query.iterate();it.hasNext();)
+		  {
+			Emp_Month_Salary salary = new Emp_Month_Salary();
+		    Object[] row = (Object[]) it.next();
+		    salary.setEmp_month_sal_year((int)row[0]);
+		    salary.setEmp_month_sal_month((int)row[1]);
+		    salary.setEmp_month_sal_status((String)row[2]);
+		    salary.setEmp_month_sal_date((Date)row[3]);
+		    salary.setEmp_month_sal_amount((double)row[4]);
+		   
+		   list.add(salary);
+		  }
+		return list;
 	}
 
 	
@@ -302,12 +318,13 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 	@Override
 	public void editMonthSalaryDetails(Emp_Month_Salary emp_Month_Salary) {
 
-		String hql = "update Emp_Month_Salary empMonthSal set empMonthSal.emp_month_sal_status=?  where empMonthSal.emp_month_sal_ID=?";
+		String hql = "update Emp_Month_Salary empMonthSal set empMonthSal.emp_month_sal_status=?  where empMonthSal.emp_month_sal_year=? AND empMonthSal.emp_month_sal_month=? ";
 
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
 		query.setParameter(0, emp_Month_Salary.getEmp_month_sal_status());
-		query.setParameter(1, emp_Month_Salary.getEmp_month_sal_ID());
+		query.setParameter(1, emp_Month_Salary.getEmp_month_sal_year());
+		query.setParameter(2, emp_Month_Salary.getEmp_month_sal_month());
 
 		int result = query.executeUpdate();
 
@@ -422,5 +439,31 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 	public List<Retailer_Finance_View> getAllRetailerFinanceViewDetails(){
 		
 		return sessionFactory.getCurrentSession().createQuery("From Retailer_Finance_View").list();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Emp_Month_Salary> getAllSalaryDetailsFortheGivenYearMonth(int year, int month) {
+		
+		String hql = "From Emp_Month_Salary empSalary  where empSalary.emp_month_sal_year=? AND empSalary.emp_month_sal_month=?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter(0, year);
+		query.setParameter(1, month);
+		return query.list();
+	}
+
+	public Emp_Month_Salary getSingleSalaryDetailsFortheGivenYearMonth(int year, int month) {
+		List<Emp_Month_Salary> list = this.getAllSalaryDetailsFortheGivenYearMonth(year, month);
+		Emp_Month_Salary empSal = new Emp_Month_Salary();
+		empSal.setEmp_month_sal_year(year);
+		empSal.setEmp_month_sal_month(month);
+		
+		double amount = 0;
+		for(Emp_Month_Salary emp_Month_Salary:list) {
+			empSal.setEmp_month_sal_status( emp_Month_Salary.getEmp_month_sal_status() );
+			amount += emp_Month_Salary.getEmp_month_sal_amount();
+			empSal.setEmp_month_sal_date(emp_Month_Salary.getEmp_month_sal_date());
+		}
+		empSal.setEmp_month_sal_amount(amount);
+		return empSal;
 	}
 }
