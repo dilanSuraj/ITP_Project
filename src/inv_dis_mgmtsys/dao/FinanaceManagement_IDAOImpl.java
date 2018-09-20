@@ -26,7 +26,9 @@ import org.springframework.stereotype.Repository;
 
 import inv_dis_mgmtsys.model.DataPoint;
 import inv_dis_mgmtsys.model.Emp_Month_Salary;
+import inv_dis_mgmtsys.model.ExpenseView;
 import inv_dis_mgmtsys.model.Finance;
+import inv_dis_mgmtsys.model.IncomeView;
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.Payment;
 import inv_dis_mgmtsys.model.PermanentEmployee;
@@ -466,4 +468,20 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 		empSal.setEmp_month_sal_amount(amount);
 		return empSal;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<IncomeView> getAllIncomeViewDetails() {
+
+		return sessionFactory.getCurrentSession().createQuery("From IncomeView").list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ExpenseView> getAllExpenseViewDetails() {
+
+		return sessionFactory.getCurrentSession().createQuery("From ExpenseView").list();
+	}
+	
+	
 }

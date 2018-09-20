@@ -23,7 +23,9 @@ import org.springframework.web.method.annotation.SessionAttributesHandler;
 import inv_dis_mgmtsys.dao.FinanaceManagement_IDAOImpl;
 import inv_dis_mgmtsys.model.DataPoint;
 import inv_dis_mgmtsys.model.Emp_Month_Salary;
+import inv_dis_mgmtsys.model.ExpenseView;
 import inv_dis_mgmtsys.model.Finance;
+import inv_dis_mgmtsys.model.IncomeView;
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.Payment;
 import inv_dis_mgmtsys.model.Retailer;
@@ -376,13 +378,13 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 
 		return finanaceManagerIDAO.getSingleSalaryDetails(emp_month_ID);
 	}
-	
+
 	@Override
 	public Emp_Month_Salary getSingleSalaryDetailsFortheGivenYearMonth(int year, int month) {
 
 		return finanaceManagerIDAO.getSingleSalaryDetailsFortheGivenYearMonth(year, month);
 	}
-	
+
 	@Override
 	public List<Emp_Month_Salary> getAllSalaryDetailsFortheGivenYearMonth(int year, int month) {
 
@@ -392,12 +394,10 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 	@Override
 	public void editMonthSalaryDetails(Emp_Month_Salary emp_Month_Salary) {
 
-		
 		System.out.println(emp_Month_Salary.getEmp_month_sal_year());
 		System.out.println(emp_Month_Salary.getEmp_month_sal_month());
-      
+
 		finanaceManagerIDAO.editMonthSalaryDetails(emp_Month_Salary);
-       
 
 	}
 
@@ -501,7 +501,6 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		return income;
 	}
 
-	
 	public double gettotalExpense_currentMonth() {
 
 		double expense = 0;
@@ -564,11 +563,13 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 				expense += finance.getAmount();
 			}
 		}
-		
+
 		List<Emp_Month_Salary> empSalaryList = finanaceManagerIDAO.getAllEmpMonthSalary();
-		
-		for(Emp_Month_Salary emp_Month_Salary:empSalaryList) {
-			if(emp_Month_Salary.getEmp_month_sal_status().equals("Paid") &&(emp_Month_Salary.getEmp_month_sal_year() == year_current) &&(emp_Month_Salary.getEmp_month_sal_month() == month_current)) {
+
+		for (Emp_Month_Salary emp_Month_Salary : empSalaryList) {
+			if (emp_Month_Salary.getEmp_month_sal_status().equals("Paid")
+					&& (emp_Month_Salary.getEmp_month_sal_year() == year_current)
+					&& (emp_Month_Salary.getEmp_month_sal_month() == month_current)) {
 				expense += emp_Month_Salary.getEmp_month_sal_amount();
 			}
 		}
@@ -606,11 +607,11 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		for (Supplier_Finance finance : supplierList) {
 			expense += finance.getAmount();
 		}
-		
-        List<Emp_Month_Salary> empSalaryList = finanaceManagerIDAO.getAllEmpMonthSalary();
-		
-		for(Emp_Month_Salary emp_Month_Salary:empSalaryList) {
-			if(emp_Month_Salary.getEmp_month_sal_status().equals("Paid")) {
+
+		List<Emp_Month_Salary> empSalaryList = finanaceManagerIDAO.getAllEmpMonthSalary();
+
+		for (Emp_Month_Salary emp_Month_Salary : empSalaryList) {
+			if (emp_Month_Salary.getEmp_month_sal_status().equals("Paid")) {
 				expense += emp_Month_Salary.getEmp_month_sal_amount();
 			}
 		}
@@ -722,43 +723,76 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		return finanaceManagerIDAO.getAllEmpMonthSalary();
 	}
 
-    public List<Map<String, Object>> getSupplierFinanceViewDetails(){
-		
-		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+	public List<Map<String, Object>> getSupplierFinanceViewDetails() {
+
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		List<SupplierFinance_View> listOfSupplierFinanceView = finanaceManagerIDAO.getAllSupplierFinanceViewDetails();
-		
-		for(SupplierFinance_View financeView : listOfSupplierFinanceView) {
+
+		for (SupplierFinance_View financeView : listOfSupplierFinanceView) {
 			Map<String, Object> map = new HashMap<>();
 			map.put("supplier_companyname", financeView.getSupplier_companyname());
 			map.put("supplier_order_item_Amount", financeView.getSupplier_order_item_Amount());
-			map.put("item_name",financeView.getItem_name());
+			map.put("item_name", financeView.getItem_name());
 			map.put("payment_date", financeView.getPayment_date());
 			map.put("amount", financeView.getAmount());
 			map.put("item_grossprice", financeView.getItem_grossprice());
 			list.add(map);
-						
+
 		}
-		return  list;
+		return list;
 	}
-    
-        public List<Map<String, Object>> getRetailerFinanceViewDetails(){
-		
-		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+
+	public List<Map<String, Object>> getRetailerFinanceViewDetails() {
+
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		List<Retailer_Finance_View> listOfRetailerFinanceView = finanaceManagerIDAO.getAllRetailerFinanceViewDetails();
-		
-		for(Retailer_Finance_View financeView : listOfRetailerFinanceView) {
+
+		for (Retailer_Finance_View financeView : listOfRetailerFinanceView) {
 			Map<String, Object> map = new HashMap<>();
 			map.put("retailer_name", financeView.getRetailer_name());
 			map.put("paymentAmt", financeView.getPaymentAmt());
-			map.put("oder_total",financeView.getOder_total());
+			map.put("oder_total", financeView.getOder_total());
 			map.put("payment_date", financeView.getPayment_date());
 			map.put("deadline_payment_date", financeView.getDeadline_payment_date());
-			
+
 			list.add(map);
-						
+
 		}
-		return  list;
+		return list;
 	}
 
+	public List<Map<String, Object>> getIncomeFinanceViewDetails() {
+
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		List<IncomeView> incomeViewList = finanaceManagerIDAO.getAllIncomeViewDetails();
+
+		for (IncomeView incomeView : incomeViewList) {
+			Map<String, Object> map = new HashMap<>();
+			map.put("year", incomeView.getYear());
+			map.put("name", incomeView.getMonthInString());
+			map.put("paidAmt", incomeView.getPaidAmt());
+
+			list.add(map);
+
+		}
+		return list;
+	}
+
+	public List<Map<String, Object>> getExpenseFinanceViewDetails() {
+
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		List<ExpenseView> expenseViewList = finanaceManagerIDAO.getAllExpenseViewDetails();
+
+		for (ExpenseView expenseView : expenseViewList) {
+			Map<String, Object> map = new HashMap<>();
+			map.put("year", expenseView.getYear());
+			map.put("monthName", expenseView.getMonthName());
+			map.put("paidAmt", expenseView.getPaidAmt());
+
+			list.add(map);
+
+		}
+		return list;
+	}
 
 }

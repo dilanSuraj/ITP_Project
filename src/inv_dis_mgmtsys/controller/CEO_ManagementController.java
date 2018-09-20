@@ -102,5 +102,51 @@ public class CEO_ManagementController {
 		final OutputStream outStream = response.getOutputStream();
 		JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
 	}
+	
+	@RequestMapping(value = "incomereport", method = RequestMethod.GET)
+	@ResponseBody
+	public void getIncomeReport(HttpSession session) throws JRException, IOException {
+
+		//This line needs to be changed
+		List<Map<String,Object>> dataSource = finanaceManagement_IServicesImpl.getIncomeFinanceViewDetails();
+		JRDataSource jrDataSource = new JRBeanCollectionDataSource(dataSource);
+		String path = session.getServletContext().getRealPath("/Report/");
+		//This line needs to be changed
+		JasperDesign jasperDesign = JRXmlLoader.load(path + "/CEO_Income_Report.jrxml");
+		JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null , jrDataSource);
+		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder
+				.currentRequestAttributes();
+		HttpServletResponse response = servletRequestAttributes.getResponse();
+		response.setContentType("application/x-pdf");
+		//This line needs to be changed
+		response.setHeader("Content-disposition", "inline; filename=incomeReport.pdf");
+
+		final OutputStream outStream = response.getOutputStream();
+		JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+	}
+	
+	@RequestMapping(value = "expensereport", method = RequestMethod.GET)
+	@ResponseBody
+	public void getExpenseReport(HttpSession session) throws JRException, IOException {
+
+		//This line needs to be changed
+		List<Map<String,Object>> dataSource = finanaceManagement_IServicesImpl.getExpenseFinanceViewDetails();
+		JRDataSource jrDataSource = new JRBeanCollectionDataSource(dataSource);
+		String path = session.getServletContext().getRealPath("/Report/");
+		//This line needs to be changed
+		JasperDesign jasperDesign = JRXmlLoader.load(path + "/CEO_Expense_Report.jrxml");
+		JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null , jrDataSource);
+		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder
+				.currentRequestAttributes();
+		HttpServletResponse response = servletRequestAttributes.getResponse();
+		response.setContentType("application/x-pdf");
+		//This line needs to be changed
+		response.setHeader("Content-disposition", "inline; filename=incomeReport.pdf");
+
+		final OutputStream outStream = response.getOutputStream();
+		JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+	}
 
 }

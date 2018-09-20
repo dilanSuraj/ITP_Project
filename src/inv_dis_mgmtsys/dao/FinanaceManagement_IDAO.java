@@ -6,7 +6,9 @@ import javax.sql.DataSource;
 
 import inv_dis_mgmtsys.model.DataPoint;
 import inv_dis_mgmtsys.model.Emp_Month_Salary;
+import inv_dis_mgmtsys.model.ExpenseView;
 import inv_dis_mgmtsys.model.Finance;
+import inv_dis_mgmtsys.model.IncomeView;
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.Payment;
 import inv_dis_mgmtsys.model.PermanentEmployee;
@@ -25,7 +27,7 @@ import inv_dis_mgmtsys.model.Vehicle;
 public interface FinanaceManagement_IDAO{
 
 	
-    void addFinance(Finance finance);
+    public void addFinance(Finance finance);
 	
 	public void editFinance(Finance finance,String type);
 	
@@ -69,7 +71,10 @@ public interface FinanaceManagement_IDAO{
 	
 	public List<SupplierOrderItems> getAllSupplierOrderDetails();
 
-	
+	public List<IncomeView> getAllIncomeViewDetails();
+
+	public List<ExpenseView> getAllExpenseViewDetails();
+
 	
 
 }
