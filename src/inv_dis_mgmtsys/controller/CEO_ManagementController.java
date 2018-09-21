@@ -60,25 +60,7 @@ public class CEO_ManagementController {
 		return new ModelAndView("/Dashboards/CEO");
 	}
 
-	@RequestMapping(value = "supplierfinancereport", method = RequestMethod.GET)
-	@ResponseBody
-	public void getSupplierFinanceReport(HttpSession session) throws JRException, IOException {
-
-		List<Map<String,Object>> dataSource = finanaceManagement_IServicesImpl.getSupplierFinanceViewDetails();
-		JRDataSource jrDataSource = new JRBeanCollectionDataSource(dataSource);
-		String path = session.getServletContext().getRealPath("/Report/");
-		JasperDesign jasperDesign = JRXmlLoader.load(path + "/CEO_Supplier_Finance_Report.jrxml");
-		JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
-		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null , jrDataSource);
-		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder
-				.currentRequestAttributes();
-		HttpServletResponse response = servletRequestAttributes.getResponse();
-		response.setContentType("application/x-pdf");
-		response.setHeader("Content-disposition", "inline; filename=supplierfinanceReport.pdf");
-
-		final OutputStream outStream = response.getOutputStream();
-		JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
-	}
+	
 	
 	@RequestMapping(value = "retailerfinancereport", method = RequestMethod.GET)
 	@ResponseBody

@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page isELIgnored="false"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -100,7 +96,7 @@
 
 
 
-				<li class="nav-item"><a href="#" class="admin-name"> Hi ${permanentemployeeName}!</a></li>
+				<li class="nav-item"><a href="#" class="admin-name">Hi ${permanentemployeeName}!</a></li>
 
 
 				<li class="nav-item">

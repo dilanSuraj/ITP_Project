@@ -31,7 +31,7 @@
 			<center>
 		<div class="col-md-4 col-sm-10 col-10">
 		
-			<form:form class="form-signin" method="post" action="StaffLoginPOST" modelAttribute="permanentemployee">
+			<form:form class="form-signin" method="post" action="AdminLoginPOST" modelAttribute="Admin">
 				<img class="mb-4" src="Styles/Images/logo%20-%20colour.png"
 					style="height: 250px; width: auto">
 				<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>

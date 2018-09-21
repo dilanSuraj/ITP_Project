@@ -47,14 +47,6 @@ public class TemporaryEmployee {
 		this.age = age;
 	}
 
-	public double getBonus() {
-		return bonus;
-	}
-
-	public void setBonus(double bonus) {
-		this.bonus = bonus;
-	}
-
 	public String getFullname() {
 		return fullname;
 	}
@@ -103,38 +95,6 @@ public class TemporaryEmployee {
 		this.salary = salary;
 	}
 
-	public double getTotalsal() {
-		return totalsal;
-	}
-
-	public void setTotalsal(double totalsal) {
-		this.totalsal = totalsal;
-	}
-
-	public double getOt() {
-		return ot;
-	}
-
-	public void setOt(double ot) {
-		this.ot = ot;
-	}
-
-	public int getMonth() {
-		return month;
-	}
-
-	public void setMonth(int month) {
-		this.month = month;
-	}
-
-	public int getYear() {
-		return year;
-	}
-
-	public void setYear(int year) {
-		this.year = year;
-	}
-
 	public String getUsername() {
 		return username;
 	}
@@ -153,9 +113,6 @@ public class TemporaryEmployee {
 	private double age;
 
 	@Column
-	private double bonus;
-
-	@Column
 	private String fullname;
 
 	@Column
@@ -172,18 +129,6 @@ public class TemporaryEmployee {
 
 	@Column
 	private double salary;
-
-	@Column
-	private double totalsal;
-
-	@Column
-	private double ot;
-
-	@Column
-	private int month;
-
-	@Column
-	private int year;
 
 	@Column
 	private String username;

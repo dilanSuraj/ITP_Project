@@ -24,8 +24,7 @@ public class PermanentEmployee {
 	@Column
 	private double age;
 	
-	@Column
-	private double bonus;
+	
 	
 	@Column
 	private String fullname;
@@ -45,14 +44,7 @@ public class PermanentEmployee {
 	@Column
 	private double salary;
 	
-	@Column
-	private double totalsal;
 	
-	@Column
-	private int month;
-	
-	@Column
-	private int year;
 	
 	@Column
 	private String username;
@@ -89,13 +81,7 @@ public class PermanentEmployee {
 		this.age = age;
 	}
 
-	public double getBonus() {
-		return bonus;
-	}
-
-	public void setBonus(double bonus) {
-		this.bonus = bonus;
-	}
+	
 
 	public String getFullname() {
 		return fullname;
@@ -145,29 +131,6 @@ public class PermanentEmployee {
 		this.salary = salary;
 	}
 
-	public double getTotalsal() {
-		return totalsal;
-	}
-
-	public void setTotalsal(double totalsal) {
-		this.totalsal = totalsal;
-	}
-
-	public int getMonth() {
-		return month;
-	}
-
-	public void setMonth(int month) {
-		this.month = month;
-	}
-
-	public int getYear() {
-		return year;
-	}
-
-	public void setYear(int year) {
-		this.year = year;
-	}
 
 	public String getUsername() {
 		return username;

@@ -38,7 +38,6 @@ import inv_dis_mgmtsys.model.Retailer_Finance;
 import inv_dis_mgmtsys.model.Retailer_Finance_View;
 import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.Supplier;
-import inv_dis_mgmtsys.model.SupplierFinance_View;
 import inv_dis_mgmtsys.model.SupplierOrderItems;
 import inv_dis_mgmtsys.model.Supplier_Finance;
 import inv_dis_mgmtsys.model.Supplier_Order;
@@ -431,11 +430,7 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 		return query.list();
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<SupplierFinance_View> getAllSupplierFinanceViewDetails(){
-		
-		return sessionFactory.getCurrentSession().createQuery("From SupplierFinance_View").list();
-	}
+	
 	
 	@SuppressWarnings("unchecked")
 	public List<Retailer_Finance_View> getAllRetailerFinanceViewDetails(){

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,39 +25,42 @@
 </head>
 
 <body>
-	<center>
-		<br>
-		<br>
-		<div class="col-md-4 col-sm-10 col-10">
 
-			<form class="form-signin">
-				<img class="mb-4" src="Images/logo%20-%20colour.png"
-					style="height: 250px; width: auto">
-				<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-				<br> <label for="inputEmail" class="sr-only">Email
-					address</label> <input type="email" id="inputEmail" class="form-control"
-					placeholder="Email address" required autofocus><br> <label
-					for="inputPassword" class="sr-only">Password</label> <input
-					type="password" id="inputPassword" class="form-control"
-					placeholder="Password" required> <br>
-				<div class="checkbox mb-3">
-					<label> <input type="checkbox" value="remember-me">
-						Remember me
-					</label>
-				</div>
-				<br>
-				<button class="btn btn-lg btn-primary btn-block" type="submit"
-					style="background-color: #003399">
-					<span class="fa fa-sign-in"> </span> Sign In
-				</button>
-				<p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-			</form>
+	<br>
+	<br>
+	<div class="col-md-4 col-sm-10 col-10">
+
+		<form:form class="form-signin" method="post" action="loginPOST"
+			modelAttribute="supplier">
+			<img class="mb-4" src="Styles/Images/logo%20-%20colour.png"
+				style="height: 250px; width: auto">
+			<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+			<br>
+
+			<form:input type="text" path="supplier_username"
+				class="form-control"  placeholder="Username" />
+
+			</br>
+			<label for="inputPassword" class="sr-only">Password</label>
+			<form:input type="password" path="supplier_password"
+				class="form-control" placeholder="Password" />
+			<br>
+			<div class="checkbox mb-3">
+				<label> <input type="checkbox" value="remember-me">
+					Remember me
+				</label>
+			</div>
+			<br>
+			<button class="btn btn-lg btn-primary btn-block" type="submit"
+				style="background-color: #003399">
+				<span class="fa fa-sign-in"> </span> Sign In
+			</button>
+			<p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+		</form:form>
 
 
 
 
 
-		</div>
-	</center>
-</body>
+	</div>
 </html>

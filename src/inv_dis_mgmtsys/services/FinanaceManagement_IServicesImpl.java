@@ -34,7 +34,6 @@ import inv_dis_mgmtsys.model.Retailer_Finance;
 import inv_dis_mgmtsys.model.Retailer_Finance_View;
 import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.Supplier;
-import inv_dis_mgmtsys.model.SupplierFinance_View;
 import inv_dis_mgmtsys.model.SupplierOrderItems;
 import inv_dis_mgmtsys.model.Supplier_Finance;
 import inv_dis_mgmtsys.model.Supplier_Order;
@@ -47,6 +46,9 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 	@Autowired
 	FinanaceManagement_IDAOImpl finanaceManagerIDAO;
 
+	@Autowired
+	EmpMa_IServicesImpl empMa_IServicesImpl;
+	
 	@Autowired
 	HttpSession httpsession;
 
@@ -429,8 +431,13 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 
 		double income = 0;
 		for (Payment payment : paymentList) {
+			
+			if(payment == null) {
+				System.out.println("Null");
+				continue;
+			}
 
-			if (payment.getOther_income_expense_type().equals("income")) {
+			else if (payment.getOther_income_expense_type().equals("income")) {
 				income += payment.getOther_income_expense_recieved();
 			}
 		}
@@ -637,12 +644,12 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 
 	public void saveSessionObjects(HttpSession httpSession) {
 
-		Session session = finanaceManagerIDAO.getCurrentSession();
-
-		if (session == null) {
+		//Session session = finanaceManagerIDAO.getCurrentSession();
+		httpSession = empMa_IServicesImpl.getHttpsession();
+		if (httpsession == null) {
 			System.out.println("Session is null");
 		}
-
+            
 		Double income = this.totalIncome();
 		Double expense = this.totalExpense();
 
@@ -661,6 +668,7 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		httpsession.setAttribute("Expense", expense_string);
 		httpsession.setAttribute("ProfitPercent", twoDForm.format(profitPercent));
 		httpsession.setAttribute("Blacklist", blacklist);
+		
 	}
 
 	public int blacklistedRetailerList() {
@@ -723,24 +731,7 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		return finanaceManagerIDAO.getAllEmpMonthSalary();
 	}
 
-	public List<Map<String, Object>> getSupplierFinanceViewDetails() {
-
-		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-		List<SupplierFinance_View> listOfSupplierFinanceView = finanaceManagerIDAO.getAllSupplierFinanceViewDetails();
-
-		for (SupplierFinance_View financeView : listOfSupplierFinanceView) {
-			Map<String, Object> map = new HashMap<>();
-			map.put("supplier_companyname", financeView.getSupplier_companyname());
-			map.put("supplier_order_item_Amount", financeView.getSupplier_order_item_Amount());
-			map.put("item_name", financeView.getItem_name());
-			map.put("payment_date", financeView.getPayment_date());
-			map.put("amount", financeView.getAmount());
-			map.put("item_grossprice", financeView.getItem_grossprice());
-			list.add(map);
-
-		}
-		return list;
-	}
+	
 
 	public List<Map<String, Object>> getRetailerFinanceViewDetails() {
 
