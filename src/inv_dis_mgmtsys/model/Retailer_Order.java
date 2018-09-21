@@ -1,11 +1,16 @@
 package inv_dis_mgmtsys.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "retailer_order")
@@ -28,8 +33,31 @@ public class Retailer_Order {
 	@Column
 	private double oder_total;
 	
+	@Column
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date order_date;
 	
 	
+	@Transient
+	private String DateInString;
+	
+	
+
+	public String getDateInString() {
+		return DateInString;
+	}
+
+	public void setDateInString(String dateInString) {
+		DateInString = dateInString;
+	}
+
+	public Date getOrder_date() {
+		return order_date;
+	}
+
+	public void setOrder_date(Date order_date) {
+		this.order_date = order_date;
+	}
 
 	public int getRetailerorder_assigned_manager() {
 		return retailerorder_assigned_manager;

@@ -1,11 +1,11 @@
 package inv_dis_mgmtsys.dao;
 
-import java.util.List; 
+import java.util.List;  
 
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.ItemsInCart;
-import inv_dis_mgmtsys.model.Supplier;
-import inv_dis_mgmtsys.model.SupplierOrderItems;
+import inv_dis_mgmtsys.model.OrderItem;
+import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.cart;
 
 
@@ -15,19 +15,30 @@ public interface OrderManagement_IDAO {
 	
 	public List<Item> getTyers();
 	
+	public List<Item> getAllowyWheel();
+	
+	public List<Item> getBatteries();
+	
 	public void AddToCart(cart cartItem);
 	
 	public List<ItemsInCart> getCartItems(int userID);
 	
 	public void deleteCartItems(int cartID);
+		
+	public List<Retailer_Order> getRetailerOrders(int retailerID);
 	
-	public List<Supplier> getSuppliers();
+	public void addtoOrder(int amount,int itemID,int RetailerId);
 	
-	public void addSupplierOrderItem(int SupplierId,String ItemName,int amount);
+	public List<OrderItem> getOrderItems(int orderID);
+	
+	public Retailer_Order getSpecificOrderDetails(int orderId);
+	
+	public Retailer_Order checkOutRetailerOrder(int orderID);
 
-	public List<SupplierOrderItems> getSupplierOrderItem(int SupplierID);
+	public double DeleteOrderItem(int orderItemID);
 	
-	public List<SupplierOrderItems> getOrderItemsFromSupplierOrderId(int SupplierOrderID);
+	public void updateRetailerOrder(Retailer_Order retailerOrder);
 	
-	public void updateSupplierItem(int itemId,int amount);
+	public boolean checkCartItemexist(cart Cart);
 }
+

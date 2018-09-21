@@ -43,6 +43,29 @@ public class Item{
 
 	@Transient
 	private List<Item> itemList; 
+	
+	@Column
+	private int item_supplier_ID;
+	
+	@Transient
+	private String Supplier_Name;
+	
+	
+	public int getItem_supplier_ID() {
+		return item_supplier_ID;
+	}
+
+	public void setItem_supplier_ID(int item_supplier_ID) {
+		this.item_supplier_ID = item_supplier_ID;
+	}
+
+	public String getSupplier_Name() {
+		return Supplier_Name;
+	}
+
+	public void setSupplier_Name(String supplier_Name) {
+		Supplier_Name = supplier_Name;
+	}
 
 	public List<Item> getItemList() {
 		return itemList;

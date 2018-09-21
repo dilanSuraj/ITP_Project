@@ -4,14 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import inv_dis_mgmtsys.dao.OrderManagement_IDAOImpl;
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.ItemsInCart;
-import inv_dis_mgmtsys.model.Payment;
-import inv_dis_mgmtsys.model.Supplier;
-import inv_dis_mgmtsys.model.SupplierOrderItems;
+import inv_dis_mgmtsys.model.OrderItem;
+import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.cart;
 
 @Service
@@ -35,51 +32,79 @@ public class OrderManagement_IServicesImpl implements OrderManagement_IServices 
 	}
 
 	@Override
-	public void AddToCart(cart CartItem) {
-		orderMan.AddToCart(CartItem);
+	public boolean AddToCart(cart CartItem) {
+
+		if (orderMan.checkCartItemexist(CartItem) == false) {
+			orderMan.AddToCart(CartItem);
+			return true;
+		} else{
+			return false;
+		}
 	}
 
 	@Override
 	public List<ItemsInCart> getCartItems(int userID) {
-		 List<ItemsInCart> cartItems=orderMan.getCartItems(userID); 
+		List<ItemsInCart> cartItems = orderMan.getCartItems(userID);
 		return cartItems;
 	}
 
 	@Override
 	public void deleteCartItem(int cartID) {
-	
+
 		orderMan.deleteCartItems(cartID);
 	}
 
 	@Override
-	public List<Supplier> getSuppliers() {
-		List<Supplier> SupplierList=orderMan.getSuppliers();
-		return SupplierList;
+	public List<Retailer_Order> getRetailerOrders(int retailerID) {
+		List<Retailer_Order> retailerOrders = orderMan.getRetailerOrders(retailerID);
+		return retailerOrders;
 	}
 
 	@Override
-	public void addSupplierOrderItem(int SupplierId, String ItemName, int amount) {
-		orderMan.addSupplierOrderItem(SupplierId, ItemName, amount);
+	public void addtoOrder(int amount, int itemID, int RetailerID) {
+		orderMan.addtoOrder(amount, itemID, RetailerID);
+
 	}
 
 	@Override
-	public List<SupplierOrderItems> getSupplierOrderItem(int SupplierID) {
-		List<SupplierOrderItems> SupplierOrderItems=orderMan.getSupplierOrderItem(SupplierID);
-		return SupplierOrderItems;
+	public List<Item> getAlloywheel() {
+		List<Item> alloywheel = orderMan.getAllowyWheel();
+		return alloywheel;
 	}
 
 	@Override
-	public void updateSupplierItem(int itemId, int amount) {
-	
-		orderMan.updateSupplierItem(itemId, amount);
+	public List<Item> getbatteries() {
+		List<Item> battaries = orderMan.getBatteries();
+		return battaries;
 	}
 
 	@Override
-	public List<SupplierOrderItems> getOrderItemsFromSupplierOrderId(int SupplierOrderID) {
-		
-		List<SupplierOrderItems> SupplierOrderItems=orderMan.getOrderItemsFromSupplierOrderId(SupplierOrderID);
-		return SupplierOrderItems;
+	public List<OrderItem> getOrderItems(int orderID) {
+		List<OrderItem> items = orderMan.getOrderItems(orderID);
+		return items;
 	}
-	
+
+	@Override
+	public Retailer_Order getSpecificOrderDetails(int orderId) {
+		Retailer_Order retailerOrders = orderMan.getSpecificOrderDetails(orderId);
+		return retailerOrders;
+	}
+
+	@Override
+	public Retailer_Order checkOutRetailerOrder(int orderID) {
+		Retailer_Order order = orderMan.checkOutRetailerOrder(orderID);
+		return order;
+	}
+
+	@Override
+	public void DeleteOrderItem(int orderItemID, int OrderID) {
+
+		double orderItemcost = orderMan.DeleteOrderItem(orderItemID);
+		Retailer_Order orderToUpdate = orderMan.getSpecificOrderDetails(OrderID);
+
+		orderToUpdate.setOder_total(orderToUpdate.getOder_total() - orderItemcost);
+		orderMan.updateRetailerOrder(orderToUpdate);
+
+	}
 
 }
