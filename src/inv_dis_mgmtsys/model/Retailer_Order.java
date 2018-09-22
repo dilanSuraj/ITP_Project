@@ -41,7 +41,42 @@ public class Retailer_Order {
 	@Transient
 	private String DateInString;
 	
+	@Transient
+	private String retailerorder_assigned_manager_Name;
 	
+	
+	
+	@Column
+	private int  SR_ID; 
+	
+	
+	@Transient
+	private Retailer retailer;
+	
+
+	public String getRetailerorder_assigned_manager_Name() {
+		return retailerorder_assigned_manager_Name;
+	}
+
+	public void setRetailerorder_assigned_manager_Name(String retailerorder_assigned_manager_Name) {
+		this.retailerorder_assigned_manager_Name = retailerorder_assigned_manager_Name;
+	}
+
+	public Retailer getRetailer() {
+		return retailer;
+	}
+
+	public void setRetailer(Retailer retailer) {
+		this.retailer = retailer;
+	}
+
+	public int getSR_ID() {
+		return SR_ID;
+	}
+
+	public void setSR_ID(int sR_ID) {
+		SR_ID = sR_ID;
+	}
 
 	public String getDateInString() {
 		return DateInString;
