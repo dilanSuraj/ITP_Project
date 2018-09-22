@@ -91,7 +91,7 @@
 						<div class="form-group col-md-6">
 							<label for="input_supp_order">Supplier Order Details</label>
 							<form:input type="text" class="form-control"
-								path="supplier_orderID"></form:input>
+								path="Supplier_Order_id"></form:input>
 						</div>
 					</div>
 					<div class="form-group">

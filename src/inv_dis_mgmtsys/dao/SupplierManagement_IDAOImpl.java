@@ -127,7 +127,7 @@ public class SupplierManagement_IDAOImpl implements SupplierManagement_IDAO {
 	@Override
 	public Supplier_Order getOderDetails(int supplier_ID) {
 
-		String hql = " FROM Supplier_Order supplier_order where supplier_order.supplier_ID=:supplier_ID ";
+		String hql = " FROM Supplier_Order supplier_order where supplier_order.Supplier_ID=:supplier_ID ";
 		
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
@@ -205,7 +205,7 @@ public class SupplierManagement_IDAOImpl implements SupplierManagement_IDAO {
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Supplier_Order> getSupplierOrder(int supplier_ID) {
-        String hql = " FROM Supplier_Order supplier_order where supplier_order.supplier_ID=:supplier_ID ";
+        String hql = " FROM Supplier_Order supplier_order where supplier_order.Supplier_ID=:supplier_ID ";
 		
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		

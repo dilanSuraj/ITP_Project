@@ -25,10 +25,6 @@ public class Order_ManagmentController {
 	@Autowired
 	OrderManagement_IServicesImpl orderMan;
 
-	public Order_ManagmentController() {
-		
-		
-	}
 	@RequestMapping("/ShoppingItem")
 	public ModelAndView shoppingItem(@RequestParam("itemNo") int itemcode) {
 
@@ -190,7 +186,7 @@ public class Order_ManagmentController {
 	@ExceptionHandler(Exception.class)
 	public ModelAndView handleMissingParams(Exception ex) {
 	    ModelAndView model=new ModelAndView();
-	   
+	    
 	    model.setViewName("/OrderManagment/badRequest");
 	    
 	    return model;

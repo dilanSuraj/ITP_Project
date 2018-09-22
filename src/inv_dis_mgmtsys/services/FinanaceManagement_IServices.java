@@ -11,7 +11,6 @@ import inv_dis_mgmtsys.model.Retailer;
 import inv_dis_mgmtsys.model.Retailer_Blacklist;
 import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.Supplier;
-import inv_dis_mgmtsys.model.SupplierOrderItems;
 import inv_dis_mgmtsys.model.Supplier_Order;
 import inv_dis_mgmtsys.model.Vehicle;
 
@@ -65,9 +64,9 @@ public interface FinanaceManagement_IServices {
 
 	public Supplier getSupplier(int supplierID);
 
-	public List<SupplierOrderItems> getAllSupplierOrders();
+	public List<Supplier_Order> getAllSupplierOrders();
 
-	public SupplierOrderItems getSingleSupplierOrderItem(int supplierOrderID);
+	public Supplier_Order getSingleSupplierOrderItem(int supplierOrderID);
 
 	public List<Emp_Month_Salary> getAllSalaryDetailsFortheGivenYearMonth(int year,int month);
 

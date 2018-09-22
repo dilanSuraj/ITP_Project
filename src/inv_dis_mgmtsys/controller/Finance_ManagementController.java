@@ -37,7 +37,6 @@ import inv_dis_mgmtsys.model.Retailer_Blacklist;
 import inv_dis_mgmtsys.model.Retailer_Finance;
 import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.Supplier;
-import inv_dis_mgmtsys.model.SupplierOrderItems;
 import inv_dis_mgmtsys.model.Supplier_Finance;
 import inv_dis_mgmtsys.model.Supplier_Order;
 import inv_dis_mgmtsys.model.TransportFinance;
@@ -95,13 +94,13 @@ public class Finance_ManagementController {
 			Supplier supplier = finanaceManagement_IServices.getSupplierByOrderID(supplierOrderID);
 			finance.setSupplier(supplier);
 
-			SupplierOrderItems order = finanaceManagement_IServices.getSingleSupplierOrderItem(supplierOrderID);
+			Supplier_Order order = finanaceManagement_IServices.getSingleSupplierOrderItem(supplierOrderID);
 
-			itemCode = order.getSupplier_order_item_itemcode();
+			itemCode = order.getItem_code();
 			Item item = finanaceManagement_IServices.getSingleItemDetail(itemCode);
 			finance.setItem(item);
 
-			double totalAmount = item.getItem_grossprice() * order.getSupplier_order_item_Amount();
+			double totalAmount = item.getItem_grossprice() * order.getAmount();
 			finance.setTotalAmount(totalAmount);
 
 		}
@@ -150,7 +149,7 @@ public class Finance_ManagementController {
 			@ModelAttribute("supplier_finance") Supplier_Finance supplier_finance) {
 
 		ModelAndView modelAndView = new ModelAndView();
-		List<SupplierOrderItems> orderList = finanaceManagement_IServices.getAllSupplierOrders();
+		List<Supplier_Order> orderList = finanaceManagement_IServices.getAllSupplierOrders();
 		modelAndView.addObject("orderList", orderList);
 		modelAndView.setViewName("/FinanceManagement/Supplier_Finance_Management/Add_Supplier_Finance");
 		return modelAndView;

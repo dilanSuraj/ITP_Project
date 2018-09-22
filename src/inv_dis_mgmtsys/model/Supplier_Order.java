@@ -1,6 +1,6 @@
 package inv_dis_mgmtsys.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,15 +13,15 @@ import javax.persistence.Transient;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "supplier_order")
+@Table(name = "suppler_order")
 public class Supplier_Order {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int supplier_OrderID;
+	private int Supplier_Order_id;
 		
 	@Column
-	private int supplier_ID;
+	private int Supplier_ID;
 	
 	@Column
 	private String Order_Status;
@@ -39,7 +39,21 @@ public class Supplier_Order {
 	@Transient 
 	private String Itemname;
 	
+	@Column
+	private int Store_Manager_ID;
 	
+	@Transient
+	private String SupplierName;
+	
+	
+
+	public String getSupplierName() {
+		return SupplierName;
+	}
+
+	public void setSupplierName(String supplierName) {
+		SupplierName = supplierName;
+	}
 
 	public Date getSupplier_order_date() {
 		return Supplier_order_date;
@@ -81,21 +95,33 @@ public class Supplier_Order {
 		Order_Status = order_Status;
 	}
 
-	public int getSupplier_OrderID() {
-		return supplier_OrderID;
+	
+
+	public int getSupplier_Order_id() {
+		return Supplier_Order_id;
 	}
 
-	public void setSupplier_OrderID(int supplier_OrderID) {
-		this.supplier_OrderID = supplier_OrderID;
+	public void setSupplier_Order_id(int supplier_Order_id) {
+		Supplier_Order_id = supplier_Order_id;
 	}
 
 	public int getSupplier_ID() {
-		return supplier_ID;
+		return Supplier_ID;
 	}
 
 	public void setSupplier_ID(int supplier_ID) {
-		this.supplier_ID = supplier_ID;
+		Supplier_ID = supplier_ID;
 	}
+
+	public int getStore_Manager_ID() {
+		return Store_Manager_ID;
+	}
+
+	public void setStore_Manager_ID(int store_Manager_ID) {
+		Store_Manager_ID = store_Manager_ID;
+	}
+
+	
 	
 	
 

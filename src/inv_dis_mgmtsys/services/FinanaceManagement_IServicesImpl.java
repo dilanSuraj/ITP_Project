@@ -34,7 +34,6 @@ import inv_dis_mgmtsys.model.Retailer_Finance;
 import inv_dis_mgmtsys.model.Retailer_Finance_View;
 import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.Supplier;
-import inv_dis_mgmtsys.model.SupplierOrderItems;
 import inv_dis_mgmtsys.model.Supplier_Finance;
 import inv_dis_mgmtsys.model.Supplier_Order;
 import inv_dis_mgmtsys.model.TransportFinance;
@@ -702,9 +701,9 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 	@Override
 	public Supplier getSupplierByOrderID(int supplierorderID) {
 
-		SupplierOrderItems order = finanaceManagerIDAO.getSingleSupplierOrderDetails(supplierorderID);
+		Supplier_Order order = finanaceManagerIDAO.getSingleSupplierOrderDetails(supplierorderID);
 
-		int supplierID = order.getSupplier_order_Item_supplierID();
+		int supplierID = order.getSupplier_ID();
 		Supplier supplier = finanaceManagerIDAO.getSupplier(supplierID);
 		return supplier;
 
@@ -717,12 +716,12 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 	}
 
 	@Override
-	public List<SupplierOrderItems> getAllSupplierOrders() {
+	public List<Supplier_Order> getAllSupplierOrders() {
 		return finanaceManagerIDAO.getAllSupplierOrderDetails();
 	}
 
 	@Override
-	public SupplierOrderItems getSingleSupplierOrderItem(int supplierOrderID) {
+	public Supplier_Order getSingleSupplierOrderItem(int supplierOrderID) {
 
 		return finanaceManagerIDAO.getSingleSupplierOrderDetails(supplierOrderID);
 	}

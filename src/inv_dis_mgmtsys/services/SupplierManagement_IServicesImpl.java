@@ -86,8 +86,8 @@ public class SupplierManagement_IServicesImpl implements SupplierManagement_ISer
 		for (Supplier_Order i : supplier_Order) {
 
 			
-			System.out.println("this is the one " + i.getSupplier_OrderID());
-			Supplier_Finance finance = supplierManagerIDO.getFinanceDetails1(i.getSupplier_OrderID());
+			System.out.println("this is the one " + i.getSupplier_Order_id());
+			Supplier_Finance finance = supplierManagerIDO.getFinanceDetails1(i.getSupplier_Order_id());
 			System.out.println("printing the details of the finace" + finance.getPaymentState());
 			if (finance.getPaymentState().equals("paid")) {
 				
@@ -114,8 +114,8 @@ public class SupplierManagement_IServicesImpl implements SupplierManagement_ISer
 		for (Supplier_Order i : supplier_Order) {
 
 			
-			System.out.println("this is the one " + i.getSupplier_OrderID());
-			Supplier_Finance finance = supplierManagerIDO.getFinanceDetails1(i.getSupplier_OrderID());
+			System.out.println("this is the one " + i.getSupplier_Order_id());
+			Supplier_Finance finance = supplierManagerIDO.getFinanceDetails1(i.getSupplier_Order_id());
 			System.out.println("printing the details of the finace" + finance.getPaymentState());
 			if (finance.getPaymentState().equals("not paid")) {
 				
@@ -254,7 +254,7 @@ public class SupplierManagement_IServicesImpl implements SupplierManagement_ISer
 		for (Supplier_Order i : supplier_Order) {
 
 			
-			System.out.println("this is the supplier_Order" + i.getSupplier_OrderID());
+			System.out.println("this is the supplier_Order" + i.getSupplier_Order_id());
 			Item item = supplierManagerIDO.getSupplierOrderItem(i.getItem_code());
 			System.out.println("this is item"+item.getItem_name());
 			i.setItemname(item.getItem_name());
@@ -280,7 +280,7 @@ public class SupplierManagement_IServicesImpl implements SupplierManagement_ISer
 		for (Supplier_Order i : supplier_Order) {
 
 			
-			System.out.println("this is the supplier_Order" + i.getSupplier_OrderID());
+			System.out.println("this is the supplier_Order" + i.getSupplier_Order_id());
 			Item item = supplierManagerIDO.getSupplierOrderItem(i.getItem_code());
 			System.out.println("this is item"+item.getItem_name());
 			i.setItemname(item.getItem_name());

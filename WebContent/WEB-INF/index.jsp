@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -47,11 +45,18 @@
                     <a class="nav-link" href="#">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contac Us </a>
+                    <a class="nav-link" href="#">Contact Us </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="#">Services Us </a>
+                </li>
+				<li class="nav-item">
+                    <a class="nav-link" href="#">Retailer </a>
+					
+                </li>
+				<li class="nav-item">
+                    <a class="nav-link" href="#">Supplier </a>
                 </li>
 
                 <li class="nav-item">
@@ -140,14 +145,14 @@
 
 <!-- middle-->
 
-<h4 class="text-center py-4">Two equal columns layout</h4>
+<h4 class="text-center py-4">Our Products</h4>
 <div class="col-md-12" style="padding-left:1.5%;padding-right: 1.5%;">
 <div class="row">
-    <div class=" col-lg-3 col-md-6 mb-4">
+    <div class=" col-lg-4 col-md-6 mb-4">
         <div class="card default-color-dark">
             <!--Card image-->
             <div class="view">
-                <img src="Styles/Images/card1%20(2).jpg"  class="card-img-top" alt="photo">
+                <img src="Styles/Images/Tyres.jpg" class="card-img-top" alt="photo">
                 <a href="#">
                     <div class="mask rgba-white-slight"></div>
                 </a>
@@ -155,10 +160,12 @@
             <!--Card content-->
             <div class="card-body text-center">
                 <!--Title-->
-                <h4 class="card-title white-text">Title of the news</h4>
+                <h4 class="card-title white-text">Tyres</h4>
                 <!--Text-->
-                <p class="card-text white-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.</p>
-                <a href="#" class="btn btn-outline-white btn-md waves-effect">Button</a>
+                <p class="card-text white-text">The Tyre Company stock a large range of branded tyres. So if you are looking for new tyres in Nuneaton or Bedworth then either pop in, enquire or give our experienced team a call to find out about our great value for money tyres and wheel alignment offers.
+				
+Click through the tyre brands below, all in stock at how Nuneaton premises.</p>
+                </br>
             </div>
 
         </div>
@@ -166,11 +173,11 @@
 
     </div>
 
-    <div class="col-lg-3 col-md-6 mb-4">
+    <div class="col-lg-4 col-md-6 mb-4">
         <div class="card default-color-dark">
             <!--Card image-->
             <div class="view">
-                <img src="Styles/Images/card1%20(2).jpg" class="card-img-top" alt="photo">
+                <img src="Styles/Images/Battery.jpg" class="card-img-top" alt="photo">
                 <a href="#">
                     <div class="mask rgba-white-slight"></div>
                 </a>
@@ -178,10 +185,11 @@
             <!--Card content-->
             <div class="card-body text-center">
                 <!--Title-->
-                <h4 class="card-title white-text">Title of the news</h4>
+                <h4 class="card-title white-text">Batteries</h4>
                 <!--Text-->
-                <p class="card-text white-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.</p>
-                <a href="#" class="btn btn-outline-white btn-md waves-effect">Button</a>
+                <p class="card-text white-text">Our customers always share their experiences with us after purchasing our Lithium Ion Batteries. The thing we hear most is the relief of not having to deal with dead batteries ever again.Our batteries will be the last battery you ever purchase with their extensive life cycles and increased performance.</p>
+                </br>
+				</br>
             </div>
 
         </div>
@@ -189,11 +197,11 @@
 
     </div>
 
-    <div class="col-lg-3 col-md-6 mb-4">
+    <div class="col-lg-4 col-md-6 mb-4">
         <div class="card default-color-dark">
             <!--Card image-->
             <div class="view">
-                <img src="Styles/Images/card1%20(2).jpg" class="card-img-top" alt="photo">
+                <img src="Styles/Images/Wheels.png" class="card-img-top" alt="photo">
                 <a href="#">
                     <div class="mask rgba-white-slight"></div>
                 </a>
@@ -201,10 +209,10 @@
             <!--Card content-->
             <div class="card-body text-center">
                 <!--Title-->
-                <h4 class="card-title white-text">Title of the news</h4>
+                <h4 class="card-title white-text">Alloy Wheel</h4>
                 <!--Text-->
-                <p class="card-text white-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.</p>
-                <a href="#" class="btn btn-outline-white btn-md waves-effect">Button</a>
+                <p class="card-text white-text">The aluminium alloy wheel usually has better heat conductivity, anti-corrosive properties and is much lighter than the steel wheel making it the best option for passenger vehicles. Aluminium alloy wheels are manufactured using casting and forging process.  Less weight on the wheel creates less stress on the tire, and so a balance is created.  </p>
+                </br>
             </div>
 
         </div>
@@ -214,28 +222,7 @@
 
     </div>
 
-    <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card default-color-dark">
-            <!--Card image-->
-            <div class="view">
-                <img src="Styles/Images/card1%20(2).jpg" class="card-img-top" alt="photo">
-                <a href="#">
-                    <div class="mask rgba-white-slight"></div>
-                </a>
-            </div>
-            <!--Card content-->
-            <div class="card-body text-center">
-                <!--Title-->
-                <h4 class="card-title white-text">Title of the news</h4>
-                <!--Text-->
-                <p class="card-text white-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.</p>
-                <a href="#" class="btn btn-outline-white btn-md waves-effect">Button</a>
-            </div>
-
-        </div>
-        <!--/.Card-->
-
-    </div>
+    
 
 </div>
 
@@ -283,7 +270,7 @@
                     <p>North Western Province.</p>
 
                 <p><span class="fa fa-phone"  aria-hidden="true" style="font-size:28px;" ></span></p>
-                <p>+123 3459 3556</p>
+                <p>+94 37 494 1582</p>
             </div>
         </center>
     </div>
@@ -292,24 +279,23 @@
         <center>
             <div style="color: white">
 
-                <h5><span class="fa fa-globe"></span>  Quick Links</h5>
+                <h5><span class="fa fa-globe"></span> Quick Links</h5>
 
-                <p style="padding-top: 12px">Link 1</p>
-                <p>Link 1</p>
-                <p>Link 1</p>
-                <p>Link 1</p>
+                <style="padding-top: 12px">
+				</br>
+				<p><a href="#">Terms and Conditions</a></p>
+                <p><a href="#">Private Policy</a></p>
+                <p><a href="#">Disclaimer</a></p>
+                
             </div>
         </center>
     </div>
-
-
-
 </div>
 
 <div style="background-color: #1a237e;color: white;font-family:'28 Days Later'">
     <center>
 
-    <p>© 2018 Copyright: chamika</p>
+    <p>© 2018 Copyright: Sumith Tyre Center Pvt Ltd</p>
 
     </center>
 

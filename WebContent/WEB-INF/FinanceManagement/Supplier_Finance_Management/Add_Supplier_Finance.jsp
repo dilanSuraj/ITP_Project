@@ -96,7 +96,7 @@
 								path="supplier_orderID" required="true">
 								<c:forEach var="orderList" items="${orderList}"
 									varStatus="status">
-									<form:option value="${orderList.getSupplier_order_Item_ID()}">${orderList.getSupplier_order_Item_ID()}</form:option>
+									<form:option value="${orderList.getSupplier_Order_id()}">${orderList.getSupplier_Order_id()}</form:option>
 								</c:forEach>
 							</form:select>
 						</div>

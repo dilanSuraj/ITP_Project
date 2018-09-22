@@ -17,7 +17,6 @@ import inv_dis_mgmtsys.model.Retailer_Blacklist;
 import inv_dis_mgmtsys.model.Retailer_Finance;
 import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.Supplier;
-import inv_dis_mgmtsys.model.SupplierOrderItems;
 import inv_dis_mgmtsys.model.Supplier_Order;
 import inv_dis_mgmtsys.model.TemporaryEmployee;
 import inv_dis_mgmtsys.model.Vehicle;
@@ -65,11 +64,11 @@ public interface FinanaceManagement_IDAO{
     
     public List<Retailer> getAllRetailers();
 
-	public SupplierOrderItems getSingleSupplierOrderDetails(int supplierOrderID);
+	public Supplier_Order getSingleSupplierOrderDetails(int supplierOrderID);
 	
 	public Supplier getSupplier(int supplierID);
 	
-	public List<SupplierOrderItems> getAllSupplierOrderDetails();
+	public List<Supplier_Order> getAllSupplierOrderDetails();
 
 	public List<IncomeView> getAllIncomeViewDetails();
 

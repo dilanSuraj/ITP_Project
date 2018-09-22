@@ -38,7 +38,6 @@ import inv_dis_mgmtsys.model.Retailer_Finance;
 import inv_dis_mgmtsys.model.Retailer_Finance_View;
 import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.Supplier;
-import inv_dis_mgmtsys.model.SupplierOrderItems;
 import inv_dis_mgmtsys.model.Supplier_Finance;
 import inv_dis_mgmtsys.model.Supplier_Order;
 import inv_dis_mgmtsys.model.TemporaryEmployee;
@@ -280,9 +279,9 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 	}
 
 	@Override
-	public SupplierOrderItems getSingleSupplierOrderDetails(int supplierOrderID) {
+	public Supplier_Order getSingleSupplierOrderDetails(int supplierOrderID) {
 
-		return (SupplierOrderItems) sessionFactory.getCurrentSession().get(SupplierOrderItems.class, supplierOrderID);
+		return (Supplier_Order) sessionFactory.getCurrentSession().get(Supplier_Order.class, supplierOrderID);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -423,10 +422,10 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<SupplierOrderItems> getAllSupplierOrderDetails() {
-		String hql = "From SupplierOrderItems supplierOrder  where supplierOrder.supplier_order_item_status=?";
+	public List<Supplier_Order> getAllSupplierOrderDetails() {
+		String hql = "From Supplier_Order supplierOrder  where supplierOrder.Order_Status=?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setParameter(0, "complete");
+		query.setParameter(0, "Recived");
 		return query.list();
 	}
 

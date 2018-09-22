@@ -143,6 +143,7 @@ public class Suplier_ManagementController {
 		return new ModelAndView("/SupplierManagement/deoAddSupplier");
 	}
 
+	/*
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView LoginSupplier_GET(@ModelAttribute("supplier") Supplier supplier) {
 
@@ -170,7 +171,7 @@ public class Suplier_ManagementController {
 			return new ModelAndView("redirect:/login");
 		}
 	}
-
+*/
 	@RequestMapping(value = "/AddSupplier_post", method = RequestMethod.POST)
 	public ModelAndView AddSupplierform(@ModelAttribute("supplier") Supplier supplier) {
 
