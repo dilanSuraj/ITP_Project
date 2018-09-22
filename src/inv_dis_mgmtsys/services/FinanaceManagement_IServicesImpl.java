@@ -777,7 +777,7 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 			Map<String, Object> map = new HashMap<>();
 			map.put("year", expenseView.getYear());
 			map.put("monthName", expenseView.getMonthName());
-			map.put("paidAmt", expenseView.getPaidAmt());
+			map.put("PaidAmt", expenseView.getPaidAmt());
 
 			list.add(map);
 
