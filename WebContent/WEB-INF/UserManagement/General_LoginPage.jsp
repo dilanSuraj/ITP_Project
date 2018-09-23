@@ -32,19 +32,19 @@
 		<div class="col-md-4 col-sm-10 col-10">
 
 			
-			<form:form class="form-signin" method="post" action="loginPOST" modelAttribute="supplier">
+			<form:form class="form-signin" method="post" action="loginPOST" modelAttribute="retailer">
 				<img class="mb-4" src="Styles/Images/logo%20-%20colour.png"
 					style="height: 250px; width: auto">
 				<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 				<br> 
 				<label for="inputEmail" class="sr-only">Username</label> 
-					<form:input type="text"  path="supplier_username" class="form-control"
+					<form:input type="text"  path="retailer_username" class="form-control"
 					placeholder="Username" ></form:input>
 					<br> 
 					<label
 					for="inputPassword" class="sr-only">Password</label> 
 					<form:input
-					type="password"  path="supplier_password" class="form-control"
+					type="password"  path="retailer_password" class="form-control"
 					placeholder="Password" ></form:input>
 					 <br>
 				<div class="checkbox mb-3">
