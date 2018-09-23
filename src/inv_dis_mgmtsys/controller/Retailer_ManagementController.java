@@ -40,7 +40,6 @@ public class Retailer_ManagementController {
 		return new ModelAndView("redirect:/Retailer");
 	}
 
-	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView LoginRetailer_GET(@ModelAttribute("retailer") Retailer Retailer) {
 

@@ -208,77 +208,70 @@
 					</div>
 					<div class="card-body">
 
-						<form:form method="post" action="Update_Retailer_Post"
-							modelAttribute="retailer1">
-							<h5>Contact</h5>
+						<form:form mothod="post" action="Update_Retailer_Post1"
+							modelAttribute="Retailer">
+
+
+							<form:input type="hidden" 
+										path="retailer_ID"  />
+
 							<div class="form-column">
 								<div class="form-group col-md-12">
-									<label for="inputEmail4">Contact Name</label>
-									<form:input type="text" class="form-control"
-										path="retailer_name" />
+									<label for="inputEmail4"><b>Contact Name</b></label>
+									<form:input type="text" class="form-control" id="inputFirstl4"
+										path="retailer_name" required="True" />
 								</div>
 								<div class="form-group col-md-12">
-									<label for="inputEmail4">Telephone Number</label>
-									<form:input type="text" class="form-control"
-										path="retailer_contactno" />
+									<label for="inputEmail4"><b>Telephone Number</b></label>
+									<form:input type="text" class="form-control" id="inputFirstl4"
+										path="retailer_contactno" required="True" />
 								</div>
 								<div class="form-group col-md-12">
-									<label for="inputPassword4">Registered Number</label>
-									<form:input type="text" class="form-control"
+									<label for="inputPassword4"><b>Registered Number</b></label>
+									<form:input type="text" class="form-control" id="inputLast4"
 										path="retailer_regno" required="True" />
 								</div>
 								<div class="form-group col-md-12">
-									<label for="inputEmail4">Shop Address</label>
-									<form:input type="text" class="form-control"
-										path="retailer_address" />
+									<label for="inputEmail4"><b>Shop Address</b></label>
+									<form:input type="text" class="form-control" id="inputFirstl4"
+										path="retailer_address" required="True" />
 								</div>
 								<div class="form-group col-md-12">
-									<label for="inputEmail4">Username</label>
-									<form:input type="text" class="form-control"
-										path="retailer_username" />
+									<label for="inputEmail4"><b>Username</b></label>
+									<form:input type="text" class="form-control" id="inputFirstl4"
+										path="retailer_username" required="True" />
 								</div>
 								<div class="form-group col-md-12">
-									<label for="inputEmail4">Password</label>
-									<form:input type="password" class="form-control"
-										path="retailer_password" />
+									<label for="inputEmail4"><b>Password</b></label>
+									<form:input type="text" class="form-control" id="inputFirstl4"
+										path="retailer_password" required="True" />
 								</div>
 								<div class="form-group col-md-12">
-									<label for="inputState">Province</label>
-									<form:input type="text" class="form-control"
-										path="retailer_province" />
+									<label for="inputState"><b>Province</b></label>
+									<form:input type="text" class="form-control" id="inputState"
+										path="retailer_province" required="True" />
+
 								</div>
 							</div>
-							<form:input type="hidden" class="form-control"
-								path="retailer_ID" />
 
-							<button type="submit" class="btn btn-primary value="submit">Update</button>
+							<button type="submit" class="btn btn-primary">Update</button>
+							</br>
+							<button type="button" class="btn btn-link">Delete
+								Request</button>
 						</form:form>
 					</div>
 				</div>
 			</div>
-			<pre>                                                                                                             
-		                                                                                                                          <a
-					href="Delete_Request_GET">Delete Request</a>
-		<pre>
-     <!-- forms ends-->
-	 
-	 
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="js/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
-
-<script type="text/javascript" src="js/mdb.min.js"></script>
+			<!-- forms ends-->
 
 
+			<!-- Bootstrap tooltips -->
+			<script type="text/javascript" src="js/popper.min.js"></script>
+			<!-- Bootstrap core JavaScript -->
+			<script type="text/javascript" src="js/bootstrap.min.js"></script>
+			<!-- MDB core JavaScript -->
+			<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 
-
-
-
-
-
-
+			<script type="text/javascript" src="js/mdb.min.js"></script>
 </body>
 </html>

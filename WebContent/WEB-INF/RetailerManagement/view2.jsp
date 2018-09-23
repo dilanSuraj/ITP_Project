@@ -22,7 +22,7 @@
 
 
 <!-- Your custom styles -->
-<link rel="stylesheet" href="Styles/css/dashboardStyleSheet.css">
+<link rel="stylesheet" hef="Styles/css/dashboardStyleSheet.css">
 
 <!-- font awesome icon pack-->
 <link rel="stylesheet"
@@ -41,11 +41,10 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
-<script type="text/javascript" src="Styles/js/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="Styles/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript"
-	src="Styles/js/dataTables.bootstrap4.min.js"></script>
-<link rel="stylesheet" href="Styles/css/dataTables.bootstrap4.min.css">
+<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="js/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
 
 <!--Scrollspy-->
 <meta charset="utf-8">
@@ -207,78 +206,70 @@
 						</h5>
 					</div>
 					<div class="card-body">
-
-						<form:form method="post" action="Update_Retailer_Post"
-							modelAttribute="retailer1">
+						<script>
+							$(document).ready(function() {
+								$('#example').DataTable();
+							});
+						</script>
+						<form:form method="post" action="${retailerList}"
+							modelattribute="Retailer">
 							<h5>Contact</h5>
 							<div class="form-column">
-								<div class="form-group col-md-12">
-									<label for="inputEmail4">Contact Name</label>
-									<form:input type="text" class="form-control"
-										path="retailer_name" />
+								<div class="form-group col-md-6">
+									<label for="inputEmail4">Contact Name</label> <input
+										type="text" class="form-control"
+										value="${retailerList.getRetailer_name()}">
 								</div>
-								<div class="form-group col-md-12">
-									<label for="inputEmail4">Telephone Number</label>
-									<form:input type="text" class="form-control"
-										path="retailer_contactno" />
+								<div class="form-group col-md-6">
+									<label for="inputEmail4">Telephone Number</label> <input
+										type="text" class="form-control"
+										value="${retailerList.getRetailer_contactno()}">
 								</div>
-								<div class="form-group col-md-12">
-									<label for="inputPassword4">Registered Number</label>
-									<form:input type="text" class="form-control"
-										path="retailer_regno" required="True" />
+								<div class="form-group col-md-6">
+									<label for="inputPassword4">Registered Number</label> <input
+										type="text" class="form-control"
+										value="${retailerList.getRetailer_regno()}">
 								</div>
-								<div class="form-group col-md-12">
-									<label for="inputEmail4">Shop Address</label>
-									<form:input type="text" class="form-control"
-										path="retailer_address" />
+								<div class="form-group col-md-6">
+									<label for="inputEmail4">Shop Address</label> <input
+										type="text" class="form-control"
+										value="${retailerList.getRetailer_address()}">
 								</div>
-								<div class="form-group col-md-12">
-									<label for="inputEmail4">Username</label>
-									<form:input type="text" class="form-control"
-										path="retailer_username" />
+								<div class="form-group col-md-6">
+									<label for="inputEmail4">Username</label> <input type="text"
+										class="form-control"
+										value="${retailerList.getRetailer_username()}">
 								</div>
-								<div class="form-group col-md-12">
-									<label for="inputEmail4">Password</label>
-									<form:input type="password" class="form-control"
-										path="retailer_password" />
+								<div class="form-group col-md-6">
+									<label for="inputEmail4">Password</label> <input type="text"
+										class="form-control"
+										value="${retailerList.getRetailer_password()}">
 								</div>
-								<div class="form-group col-md-12">
-									<label for="inputState">Province</label>
-									<form:input type="text" class="form-control"
-										path="retailer_province" />
+								<div class="form-group col-md-6">
+									<label for="inputState">Province</label> <input type="text"
+										class="form-control"
+										value="${retailerList.getRetailer_province()}">
 								</div>
 							</div>
-							<form:input type="hidden" class="form-control"
-								path="retailer_ID" />
 
-							<button type="submit" class="btn btn-primary value="submit">Update</button>
+							<button type="submit" class="btn btn-primary">Update</button>
+							</br>
+							<button type="button" class="btn btn-link">Delete
+								Request</button>
 						</form:form>
 					</div>
 				</div>
 			</div>
-			<pre>                                                                                                             
-		                                                                                                                          <a
-					href="Delete_Request_GET">Delete Request</a>
-		<pre>
-     <!-- forms ends-->
-	 
-	 
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="js/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
-
-<script type="text/javascript" src="js/mdb.min.js"></script>
+			<!-- forms ends-->
 
 
+			<!-- Bootstrap tooltips -->
+			<script type="text/javascript" src="js/popper.min.js"></script>
+			<!-- Bootstrap core JavaScript -->
+			<script type="text/javascript" src="js/bootstrap.min.js"></script>
+			<!-- MDB core JavaScript -->
+			<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 
-
-
-
-
-
-
+			<script type="text/javascript" src="js/mdb.min.js"></script>
 </body>
 </html>
