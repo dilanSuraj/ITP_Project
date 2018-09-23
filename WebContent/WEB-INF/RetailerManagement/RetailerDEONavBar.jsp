@@ -85,9 +85,9 @@
 			</li>
 
 			<li class="nav-item">
-				<button type="button" class="btn btn-dark btn-sm ">
+				<button type="button" a href="login" class="btn btn-dark btn-sm ">
 					<span class="fa fa-key"></span> Logout
-				</button>
+				</button></a>
 			</li>
 
 

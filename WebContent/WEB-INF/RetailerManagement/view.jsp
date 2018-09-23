@@ -256,8 +256,7 @@
 
 							<button type="submit" class="btn btn-primary">Update</button>
 							</br>
-							<button type="button" class="btn btn-link">Delete
-								Request</button>
+							
 						</form:form>
 					</div>
 				</div>
