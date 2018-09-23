@@ -65,7 +65,7 @@
 
              <div class="d-block d-md-none">
                  <li class="nav-item ">
-                     <a class="nav-link" href="" style="color: white">
+                     <a class="nav-link" href="#" style="color: white">
                          <span class="fa fa-home " style="font-size: 18px"></span> Home</a>
                  </li>
 
@@ -108,7 +108,7 @@
              
 
              <li class="nav-item">
-                 <a  href="#"  class="admin-name">Admin Name</a>
+                 <a  href="update_GET"  class="admin-name">Admin Name</a>
              </li>
 
 

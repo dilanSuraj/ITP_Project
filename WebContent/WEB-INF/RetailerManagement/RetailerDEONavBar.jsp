@@ -65,42 +65,9 @@
 			</div>
 
 			<!-- end of side bar links to nav bar -->
-
-			<li class="nav-item">
-				<div class="dropdown ">
-					<p class=" dropdown-toggle" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false">
-						<span class="fa fa-envelope navbarIcon" style="font-size: 20px"></span>
-					</p>
-					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="#">Action</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Another action</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Something else here</a>
-					</div>
-				</div>
-			</li>
-
-
-			<li class="nav-item">
-				<div class="dropdown ">
-					<p class=" dropdown-toggle" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false">
-						<span class="fa fa-bell navbarIcon" style="font-size: 20px"></span>
-					</p>
-					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="#">Action</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Another action</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Something else here</a>
-					</div>
-				</div>
-			</li>
-
-			<li class="nav-item"><a href="#" class="admin-name">DEO Name</a>
-			</li>
+			
+			<li class="nav-item"><a href="#" class="admin-name">Eshan
+					A.M.N</a></li>
 
 
 			<li class="nav-item">
@@ -147,21 +114,16 @@
 			</a></li>
 
 			<li class="nav-item"><a class="nav-link"
-				href="AdminDashbord add.html"><span class="fa fa-plus "
+				href="Add_Retailer_ADMIN"><span class="fa fa-plus "
 					style="font-size: 18px"></span> Add Retailer</a></li>
 
 			<li class="nav-item"><a class="nav-link "
-				href="AdminDashbord update.html"><span class="fa fa-clone"
-					style="font-size: 18px"></span> Update Retailer Profile</a></li>
+				href="Update_Retailer_ADMIN"><span class="fa fa-clone"
+					style="font-size: 18px"></span> Update/Delete Retailer Profile</a></li>
 
-			<li class="nav-item"><a class="nav-link "
-				href="AdminDashbord delete.html"><span class="fa fa-database"
-					style="font-size: 18px"></span> Delete Retailer</a></li>
-
-
-
-
-
+			<li class="nav-item"><a class="nav-link " href="viewFile"><span
+					class="fa fa-database" style="font-size: 18px"></span> Delete
+					Requests</a></li>
 		</ul>
 
 		</nav>

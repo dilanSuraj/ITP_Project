@@ -77,19 +77,19 @@
 					</a></li>
 
 					<li class="nav-item"><a class="nav-link"
-						href="AdminDashbord add.html" style="color: white"><span
+						href="Add_Retailer_ADMIN" style="color: white"><span
 							class="fa fa-plus " style="font-size: 18px"></span> Add Retailer</a>
 					</li>
 
 					<li class="nav-item"><a class="nav-link "
-						href="AdminDashbord Update.html" style="color: white"><span
-							class="fa fa-clone" style="font-size: 18px"></span> Update
+						href="Update_Retailer_ADMIN" style="color: white"><span
+							class="fa fa-clone" style="font-size: 18px"></span> Update/Delete
 							Retailer Profile</a></li>
 
 					<li class="nav-item"><a class="nav-link "
-						href="AdminDashbord Delete.html" style="color: white"><span
-							class="fa fa-database" style="font-size: 18px"></span> Delete
-							Retailer</a></li>
+						href="viewFile" style="color: white"><span
+							class="fa fa-database" style="font-size: 18px"></span> Delete Requests
+							</a></li>
 
 
 				</div>
@@ -141,6 +141,11 @@
 				<li class="nav-item"><a class="nav-link "
 					href="Update_Retailer_ADMIN"><span class="fa fa-clone"
 						style="font-size: 18px"></span> Update/Delete Retailer Profile</a></li>
+						
+				<li class="nav-item"><a class="nav-link "
+						href="viewFile" style="color: white"><span
+							class="fa fa-database" style="font-size: 18px"></span> Delete Requests
+							</a></li>
 			</ul>
 
 		</nav>
