@@ -65,7 +65,7 @@
 
              <div class="d-block d-md-none">
                  <li class="nav-item ">
-                     <a class="nav-link" href="#" style="color: white">
+                     <a class="nav-link" href="" style="color: white">
                          <span class="fa fa-home " style="font-size: 18px"></span> Home</a>
                  </li>
 
@@ -93,7 +93,7 @@
                  </li>
                 
                  <li class="nav-item">
-                     <a class="nav-link " href="#" style="color: white" ><span class="fa fa-user-plus" style="font-size: 18px"></span>
+                     <a class="nav-link " href="update_GET" style="color: white" ><span class="fa fa-user-plus" style="font-size: 18px"></span>
                          Profile Settings</a>
                  </li>
 
@@ -139,7 +139,7 @@
              </li>
 
              <li class="nav-item active">
-                 <a class="nav-link" href="#" >
+                 <a class="nav-link" href="Retailer" >
                      <span class="fa fa-home " style="font-size: 18px"></span> Home</a>
              </li>
 
@@ -167,7 +167,7 @@
                      Cart</a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link " href="#" ><span class="fa fa-user-plus" style="font-size: 18px"></span>
+                 <a class="nav-link " href="update_GET" ><span class="fa fa-user-plus" style="font-size: 18px"></span>
                      Profile Settings</a>
              </li>
 

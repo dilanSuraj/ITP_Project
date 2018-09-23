@@ -10,26 +10,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "retailer")
 public class Retailer {
-	
-	public int getRetailer_ID() {
-		return retailer_ID;
-	}
-
-	public void setRetailer_ID(int retailer_ID) {
-		this.retailer_ID = retailer_ID;
-	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int retailer_ID;
-		
+
 	@Column
 	private String retailer_name;
-	
-	
-	@Column
-	private String retailer_blacklistStatus;
-	
+
 	@Column
 	private int retailer_contactno;
 
@@ -48,6 +36,21 @@ public class Retailer {
 	@Column
 	private String retailer_province;
 
+	public int getRetailer_ID() {
+		return retailer_ID;
+	}
+
+	public void setRetailer_ID(int retailer_ID) {
+		this.retailer_ID = retailer_ID;
+	}
+
+	public String getRetailer_name() {
+		return retailer_name;
+	}
+
+	public void setRetailer_name(String retailer_name) {
+		this.retailer_name = retailer_name;
+	}
 
 	public int getRetailer_contactno() {
 		return retailer_contactno;
@@ -96,23 +99,5 @@ public class Retailer {
 	public void setRetailer_province(String retailer_province) {
 		this.retailer_province = retailer_province;
 	}
-
-	public String getRetailer_blacklistStatus() {
-		return retailer_blacklistStatus;
-	}
-
-	public void setRetailer_blacklistStatus(String retailer_blacklistStatus) {
-		this.retailer_blacklistStatus = retailer_blacklistStatus;
-	}
-
-	public String getRetailer_name() {
-		return retailer_name;
-	}
-
-	public void setRetailer_name(String retailer_name) {
-		this.retailer_name = retailer_name;
-	}
-	
-	
 
 }

@@ -203,82 +203,38 @@
 				<div class="card mb-3">
 					<div class="card-header" style="color: #003399">
 						<h5>
-							<span class="fa fa-pencil"></span> Update Profile
+							<span class="fa fa-pencil"></span> Delete Request
 						</h5>
 					</div>
+
 					<div class="card-body">
-
-						<form:form method="post" action="Update_Retailer_Post"
-							modelAttribute="retailer1">
-							<h5>Contact</h5>
-							<div class="form-column">
-								<div class="form-group col-md-12">
-									<label for="inputEmail4">Contact Name</label>
-									<form:input type="text" class="form-control"
-										path="retailer_name" />
-								</div>
-								<div class="form-group col-md-12">
-									<label for="inputEmail4">Telephone Number</label>
-									<form:input type="text" class="form-control"
-										path="retailer_contactno" />
-								</div>
-								<div class="form-group col-md-12">
-									<label for="inputPassword4">Registered Number</label>
-									<form:input type="text" class="form-control"
-										path="retailer_regno" required="True" />
-								</div>
-								<div class="form-group col-md-12">
-									<label for="inputEmail4">Shop Address</label>
-									<form:input type="text" class="form-control"
-										path="retailer_address" />
-								</div>
-								<div class="form-group col-md-12">
-									<label for="inputEmail4">Username</label>
-									<form:input type="text" class="form-control"
-										path="retailer_username" />
-								</div>
-								<div class="form-group col-md-12">
-									<label for="inputEmail4">Password</label>
-									<form:input type="password" class="form-control"
-										path="retailer_password" />
-								</div>
-								<div class="form-group col-md-12">
-									<label for="inputState">Province</label>
-									<form:input type="text" class="form-control"
-										path="retailer_province" />
-								</div>
+						<form:form action="Delete_Request_POST" method="post"
+							modelAttribute="retailer_notification">
+							
+							<form:input type="hidden" path="retailer_notification_retailerID"   />
+							
+							<div class="form-group">
+								<label for="comment"><b>Reason</b></label>
+								<form:textarea class="form-control" rows="5"
+									path="retailer_notification_details"></form:textarea>
 							</div>
-							<form:input type="hidden" class="form-control"
-								path="retailer_ID" />
-
-							<button type="submit" class="btn btn-primary value="submit">Update</button>
-						</form:form>
+							<button type="submit" class="btn btn-primary">Send</button>
+							</form:form>
 					</div>
+					
 				</div>
 			</div>
-			<pre>                                                                                                             
-		                                                                                                                          <a
-					href="Delete_Request_GET">Delete Request</a>
-		<pre>
-     <!-- forms ends-->
-	 
-	 
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="js/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+		</div>
+	</div>
+	</div>
+	<!-- forms ends-->
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript" src="js/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 
-<script type="text/javascript" src="js/mdb.min.js"></script>
-
-
-
-
-
-
-
-
-
+	<script type="text/javascript" src="js/mdb.min.js"></script>
 </body>
 </html>
