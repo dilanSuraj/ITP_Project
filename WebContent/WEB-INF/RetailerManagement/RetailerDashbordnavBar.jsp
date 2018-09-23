@@ -46,7 +46,7 @@
 
              <div class="d-block d-md-none">
                  <li class="nav-item ">
-                     <a class="nav-link" href="#" style="color: white">
+                     <a class="nav-link" href="Retailer" style="color: white">
                          <span class="fa fa-home " style="font-size: 18px"></span> Home</a>
                  </li>
 
@@ -121,7 +121,7 @@
              </li>
 
              <li class="nav-item active">
-                 <a class="nav-link" href="#" >
+                 <a class="nav-link" href="Retailer" >
                      <span class="fa fa-home " style="font-size: 18px"></span> Home</a>
              </li>
 
