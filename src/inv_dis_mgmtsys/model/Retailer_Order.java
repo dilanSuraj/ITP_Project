@@ -44,11 +44,8 @@ public class Retailer_Order {
 	@Transient
 	private String retailerorder_assigned_manager_Name;
 	
-	
-	
 	@Column
 	private int  SR_ID; 
-	
 	
 	@Transient
 	private Retailer retailer;

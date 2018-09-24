@@ -2,6 +2,8 @@ package inv_dis_mgmtsys.services;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import inv_dis_mgmtsys.dao.OrderManagement_IDAOImpl;
@@ -17,6 +19,7 @@ public class OrderManagement_IServicesImpl implements OrderManagement_IServices 
 	@Autowired
 	OrderManagement_IDAOImpl orderMan;
 
+	
 	@Override
 	public Item getItem(int itemcode) {
 
@@ -106,5 +109,6 @@ public class OrderManagement_IServicesImpl implements OrderManagement_IServices 
 		orderMan.updateRetailerOrder(orderToUpdate);
 
 	}
+
 
 }

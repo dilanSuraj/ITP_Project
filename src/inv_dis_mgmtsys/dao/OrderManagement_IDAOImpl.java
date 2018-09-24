@@ -131,6 +131,7 @@ public class OrderManagement_IDAOImpl implements OrderManagement_IDAO {
 			order.setRetailer_ID(RetailerID);
 			order.setRetailer_orderstatus("Incomplete");
 			order.setOder_total(0);
+			order.setSR_ID(0);
 
 			Date currentDate = new Date();
 			

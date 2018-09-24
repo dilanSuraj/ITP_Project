@@ -57,6 +57,8 @@ public class Retailer_ManagementController {
 			retailerManagement_IServices.setHttpsession(session);
 			retailerManagement_IServices.saveSessionObjects(result.getRetailer_ID());
 			ModelAndView model = new ModelAndView();
+			Retailer retailer = (Retailer) session.getAttribute("retailer");
+			System.out.println("fgdf"+retailer.getRetailer_ID());
 			model.setViewName("Dashboards/Retailer");
 			return model;
 		} else {
