@@ -1,15 +1,20 @@
 package inv_dis_mgmtsys.services;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import inv_dis_mgmtsys.dao.OrderManagement_IDAOImpl;
+import inv_dis_mgmtsys.model.ExpenseView;
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.ItemsInCart;
 import inv_dis_mgmtsys.model.OrderItem;
+import inv_dis_mgmtsys.model.RetailerOrderReport;
 import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.cart;
 
@@ -108,6 +113,31 @@ public class OrderManagement_IServicesImpl implements OrderManagement_IServices 
 		orderToUpdate.setOder_total(orderToUpdate.getOder_total() - orderItemcost);
 		orderMan.updateRetailerOrder(orderToUpdate);
 
+	}
+
+	@Override
+	public List<RetailerOrderReport> getOrderReport() {
+		List<RetailerOrderReport> list =orderMan.getOrderReport();
+		return list;
+	}
+	
+	
+	public List<Map<String, Object>> getRetailerOrderReport() {
+
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		List<RetailerOrderReport> retailerOrderReports= orderMan.getOrderReport();
+
+		for (RetailerOrderReport r : retailerOrderReports) {
+			Map<String, Object> map = new HashMap<>();
+			map.put("retailer_OrderID", r.getRetailer_OrderID());
+			map.put("order_date", r.getOrder_date());
+			map.put("retailer_name", r.getRetailer_name());
+			map.put("oder_total", r.getOder_total());
+
+			list.add(map);
+
+		}
+		return list;
 	}
 
 

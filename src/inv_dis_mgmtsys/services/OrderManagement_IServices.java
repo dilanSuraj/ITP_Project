@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.ItemsInCart;
 import inv_dis_mgmtsys.model.OrderItem;
+import inv_dis_mgmtsys.model.RetailerOrderReport;
 import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.model.cart;
 
@@ -38,4 +39,6 @@ public interface OrderManagement_IServices {
 	public Retailer_Order checkOutRetailerOrder(int orderID);
 	
 	public void DeleteOrderItem(int orderItemID,int OrderID);
+	
+	public List<RetailerOrderReport> getOrderReport();
 }

@@ -250,7 +250,7 @@ public class OrderManagement_IDAOImpl implements OrderManagement_IDAO {
 	
 	
 	@Override
-	public List<RetailerOrderReport> getSupplierReport() {
+	public List<RetailerOrderReport> getOrderReport(){
 			
 			@SuppressWarnings("unchecked")
 			List<RetailerOrderReport> list = (List<RetailerOrderReport>)sessionFactory.getCurrentSession().createQuery("from RetailerOrderReport").list();

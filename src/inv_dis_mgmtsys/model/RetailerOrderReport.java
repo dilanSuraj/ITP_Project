@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 @Table(name = "retailerorders")
@@ -20,6 +22,7 @@ public class RetailerOrderReport {
 	private double oder_total;
 	
 	@Column
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date order_date;
 	
 	@Column

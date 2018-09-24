@@ -42,6 +42,6 @@ public interface OrderManagement_IDAO {
 	
 	public boolean checkCartItemexist(cart Cart);
 	
-	public List<RetailerOrderReport> getSupplierReport(); 
+	public List<RetailerOrderReport> getOrderReport(); 
 }
 

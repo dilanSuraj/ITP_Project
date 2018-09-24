@@ -31,7 +31,9 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import inv_dis_mgmtsys.dao.FinanaceManagement_IDAOImpl;
+import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.services.FinanaceManagement_IServicesImpl;
+import inv_dis_mgmtsys.services.OrderManagement_IServicesImpl;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
@@ -52,6 +54,9 @@ public class CEO_ManagementController {
 
 	@Autowired
 	private FinanaceManagement_IServicesImpl finanaceManagement_IServicesImpl;
+	
+	@Autowired 
+	private OrderManagement_IServicesImpl  orderService;
 
 	@RequestMapping("/CEO")
 	public ModelAndView dashboardView() {
@@ -126,6 +131,30 @@ public class CEO_ManagementController {
 		response.setContentType("application/x-pdf");
 		//This line needs to be changed
 		response.setHeader("Content-disposition", "inline; filename=incomeReport.pdf");
+
+		final OutputStream outStream = response.getOutputStream();
+		JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+	}
+	
+	@RequestMapping(value = "retailerorderreport", method = RequestMethod.GET)
+	@ResponseBody
+	public void getRetailerOrderReport(HttpSession session) throws JRException, IOException {
+		System.out.println("inside");
+
+		//This line needs to be changed
+		List<Map<String,Object>> dataSource =orderService.getRetailerOrderReport();
+		JRDataSource jrDataSource = new JRBeanCollectionDataSource(dataSource);
+		String path = session.getServletContext().getRealPath("/Report/");
+		//This line needs to be changed
+		JasperDesign jasperDesign = JRXmlLoader.load(path + "/RetailerOrderReport.jrxml");
+		JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null , jrDataSource);
+		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder
+				.currentRequestAttributes();
+		HttpServletResponse response = servletRequestAttributes.getResponse();
+		response.setContentType("application/x-pdf");
+		//This line needs to be changed
+		response.setHeader("Content-disposition", "inline; filename=RetailerOrderReport.pdf");
 
 		final OutputStream outStream = response.getOutputStream();
 		JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
