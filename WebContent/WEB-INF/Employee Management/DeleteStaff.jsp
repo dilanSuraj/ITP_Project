@@ -86,7 +86,7 @@
 
 
 									<div class="form-group">
-										<label class="col-md-4 control-label">Delete Employee Details</label>
+										<label class="col-md-4 control-label">Delete Permanent Employee Details</label>
 										<div class="col-md-6  inputGroupContainer">
 											<div class="input-group">
 												<span class="input-group-addon"><i

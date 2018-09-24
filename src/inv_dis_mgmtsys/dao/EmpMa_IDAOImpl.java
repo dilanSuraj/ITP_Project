@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import inv_dis_mgmtsys.model.Emp_Month_Salary;
+import inv_dis_mgmtsys.model.Emp_Report;
+import inv_dis_mgmtsys.model.IncomeView;
 import inv_dis_mgmtsys.model.PermanentEmployee;
 
 import inv_dis_mgmtsys.model.TemporaryEmployee;
@@ -64,7 +66,7 @@ private SessionFactory sessionFactory;
 	public List<Emp_Month_Salary> getESalary(String emptitle) {
 		 @SuppressWarnings("unchecked")
 	    	
-	       List list = sessionFactory.getCurrentSession().createQuery("FROM EmployeeSalary").list();
+	       List list = sessionFactory.getCurrentSession().createQuery("FROM Emp_Month_Salary").list();
 	        return list;
 	
 	}
@@ -96,26 +98,26 @@ private SessionFactory sessionFactory;
     @Override
     public void updatePermanentEmployeeDetails(PermanentEmployee staffemployee) {
     	
-        String hql = "update PermanentEmployee staffemployee set staffemployee.NIC=?,staffemployee.address=?,staffemployee.age=?,staffemployee.bonus=?,staffemployee.fullname=?,staffemployee.gender=?,staffemployee.password=?,staffemployee.phoneno=?,staffemployee.role=?,staffemployee.salary=?,staffemployee.username=?,staffemployee.month=?,staffemployee.year=?,staffemployee.totalsal=? where staffemployee.id=?";
+        String hql = "update PermanentEmployee staffemployee set staffemployee.NIC=?,staffemployee.address=?,staffemployee.age=?,staffemployee.fullname=?,staffemployee.gender=?,staffemployee.password=?,staffemployee.phoneno=?,staffemployee.role=?,staffemployee.username=? where staffemployee.id=?";
         Query qry = sessionFactory.getCurrentSession().createQuery(hql);
         
         qry.setParameter(0, staffemployee.getNIC());
         qry.setParameter(1, staffemployee.getAddress());
         qry.setParameter(2, staffemployee.getAge());
        
-        qry.setParameter(4, staffemployee.getFullname());
-        qry.setParameter(5, staffemployee.getGender());
-        qry.setParameter(6, staffemployee.getPassword());
-        qry.setParameter(7, staffemployee.getPhoneno());
-        qry.setParameter(8, staffemployee.getRole());
-        qry.setParameter(9, staffemployee.getSalary());
-        qry.setParameter(10, staffemployee.getUsername());
+        qry.setParameter(3, staffemployee.getFullname());
+        qry.setParameter(4, staffemployee.getGender());
+        qry.setParameter(5, staffemployee.getPassword());
+        qry.setParameter(6, staffemployee.getPhoneno());
+        qry.setParameter(7, staffemployee.getRole());
+        
+        qry.setParameter(8, staffemployee.getUsername());
       
         
         
      
        
-        qry.setParameter(14, staffemployee.getId());
+        qry.setParameter(9, staffemployee.getId());
         
     	int result = qry.executeUpdate();
         
@@ -125,7 +127,7 @@ private SessionFactory sessionFactory;
 
     @Override
     public void updateTEmployeeDetails(TemporaryEmployee nonstaffemployee) {
-    	String hql = "update TemporaryEmployee nonstaffemployee set nonstaffemployee.NIC=?,nonstaffemployee.address=?,nonstaffemployee.age=?,nonstaffemployee.fullname=?,nonstaffemployee.gender=?,nonstaffemployee.ot=?,nonstaffemployee.phoneno=?,nonstaffemployee.salary=?,nonstaffemployee.role=?,nonstaffemployee.month=?,nonstaffemployee.year=?,nonstaffemployee.totalsal=? where nonstaffemployee.id=?";
+    	String hql = "update TemporaryEmployee nonstaffemployee set nonstaffemployee.NIC=?,nonstaffemployee.address=?,nonstaffemployee.age=?,nonstaffemployee.fullname=?,nonstaffemployee.gender=?,nonstaffemployee.phoneno=?,nonstaffemployee.role=? where nonstaffemployee.id=?";
     	Query qry = sessionFactory.getCurrentSession().createQuery(hql);
     	qry.setParameter(0, nonstaffemployee.getNIC());
     	qry.setParameter(1, nonstaffemployee.getAddress());
@@ -133,13 +135,13 @@ private SessionFactory sessionFactory;
     	qry.setParameter(3, nonstaffemployee.getFullname());
     	qry.setParameter(4, nonstaffemployee.getGender());
     	
-    	qry.setParameter(6, nonstaffemployee.getPhoneno());
-    	qry.setParameter(7, nonstaffemployee.getSalary());
+    	qry.setParameter(5, nonstaffemployee.getPhoneno());
     	
-    	qry.setParameter(8, nonstaffemployee.getRole());
+    	
+    	qry.setParameter(6, nonstaffemployee.getRole());
 
 
-    	qry.setParameter(12, nonstaffemployee.getId());
+    	qry.setParameter(7, nonstaffemployee.getId());
     	
 
 		int result = qry.executeUpdate();
@@ -149,17 +151,16 @@ private SessionFactory sessionFactory;
     @Override
 	public void updateSalary(Emp_Month_Salary salary) {
 		
-	String hql="update EmployeeSalary s set s.emp_month_sal_month=?,s.emp_month_sal_year=?,s.emp_month_sal_amount=?,s.emp_month_sal_status=?,s.emp_month_sal_date=?,s.emp_month_sal_category=?,s.emp_month_sal_empID=? where s.emp_month_sal_ID=?";
+	String hql="update Emp_Month_Salary s set s.emp_month_sal_month=?,s.emp_month_sal_year=?,s.emp_month_sal_amount=?,s.emp_month_sal_category=?,s.emp_month_sal_empID=? where s.emp_month_sal_ID=?";
 	Query qry = sessionFactory.getCurrentSession().createQuery(hql);
 	
 	qry.setParameter(0, salary.getEmp_month_sal_month());
 	qry.setParameter(1, salary.getEmp_month_sal_year());
 	qry.setParameter(2, salary.getEmp_month_sal_amount());
-	qry.setParameter(3, salary.getEmp_month_sal_status());
-	qry.setParameter(4, salary.getEmp_month_sal_date());
-	qry.setParameter(5, salary.getEmp_month_sal_category());
-	qry.setParameter(6, salary.getEmp_month_sal_empID());
-	qry.setParameter(7, salary.getEmp_month_sal_ID());
+	
+	qry.setParameter(3, salary.getEmp_month_sal_category());
+	qry.setParameter(4, salary.getEmp_month_sal_empID());
+	qry.setParameter(5, salary.getEmp_month_sal_ID());
 	
 	
 	int result =qry.executeUpdate();
@@ -254,6 +255,13 @@ private SessionFactory sessionFactory;
 		
 		return totalsal;
 	   }
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Emp_Report> getPerEmpViewDetails() {
+		
+		return sessionFactory.getCurrentSession().createQuery("From Emp_Report").list();
+	}
 
 	
 

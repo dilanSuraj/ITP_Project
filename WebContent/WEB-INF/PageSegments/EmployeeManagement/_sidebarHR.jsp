@@ -93,6 +93,17 @@
 						style="font-size: 18px"></span> View Temporary Employee
 				</a></li>
 				
+			<li class="nav-item active"><a class="nav-link"
+					href="AddMonSalaryHR"> <span
+						class="fa fa-chevron-circle-right" style="font-size: 18px"></span>
+						Add-Mon-Salary
+				</a></li>
+			
+                <li class="nav-item active"><a class="nav-link"
+					href="ViewMonSalaryHR"> <span
+						class="fa fa-chevron-circle-right" style="font-size: 18px"></span>
+						View-Mon-Salary
+				</a></li>
 				
 				
 			

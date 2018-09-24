@@ -104,7 +104,7 @@
                                     <label class="col-md-4 control-label">Month</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <form:input name="nic" path="emp_month_sal_month" placeholder="month" class="form-control" min="0000000000" type="text"  maxlength="10" />
+                                        <form:input name="nic" path="emp_month_sal_month" placeholder="month" class="form-control" min="1" type="number"  required="required" />
 
                                     </div>
                                 </div>
@@ -113,7 +113,7 @@
                                     <label class="col-md-4 control-label">Year</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                            <form:input name="GENDER" path="emp_month_sal_year" placeholder="year" class="form-control" type="text" maxlength="10"/>
+                                            <form:input name="GENDER" path="emp_month_sal_year" placeholder="year" class="form-control" type="number" min="4"  required="required"/>
                                         </div>
                                     </div>
                                 </div>
@@ -126,36 +126,20 @@
                                     <label class="col-md-4 control-label">Total Salary</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                            <form:input name="PHONE" path="emp_month_sal_amount" placeholder="totalsal" class="form-control" type="text" maxlength="10"/>
+                                            <form:input name="PHONE" path="emp_month_sal_amount" placeholder="totalsal" class="form-control" type="number" min="4"  required="required"/>
                                         </div>
                                     </div>
                                 </div>
 
 
 
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Status</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="AGE" path="emp_month_sal_status" placeholder="status" class="form-control" type="text"/>
-                                        </div>
-                                    </div>
-                                </div>
-
-<div class="form-group">		<div class="form-group">
-                                    <label class="col-md-4 control-label">Date</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="AGE" path="emp_month_sal_date" placeholder="date" class="form-control" type="text"/>
-                                        </div>
-                                    </div>
-                                </div>
+                              
                                 
                                 <div class="form-group">
                                     <label class="col-md-4 control-label">Category</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="AGE" path="emp_month_sal_category" placeholder="p/t" class="form-control" type="text"/>
+                                            <form:input name="AGE" path="emp_month_sal_category" placeholder="p/t" class="form-control" type="text" min="1" required="required"/>
                                         </div>
                                     </div>
                                 </div>
@@ -163,7 +147,7 @@
                                     <label class="col-md-4 control-label">Employee Month Salary empID</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="AGE" path="emp_month_sal_empID" placeholder="monthsalid" class="form-control" type="text"/>
+                                            <form:input name="AGE" path="emp_month_sal_empID" placeholder="monthsalid" class="form-control" type="number" min="1"  required="required"/>
                                         </div>
                                     </div>
                                 </div>

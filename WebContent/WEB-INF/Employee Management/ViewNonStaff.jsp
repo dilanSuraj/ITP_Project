@@ -97,14 +97,12 @@
                                 <th>ADDRESS</th>
                                 <th>AGE</th>
                                 
-                                <th>Basic Salary</th>
+                               
                                 <th>PHONENO</th>
                                 <th>GENDER</th>
-                                <th>OT</th>
+                                
                                 <th>ROLE</th>
-                                <th>TOTALSAL</th>
-                                <th>MONTH</th>
-                                <th>YEAR</th>
+                               
                                  <th>EDIT</th>
                              
                                
@@ -123,14 +121,12 @@
 								<td>${emplist.getNIC()}</td>
 								<td>${emplist.getAddress()}</td>
 								<td>${emplist.getAge()}</td>
-								<td>${emplist.getSalary()}</td>
+							
 								<td>${emplist.getPhoneno()}</td>
 								<td>${emplist.getGender()}</td>
-								<td>${emplist.getOt()}</td>
+								
 								<td>${emplist.getRole()}</td>
-								<td>${emplist.getTotalsal()}</td>
-								<td>${emplist.getMonth()}</td>
-								<td>${ emplist.getYear()}</td>
+								
 								<td><a href="<c:url value='/UpdateNonStaff?id=${emplist.getId()}' />" >EDIT</a></td>
 								
 								
@@ -148,7 +144,7 @@
                            
                         </table>
                     </div>
-                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                    <div class="card-footer small text-muted"></div>
                 </div>
             </div>
 
