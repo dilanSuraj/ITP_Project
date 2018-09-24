@@ -35,6 +35,18 @@ public class Retailer {
 
 	@Column
 	private String retailer_province;
+	
+	@Column
+	private String retailer_blacklistStatus;
+	
+
+	public String getRetailer_blacklistStatus() {
+		return retailer_blacklistStatus;
+	}
+
+	public void setRetailer_blacklistStatus(String retailer_blacklistStatus) {
+		this.retailer_blacklistStatus = retailer_blacklistStatus;
+	}
 
 	public int getRetailer_ID() {
 		return retailer_ID;

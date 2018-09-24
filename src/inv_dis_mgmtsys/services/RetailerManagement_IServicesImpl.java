@@ -17,6 +17,8 @@ public class RetailerManagement_IServicesImpl implements RetailerManagement_ISer
 
 	@Autowired
 	RetailerManagement_IDAOImpl RetailerManagerIDAO;
+	
+	
 
 	@Autowired
 	private HttpSession httpsession;

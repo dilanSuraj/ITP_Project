@@ -105,7 +105,7 @@
 									<td class="actions" data-th="">
 										<form
 											onsubmit="return confirm('Do you want to delete this item form theOrder?');"
-											action=DeleteOrderItem">
+											action="DeleteOrderItem">
 											<input type="hidden"
 												value="${itemList.getOrdertItem_order_ID()}" name="orderId" />
 											<input type="hidden" value="${itemList.getOrderItem_ID()}"
