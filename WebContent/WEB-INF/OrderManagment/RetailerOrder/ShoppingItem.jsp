@@ -35,7 +35,6 @@
 	<%@include
 		file="/WEB-INF/OrderManagment/RetailerOrder/RetailerDashbordnavBar.jsp"%>
 
-	<%!int user = 50;%>
 	<div class="row justify-content-end ">
 		<div class="col-md-10"
 			style="padding-top: 90px; padding-left: 40px; padding-right: 40px">
@@ -61,7 +60,7 @@
 							<label>Amount :</label> 
 							<input type="number" min="1"
 								name="cart_amount" class="form-control col-md-4" required><br>
-							<input type="hidden" value="<%=user%>" name="cart_retailer_ID" />
+							<input type="hidden" value="${retailer.getRetailer_ID() }" name="cart_retailer_ID" />
 							<input type="hidden" value="${Item.getItem_itemcode()}"
 								name="cart_itemcode" />
 								

@@ -1,7 +1,11 @@
 package inv_dis_mgmtsys.controller;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
+import java.util.jar.JarException;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
@@ -11,12 +15,26 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.sun.javafx.collections.MappingChange.Map;
 
 import inv_dis_mgmtsys.dao.RetailerManagement_IDAOImpl;
 import inv_dis_mgmtsys.model.*;
 import inv_dis_mgmtsys.services.RetailerManagement_IServices;
 import inv_dis_mgmtsys.services.RetailerManagement_IServicesImpl;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 @Controller
 @Transactional
@@ -30,6 +48,7 @@ public class Retailer_ManagementController {
 
 		return new ModelAndView("/RetailerManagement/Register");
 	}
+	
 
 	@RequestMapping(value = "/Register_POST", method = RequestMethod.POST)
 	public ModelAndView Register_POST(@ModelAttribute("retailer") Retailer retailer) {
@@ -57,6 +76,8 @@ public class Retailer_ManagementController {
 			retailerManagement_IServices.setHttpsession(session);
 			retailerManagement_IServices.saveSessionObjects(result.getRetailer_ID());
 			ModelAndView model = new ModelAndView();
+			Retailer retailer = (Retailer) session.getAttribute("retailer");
+			System.out.println("fgdf"+retailer.getRetailer_ID());
 			model.setViewName("Dashboards/Retailer");
 			return model;
 		} else {
@@ -117,6 +138,7 @@ public class Retailer_ManagementController {
 		return new ModelAndView("/RetailerManagement/update");
 	}
 
+	
 	/*@RequestMapping("/Delete_Request")
 	public ModelAndView Delete_Request(@ModelAttribute("retailer_notification") Notification retailer_notification) {
 		ModelAndView model = new ModelAndView();
@@ -253,5 +275,4 @@ public class Retailer_ManagementController {
 		retailerManagement_IServices.editRetailer2(Retailer);
 		return new ModelAndView("redirect:/Retailer");
 	}
-
 }

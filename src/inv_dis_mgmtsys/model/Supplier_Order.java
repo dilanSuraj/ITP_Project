@@ -1,5 +1,6 @@
 package inv_dis_mgmtsys.model;
 
+import java.text.DateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -45,7 +46,18 @@ public class Supplier_Order {
 	@Transient
 	private String SupplierName;
 	
+	@Transient
+	private String orderDate;
 	
+	
+
+	public String getOrderDate() {
+		return orderDate=DateFormat.getDateInstance().format(this.Supplier_order_date);
+	}
+
+	public void setOrderDate(String orderDate) {
+		this.orderDate = orderDate;
+	}
 
 	public String getSupplierName() {
 		return SupplierName;

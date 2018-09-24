@@ -54,7 +54,7 @@ public class SupplierOderManagment_IDAOImpl implements SupplierOderManagment_IDA
 	@Override
 	public List<Supplier_Order> getSupplierOrders(int StorManagerID) {
 
-		Query query = sessionFactory.getCurrentSession().createQuery("from Suppler_Order s where s.Store_Manager_ID=:id");
+		Query query = sessionFactory.getCurrentSession().createQuery("from Supplier_Order s where s.Store_Manager_ID=:id");
 		query.setParameter("id", StorManagerID);
 		
 		
@@ -77,7 +77,7 @@ public class SupplierOderManagment_IDAOImpl implements SupplierOderManagment_IDA
 	@Override
 	public Supplier_Order getSupplierOrder(int orderId) {
 	
-		Query query = sessionFactory.getCurrentSession().createQuery("from Suppler_Order s where s.Supplier_Order_id=:id");
+		Query query = sessionFactory.getCurrentSession().createQuery("from Supplier_Order s where s.Supplier_Order_id=:id");
 		query.setParameter("id", orderId);
 		
 		return (Supplier_Order)query.list().get(0); 

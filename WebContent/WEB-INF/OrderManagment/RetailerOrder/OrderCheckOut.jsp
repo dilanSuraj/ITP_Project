@@ -35,7 +35,7 @@
 	<%@include
 		file="/WEB-INF/OrderManagment/RetailerOrder/RetailerDashbordnavBar.jsp"%>
 
-	<%!int user = 50;%>
+	
 	<div class="row justify-content-end ">
 		<div class="col-md-10"
 			style="padding-top: 90px; padding-left: 40px; padding-right: 40px">

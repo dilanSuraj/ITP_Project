@@ -92,7 +92,7 @@
 					
 					</span>
                                 <!-- Form Name -->
-                                <div class="text-center"><h1 > Staff - Employee Information </h1></div>
+                                <div class="text-center"><h1 > Permanent -Employee Information </h1></div>
 
                                 <!-- Text input-->
 
@@ -100,7 +100,7 @@
                                     <label class="col-md-4 control-label">Full Name</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input  name="FULLNAME" path="fullname" placeholder="Full Name" class="form-control"  type="text"/>
+                                            <form:input  name="FULLNAME" path="fullname" placeholder="Full Name" class="form-control"  type="text" min="5" required="required"/>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@
                                     <label class="col-md-4 control-label">NIC (V/v)</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <form:input name="nic" path="NIC" placeholder="000-000-0000" class="form-control" min="0000000000" type="text"  maxlength="10" />
+                                        <form:input name="nic" path="NIC" placeholder="000-000-0000" class="form-control" min="10" type="text"  required="required" />
 
                                     </div>
                                 </div>
@@ -121,7 +121,7 @@
                                     <label class="col-md-4 control-label">Gender</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                            <form:input name="GENDER" path="gender" placeholder="MALE/FEMALE" class="form-control" type="text" maxlength="10"/>
+                                            <form:input name="GENDER" path="gender" placeholder="MALE/FEMALE" class="form-control" type="text"  min="4" required="required"/>
                                         </div>
                                     </div>
                                 </div>
@@ -134,7 +134,7 @@
                                     <label class="col-md-4 control-label">Phone No</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                            <form:input name="PHONE" path="phoneno" placeholder="(000)000-0000" class="form-control" type="text" maxlength="10"/>
+                                            <form:input name="PHONE" path="phoneno" placeholder="(000)000-0000" class="form-control" type="number" min="10" required="required"/>
                                         </div>
                                     </div>
                                 </div>
@@ -145,7 +145,7 @@
                                     <label class="col-md-4 control-label">Age</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="AGE" path="age" placeholder="Age" class="form-control" type="text"/>
+                                            <form:input name="AGE" path="age" placeholder="Age" class="form-control" type="number" min="1" required="required"/>
                                         </div>
                                     </div>
                                 </div>
@@ -156,30 +156,14 @@
                                     <label class="col-md-4 control-label">Address</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                            <form:input name="ADDRESS" path="address" placeholder="Address" class="form-control" type="text"/>
+                                            <form:input name="ADDRESS" path="address" placeholder="Address" class="form-control" type="text" min="5" required="required"/>
                                         </div>
                                     </div>
                                 </div>
 
 
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Salary</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="SALARY" path="salary" placeholder="Salary" class="form-control"  type="text" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Bonus</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="BONUS" path="bonus" placeholder="Bonus" class="form-control" type="text"  required="required"/>
-                                        </div>
-                                    </div>
-                                </div>
-
-
+                              
+                              
 
                                 <!-- Select Basic -->
 
@@ -187,7 +171,7 @@
                                     <label class="col-md-4 control-label">Role</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="POSITION" path="role" placeholder="Role" class="form-control"  type="text"  required="required"/>
+                                            <form:input name="POSITION" path="role" placeholder="Role" class="form-control"  type="text" min="1" required="required"/>
                                         </div>
                                     </div>
                                 </div>
@@ -202,7 +186,7 @@
                                     <label class="col-md-4 control-label">User Name</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="USERNAME" path="username" placeholder="User Name" class="form-control"  type="text"/>
+                                            <form:input name="USERNAME" path="username" placeholder="User Name" class="form-control"  type="text" min="4" required="required"/>
                                         </div>
                                     </div>
                                 </div>
@@ -214,7 +198,7 @@
                                     </label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                            <form:input class="form-control" name="PASSWORD"  path="password" type="text" placeholder="password" />
+                                            <form:input class="form-control" name="PASSWORD"  path="password" type="text" placeholder="password" min="4" required="required" />
                                                    
                                          
                                             

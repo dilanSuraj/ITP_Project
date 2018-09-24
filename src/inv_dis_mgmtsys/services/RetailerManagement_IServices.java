@@ -4,6 +4,7 @@ import java.util.List;
 
 import inv_dis_mgmtsys.model.Notification;
 import inv_dis_mgmtsys.model.Retailer;
+import inv_dis_mgmtsys.model.Retailer_Report;
 
 public interface RetailerManagement_IServices {
 
@@ -28,4 +29,6 @@ public interface RetailerManagement_IServices {
 	public void deleteRetailerNotification(int RetailerID);
 
 	public void editRetailer2(Retailer retailer);
+	
+	public List<Retailer_Report> getRetailerReport();
 }

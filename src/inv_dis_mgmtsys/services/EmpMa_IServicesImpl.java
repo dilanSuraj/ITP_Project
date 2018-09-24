@@ -1,6 +1,8 @@
 package inv_dis_mgmtsys.services;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 /**
  *
@@ -11,6 +13,7 @@ import java.util.List;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -26,10 +29,12 @@ import org.springframework.stereotype.Service;
 
 import inv_dis_mgmtsys.dao.EmpMa_IDAOImpl;
 import inv_dis_mgmtsys.model.Emp_Month_Salary;
+import inv_dis_mgmtsys.model.Emp_Report;
+import inv_dis_mgmtsys.model.IncomeView;
 import inv_dis_mgmtsys.model.PermanentEmployee;
 
 import inv_dis_mgmtsys.model.TemporaryEmployee;
-@Service
+@Service("emp_I")
 public class EmpMa_IServicesImpl implements EmpMa_IServices {
 
         @Autowired
@@ -37,7 +42,7 @@ public class EmpMa_IServicesImpl implements EmpMa_IServices {
         
         
         @Autowired
-    	private HttpSession httpsession;
+    	private static HttpSession httpsession;
         
         
         public HttpSession getHttpsession() {
@@ -47,7 +52,33 @@ public class EmpMa_IServicesImpl implements EmpMa_IServices {
     	public void setHttpsession(HttpSession httpsession) {
     		this.httpsession = httpsession;
     	}
+    	
+        public static HttpSession getSessionforProfile() {
+        	
+        	
+        	return httpsession;
+        	
+        }
         
+      public List<Map<String, Object>> getPermanentEmployeeViewDetails() {
+
+    		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+    		List<Emp_Report> empViewList = empManIDAO.getPerEmpViewDetails();
+
+    		for (Emp_Report s : empViewList) {
+    			Map<String, Object> map = new HashMap<>();
+    			map.put("id", s.getId());
+    			map.put("fullname", s.getFullname());
+    			map.put("nic", s.getNic());
+    			map.put("gender", s.getGender());
+    			map.put("role", s.getRole());
+
+    			list.add(map);
+
+    		}
+    		return list;
+    	}
+    	
     @Override
     public void addPermanentEmployees(PermanentEmployee staffemployee) {
      
@@ -61,6 +92,7 @@ public class EmpMa_IServicesImpl implements EmpMa_IServices {
     
     @Override
     public void addSalary(Emp_Month_Salary salary) {
+    	
     empManIDAO.addESalary(salary);
     	
     }
@@ -198,6 +230,10 @@ public class EmpMa_IServicesImpl implements EmpMa_IServices {
    }
 
 
+  
+ 
+	  
+  
 
 
 

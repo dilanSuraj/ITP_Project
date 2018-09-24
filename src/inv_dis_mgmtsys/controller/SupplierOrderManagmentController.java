@@ -98,7 +98,7 @@ public class SupplierOrderManagmentController {
 		return modelAndView;
 		
 	}
-	
+/*	
 	@ExceptionHandler(Exception.class)
 	public ModelAndView handleMissingParams(Exception ex) {
 	    ModelAndView model=new ModelAndView();
@@ -107,7 +107,7 @@ public class SupplierOrderManagmentController {
 	    
 	    return model;
 	}
-
+*/
 	
 	
 	

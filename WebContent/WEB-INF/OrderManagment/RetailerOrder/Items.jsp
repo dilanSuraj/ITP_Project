@@ -35,8 +35,7 @@
 
 <body>
 
-
-	<%@include
+<%@include
 		file="/WEB-INF/OrderManagment/RetailerOrder/RetailerDashbordnavBar.jsp"%>
 
 	<div class="row justify-content-end ">

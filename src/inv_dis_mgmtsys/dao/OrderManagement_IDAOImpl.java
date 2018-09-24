@@ -12,7 +12,9 @@ import org.springframework.stereotype.Repository;
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.ItemsInCart;
 import inv_dis_mgmtsys.model.OrderItem;
+import inv_dis_mgmtsys.model.RetailerOrderReport;
 import inv_dis_mgmtsys.model.Retailer_Order;
+import inv_dis_mgmtsys.model.Supplier_Report;
 import inv_dis_mgmtsys.model.cart;
 
 @Repository
@@ -131,6 +133,7 @@ public class OrderManagement_IDAOImpl implements OrderManagement_IDAO {
 			order.setRetailer_ID(RetailerID);
 			order.setRetailer_orderstatus("Incomplete");
 			order.setOder_total(0);
+			order.setSR_ID(0);
 
 			Date currentDate = new Date();
 			
@@ -244,4 +247,18 @@ public class OrderManagement_IDAOImpl implements OrderManagement_IDAO {
 		}
 
 	}
+	
+	
+	@Override
+	public List<RetailerOrderReport> getSupplierReport() {
+			
+			@SuppressWarnings("unchecked")
+			List<RetailerOrderReport> list = (List<RetailerOrderReport>)sessionFactory.getCurrentSession().createQuery("from RetailerOrderReport").list();
+			
+
+			return list;
+	}
+	
+	
+	
 }

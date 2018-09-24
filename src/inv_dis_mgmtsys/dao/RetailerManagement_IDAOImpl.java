@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import inv_dis_mgmtsys.model.Notification;
 import inv_dis_mgmtsys.model.Retailer;
+import inv_dis_mgmtsys.model.Retailer_Report;
 
 @Repository
 public class RetailerManagement_IDAOImpl implements RetailerManagement_IDAO {
@@ -142,10 +143,17 @@ public class RetailerManagement_IDAOImpl implements RetailerManagement_IDAO {
 	}
 	
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Retailer> getRetailerList() {
 		
 		return sessionFactory.getCurrentSession().createQuery("From Retailer").list();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Retailer_Report> getRetailerReport(){
+		return (List<Retailer_Report>)sessionFactory.getCurrentSession().createQuery("from Retailer_Report").list();
+	}
+	
 }

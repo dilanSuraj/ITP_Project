@@ -125,7 +125,7 @@
 										<small>${itemList.getItem_saleprice()}</small>
 									</h4></td>
 
-								<form  onsubmit="return confirm('Do you want to add this Item to the Order?');" action="RetailerAddToOrder">
+								<form onsubmit="return confirm('Do you want to add this Item to the Order?');" action="RetailerAddToOrder">
 									<td data-th="Quantity"><input type="number" min="1"
 										class="form-control text-center"
 										value="${itemList.getItem_amount()}" name="amount" required></td>

@@ -86,21 +86,20 @@
                     <th style="width :80%">
 
 
-                        <form:form method="post" class="form-horizontal" action="AddNonStaffDEOPOST"   modelAttribute="temporaryemployee">
+                        <form:form method="post" class="form-horizontal" data-toggle="validator" action="AddNonStaffDEOPOST"   modelAttribute="temporaryemployee">
                             <fieldset>
        <span class="login100-form-title"  >
 						
 					</span>
                                 <!-- Form Name -->
                                 <div class="text-center"><h1 >Temporary - Employee Information </h1></div>
-
                                 <!-- Text input-->
 
                                 <div class="form-group">
                                     <label class="col-md-4 control-label">Full Name</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input  name="FULLNAME" path="fullname"  placeholder="Full Name" class="form-control"  type="text" />
+                                            <form:input  name="FULLNAME" path="fullname"  placeholder="Full Name" class="form-control"  type="text" min="3" required="required"/>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +111,7 @@
                                     <label class="col-md-4 control-label">NIC (V/v)</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <form:input name="nic" path="NIC"  placeholder="000-000-0000" class="form-control" min="0000000000" type="text" />
+                                        <form:input name="nic" path="NIC"  placeholder="000-000-0000" class="form-control" min="5" type="text" required="required" />
 
                                     </div>
                                 </div>
@@ -121,26 +120,28 @@
                              <label class="col-md-4 control-label">Gender</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                            <form:input name="GENDER" path="gender" placeholder="MALE/FEMALE" class="form-control" type="text" maxlength="10"/>
+                                            <form:input name="GENDER" path="gender" placeholder="MALE/FEMALE" class="form-control" type="text" min="4" required="required"/>
                                         </div>
                                     </div>
                                 </div>
-                           
-                              <label class="col-md-4 control-label">Role</label>
+                                
+                                   <label class="col-md-4 control-label">Role</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                            <form:input name="GENDER" path="role" placeholder="Driver" class="form-control" type="text" maxlength="10"/>
+                                            <form:input name="GENDER" path="role" placeholder="Driver" class="form-control" type="text" min="2" required="required"/>
                                         </div>
                                     </div>
                                 </div>
                            
+                           
+
 
                                 <!-- Text input-->
   <div class="form-group">
                                     <label class="col-md-4 control-label">Phone No</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                            <form:input name="PHONE" path="phoneno" placeholder="(000)000-0000" class="form-control" type="text" maxlength="10"/>
+                                            <form:input name="PHONE" path="phoneno" placeholder="(000)000-0000" class="form-control" type="number" min="10" required="required"/>
                                         </div>
                                     </div>
                                 </div>
@@ -152,7 +153,7 @@
                                     <label class="col-md-4 control-label">Age</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="AGE" path="age" placeholder="Age" class="form-control" type="text"/>
+                                            <form:input name="AGE" path="age" placeholder="Age" class="form-control" type="number" min="2" required="required"/>
                                         </div>
                                     </div>
                                 </div>
@@ -161,36 +162,23 @@
                                     <label class="col-md-4 control-label">Address</label>
                                     <div class="col-md-6  inputGroupContainer">
                                         <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                            <form:input name="ADDRESS" path="address" placeholder="Address" class="form-control" type="text"/>
+                                            <form:input name="ADDRESS" path="address" placeholder="Address" class="form-control" type="text" min="5" required="required"/>
                                         </div>
                                     </div>
                                 </div>
 
 
                                
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Salary</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="SALARY" path="salary" placeholder="Salary" class="form-control"  type="text" />
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">OTHours</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="age"   path="ot" placeholder="OtHrs"  class="form-control" min="18" type="text" maxlength="2" required="required"/>
-                                        </div>
-                                    </div>
-                                </div>
+                              
+                            
 
 
 
 
 
+                                <!-- Select Basic -->
 
+                              
                                 <!-- Select Basic -->
 
 

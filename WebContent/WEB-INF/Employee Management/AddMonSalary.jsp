@@ -31,8 +31,8 @@
 <!--google maps library -->
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
-	
-	
+
+
 <!--data table files -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -51,175 +51,167 @@
 <body>
 
 
-<!-- start of the the navigation header-->
+	<!-- start of the the navigation header-->
 
- <%@ include file="/WEB-INF/PageSegments/EmployeeManagement/_navigationheader.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/EmployeeManagement/_navigationheader.jsp"%>
 	<!-- end of the navigation header-->
 
 	<!-- side bar starts -->
 
 	<!-- only visibale in 10'0 inch or above screens-->
-	<%@ include file="/WEB-INF/PageSegments/EmployeeManagement/_sidebar.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/EmployeeManagement/_sidebar.jsp"%>
 
 	<!--side bar end-->
-    <%@ include file="/WEB-INF/PageSegments/EmployeeManagement/_cards.jsp" %>
+	<%@ include file="/WEB-INF/PageSegments/EmployeeManagement/_cards.jsp"%>
 
-        <!-- topic bar starts-->
+	<!-- topic bar starts-->
 
-        <ol class="breadcrumb" style="margin-top:10px;margin-bottom: 10px">
-            <li class="breadcrumb-item">
-                <a href="#" style="color: #003399 "></a>
-            </li>
-            <li class="breadcrumb-item active"></li>
-        </ol>
+	<ol class="breadcrumb" style="margin-top: 10px; margin-bottom: 10px">
+		<li class="breadcrumb-item"><a href="#" style="color: #003399"></a>
+		</li>
+		<li class="breadcrumb-item active"></li>
+	</ol>
 
-        <!-- topic bar end-->
-
-
-        <div class="row">
+	<!-- topic bar end-->
 
 
-            <!-- forms starts -->
-            <table class="table table-striped">
-                <tr><th style="width :20%">
-                </th>
-                    <th style="width :80%">
+	<div class="row">
 
 
-                        <form:form method="post"  data-toggle="validator" role="form" class="form-horizontal" action="AddSalaryPOST"   modelAttribute="emp_month_salary">
-                            <fieldset>
-       <span class="login100-form-title"  >
-					
-					</span>
-                                <!-- Form Name -->
-                                <div class="text-center"><h1 > Add Monthly Salary </h1></div>
+		<!-- forms starts -->
+		<table class="table table-striped">
+			<tr>
+				<th style="width: 20%"></th>
+				<th style="width: 80%"><form:form method="POST"
+						data-toggle="validator" class="form-horizontal"
+						action="AddMonSalaryPOST" modelAttribute="emp_month_salary">
+						<fieldset>
+							<span class="login100-form-title"> </span>
+							<!-- Form Name -->
+							<div class="text-center">
+								<h1>Add Monthly Salary</h1>
+							</div>
 
-                                <!-- Text input-->
-
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Employee Month Salary ID</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input  name="FULLNAME" path="emp_month_sal_ID" placeholder="ID" class="form-control"  type="text" min="1" max="10" required="required"/>
-                                        </div>
-                                    </div>
-                                </div>
+							<!-- Text input-->
 
 
-                                <!-- Text input-->
+							<div class="form-group">
+								<label class="col-md-4 control-label">Month</label>
+								<div class="col-md-6  inputGroupContainer">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="glyphicon glyphicon-user"></i></span>
+										<form:input name="month" path="emp_month_sal_month"
+											placeholder="month" class="form-control" type="number"
+											min="1" required="required" />
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-md-4 control-label">Year</label>
+								<div class="col-md-6  inputGroupContainer">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-user"></i></span>
+									<form:input name="year" path="emp_month_sal_year"
+										placeholder="year" class="form-control" min="3" type="number"
+										required="required" />
 
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Month</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <form:input name="nic" path="emp_month_sal_month" placeholder="month" class="form-control" min="1" type="text"  max="10" required="required"/>
-
-                                    </div>
-                                </div>
-
- <div class="form-group">
-                                    <label class="col-md-4 control-label">Year</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                            <form:input name="GENDER" path="emp_month_sal_year" placeholder="year" class="form-control" type="text" min="4" required="required"/>
-                                        </div>
-                                    </div>
-                                </div>
-                           
-
-
-                                <!-- Text input-->
-
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Total Salary</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                            <form:input name="PHONE" path="emp_month_sal_amount" placeholder="totalsal" class="form-control" type="text" min="3" max="10" required="required"/>
-                                        </div>
-                                    </div>
-                                </div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-md-4 control-label">Salary</label>
+								<div class="col-md-6  inputGroupContainer">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="glyphicon glyphicon-earphone"></i></span>
+										<form:input name="salary" path="emp_month_sal_amount"
+											placeholder="salary" class="form-control" type="number"
+											min="3" required="required" />
+									</div>
+								</div>
+							</div>
+							
 
 
 
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Status</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="AGE" path="emp_month_sal_status" placeholder="status" class="form-control" type="text" min="2" required="required"/>
-                                        </div>
-                                    </div>
-                                </div>
+							<div class="form-group">
+								<label class="col-md-4 control-label">Category</label>
+								<div class="col-md-6  inputGroupContainer">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="glyphicon glyphicon-home"></i></span>
+										<form:input name="category" path="emp_month_sal_category"
+											placeholder="p/t" class="form-control" type="text" min="1"
+											required="required" />
+									</div>
+								</div>
+							</div>
 
-<div class="form-group">		<div class="form-group">
-                                    <label class="col-md-4 control-label">Date</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="AGE" path="emp_month_sal_date" placeholder="date" class="form-control" type="text" min="3" required="required"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Category</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="AGE" path="emp_month_sal_category" placeholder="p/t" class="form-control" type="text" min=""/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Employee Month Salary ID</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="AGE" path="emp_month_sal_empID" placeholder="monthsalid" class="form-control" type="text"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Text input-->
-
-                                
-
-
-                                <!-- Button -->
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label" ></label>
-                                    <div class="text-center" >
-
-                                        <button type="submit" class="btn btn-success btn-lg" > Add Salary Details <span class="glyphicon glyphicon-send"></span></button>
-
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form:form>
-                    </th></tr></table>
-
-            <!-- forms ends-->
+							<div class="form-group">
+								<label class="col-md-4 control-label">Emp_month_empID</label>
+								<div class="col-md-6  inputGroupContainer">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="glyphicon glyphicon-user"></i></span>
+										<form:input name="empid" path="emp_month_sal_empID"
+											placeholder="empid" class="form-control" type="number"
+											min="1" required="required" />
+									</div>
+								</div>
+							</div>
 
 
 
-            <!-- cards starts-->
-           
+						</fieldset>
+						<legend> </legend>
+						<fieldset>
 
-            <!--End of cards-->
+							<div class="form-group">
+								<label class="col-md-2 control-label"></label>
+								<div class="text-center">
+
+									<button type="submit" class="btn btn-success btn-lg">
+										Add salary <span class="glyphicon glyphicon-send"></span>
+									</button>
+
+								</div>
+							</div>
+						</fieldset>
+					</form:form></th>
+			</tr>
+		</table>
+
+		<!-- forms ends-->
 
 
-            <!-- data table start -->
+
+		<!-- cards starts-->
 
 
-            
-
-            <!-- data table end -->
-        </div>
-        <!-- /.content-wrapper-->
+		<!--End of cards-->
 
 
-        <!-- Bootstrap tooltips -->
-        <script type="text/javascript" src="js/popper.min.js"></script>
-        <!-- Bootstrap core JavaScript -->
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <!-- MDB core JavaScript -->
-        <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+		<!-- data table start -->
 
-        <script type="text/javascript" src="js/mdb.min.js"></script>
+
+
+
+		<!-- data table end -->
+	</div>
+	<!-- /.content-wrapper-->
+
+
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript" src="js/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+
+	<script type="text/javascript" src="js/mdb.min.js"></script>
 </body>
 </html>
