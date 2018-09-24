@@ -31,8 +31,8 @@
 <!--google maps library -->
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
-	
-	
+
+
 <!--data table files -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -51,201 +51,214 @@
 <body>
 
 
-<!-- start of the the navigation header-->
+	<!-- start of the the navigation header-->
 
-    <%@ include file="/WEB-INF/PageSegments/EmployeeManagement/_navigationheaderHR.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/EmployeeManagement/_navigationheaderHR.jsp"%>
 	<!-- end of the navigation header-->
 
 	<!-- side bar starts -->
 
 	<!-- only visibale in 10'0 inch or above screens-->
-	<%@ include file="/WEB-INF/PageSegments/EmployeeManagement/_sidebarHR.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/EmployeeManagement/_sidebarHR.jsp"%>
 
 	<!--side bar end-->
-    <%@ include file="/WEB-INF/PageSegments/EmployeeManagement/_cardsHR.jsp" %>
+	<%@ include
+		file="/WEB-INF/PageSegments/EmployeeManagement/_cardsHR.jsp"%>
 
-        <!-- topic bar starts-->
+	<!-- topic bar starts-->
 
-        <ol class="breadcrumb" style="margin-top:10px;margin-bottom: 10px">
-            <li class="breadcrumb-item">
-                <a href="#" style="color: #003399 ">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active">Navbar</li>
-        </ol>
+	<ol class="breadcrumb" style="margin-top: 10px; margin-bottom: 10px">
+		<li class="breadcrumb-item"><a href="#" style="color: #003399">Dashboard</a>
+		</li>
+		<li class="breadcrumb-item active">Navbar</li>
+	</ol>
 
-        <!-- topic bar end-->
-
-
-        <div class="row">
+	<!-- topic bar end-->
 
 
-            <!-- forms starts -->
-            <table class="table table-striped">
-                <tr><th style="width :20%">
-                </th>
-                    <th style="width :80%">
+	<div class="row">
 
 
-                        <form:form method="post" class="form-horizontal" action="AddNonStaffPOST"   modelAttribute="temporaryemployee">
-                            <fieldset>
-       <span class="login100-form-title"  >
-					
-					</span>
-                                <!-- Form Name -->
-                                <div class="text-center"><h1 >Temporary - Employee Information </h1></div>
+		<!-- forms starts -->
+		<table class="table table-striped">
+			<tr>
+				<th style="width: 20%"></th>
+				<th style="width: 80%"><form:form method="post"
+						data-toggle="validator" class="form-horizontal"
+						action="AddNonStaffPOST" modelAttribute="temporaryemployee">
+						<fieldset>
+							<span class="login100-form-title"> </span>
+							<!-- Form Name -->
+							<div class="text-center">
+								<h1>Temporary - Employee Information</h1>
+							</div>
 
-                                <!-- Text input-->
+							<!-- Text input-->
 
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Full Name</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input  name="FULLNAME" path="fullname"  placeholder="Full Name" class="form-control"  type="text" />
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <!-- Text input-->
-
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">NIC (V/v)</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <form:input name="nic" path="NIC"  placeholder="000-000-0000" class="form-control" min="0000000000" type="text" />
-
-                                    </div>
-                                </div>
+							<div class="form-group">
+								<label class="col-md-4 control-label">Full Name</label>
+								<div class="col-md-6  inputGroupContainer">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="glyphicon glyphicon-user"></i></span>
+										<form:input name="FULLNAME" path="fullname"
+											placeholder="Full Name" class="form-control" type="text"
+											min="3" required="required" />
+									</div>
+								</div>
+							</div>
 
 
-                             <label class="col-md-4 control-label">Gender</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                            <form:input name="GENDER" path="gender" placeholder="MALE/FEMALE" class="form-control" type="text" maxlength="10"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                   <label class="col-md-4 control-label">Role</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                            <form:input name="GENDER" path="role" placeholder="Driver" class="form-control" type="text" maxlength="10"/>
-                                        </div>
-                                    </div>
-                                </div>
-                           
-                           
+							<!-- Text input-->
+
+							<div class="form-group">
+								<label class="col-md-4 control-label">NIC (V/v)</label>
+								<div class="col-md-6  inputGroupContainer">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-user"></i></span>
+									<form:input name="nic" path="NIC" placeholder="000-000-0000"
+										class="form-control" min="5" type="text" required="required" />
+
+								</div>
+							</div>
 
 
-                                <!-- Text input-->
-  <div class="form-group">
-                                    <label class="col-md-4 control-label">Phone No</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                            <form:input name="PHONE" path="phoneno" placeholder="(000)000-0000" class="form-control" type="text" maxlength="10"/>
-                                        </div>
-                                    </div>
-                                </div>
+							<label class="col-md-4 control-label">Gender</label>
+							<div class="col-md-6  inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-earphone"></i></span>
+									<form:input name="GENDER" path="gender"
+										placeholder="MALE/FEMALE" class="form-control" type="text"
+										min="4" required="required" />
+								</div>
+							</div>
+							</div>
 
-
-
-                              
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Age</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="AGE" path="age" placeholder="Age" class="form-control" type="text"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Text input-->
-   <div class="form-group">
-                                    <label class="col-md-4 control-label">Address</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                            <form:input name="ADDRESS" path="address" placeholder="Address" class="form-control" type="text"/>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                               
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Salary</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="SALARY" path="salary" placeholder="Salary" class="form-control" type="text" />
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">OTHours</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <form:input name="age"   path="ot" placeholder="OtHrs"  class="form-control" min="18" type="text" maxlength="2" required="required"/>
-                                        </div>
-                                    </div>
-                                </div>
+							<label class="col-md-4 control-label">Role</label>
+							<div class="col-md-6  inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-earphone"></i></span>
+									<form:input name="GENDER" path="role" placeholder="Driver"
+										class="form-control" type="text" min="2" required="required" />
+								</div>
+							</div>
+							</div>
 
 
 
 
-
-
-                                <!-- Select Basic -->
-
-
-
-
-                            </fieldset>
-
-
-                                <!-- Button -->
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label" ></label>
-                                    <div class="text-center" >
-
-                                        <button type="submit" class="btn btn-success btn-lg"  >Submit <span class="glyphicon glyphicon-send"></span></button>
-
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form:form>
-                    </th></tr></table>
-
-            <!-- forms ends-->
+							<!-- Text input-->
+							<div class="form-group">
+								<label class="col-md-4 control-label">Phone No</label>
+								<div class="col-md-6  inputGroupContainer">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="glyphicon glyphicon-earphone"></i></span>
+										<form:input name="PHONE" path="phoneno"
+											placeholder="(000)000-0000" class="form-control"
+											type="number" min="10" required="required" />
+									</div>
+								</div>
+							</div>
 
 
 
-            <!-- cards starts-->
-           
-            <!--End of cards-->
+
+							<div class="form-group">
+								<label class="col-md-4 control-label">Age</label>
+								<div class="col-md-6  inputGroupContainer">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="glyphicon glyphicon-user"></i></span>
+										<form:input name="AGE" path="age" placeholder="Age"
+											class="form-control" type="number" min="2"
+											required="required" />
+									</div>
+								</div>
+							</div>
+							<!-- Text input-->
+							<div class="form-group">
+								<label class="col-md-4 control-label">Address</label>
+								<div class="col-md-6  inputGroupContainer">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="glyphicon glyphicon-home"></i></span>
+										<form:input name="ADDRESS" path="address"
+											placeholder="Address" class="form-control" type="text"
+											min="5" required="required" />
+									</div>
+								</div>
+							</div>
 
 
-            <!-- data table start -->
 
 
-         
-
-            <!-- data table end -->
-        </div>
-        <!-- /.content-wrapper-->
 
 
-        <!-- Bootstrap tooltips -->
-        <script type="text/javascript" src="js/popper.min.js"></script>
-        <!-- Bootstrap core JavaScript -->
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <!-- MDB core JavaScript -->
-        <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
-
-        <script type="text/javascript" src="js/mdb.min.js"></script>
-
-    </div>
 
 
-</div>
+
+
+							<!-- Select Basic -->
+
+
+
+
+						</fieldset>
+
+
+						<!-- Button -->
+						<div class="form-group">
+							<label class="col-md-2 control-label"></label>
+							<div class="text-center">
+
+								<button type="submit" class="btn btn-success btn-lg">
+									Submit <span class="glyphicon glyphicon-send"></span>
+								</button>
+
+							</div>
+						</div>
+						</fieldset>
+					</form:form></th>
+			</tr>
+		</table>
+
+		<!-- forms ends-->
+
+
+
+		<!-- cards starts-->
+
+		<!--End of cards-->
+
+
+		<!-- data table start -->
+
+
+
+
+		<!-- data table end -->
+	</div>
+	<!-- /.content-wrapper-->
+
+
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript" src="js/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+
+	<script type="text/javascript" src="js/mdb.min.js"></script>
+
+	</div>
+
+
+	</div>
 
 </body>
 </html>

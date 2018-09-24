@@ -656,7 +656,7 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		Double expense_currentmonth = this.gettotalExpense_currentMonth();
 
 		Double profitPercent = this.profitPercentage();
-		int blacklist = this.blacklistedRetailerList();
+		//int blacklist = this.blacklistedRetailerList();
 
 		DecimalFormat twoDForm = new DecimalFormat("#.##");
 
@@ -666,11 +666,11 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		httpsession.setAttribute("Income", income_string);
 		httpsession.setAttribute("Expense", expense_string);
 		httpsession.setAttribute("ProfitPercent", twoDForm.format(profitPercent));
-		httpsession.setAttribute("Blacklist", blacklist);
+		//httpsession.setAttribute("Blacklist", blacklist);
 		
 	}
 
-	public int blacklistedRetailerList() {
+	/*public int blacklistedRetailerList() {
 
 		int numberOfBlcklisted = 0;
 		List<Retailer_Blacklist> blacklist = finanaceManagerIDAO.getBlacklistedRetailerFinanceList();
@@ -682,14 +682,14 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		}
 		for (Retailer retailer : retailerList) {
 
-			if (retailer.getRetailer_blacklistStatus().equals("Yes")) {
+			//if (((Object) retailer).getRetailer_blacklistStatus().equals("Yes")) {
 				numberOfBlcklisted++;
 			}
 		}
-		System.out.println("Blacklisted : " + numberOfBlcklisted);
-		return numberOfBlcklisted;
-	}
-
+		//System.out.println("Blacklisted : " + numberOfBlcklisted);
+		//return numberOfBlcklisted;
+	
+*/
 	@Override
 	public Retailer getRetailerByOrderID(int retailerorderID) {
 		Retailer_Order order = finanaceManagerIDAO.getSingleRetailerOrderDetails(retailerorderID);

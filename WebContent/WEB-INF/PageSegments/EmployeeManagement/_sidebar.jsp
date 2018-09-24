@@ -75,23 +75,32 @@
 				<li class="nav-item active"><a class="nav-link"
 					href="AddStaff"> <span
 						class="fa fa-chevron-circle-right" style="font-size: 18px"></span>
-						Add-Staff
-				</a></li>
+						Add-PerEmployee				</a></li>
 
 				<li class="nav-item active"><a class="nav-link"
 					href="DeleteStaff"> <span
 						class="fa fa-chevron-circle-right" style="font-size: 18px"></span>
-						Delete-Staff
+						Delete-PerEmployee
 				</a></li>
 
 
 				<li class="nav-item active"><a class="nav-link"
 					href="ViewStaff"> <span class="fa fa-chevron-circle-right"
-						style="font-size: 18px"></span> View-Staff
+						style="font-size: 18px"></span> View-PerEmployee
 				</a></li>
 
+			<li class="nav-item active"><a class="nav-link"
+					href="AddMonSalary"> <span
+						class="fa fa-chevron-circle-right" style="font-size: 18px"></span>
+						Add-Mon-Salary
+				</a></li>
 			
-
+                <li class="nav-item active"><a class="nav-link"
+					href="ViewMonSalary"> <span
+						class="fa fa-chevron-circle-right" style="font-size: 18px"></span>
+						View-Mon-Salary
+				</a></li>
+			
 				
 
 			</ul>

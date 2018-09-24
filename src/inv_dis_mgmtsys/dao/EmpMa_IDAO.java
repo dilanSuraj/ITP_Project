@@ -10,6 +10,8 @@ package inv_dis_mgmtsys.dao;
 import java.util.List;
 
 import inv_dis_mgmtsys.model.Emp_Month_Salary;
+import inv_dis_mgmtsys.model.Emp_Report;
+import inv_dis_mgmtsys.model.IncomeView;
 import inv_dis_mgmtsys.model.PermanentEmployee;
 
 import inv_dis_mgmtsys.model.TemporaryEmployee;
@@ -23,7 +25,7 @@ import inv_dis_mgmtsys.model.TemporaryEmployee;
     public List<PermanentEmployee> getPermanentEmployeeDetails(String emptitle);
     public List<TemporaryEmployee> getTEmployeeDetails(String emptitle);
    public List<Emp_Month_Salary>  getESalary(String emptitle);
-    
+   public List<Emp_Report> getPerEmpViewDetails();
     
     
     public void deletePermanentEmployeeDetails(int id);
