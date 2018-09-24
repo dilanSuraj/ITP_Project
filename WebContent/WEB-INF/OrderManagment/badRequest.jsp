@@ -160,7 +160,7 @@ a.more-link {
   <span><span>4</span></span>
 </section>
 <div class="link-container">
-  <a target="_blank" href="home" class="more-link">Go to home page</a>
+  <a target="_blank" href="/" class="more-link">Go to home page</a>
 </div>
 
 
