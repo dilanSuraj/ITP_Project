@@ -120,20 +120,7 @@
 
 
 					</div>
-					<fieldset class="form-group">
-						<div class="row">
-							<div class="form-group col-md-4">
-
-								<label for="inputState">Select Payment Type</label>
-								<form:select id="inputState" class="form-control"
-									path="paymentState">
-									<option selected>Choose...</option>
-									<form:option value="Full">Full Payment</form:option>
-									<form:option value="Advanced">Advanced Payment</form:option>
-								</form:select>
-							</div>
-						</div>
-					</fieldset>
+					
 
 					<button type="submit" class="btn btn-success" name="add_payment">Add
 						Payment</button>
@@ -147,6 +134,7 @@
 
 	<!-- data table end -->
 	</div>
+	
 
 	<!-- start icons -->
 	</div>

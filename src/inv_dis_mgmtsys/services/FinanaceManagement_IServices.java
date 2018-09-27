@@ -4,7 +4,9 @@ import java.util.List;
 
 import inv_dis_mgmtsys.model.DataPoint;
 import inv_dis_mgmtsys.model.Emp_Month_Salary;
+import inv_dis_mgmtsys.model.ExpenseView;
 import inv_dis_mgmtsys.model.Finance;
+import inv_dis_mgmtsys.model.IncomeView;
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.Payment;
 import inv_dis_mgmtsys.model.Retailer;
@@ -71,4 +73,10 @@ public interface FinanaceManagement_IServices {
 	public List<Emp_Month_Salary> getAllSalaryDetailsFortheGivenYearMonth(int year,int month);
 
 	public Emp_Month_Salary getSingleSalaryDetailsFortheGivenYearMonth(int year, int month);
+
+	List<Retailer_Order> getAllRetailerOrders_ForADDRetailerOrders();
+	
+	List<IncomeView> getAllincomeDetails();
+	
+	List<ExpenseView> getAllexpenseDetails();
 }

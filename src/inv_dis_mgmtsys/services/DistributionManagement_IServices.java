@@ -1,6 +1,7 @@
 package inv_dis_mgmtsys.services;
 
 import java.util.List;
+import java.util.Map;
 
 import inv_dis_mgmtsys.model.ExtraStock_Distribution;
 import inv_dis_mgmtsys.model.Item;
@@ -24,5 +25,7 @@ public interface DistributionManagement_IServices {
 	
 	
 	public void updateDeliveryDetails(Retailer_Order deliveryOrders);
+	
+	public List<Map<String, Object>> getDeliveryDetailsView();
 
 }

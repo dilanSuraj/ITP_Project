@@ -123,22 +123,7 @@
 									placeholder="Enter the amount here" required="true"></form:input>
 							</div>
 
-							<fieldset class="form-group">
-								<div class="row">
-									<div class="form-group col-md-4">
-
-										<label for="inputState">Select Income Status</label>
-										<form:select id="inputState" class="form-control"
-											path="other_income_expense_paymentstate" required="true">
-											
-											<form:option value="Full">Full Payment Received</form:option>
-											<form:option value="Advanced">Advanced Payment Received</form:option>
-											<form:option value="None">No Payment Received</form:option>
-										</form:select>
-									</div>
-								</div>
-							</fieldset>
-
+						
 							<div class="form-row">
 
 

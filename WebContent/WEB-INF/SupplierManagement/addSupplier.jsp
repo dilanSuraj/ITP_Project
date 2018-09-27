@@ -89,11 +89,11 @@
                         </div>
                         <div class="form-group">
                             <label for="inputAddress2">Registration No</label>
-                            <input type="number" min="1" class="form-control" name="supplier_regNo" id="supplier_regNo" path="supplier_regNo" placeholder="Enter reg number" required="required">
+                            <input type="number" min="4" class="form-control" name="supplier_regNo" id="supplier_regNo" path="supplier_regNo" placeholder="Enter reg number" required="required">
                         </div>
                         <div class="form-group">
                             <label for="contactNo">Contact No</label>
-                            <input type="number" min="1"  class="form-control" name="supplier_contactno" id="supplier_contactno" path="supplier_contactno" placeholder="07x-x xxx xxx" required="required">
+                            <input type="number" min="9"  class="form-control" name="supplier_contactno" id="supplier_contactno" path="supplier_contactno" placeholder="07x-x xxx xxx" required="required">
                         </div>
                         <div class="form-row">
                         <p>${Error}</p>

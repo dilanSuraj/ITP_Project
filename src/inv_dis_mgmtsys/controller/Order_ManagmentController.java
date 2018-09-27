@@ -29,6 +29,7 @@ public class Order_ManagmentController {
 
 	@Autowired
 	OrderManagement_IServicesImpl orderMan;
+	
 	@Autowired
 	RetailerManagement_IServicesImpl retailerManagement_IServicesImpl;
 

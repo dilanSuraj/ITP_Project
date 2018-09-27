@@ -1,7 +1,13 @@
 package inv_dis_mgmtsys.controller;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +15,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import inv_dis_mgmtsys.model.ExtraStock_Distribution;
@@ -16,6 +25,13 @@ import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.PermanentEmployee;
 import inv_dis_mgmtsys.model.Retailer_Order;
 import inv_dis_mgmtsys.services.DistributionManagement_IServicesImpl;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 @Controller
 @Transactional
@@ -24,12 +40,7 @@ public class Distribution_ManagementController {
 	@Autowired
 	private DistributionManagement_IServicesImpl distributionManagement_IServicesImpl;
 
-	@RequestMapping("/Area_Manager")
-	public ModelAndView AreaManagerDashboardView() {
-
-		return new ModelAndView("/DistributionManagement/AreaManagerDashboard");
-	}
-
+	
 	@RequestMapping(value = "/AssignManager", method = RequestMethod.GET)
 	public ModelAndView AssignManagerViewGet(@RequestParam("id") int id) {
 
@@ -87,6 +98,19 @@ public class Distribution_ManagementController {
 		
 		return modelAndView;
 	}
+	
+	
+	@RequestMapping("/SalesRepresentativeDashboard")
+	public ModelAndView SalesRepresentativeViewDashboard() {
+		List<Retailer_Order> listtOfRetailers = distributionManagement_IServicesImpl.getAllDeliveryDetails();
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("deliveryList", listtOfRetailers);
+		modelAndView.setViewName("/DistributionManagement/SalesRepDashboard");
+		
+		
+		return modelAndView;
+	}
+
 
 	@RequestMapping("/AddDeliveryDetails")
 	public ModelAndView AddDeliveryDetailsView() {
@@ -167,4 +191,31 @@ public class Distribution_ManagementController {
 		return new ModelAndView("redirect:/Extra_Stock_View");
 
 	}
+	
+	@RequestMapping(value = "deliverydetailsview", method = RequestMethod.GET)
+	@ResponseBody
+	public void getExpenseReport(HttpSession session) throws JRException, IOException {
+
+		//This line needs to be changed
+		List<java.util.Map<String,Object>> dataSource = distributionManagement_IServicesImpl.getDeliveryDetailsView();
+		JRDataSource jrDataSource = new JRBeanCollectionDataSource(dataSource);
+		String path = session.getServletContext().getRealPath("/Report/");
+		//This line needs to be changed
+		JasperDesign jasperDesign = JRXmlLoader.load(path + "/DeliveryDetailsView.jrxml");
+		JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+		//JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null , jrDataSource);
+		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder
+				.currentRequestAttributes();
+		HttpServletResponse response = servletRequestAttributes.getResponse();
+		response.setContentType("application/x-pdf");
+		//This line needs to be changed
+		response.setHeader("Per-Delivery-Details", "inline; filename=DeliveryDetailsView.pdf");
+
+		final ServletOutputStream outStream = response.getOutputStream();
+		//JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+	}
+	
+	
+	
+	
 }

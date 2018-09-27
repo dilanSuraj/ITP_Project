@@ -2,7 +2,9 @@ package inv_dis_mgmtsys.dao;
 
 import java.util.List;
 
+import inv_dis_mgmtsys.model.DeliveryDetails_View;
 import inv_dis_mgmtsys.model.ExtraStock_Distribution;
+import inv_dis_mgmtsys.model.IncomeView;
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.PermanentEmployee;
 import inv_dis_mgmtsys.model.Retailer;
@@ -34,6 +36,9 @@ public interface DistributionManagement_IDAO {
 	public List<PermanentEmployee> getAllDistributionManagers();
 
 	public List<Retailer> getAllRetailers();
+	
+	public List<DeliveryDetails_View> getAllIncomeViewDetails();
+
 	
 	
 	//sub function 2

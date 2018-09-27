@@ -1,15 +1,20 @@
 package inv_dis_mgmtsys.services;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import inv_dis_mgmtsys.dao.DistributionManagement_IDAOImpl;
+import inv_dis_mgmtsys.model.DeliveryDetails_View;
 import inv_dis_mgmtsys.model.ExtraStock_Distribution;
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.PermanentEmployee;
 import inv_dis_mgmtsys.model.Retailer;
+import inv_dis_mgmtsys.model.Retailer_Finance_View;
 import inv_dis_mgmtsys.model.Retailer_Order;
 
 @Service
@@ -92,11 +97,15 @@ public class DistributionManagement_IServicesImpl implements DistributionManagem
 			}
 
 			int distributionManagerID = retailer_Order.getRetailerorder_assigned_manager();
-
+            int salesRepresentativeID = retailer_Order.getSR_ID();
 			for (PermanentEmployee employee : listOfPermanentEmployees) {
 
 				if (employee.getId() == distributionManagerID) {
 					retailer_Order.setRetailerorder_assigned_manager_Name(employee.getFullname());
+				}
+				
+				if (employee.getId() == salesRepresentativeID) {
+					retailer_Order.setSalesRepresentative_Name(employee.getFullname());
 				}
 			}
 
@@ -127,6 +136,29 @@ public class DistributionManagement_IServicesImpl implements DistributionManagem
 	public List<PermanentEmployee> getAllSalesRepresentativeList() {
 
 		return distributionManagement_IDAOImpl.getAllSalesRepresentativeList();
+	}
+	
+	public List<Map<String, Object>> getDeliveryDetailsView() {
+
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		List<DeliveryDetails_View> listOfRetailerFinanceView = distributionManagement_IDAOImpl.getAllIncomeViewDetails();
+		
+
+		for (DeliveryDetails_View financeView : listOfRetailerFinanceView) {
+			Map<String, Object> map = new HashMap<>();
+			map.put("retailerOrderID", financeView.getRetailer_ID());
+			map.put("retailerName", financeView.getRetailerName());
+			map.put("retailerContactNo", financeView.getRetailerContactNo());
+			map.put("retailerAddress", financeView.getRetailerAddress());
+			map.put("orderTotal", financeView.getOrderTotal());
+			map.put("orderDate", financeView.getOrderDate());
+			map.put("SRID", financeView.getSRID());
+
+
+			list.add(map);
+
+		}
+		return list;
 	}
 
 }

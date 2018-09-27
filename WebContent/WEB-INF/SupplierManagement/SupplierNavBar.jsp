@@ -70,7 +70,7 @@
             </li>
 
             <li class="nav-item">
-                <button type="button" class="btn btn-dark btn-sm "> <span class="fa fa-key"></span> Logout</button>
+                <button type="button" class="btn btn-dark btn-sm " onclick="window.location.href='<c:url value='logoutPOST'/>'"> <span class="fa fa-key"></span> Logout</button>
             </li>
 
 

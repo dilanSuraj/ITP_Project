@@ -51,6 +51,19 @@ public class Retailer_Order {
 	private Retailer retailer;
 	
 
+	@Transient
+	private String SalesRepresentative_Name;
+	
+	
+	public String getSalesRepresentative_Name() {
+		return SalesRepresentative_Name;
+	}
+
+	public void setSalesRepresentative_Name(String salesRepresentative_Name) {
+		SalesRepresentative_Name = salesRepresentative_Name;
+	}
+	
+	
 	public String getRetailerorder_assigned_manager_Name() {
 		return retailerorder_assigned_manager_Name;
 	}

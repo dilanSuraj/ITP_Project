@@ -59,7 +59,9 @@
 </head>
 
 <body>
-
+	<c:if test="${empty permanentemployee}">
+		<c:redirect url="StaffLogin" />
+	</c:if>
 
 	<!-- start of the the navigation header-->
 
@@ -117,10 +119,11 @@
 					</form>
 				</li>
 
-				<li class="nav-item">
+				<li class="nav-item"><a class="nav-link" href="StaffLogout">
 					<button type="button" class="btn btn-dark btn-sm ">
 						<span class="fa fa-key"></span> Logout
 					</button>
+					</a>
 				</li>
 
 

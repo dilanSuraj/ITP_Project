@@ -45,5 +45,7 @@ public interface SupplierManagement_IServices {
 	public int totalSupplied(int supplier_ID);
 
 	public List<Supplier_Report> getSupplierReport();
+
+	public List<Supplier_Finance> getpaymentDetailsa(int supplier_ID);
 	
 }

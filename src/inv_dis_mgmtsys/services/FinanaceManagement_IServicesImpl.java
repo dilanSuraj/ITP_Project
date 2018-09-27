@@ -2,11 +2,14 @@ package inv_dis_mgmtsys.services;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -47,7 +50,7 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 
 	@Autowired
 	EmpMa_IServicesImpl empMa_IServicesImpl;
-	
+
 	@Autowired
 	HttpSession httpsession;
 
@@ -370,6 +373,14 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		return finanaceManagerIDAO.getAllRetailerOrderDetails();
 	}
 
+	@Override
+	public List<Retailer_Order> getAllRetailerOrders_ForADDRetailerOrders() {
+
+		List<Retailer_Order> listOfOrders = finanaceManagerIDAO.getAllRetailerOrderDetails();
+		
+		return listOfOrders;
+	}
+
 	public Retailer_Order getSingleRetailerOrder(int retailerOrderID) {
 		return finanaceManagerIDAO.getSingleRetailerOrderDetails(retailerOrderID);
 	}
@@ -430,8 +441,8 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 
 		double income = 0;
 		for (Payment payment : paymentList) {
-			
-			if(payment == null) {
+
+			if (payment == null) {
 				System.out.println("Null");
 				continue;
 			}
@@ -643,12 +654,12 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 
 	public void saveSessionObjects(HttpSession httpSession) {
 
-		//Session session = finanaceManagerIDAO.getCurrentSession();
-		httpSession = empMa_IServicesImpl.getHttpsession();
+		Session session = finanaceManagerIDAO.getCurrentSession();
+		HttpSession httpSessionEmp = empMa_IServicesImpl.getHttpsession();
 		if (httpsession == null) {
 			System.out.println("Session is null");
 		}
-            
+
 		Double income = this.totalIncome();
 		Double expense = this.totalExpense();
 
@@ -656,21 +667,31 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		Double expense_currentmonth = this.gettotalExpense_currentMonth();
 
 		Double profitPercent = this.profitPercentage();
-		//int blacklist = this.blacklistedRetailerList();
+		int blacklist = this.blacklistedRetailerList();
+
+		String blackListInString = Integer.toString(blacklist);
+		if (blacklist == 0)
+			blackListInString = "No";
 
 		DecimalFormat twoDForm = new DecimalFormat("#.##");
 
 		String income_string = new DecimalFormat("#,###.00").format(income_currentmonth);
 		String expense_string = new DecimalFormat("#,###.00").format(expense_currentmonth);
 
-		httpsession.setAttribute("Income", income_string);
-		httpsession.setAttribute("Expense", expense_string);
-		httpsession.setAttribute("ProfitPercent", twoDForm.format(profitPercent));
-		//httpsession.setAttribute("Blacklist", blacklist);
+		String profit_string = new DecimalFormat("#,###.00").format(profitPercent);
 		
+		
+		
+		if(profitPercent < 1.0)
+			profit_string = "No profit";
+		httpsession.setAttribute("Income", income_string);
+		httpSession.setAttribute("Expense", expense_string);
+		httpSession.setAttribute("ProfitPercent", profit_string);
+		httpSession.setAttribute("Blacklist", blackListInString);
+
 	}
 
-	/*public int blacklistedRetailerList() {
+	public int blacklistedRetailerList() {
 
 		int numberOfBlcklisted = 0;
 		List<Retailer_Blacklist> blacklist = finanaceManagerIDAO.getBlacklistedRetailerFinanceList();
@@ -682,14 +703,15 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		}
 		for (Retailer retailer : retailerList) {
 
-			//if (((Object) retailer).getRetailer_blacklistStatus().equals("Yes")) {
+			if (retailer.getRetailer_blacklistStatus().equals("Yes")) {
 				numberOfBlcklisted++;
 			}
 		}
-		//System.out.println("Blacklisted : " + numberOfBlcklisted);
-		//return numberOfBlcklisted;
-	
-*/
+		System.out.println("Blacklisted : " + numberOfBlcklisted);
+		return numberOfBlcklisted;
+
+	}
+
 	@Override
 	public Retailer getRetailerByOrderID(int retailerorderID) {
 		Retailer_Order order = finanaceManagerIDAO.getSingleRetailerOrderDetails(retailerorderID);
@@ -729,8 +751,6 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 	public List<Emp_Month_Salary> getAllEmpMonthSalary() {
 		return finanaceManagerIDAO.getAllEmpMonthSalary();
 	}
-
-	
 
 	public List<Map<String, Object>> getRetailerFinanceViewDetails() {
 
@@ -784,5 +804,37 @@ public class FinanaceManagement_IServicesImpl implements FinanaceManagement_ISer
 		}
 		return list;
 	}
+	
+	public int validateRetailerFinance_ADD(Retailer_Finance finance) {
+		
+		double paidAmt = finance.getAmount();
+		Retailer_Order order = this.getSingleRetailerOrder(finance.getRetailer_orderID());
+		
+		double orderTotal = order.getOder_total();
+		
+		if(paidAmt < 0 )
+			return -1;
+		if(orderTotal < paidAmt)
+			return -1;
+		
+		return 0;
+		
+				
+	}
+
+	@Override
+	public List<IncomeView> getAllincomeDetails() {
+		
+		return finanaceManagerIDAO.getAllIncomeViewDetails();
+		
+	}
+
+	@Override
+	public List<ExpenseView> getAllexpenseDetails() {
+		
+		return finanaceManagerIDAO.getAllExpenseViewDetails();
+	}
+	
+   
 
 }

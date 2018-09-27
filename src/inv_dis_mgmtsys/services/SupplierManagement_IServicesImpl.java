@@ -87,22 +87,49 @@ public class SupplierManagement_IServicesImpl implements SupplierManagement_ISer
 
 			
 			System.out.println("this is the one " + i.getSupplier_Order_id());
-			Supplier_Finance finance = supplierManagerIDO.getFinanceDetails1(i.getSupplier_Order_id());
-			System.out.println("printing the details of the finace" + finance.getPaymentState());
-			if (finance.getPaymentState().equals("paid")) {
+			List<Supplier_Finance> finance = supplierManagerIDO.getAllFinanceDetails(i.getSupplier_Order_id());
+			for (Supplier_Finance j : finance) {
+				System.out.println("printing the details of the finace" + j.getPaymentState());
+				if (j.getPaymentState().equals("Complete")) {
 				
 				System.out.println("add to the list");
-				supplier_Finance.add(finance);
+				supplier_Finance.add(j);
+			}
 			}
 
 		}
-
 		
-
 		return supplier_Finance;
 
 	}
 
+	@Override
+	public List<Supplier_Finance> getpaymentDetailsa(int supplier_ID) {
+
+		List<Supplier_Order> supplier_Order = supplierManagerIDO.getSupplierOrder(supplier_ID);
+		List<Supplier_Finance> supplier_Finance = new ArrayList<Supplier_Finance>();
+
+		System.out.println(supplier_ID);
+
+		for (Supplier_Order i : supplier_Order) {
+
+			
+			System.out.println("this is the one " + i.getSupplier_Order_id());
+			List<Supplier_Finance> finance = supplierManagerIDO.getAllFinanceDetails(i.getSupplier_Order_id());
+			for (Supplier_Finance j : finance) {
+				System.out.println("printing the details of the finace" + j.getPaymentState());
+				if (j.getPaymentState().equals("Advanced")) {
+				
+				System.out.println("add to the list");
+				supplier_Finance.add(j);
+			}
+			}
+
+		}
+		
+		return supplier_Finance;
+
+	}
 	@Override
 	public List<Supplier_Finance> getpaymentDetails1(int supplier_ID) {
 
@@ -115,12 +142,14 @@ public class SupplierManagement_IServicesImpl implements SupplierManagement_ISer
 
 			
 			System.out.println("this is the one " + i.getSupplier_Order_id());
-			Supplier_Finance finance = supplierManagerIDO.getFinanceDetails1(i.getSupplier_Order_id());
-			System.out.println("printing the details of the finace" + finance.getPaymentState());
-			if (finance.getPaymentState().equals("not paid")) {
+			List<Supplier_Finance> finance = supplierManagerIDO.getAllFinanceDetails(i.getSupplier_Order_id());
+			for (Supplier_Finance j : finance) {
+				System.out.println("printing the details of the finace" + j.getPaymentState());
+				if (j.getPaymentState().equals("Incomplete")) {
 				
 				System.out.println("add to the list");
-				supplier_Finance.add(finance);
+				supplier_Finance.add(j);
+			}
 			}
 
 		}
@@ -173,7 +202,7 @@ public class SupplierManagement_IServicesImpl implements SupplierManagement_ISer
 		double income = 0;
 		for (Supplier_Finance supplierFinances : supplier_Finances) {
 
-			if (supplierFinances.getPaymentState().equals("paid")) {
+			if (supplierFinances.getPaymentState().equals("Complete")) {
 				income += supplierFinances.getAmount();
 			}
 		}
@@ -193,7 +222,7 @@ public class SupplierManagement_IServicesImpl implements SupplierManagement_ISer
 		double income = 0;
 		for (Supplier_Finance supplierFinances : supplier_Finances) {
 
-			if (supplierFinances.getPaymentState().equals("not paid")) {
+			if (supplierFinances.getPaymentState().equals("Incomplete")) {
 				income += supplierFinances.getAmount();
 			}
 		}
@@ -212,7 +241,7 @@ public class SupplierManagement_IServicesImpl implements SupplierManagement_ISer
 		int amount = 0;
 		for (Supplier_Order supplierOder : Order) {
 
-			if (supplierOder.getOrder_Status().equals("Incomplet")) {
+			if (supplierOder.getOrder_Status().equals("Inprocessing")) {
 			
 			amount += supplierOder.getAmount() ;
 			}
@@ -233,7 +262,7 @@ public class SupplierManagement_IServicesImpl implements SupplierManagement_ISer
 		int amount = 0;
 		for (Supplier_Order supplierOder : Order) {
 
-			if (supplierOder.getOrder_Status().equals("Complet")) {
+			if (supplierOder.getOrder_Status().equals("Recived")) {
 			
 			amount += supplierOder.getAmount() ;
 			}
@@ -258,7 +287,7 @@ public class SupplierManagement_IServicesImpl implements SupplierManagement_ISer
 			Item item = supplierManagerIDO.getSupplierOrderItem(i.getItem_code());
 			System.out.println("this is item"+item.getItem_name());
 			i.setItemname(item.getItem_name());
-			if (i.getOrder_Status().equals("Incomplet")) {
+			if (i.getOrder_Status().equals("Recived")) {
 				
 				System.out.println("add to the list "+i.getAmount()+i.getSupplier_order_date());
 				supplier_item.add(i);
@@ -284,7 +313,7 @@ public class SupplierManagement_IServicesImpl implements SupplierManagement_ISer
 			Item item = supplierManagerIDO.getSupplierOrderItem(i.getItem_code());
 			System.out.println("this is item"+item.getItem_name());
 			i.setItemname(item.getItem_name());
-			if (i.getOrder_Status().equals("Complet")) {
+			if (i.getOrder_Status().equals("Inprocessing")) {
 				
 				System.out.println("add to the list "+i.getAmount()+i.getSupplier_order_date());
 				supplier_item.add(i);

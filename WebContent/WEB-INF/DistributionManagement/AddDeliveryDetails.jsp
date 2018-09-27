@@ -187,7 +187,7 @@
 													<td>${deliveryList.getRetailer().getRetailer_address()}</td>
 													<td>${deliveryList.getRetailer().getRetailer_contactno()}</td>
 													<td>${deliveryList.getOder_total()}</td>
-													<td>${deliveryList.getOder_date_InString()}</td>
+													<td>${deliveryList.getDateInString()}</td>
 											
 													<td><a
 														href="<c:url value='/AssignManager?id=${deliveryList.getRetailer_OrderID()}'/>">

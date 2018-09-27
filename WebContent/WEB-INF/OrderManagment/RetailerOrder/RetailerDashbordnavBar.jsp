@@ -59,7 +59,7 @@
 						style="font-size: 18px"></span> Home
 				</a></li>
 
-				<li class="nav-item"><a class="nav-link" href="#"
+				<li class="nav-item"><a class="nav-link" href="RetailerCart"
 					style="color: white"><span class="fa fa-history "
 						style="font-size: 18px"></span> Order History</a></li>
 

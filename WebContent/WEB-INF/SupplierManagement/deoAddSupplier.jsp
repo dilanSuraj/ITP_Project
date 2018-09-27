@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
     <%@ page isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -40,13 +40,29 @@
     <script type="text/javascript" src="Styles/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="Styles/js/dataTables.bootstrap4.min.js"></script>
     <link rel="stylesheet" href="Styles/css/dataTables.bootstrap4.min.css">
+    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <title>Add Suppliers</title>
 </head>
 
 <body>
 
+<script type="text/javascript">
+		function invalidInput() {
+		
+			swal("wrong password")
 
+		}
+	</script>
+
+
+	<c:if test="${err==1}">
+		<script type="text/javascript">
+			window.onload = invalidInput;
+		</script>
+	</c:if>
+	
 <!-- start of the the navigation header-->
 
 <%@include file="/WEB-INF/SupplierManagement/SupplierDEONavBar.jsp"%>
@@ -89,18 +105,20 @@
                         </div>
                         <div class="form-group">
                             <label for="inputAddress2">Registration No</label>
-                            <input type="number" min="1" class="form-control" name="supplier_regNo" id="supplier_regNo" path="supplier_regNo" placeholder="Enter reg number" required="required">
+                            <input type="number" min="4" class="form-control" name="supplier_regNo" id="supplier_regNo" path="supplier_regNo" placeholder="Enter reg number" required="required">
                         </div>
                         <div class="form-group">
                             <label for="contactNo">Contact No</label>
-                            <input type="number" min="1"  class="form-control" name="supplier_contactno" id="supplier_contactno" path="supplier_contactno" placeholder="07x-x xxx xxx" required="required">
+                            <input type="number" min="9"   class="form-control" name="supplier_contactno" id="supplier_contactno" path="supplier_contactno" placeholder="07x-x xxx xxx" required="required">
                         </div>
                         <div class="form-row">
                         
                             <div class="form-group col-md-6">
                                 <label for="inputCity">Password</label>
-                                <input type="password" class="form-control" name="supplier_password" id="supplier_password" path="supplier_password" placeholder="enter password" required="required">
+                                <input type="password" class="form-control " name="supplier_password" id="supplier_password" path="supplier_password" placeholder="enter password" required="required">
+                            	
                             </div>
+                            <p><c:if test="${Error==1}"><p>Please enter same password</p> </c:if></p>
                             <div class="form-group col-md-6">
                                 <label for="inputState">Confirm Password</label>
                                 <input type="password" class="form-control" name="supplier_password2" id="supplier_password2" path="supplier_password2"  placeholder="re enter password" required="required">

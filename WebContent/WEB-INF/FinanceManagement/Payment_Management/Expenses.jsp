@@ -113,7 +113,7 @@
 							<th>Paid Amount</th>
 							<th>Description</th>
 							<th>Date</th>
-							<th>Payment Status</th>
+						
 							<th>Edit</th>
 							<th>Delete</th>
 
@@ -130,7 +130,7 @@
 								<td>${paymentList.getOther_income_expense_description()}</td>
 								<td>${paymentList.getOther_income_expense_dateInString()}</td>
 
-								<td>${paymentList.getOther_income_expense_paymentstate()}</td>
+								
 								<td><a
 									href="<c:url value='/UpdateExpenses_Get?id=${paymentList.getOther_income_expense_ID()}' />">EDIT</a></td>
 
@@ -147,7 +147,7 @@
 							<th>Paid Amount</th>
 							<th>Description</th>
 							<th>Date</th>
-							<th>Payment Status</th>
+						
 							<th>Edit</th>
 							<th>Delete</th>
 

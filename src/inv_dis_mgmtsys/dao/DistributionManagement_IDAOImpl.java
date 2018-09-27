@@ -7,7 +7,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import inv_dis_mgmtsys.model.DeliveryDetails_View;
 import inv_dis_mgmtsys.model.ExtraStock_Distribution;
+import inv_dis_mgmtsys.model.IncomeView;
 import inv_dis_mgmtsys.model.Item;
 import inv_dis_mgmtsys.model.Payment;
 import inv_dis_mgmtsys.model.PermanentEmployee;
@@ -94,8 +96,11 @@ public class DistributionManagement_IDAOImpl implements DistributionManagement_I
 	@Override
 	public List<Retailer_Order> getAllRetailerOrders() {
 		
+		String hql = "from Retailer_Order where retailer_orderstatus = ?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter(0,"Complete");		
 		@SuppressWarnings("unchecked")
-		List<Retailer_Order> list = (List<Retailer_Order>)sessionFactory.getCurrentSession().createQuery("from Retailer_Order").list();
+		List<Retailer_Order> list= query.list();		
 		
 		
 		return list;
@@ -153,5 +158,11 @@ public class DistributionManagement_IDAOImpl implements DistributionManagement_I
 		return list;
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<DeliveryDetails_View> getAllIncomeViewDetails() {
+
+		return sessionFactory.getCurrentSession().createQuery("From DeliveryDetails_View").list();
+	}
 
 }

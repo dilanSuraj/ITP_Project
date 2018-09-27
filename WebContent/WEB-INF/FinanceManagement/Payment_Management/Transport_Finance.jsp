@@ -113,7 +113,7 @@
 							<th>Date</th>
 							<th>Description</th>
 							<th>Vehicle Number</th>
-							<th>Payment Status</th>
+							
 							<th>Edit</th>
 							<th>Delete</th>
 
@@ -130,7 +130,7 @@
 								<td>${paymentList.getTransportpayment_description()}</td>
 								<td>${paymentList.getTransportpayment_vehicleID()}</td>
 								
-								<td>${paymentList.getTransportpayment_state()}</td>
+						
 								<td><a href="<c:url value='/UpdateTransport_Finance?id=${paymentList.getTransportpayment_ID()}' />" >EDIT</a></td>
 								
 								<td><a href="<c:url value='/DeleteTransport_Finance?id=${paymentList.getTransportpayment_ID()}' />" onclick="return confirm('Do you want to proceed?');">DELETE</a></td>
@@ -144,7 +144,7 @@
 							<th>Date</th>
 							<th>Description</th>
 							<th>Vehicle Number</th>
-							<th>Payment Status</th>
+							
 							<th>Edit</th>
 							<th>Delete</th>
 

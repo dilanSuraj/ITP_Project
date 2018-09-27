@@ -219,23 +219,20 @@ public class SupplierManagement_IDAOImpl implements SupplierManagement_IDAO {
 	}
 	
 	@Override
-	public Item getSupplierOrderItem(int SupplierID) {
+	public Item getSupplierOrderItem(int itemcode) {
 		
 		
-		try {
+		
 			
 		
 		Query query2 = sessionFactory.getCurrentSession().createQuery("from Item s where s.item_itemcode=:id");
-		query2.setParameter("id", SupplierID);
+		query2.setParameter("id", itemcode);
 		Item itemList = (Item)query2.list().get(0);
 		
 		System.out.println("Item name"+itemList.getItem_name());
 		
 		return itemList;
-		}
-		catch (Exception e) {
-			return null;
-		}
+		
 		
 
 		

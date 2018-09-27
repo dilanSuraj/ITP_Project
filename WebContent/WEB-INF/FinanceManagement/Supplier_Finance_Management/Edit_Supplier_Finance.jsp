@@ -91,7 +91,7 @@
 						<div class="form-group col-md-6">
 							<label for="input_supp_order">Supplier Order Details</label>
 							<form:input type="text" class="form-control"
-								path="Supplier_Order_id"></form:input>
+								path="supplier_orderID"></form:input>
 						</div>
 					</div>
 					<div class="form-group">
@@ -113,20 +113,7 @@
 
 
 
-					<fieldset class="form-group">
-						<div class="row">
-							<div class="form-group col-md-4">
-
-								<label for="inputState">Select Payment Type</label>
-								<form:select id="inputState" class="form-control"
-									path="paymentState">
-									<option selected>Choose...</option>
-									<form:option value="Full">Full Payment</form:option>
-									<form:option value="Advanced">Advanced Payment</form:option>
-								</form:select>
-							</div>
-						</div>
-					</fieldset>
+				
 					<form:input type="hidden" path="supplier_finance_id" />
 		
 

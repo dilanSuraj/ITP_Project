@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -27,10 +28,31 @@ public class Vehicle {
 
 	@Column
 	private int vehicle_driver_ID;
+	
+	@Column
+	private double vehicle_fuelCost;
+	
+	@Transient
+	private String vehicle_driver_name;
+	
+	
+	@Column
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date vehicleAdd_date;
 
 	@Column
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date vehicle_repair_date;
+	
+	
+
+	public String getVehicle_driver_name() {
+		return vehicle_driver_name;
+	}
+
+	public void setVehicle_driver_name(String vehicle_driver_name) {
+		this.vehicle_driver_name = vehicle_driver_name;
+	}
 
 	public String getVehicle_number() {
 		return vehicle_number;
@@ -79,6 +101,24 @@ public class Vehicle {
 	public void setVehicle_repair_date(Date vehicle_repair_date) {
 		this.vehicle_repair_date = vehicle_repair_date;
 	}
+
+	public double getVehicle_fuelCost() {
+		return vehicle_fuelCost;
+	}
+
+	public void setVehicle_fuelCost(double vehicle_fuelCost) {
+		this.vehicle_fuelCost = vehicle_fuelCost;
+	}
+
+	public Date getVehicleAdd_date() {
+		return vehicleAdd_date;
+	}
+
+	public void setVehicleAdd_date(Date vehicleAdd_date) {
+		this.vehicleAdd_date = vehicleAdd_date;
+	}
+	
+	
 	
 	 
 

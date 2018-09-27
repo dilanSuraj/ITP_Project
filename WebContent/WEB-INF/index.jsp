@@ -52,7 +52,11 @@
                     <a class="nav-link" href="#">Services Us </a>
                 </li>
 				<li class="nav-item">
-                    <a class="nav-link" href="login">Login </a>
+                    <a class="nav-link" href="login">Retailer Login </a>
+					
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="slogin">Supplier Login </a>
 					
                 </li>
 				<li class="nav-item">

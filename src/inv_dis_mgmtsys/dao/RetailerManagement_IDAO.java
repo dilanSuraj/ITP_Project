@@ -4,6 +4,7 @@ import java.util.List;
 
 import inv_dis_mgmtsys.model.Notification;
 import inv_dis_mgmtsys.model.Retailer;
+import inv_dis_mgmtsys.model.Retailer_Report;
 
 public interface RetailerManagement_IDAO {
 
@@ -31,4 +32,5 @@ public interface RetailerManagement_IDAO {
 
 	public void editRetailer(Retailer retailer);
 
+	public List<Retailer_Report> getRetailerReport();
 }

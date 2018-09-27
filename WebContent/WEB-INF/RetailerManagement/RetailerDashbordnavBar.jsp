@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -30,13 +30,13 @@
 </head>
 <body>
 
-<c:if test="${empty retailer}">
+	<c:if test="${empty retailer}">
 		<c:redirect url="login" />
 	</c:if>
-	
-<!-- start of the the navigation header-->
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark"
+	<!-- start of the the navigation header-->
+
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark"
 		style="background-color: #003399;color: white"> <a
 		class="navbar-brand " href="#" style="padding-right: 3%"> <img
 		class="logo" src="Styles/Images/logo.png" alt="Home"></a>
@@ -59,7 +59,7 @@
 						style="font-size: 18px"></span> Home
 				</a></li>
 
-				<li class="nav-item"><a class="nav-link" href="#"
+				<li class="nav-item"><a class="nav-link" href="RetailerCart"
 					style="color: white"><span class="fa fa-history "
 						style="font-size: 18px"></span> Order History</a></li>
 

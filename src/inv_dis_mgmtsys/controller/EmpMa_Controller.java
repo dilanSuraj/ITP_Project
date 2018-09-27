@@ -25,9 +25,10 @@ import com.lowagie.text.pdf.codec.Base64.OutputStream;
 import inv_dis_mgmtsys.model.Admin;
 import inv_dis_mgmtsys.model.Emp_Month_Salary;
 import inv_dis_mgmtsys.model.PermanentEmployee;
-
+import inv_dis_mgmtsys.model.Stock;
 import inv_dis_mgmtsys.model.TemporaryEmployee;
 import inv_dis_mgmtsys.services.EmpMa_IServicesImpl;
+import inv_dis_mgmtsys.services.StockManagement_IServicesImpl;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -48,6 +49,9 @@ public class EmpMa_Controller {
 
 	@Autowired
 	private EmpMa_IServicesImpl EmpMa_IServices;
+	
+	@Autowired
+	StockManagement_IServicesImpl stockManagement_IServices;
 
 	public EmpMa_Controller() {
 
@@ -104,7 +108,39 @@ public class EmpMa_Controller {
 		return model;
 
 	}
+	
+	@RequestMapping("/Area_ManagerD")
+	public ModelAndView AreaManagerDashboardView() {
 
+		return new ModelAndView("/DistributionManagement/AreaManagerDashboard");
+	}
+
+	@RequestMapping("/Area_Manager")
+	public ModelAndView AMDashboardView() {
+		ModelAndView model = new ModelAndView();
+		
+		System.out.println( "AM profile ");
+		
+		HttpSession session = EmpMa_IServices.getHttpsession();
+		
+		PermanentEmployee permanentemployee = (PermanentEmployee) session.getAttribute("permanentemployee");
+		
+		if( permanentemployee == null) {
+			
+			System.out.print("null");
+			
+			return new ModelAndView("/Employee Management/Staff_Login_Page");
+		}
+		model.addObject("permanentemployee", permanentemployee);
+		model.setViewName("/DistributionManagement/AreaManagerDashboard");
+		return model;
+
+	}
+
+	
+	
+	
+	
 	@RequestMapping("/DEOemp")
 	public ModelAndView DEODashboardView() {
 		
@@ -136,10 +172,22 @@ if( permanentemployee == null) {
 	@RequestMapping("/HRemp")
 	public ModelAndView HRDashboardView() {
 
-		return new ModelAndView("/Dashboards/HrDashboard_emp");
+		return new ModelAndView("/Employee Management/AddNonStaff");
 
 	}
+	@RequestMapping("/SM")
+	public ModelAndView StockMangerDashboard() {
+
+		ModelAndView model = new ModelAndView();
 	
+		List<Stock> stockList = stockManagement_IServices.getAllStockDetail();
+
+		model.addObject("stockList", stockList);
+		model.setViewName("/StockManagement/StockView");
+
+		return model;
+
+	}
 	
 
 	@RequestMapping(value = "/AddStaff", method = RequestMethod.GET)
@@ -549,11 +597,49 @@ if( permanentemployee == null) {
 	
 			
 		}
-		
+		else if (position.equals("SM")) {
+
+			EmpMa_IServices.setHttpsession(session);
+			EmpMa_IServices.saveSessionObjectsStaff(result.getId());
+
+			ModelAndView model = new ModelAndView();
+			model.setViewName("redirect:/SM");
+			return model;
+
+		}
+		else if(position.equals("AM")) {
+			EmpMa_IServices.setHttpsession(session);
+		EmpMa_IServices.saveSessionObjectsStaff(result.getId());
+		ModelAndView model = new ModelAndView();
+		model.setViewName("redirect:/Area_Manager");
+		return model;
 		}
 		
-		EmpMa_IServices.setHttpsession(null);
+		else if(position.equals("FI")) {
+			
+		EmpMa_IServices.setHttpsession(session);
+		EmpMa_IServices.saveSessionObjectsStaff(result.getId());
+		ModelAndView model = new ModelAndView();
+		model.setViewName("redirect:/FI");
+		return model;
+		}
+		
+		else if(position.equals("HR")) {
+			
+			EmpMa_IServices.setHttpsession(session);
+			EmpMa_IServices.saveSessionObjectsStaff(result.getId());
+			ModelAndView model = new ModelAndView();
+			model.setViewName("redirect:/HRemp");
+			return model;
+			}
+		
+		
+		
+		
+		EmpMa_IServices.setHttpsession(null);}
+		
 		return new ModelAndView("/UserManagement/Staff_LoginPage");
+		
 
 	}
 	

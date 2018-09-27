@@ -137,21 +137,7 @@
 						</div>
 					</div>
 
-					<fieldset class="form-group">
-						<div class="row">
-							<div class="form-group col-md-4">
-
-								<label for="inputState">Select Payment Status</label>
-								<form:select id="inputState" class="form-control"
-									path="transportpayment_state" required="required">
-									<form:option value="Full">Full Payment</form:option>
-									
-									<form:option value="None">No Payment</form:option>
-								</form:select>
-							</div>
-						</div>
-					</fieldset>
-
+					
 					<div class="form-row">
 
 						<div>

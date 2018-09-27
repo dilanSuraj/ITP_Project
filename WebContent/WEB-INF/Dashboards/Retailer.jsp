@@ -73,7 +73,7 @@
              </li>
 
              <li class="nav-item">
-                 <a class="nav-link" href="#"  ><span class="fa fa-history " style="font-size: 18px"></span>   Order History</a>
+                 <a class="nav-link" href="RetailerOrderHistory"  ><span class="fa fa-history " style="font-size: 18px"></span>   Order History</a>
              </li>
 			 
 			 <li class="nav-item dropdown">

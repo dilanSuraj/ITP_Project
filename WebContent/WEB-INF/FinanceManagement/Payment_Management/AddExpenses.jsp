@@ -127,21 +127,7 @@
 						</div>
 					</div>
 
-					<fieldset class="form-group">
-						<div class="row">
-							<div class="form-group col-md-4">
-
-								<label for="inputState">Select Payment Satus</label>
-								<form:select id="inputState" class="form-control"
-									path="other_income_expense_paymentstate" required="required">
-
-									<form:option value="Paid">Paid</form:option>
-									<form:option value="None">Not paid</form:option>
-								</form:select>
-							</div>
-						</div>
-					</fieldset>
-
+				
 					<div class="form-row">
 
 						<div>

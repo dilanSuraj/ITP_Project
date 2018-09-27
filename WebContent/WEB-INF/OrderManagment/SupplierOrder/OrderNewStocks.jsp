@@ -55,10 +55,8 @@
 
 
 
-	<%@ include
-		file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp"%>
-	<%@ include
-		file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp"%>
+<%@include
+		file="/WEB-INF/OrderManagment/SupplierOrder/storeManagerNavBar.jsp"%>
 
 	<div class="row justify-content-end ">
 		<div class="col-md-10"

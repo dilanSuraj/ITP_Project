@@ -84,29 +84,38 @@
 				</h5>
 			</div>
 			<div class="card-body">
+			<c:if test="${message==-1}">
+					<p style="color: red"><b> Please enter a valid amount !!!</b></p>
+				</c:if>
 
 				<form:form method="post" action="Edit_Retailer_Finance_POST"
 					modelAttribute="retailerfinance">
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="input_supp_order">Retailer Order Details</label>
+							<label for="input_supp_order"><b>Retailer Order Number : ${retailerfinance.getRetailer_orderID()}</b> </label>
 
-						<form:input type="text" class="form-control"
+						<form:input type="hidden" class="form-control"
 										path="retailer_orderID" ></form:input>
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="input_amt">Total Amount to pay </label>
+						<form:input type="text" class="form-control" path="TotalAmount" disabled="true"></form:input>
+					</div>
+					
+					<div class="form-group">
 						<label for="input_amt">Amount</label>
 						<form:input type="text" class="form-control" path="amount"></form:input>
 					</div>
+					
 					<div class="form-row">
 
 						<div class="form-group col-md-6">
 							<div class="container">
-								<label for="input_date">Order Date</label>
+								<label for="input_date">Payment Date</label>
 								<div class="hero-unit">
 									<form:input type="text" class="form-control"
-										path="payment_date"></form:input>
+										path="payment_date" ></form:input>
 								</div>
 							</div>
 						</div>
@@ -125,20 +134,7 @@
 						</div>
 					</div>
 
-					<fieldset class="form-group">
-						<div class="row">
-							<div class="form-group col-md-4">
-
-								<label for="inputState">Select Payment Type</label>
-								<form:select id="inputState" class="form-control"
-									path="paymentState">
-									
-									<form:option value="Full">Full Payment</form:option>
-									<form:option value="Advanced">Advanced Payment</form:option>
-								</form:select>
-							</div>
-						</div>
-					</fieldset>
+					
 
 					<form:input type="hidden" path="retailer_finance_id" />
 

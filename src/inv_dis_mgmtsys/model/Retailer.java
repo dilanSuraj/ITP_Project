@@ -35,9 +35,12 @@ public class Retailer {
 
 	@Column
 	private String retailer_province;
+	 
+	
 	
 	@Column
 	private String retailer_blacklistStatus;
+	
 	
 
 	public String getRetailer_blacklistStatus() {

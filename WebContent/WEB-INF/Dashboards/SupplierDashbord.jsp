@@ -120,6 +120,7 @@
                  <a class="nav-item nav-link active navbar-dark" id="nav-norders-tab" data-toggle="tab" href="#nav-norders" role="tab" aria-controls="nav-norders" aria-selected="true">New Orders</a>
                  <a class="nav-item nav-link" id="nav-porders-tab" data-toggle="tab" href="#nav-porders" role="tab" aria-controls="nav-porders" aria-selected="false">Previous Orders</a>
                  <a class="nav-item nav-link" id="nav-rpayments-tab" data-toggle="tab" href="#nav-rpayments" role="tab" aria-controls="nav-rpayments" aria-selected="false">Payments received</a>
+                 <a class="nav-item nav-link" id="nav-rpayments-tab" data-toggle="tab" href="#nav-apayments" role="tab" aria-controls="nav-rpayments" aria-selected="false">Advance Payments</a>
                  <a class="nav-item nav-link" id="nav-rtpayments-tab" data-toggle="tab" href="#nav-rtpayments" role="tab" aria-controls="nav-rtpayments" aria-selected="false">Payments to be received</a>
              </div>
          </nav>
@@ -322,6 +323,71 @@
 
                  <!-- data table end -->
          </div>
+         
+         <div class="tab-pane fade" id="nav-apayments" role="tabpanel" aria-labelledby="nav-rpayments-tab">
+             <div class="row">
+
+
+
+
+                 <!-- data table start -->
+
+
+                 <div class="col-md-12">
+                     <div class="card mb-3" >
+                         <div class="card-header" style="color: #003399" >
+                             <h5><span class="fa fa-money"></span> Advanced Payments</h5></div>
+                         <div class="card-body">
+
+                             <script>
+                                 $(document).ready(function() {
+                                     $('#example8').DataTable();
+                                 } );
+                             </script>
+
+                            <table id="example8" class="table table-striped table-bordered" style="width:100%">
+                     <thead>
+                     <tr>
+										<th>Order ID</th>
+										<th>Payment date</th>
+										<th>Amount</th>
+					</tr>
+                     </thead>
+                     <tbody>
+									<c:forEach items="${Supplier_Financea}" var="Supplier_Financea" 
+										varStatus="loopCounter">
+										<tr>
+											<td >
+												<div class="row">
+													<div class="col-sm-9">
+														<h4 class="nomargin"><small>${Supplier_Financea.getSupplier_orderID()}</small></h4>
+													</div>
+												</div>
+											</td>
+											<td >${Supplier_Financea.getPaymentDateInString()}</td>
+											<td >${Supplier_Financea.getAmount()}</td>
+											
+										</tr>
+										</c:forEach>
+								</tbody>
+                     <tfoot>
+                     <tr>
+                         				<th>Order ID</th>
+										<th>Payment date</th>
+										<th>Amount</th>
+										
+                     </tr>
+                     </tfoot>
+                 </table>
+                         </div>
+                         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                     </div>
+                 </div>
+             </div>
+
+                 <!-- data table end -->
+         </div>
+         
          <div class="tab-pane fade" id="nav-rtpayments" role="tabpanel" aria-labelledby="nav-rtpayments-tab">
              <div class="row">
 

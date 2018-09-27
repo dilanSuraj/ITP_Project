@@ -1,9 +1,10 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=46b1499fef06be6c57700d2f2ffb6fd8d6f06e53
 eclipse.preferences.version=1
 encoding//WebContent/Report/CEO_Expense_Report.jrxml=UTF-8
 encoding//WebContent/Report/CEO_Income_Report.jrxml=UTF-8
 encoding//WebContent/Report/CEO_Retailer_Finance_Report.jrxml=UTF-8
-<<<<<<< HEAD
-encoding//WebContent/Report/RetailerOrderReport.jrxml=UTF-8
-=======
 encoding//WebContent/Report/Per_Emp_Report.jrxml=UTF-8
->>>>>>> 46b1499fef06be6c57700d2f2ffb6fd8d6f06e53
+encoding//WebContent/Report/RetailerOrderReport.jrxml=UTF-8
+encoding//WebContent/Report/StoreReportDetailsView.jrxml=UTF-8

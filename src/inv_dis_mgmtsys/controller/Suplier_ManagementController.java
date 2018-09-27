@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import inv_dis_mgmtsys.model.Supplier;
 import inv_dis_mgmtsys.model.Supplier_Finance;
 import inv_dis_mgmtsys.model.Supplier_Order;
+import inv_dis_mgmtsys.services.EmpMa_IServicesImpl;
 import inv_dis_mgmtsys.services.SupplierManagement_IServicesImpl;
 
 @Controller
@@ -23,6 +24,8 @@ public class Suplier_ManagementController {
 
 	@Autowired
 	private SupplierManagement_IServicesImpl supplierManagement_IServices;
+	
+	
 
 	@RequestMapping("/addSupplier")
 	public ModelAndView addSupplier() {
@@ -64,11 +67,11 @@ public class Suplier_ManagementController {
 			
 		}
 		model.addObject("supplier", supplier);
-		List<Supplier_Order> SupplierItems = supplierManagement_IServices.getSupplierOrderItem(supplier.getSupplier_ID());
+		List<Supplier_Order> SupplierItems = supplierManagement_IServices.getSupplierOrderItem1(supplier.getSupplier_ID());
 		
 		model.addObject("SupplierItems", SupplierItems);
 		
-		List<Supplier_Order> SupplierItems1 = supplierManagement_IServices.getSupplierOrderItem1(supplier.getSupplier_ID());
+		List<Supplier_Order> SupplierItems1 = supplierManagement_IServices.getSupplierOrderItem(supplier.getSupplier_ID());
 		model.addObject("SupplierItems1", SupplierItems1);
 
 		
@@ -77,6 +80,10 @@ public class Suplier_ManagementController {
 		List<Supplier_Finance> supplier_Finance = supplierManagement_IServices
 				.getpaymentDetails(supplier.getSupplier_ID());
 		model.addObject("Supplier_Finance", supplier_Finance);
+		
+		List<Supplier_Finance> supplier_Financea = supplierManagement_IServices
+				.getpaymentDetailsa(supplier.getSupplier_ID());
+		model.addObject("Supplier_Financea", supplier_Financea);
 		
 		for(Supplier_Finance i:supplier_Finance) {
 			
@@ -100,6 +107,12 @@ public class Suplier_ManagementController {
 		HttpSession session = supplierManagement_IServices.getHttpsession();
 		
 		Supplier supplier1 = (Supplier) session.getAttribute("supplier");
+		
+		if(supplier1 == null) {
+			System.out.println("Null");
+			return new ModelAndView("redirect:/login");
+			
+		}
 		
 		
 		Supplier supplier = supplierManagement_IServices.getSupplierDetails(supplier1.getSupplier_ID());
@@ -143,15 +156,15 @@ public class Suplier_ManagementController {
 		return new ModelAndView("/SupplierManagement/deoAddSupplier");
 	}
 
-	/*
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	
+	@RequestMapping(value = "/slogin", method = RequestMethod.GET)
 	public ModelAndView LoginSupplier_GET(@ModelAttribute("supplier") Supplier supplier) {
 
 		System.out.println("Login get");
-		return new ModelAndView("/UserManagement/General_LoginPage");
+		return new ModelAndView("/UserManagement/sGeneral_LoginPage");
 	}
 
-	@RequestMapping(value = "/loginPOST", method = RequestMethod.POST)
+	@RequestMapping(value = "/sloginPOST", method = RequestMethod.POST)
 	public ModelAndView LoginSupplier_POST(@ModelAttribute("supplier") Supplier supplier, HttpSession session) {
 
 		System.out.println("Login post");
@@ -160,6 +173,7 @@ public class Suplier_ManagementController {
 		//System.out.println("Supplier ID in controller "+supplier.getSupplier_ID());
 		if (result != null) {
 
+			
 			supplierManagement_IServices.setHttpsession(session);
 			supplierManagement_IServices.saveSessionObjects(result.getSupplier_ID());
 			System.out.println("Supplier ID in controller "+result.getSupplier_ID());
@@ -168,15 +182,25 @@ public class Suplier_ManagementController {
 			return model;
 		} else {
 			supplierManagement_IServices.setHttpsession(null);
-			return new ModelAndView("redirect:/login");
+			return new ModelAndView("redirect:/slogin");
 		}
 	}
-*/
+	
+	
+
+      @RequestMapping(value = "/logoutPOST",method=RequestMethod.GET)
+    	  
+      public ModelAndView logout(HttpSession session) {
+        session.removeAttribute("supplier");;
+        return new ModelAndView("redirect:/login");
+      }
+    
+
 	@RequestMapping(value = "/AddSupplier_post", method = RequestMethod.POST)
 	public ModelAndView AddSupplierform(@ModelAttribute("supplier") Supplier supplier) {
 
 		
-		if(supplier.getSupplier_password()==supplier.getSupplier_password2())
+		if(supplier.getSupplier_password().equals(supplier.getSupplier_password2()))
 		{
 		
 			System.out.println("Adding supplier");
@@ -185,10 +209,11 @@ public class Suplier_ManagementController {
 		}
 		else {
 			ModelAndView model = new ModelAndView();
-			model.setViewName("redirect:/deoaddSupplier");
-			String Error ="Password is incorrect ";
-			model.addObject("Error", Error);
 			
+			int Error =1;
+			
+			model.addObject("Error", Error);
+			model.setViewName("redirect:/deoaddSupplier");
 			
 			return model;
 		}
@@ -197,7 +222,8 @@ public class Suplier_ManagementController {
 	@RequestMapping(value = "/AdminAddSupplier_post", method = RequestMethod.POST)
 	public ModelAndView AdminAddSupplierform(@ModelAttribute("supplier") Supplier supplier) {
 
-		if(supplier.getSupplier_password()==supplier.getSupplier_password2())
+		System.out.println("Adding supplier "+supplier.getSupplier_password()+" Supplier"+supplier.getSupplier_password2());
+		if(supplier.getSupplier_password().equals(supplier.getSupplier_password2()))
 		{
 		
 			System.out.println("Adding supplier");
@@ -207,8 +233,8 @@ public class Suplier_ManagementController {
 		else {
 			
 			ModelAndView model = new ModelAndView();
-			String Error ="Password is incorrect ";
-			model.addObject("Error", Error);
+			
+			model.addObject("err", 1);
 			model.setViewName("redirect:/addSupplier");
 			return model;
 			
@@ -230,12 +256,10 @@ public class Suplier_ManagementController {
 		System.out.println("CHECK Adding supplier");
 		ModelAndView model = new ModelAndView();
 		
-		HttpSession session = supplierManagement_IServices.getHttpsession();
-		
-		Supplier supplier1 = (Supplier) session.getAttribute("supplier");
 		
 		
-		Supplier supplier = supplierManagement_IServices.getSupplierDetails(supplier1.getSupplier_ID());
+		
+		Supplier supplier = supplierManagement_IServices.getSupplierDetails(id);
 		
 		model.addObject("supplier", supplier);
 		model.setViewName("/SupplierManagement/aEditSuppliers");
@@ -248,6 +272,8 @@ public class Suplier_ManagementController {
 		HttpSession session = supplierManagement_IServices.getHttpsession();
 		
 		Supplier supplier1 = (Supplier) session.getAttribute("supplier");
+		
+		
 
 		System.out.println("CHECK Adding supplier");
 		System.out.println("CHECK " + id);
@@ -266,8 +292,14 @@ public class Suplier_ManagementController {
 		
 		Supplier supplier1 = (Supplier) session.getAttribute("supplier");
 		
+		if(supplier1 == null) {
+			System.out.println("Null");
+			return new ModelAndView("redirect:/login");
+			
+		}
+		
 
-		System.out.println("in");
+		System.out.println("in"+supplier.getSupplier_password2()+" pw "+supplier.getNew_supplier_password()+" pw "+supplier1.getSupplier_password());
 		if(supplier.getSupplier_password2().equals(supplier.getNew_supplier_password())&&(supplier1.getSupplier_password().equals(supplier.getSupplier_password1()))){
 			System.out.println("out");
 			supplierManagement_IServices.editSupplier(supplier);

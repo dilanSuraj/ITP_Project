@@ -93,7 +93,7 @@ content="text/html; charset=ISO-8859-1">
                         </div>
                         <div class="form-group">
                             <label for="contactNo">Contact No</label>
-                            <form:input type="number" class="form-control"  path="supplier_contactno" required="required"></form:input>
+                            <form:input type="number" min="9"  class="form-control"  path="supplier_contactno" required="required"></form:input>
                         </div>
                         
                             <form:input type="hidden"  class="form-control"  path="supplier_regNo" ></form:input>

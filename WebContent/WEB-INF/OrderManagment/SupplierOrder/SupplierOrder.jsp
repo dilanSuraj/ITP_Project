@@ -32,10 +32,8 @@
 </head>
 <body>
 
-	<%@ include
-		file="/WEB-INF/PageSegments/Finance_Management/_navigationheader.jsp"%>
-	<%@ include
-		file="/WEB-INF/PageSegments/Finance_Management/_sidebar.jsp"%>
+<%@include
+		file="/WEB-INF/OrderManagment/SupplierOrder/storeManagerNavBar.jsp"%>
 
 	<%!int user = 50;%>
 	<div class="row justify-content-end ">

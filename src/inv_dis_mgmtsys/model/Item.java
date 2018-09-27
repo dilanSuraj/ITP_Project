@@ -25,15 +25,12 @@ public class Item{
 	
 	@Column
 	private String item_name;
-	
-	
 
 	@Column
 	private double item_saleprice;
 	
 	@Column
 	private double item_grossprice;
-	
 
 	@ManyToOne
     private Supplier supplier;
@@ -50,7 +47,17 @@ public class Item{
 	@Transient
 	private String Supplier_Name;
 	
+	@Transient
+	private int supplierID;
 	
+	public int getSupplierID() {
+		return supplierID;
+	}
+
+	public void setSupplierID(int supplierID) {
+		this.supplierID = supplierID;
+	}
+
 	public int getItem_supplier_ID() {
 		return item_supplier_ID;
 	}

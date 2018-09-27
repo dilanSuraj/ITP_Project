@@ -114,7 +114,7 @@
 							<th>Total Amount</th>
 							<th>Paid Amount</th>
 							<th>Date</th>
-							<th>Payment State</th>
+							
 							<th>Edit</th>
 							<th>Delete</th>
 
@@ -131,7 +131,7 @@
 								<td>${paymentList.getAmount()}</td>
 								<td>${paymentList.getPaymentDateInString()}</td>
 								
-								<td>${paymentList.getPaymentState()}</td>
+								
 								<td><a
 									href="<c:url value='/Edit_Supplier_Finance?id=${paymentList.getSupplier_finance_id()}' />">EDIT</a></td>
 
@@ -148,7 +148,7 @@
 							<th>Total Amount</th>
 							<th>Paid Amount</th>
 							<th>Date</th>
-							<th>Payment State</th>
+							
 							<th>Edit</th>
 							<th>Delete</th>
 

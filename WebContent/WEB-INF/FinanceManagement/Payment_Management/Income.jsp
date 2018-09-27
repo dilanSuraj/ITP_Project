@@ -115,7 +115,7 @@
 							<th>Recieved Amount</th>
 							<th>Description</th>
 							<th>Date</th>
-							<th>Status</th>
+			
 							<th>Edit</th>
 							<th>Delete</th>
 
@@ -133,7 +133,7 @@
 								<td>${paymentList.getOther_income_expense_description()}</td>
 								<td>${paymentList.getOther_income_expense_dateInString()}</td>
 								
-								<td>${paymentList.getOther_income_expense_paymentstate()}</td>
+							
 								<td><a href="<c:url value='/UpdateIncome_Get?id=${paymentList.getOther_income_expense_ID()}' />" >EDIT</a></td>
 								
 								<td><a href="<c:url value='/DeleteIncome?id=${paymentList.getOther_income_expense_ID()}' />" onclick="return confirm('Do you want to proceed?');">DELETE</a></td>
@@ -147,7 +147,7 @@
 							<th>Recieved Amount</th>
 							<th>Date</th>
 							<th>Description</th>
-							<th>Status</th>
+				
 							<th>Edit</th>
 							<th>Delete</th>
 

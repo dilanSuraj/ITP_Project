@@ -109,7 +109,7 @@
 						Blacklisted Retailers
 				</a></li>
 
-				<li class="nav-item"><a class="nav-link" href="#"><span
+				<li class="nav-item"><a class="nav-link" href="empPro"><span
 						class="fa fa-cog" style="font-size: 18px"></span> My Profile</a></li>
 
 			</ul>

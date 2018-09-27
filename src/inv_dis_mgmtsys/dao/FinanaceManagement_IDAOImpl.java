@@ -177,6 +177,7 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 			query.setParameter(5, retailer_Finance.getRetailer_finance_id());
 
 			int result = query.executeUpdate();
+			this.updateStatusInRetailerOrder(retailer_Finance.getRetailer_orderID());
 			System.out.println("Results : " + result);
 			return;
 		}
@@ -224,6 +225,17 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 			return null;
 		}
 	}
+	
+	public void updateStatusInRetailerOrder(int retailerOrder) {
+		
+		Retailer_Order retailer_Order = this.getSingleRetailerOrderDetails(retailerOrder);		
+		
+		String hql = "Update Retailer_Order ro set retailer_orderstatus = ? where retailer_OrderID = ?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter(0, "Complete");
+		query.setParameter(1, retailer_Order);
+		
+	}
 
 	@Override
 	public Item getSingleItemDetail(int ID) {
@@ -269,7 +281,12 @@ public class FinanaceManagement_IDAOImpl implements FinanaceManagement_IDAO {
 	@Override
 	public List<Retailer_Order> getAllRetailerOrderDetails() {
 
-		return sessionFactory.getCurrentSession().createQuery("From Retailer_Order").list();
+		String hql = "From Retailer_Order retailerOrder  where retailerOrder.retailer_orderstatus=?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter(0, "Inprocess");
+		return query.list();
+		
+		
 	}
 
 	@Override
